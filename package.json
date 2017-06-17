@@ -1,0 +1,29 @@
+{
+  "name": "jec-glasscat-core",
+  "version": "0.0.1",
+  "description": "JEC GlassCat Core - The core components of the Glasscat Aplication Server.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pechemann/jec-glasscat-core.git"
+  },
+  "keywords": [
+    "JEC",
+    "Glasscat",
+    "core components",
+    "Node.js",
+    "node",
+    "JavaScript",
+    "TypeScript",
+    "server",
+    "applications"
+  ],
+  "author": "Pascal ECHEMANN",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/pechemann/jec-glasscat-core/issues"
+  },
+  "homepage": "https://github.com/pechemann/jec-glasscat-core#readme",
+  "dependencies": { },
+  "devDependencies": {},
+  "peerDependencies": {}
+}
