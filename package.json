@@ -2,6 +2,11 @@
   "name": "jec-glasscat-core",
   "version": "0.0.1",
   "description": "JEC GlassCat Core - The core components of the Glasscat Aplication Server.",
+  "main": "lib/com/onsoft/glasscat/index",
+  "types": "types/jec-glasscat-core.d.ts",
+  "scripts": {
+    "test": "mocha juta/tiger/run-unit-tests"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pechemann/jec-glasscat-core.git"
@@ -23,7 +28,30 @@
     "url": "https://github.com/pechemann/jec-glasscat-core/issues"
   },
   "homepage": "https://github.com/pechemann/jec-glasscat-core#readme",
-  "dependencies": { },
-  "devDependencies": {},
-  "peerDependencies": {}
+  "dependencies": {
+    "jec-commons": "^1.1.1",
+    "jec-commons-node": "^1.0.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-spies": "^0.7.1",
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-jsdoc": "^2.1.0",
+    "grunt-ts": "^6.0.0-beta.15",
+    "grunt-typedoc": "^0.2.4",
+    "jec-juta": "^1.0.3",
+    "jec-tiger": "^1.0.1",
+    "mocha": "^3.3.0",
+    "typedoc": "^0.6.0",
+    "typescript": "^2.3.2",
+    "typings": "^2.1.1"
+  },
+  "peerDependencies": {
+    "jec-commons": "^1.1.1",
+    "jec-commons-node": "^1.0.1",
+    "jec-juta": "^1.0.3",
+    "jec-tiger": "^1.0.1"
+  }
 }

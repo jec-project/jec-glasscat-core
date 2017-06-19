@@ -1,0 +1,72 @@
+{
+  "glasscat": {
+    "version": "0.0.0",
+    "locale": "en-US"
+  },
+  "config": {
+    "loggers": {
+      "logLevel": "TRACE",
+      "factories": [
+        {
+          "name": "consoleLogger",
+          "factory": "${glasscat}/util/logging/basic/ConsoleLoggerFactory"
+        },
+        {
+          "name": "fileLogger",
+          "factory": "${glasscat}/util/logging/basic/FileLoggerFactory",
+          "logLevel": "ERROR"
+        }
+      ]
+    },
+    "http":{
+      "listeners": [
+        {
+          "id": "default",
+          "address":"127.0.0.1",
+          "domain":"localhost",
+          "port":8484,
+          "secured": false,
+          "server":"server1"
+        },
+        {
+          "id": "admin",
+          "address":"127.0.0.0",
+          "domain":"domain.com",
+          "port":9990,
+          "secured": true,
+          "sslPath": "${root}/public/cfg/ssl/admin/",
+          "server": "admin-server",
+          "monitoring": {
+            "enabled": false,
+            "factory": "${glasscat}/net/http/monitoring/ConsoleTransactionMonitorFactory"
+          }
+        }
+      ],
+      "security": {
+        "headerModules":[
+          {
+            "listener": "admin",
+            "additionalModules": [
+              {
+                "name": "noCache",
+                "settings": {
+                  "directives": {
+                     "sandbox": ["allow-forms", "allow-scripts"]
+                  }
+                }
+              }
+            ]
+          },
+           {
+            "listener": "default",
+            "modules": []
+          }
+        ]
+      }
+    },
+    "errorPage": "${glasscat}/templates/error/errors.ejs"
+  },
+  "modules": {
+
+  }
+}
