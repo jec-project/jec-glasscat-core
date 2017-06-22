@@ -29,8 +29,16 @@
   },
   "homepage": "https://github.com/pechemann/jec-glasscat-core#readme",
   "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.6",
+    "express": "^4.15.3",
+    "i18n": "^0.8.3",
     "jec-commons": "^1.1.1",
-    "jec-commons-node": "^1.0.1"
+    "jec-commons-node": "^1.0.1",
+    "jec-exchange": "^1.1.0",
+    "moment": "^2.18.1",
+    "url-pattern": "^1.0.3"
   },
   "devDependencies": {
     "chai": "^3.5.0",

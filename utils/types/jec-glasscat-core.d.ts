@@ -7,5 +7,15 @@
 
 declare module "jec-glasscat-core" {
 
+import { SourceFileInspector, FilePreProcessor, FileProperties, JcadContext,
+         JecContainer, Decorator, AbstractDecoratorConnector, UrlPattern,
+         AbstractLogger, LogFormatter, Logger } from "jec-commons";
+import { JsletContext, Jslet, SessionError, HttpResponse, HttpRequest,
+         WebJsletParams, SessionContext, SecurityContext, CookieOptions,
+         SendFileOptions, SecurityRole, SecurityConstraint, StaticResources,
+         SessionId, SessionOwner, Session, Credentials   } from "jec-exchange";
+import * as express from "express";
+import * as http from "http";
+
 /*PLACEHOLDER*/
 }
