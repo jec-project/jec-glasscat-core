@@ -25,6 +25,13 @@ export {LoggersConfig} from "./context/core/LoggersConfig";
 export {SecurityConfig} from "./context/core/SecurityConfig";
 export {ToolsConfig} from "./context/core/ToolsConfig";
 
+//--> com/onsoft/glasscat/exceptions
+export {GlassCatError} from "./exceptions/GlassCatError";
+
 //--> com/onsoft/glasscat/util/bootstrap
 export {BootstrapScriptSorter} from "./util/bootstrap/BootstrapScriptSorter";
-
+//--> com/onsoft/glasscat/util/url
+export {BasicUrlPattern} from "./util/url/BasicUrlPattern";
+export {UrlPatternBuilder} from "./util/url/UrlPatternBuilder";
+export {UrlPatternUtils} from "./util/url/UrlPatternUtils";
+export {UrlUtils} from "./util/url/UrlUtils";
