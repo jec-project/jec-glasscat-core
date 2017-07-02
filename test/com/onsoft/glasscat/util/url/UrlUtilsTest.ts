@@ -18,7 +18,7 @@ import { TestSuite, Test } from "jec-juta";
 import { expect } from "chai";
 import { UrlUtils } from "../../../../../../src/com/onsoft/glasscat/util/url/UrlUtils";
 import { GlassCatError } from "../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatError";
-import { LocaleManager } from "../../../../../../src/com/onsoft/glasscat/i18n/LocaleManager";
+import { GlassCatErrorCode } from "../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatErrorCode";
 
 import * as utils from "../../../../../../utils/test-utils/utilities/UrlUtilsTestUtils"; 
 
@@ -35,6 +35,17 @@ export class UrlUtilsTest {
       new UrlUtils();
     };
     expect(buildInstance).to.throw(GlassCatError);
+  }
+
+  @Test({
+    description: "should throw a GlassCatError error of the type of GlassCatErrorCode.SINGLETON_ERROR when calling the constructor function"
+  })
+  public singletonErrorCodeTest():void {
+    try {
+      new UrlUtils();
+    } catch(e) {
+      expect(e.getCode()).to.equal(GlassCatErrorCode.SINGLETON_ERROR);
+    }
   }
 
   @Test({

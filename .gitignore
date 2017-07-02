@@ -68,12 +68,10 @@ utils/**/*.js
 #####################################
 
 lib/
-src/com/onsoft/glasscat/context/domains
 src/com/onsoft/glasscat/context/ejp
 src/com/onsoft/glasscat/context/files
 src/com/onsoft/glasscat/context/utils
 src/com/onsoft/glasscat/context/validators
-src/com/onsoft/glasscat/context/DomainContext.ts
 src/com/onsoft/glasscat/context/GlassCatContext.ts
 src/com/onsoft/glasscat/context/LoggerContext.ts
 src/com/onsoft/glasscat/core
@@ -86,6 +84,6 @@ src/com/onsoft/glasscat/security
 src/com/onsoft/glasscat/services
 src/com/onsoft/glasscat/templates
 src/com/onsoft/glasscat/util/contextroot
-src/com/onsoft/glasscat/util/loaders
 src/com/onsoft/glasscat/util/logging
-src/com/onsoft/glasscat/util/paths
+src/com/onsoft/glasscat/util/paths/TemplatePaths.ts
+src/com/onsoft/glasscat/util/paths/TemplatePathsSolver.ts

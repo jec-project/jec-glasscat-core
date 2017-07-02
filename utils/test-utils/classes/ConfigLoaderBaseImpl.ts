@@ -14,10 +14,21 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-/*!
- * This module constains utilities used by the GlassCatErrorTest test suite.
- */
+import {ConfigLoaderBase} from "../../../src/com/onsoft/glasscat/util/loaders/ConfigLoaderBase";
+import {GlassCatError} from "../../../src/com/onsoft/glasscat/exceptions/GlassCatError";
 
-// Utilities:
-export const ERROR_MSG:string = "GlassCat internal error";
-export const EMPTY_STRING:string = "";
+export class ConfigLoaderBaseImpl extends ConfigLoaderBase {
+
+  constructor() {
+    super();
+  }
+
+  public loadConfigSyncImpl(filePath:string):any {
+    return this.loadConfigSync(filePath);
+  }
+  
+  public loadConfigImpl(filePath:string, success:(data:any)=>void,
+                                         error:(err:GlassCatError)=>void):void {
+    this.loadConfig(filePath, success, error);
+  }
+}

@@ -16,6 +16,7 @@
 
 import {LocaleManager} from "../../i18n/LocaleManager";
 import {GlassCatError} from "../../exceptions/GlassCatError";
+import {GlassCatErrorCode} from "../../exceptions/GlassCatErrorCode";
 
 /**
  * A singleton that provides utilities and constants for working with URLs.
@@ -31,9 +32,9 @@ export class UrlUtils {
    */
   constructor() {
     if(UrlUtils._locked || UrlUtils.INSTANCE) {
-      throw new GlassCatError(
-        LocaleManager.getInstance().get("errors.singleton", "UrlUtils")
-      );
+      let msg:string =
+                LocaleManager.getInstance().get("errors.singleton", "UrlUtils");
+      throw new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, msg);
     }
     UrlUtils._locked = true;
   }

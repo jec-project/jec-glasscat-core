@@ -14,26 +14,22 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
+import {Domain} from "./domains/Domain";
+
 /**
- * The <code>GlassCatError</code> represents an exception thrown by a GlassCat 
- * container when an internal error occurs.
+ * Stores the GlassCat context for all <code>Domain</code> instances.
  */
-export class GlassCatError extends Error {
+export class DomainContext {
 
   ////////////////////////////////////////////////////////////////////////////
   // Constructor function
   ////////////////////////////////////////////////////////////////////////////
 
   /**
-   * Creates a new <code>GlassCatError</code> instance.
-   * 
-   * @param {number} code the code associated with this error. Valid values are
-   *                      constants of the <code>GlassCatErrorCode</code> enum.
-   * @param {string} message the error message.
+   * Creates a new <code>DomainContext</code> instance.
    */
-  constructor(code:number, message?:string) {
-    super(message);
-    this.initObj(code);
+  constructor() {
+    this.init();
   }
 
   ////////////////////////////////////////////////////////////////////////////
@@ -41,10 +37,10 @@ export class GlassCatError extends Error {
   ////////////////////////////////////////////////////////////////////////////
 
   /**
-   * The code associated with this error. Valid values are constants of the
-   * <code>GlassCatErrorCode</code> enum.
+   * A map that contains all domains for this <code>DomainContext</code>
+   * instance.
    */
-  private _code:number = -1;
+  private _map:Map<string, Domain> = null;
 
   ////////////////////////////////////////////////////////////////////////////
   // Private methods
@@ -52,12 +48,9 @@ export class GlassCatError extends Error {
 
   /**
    * Initializes this object.
-   * 
-   * @param {number} code the code associated with this error. Valid values are
-   *                      constants of the <code>GlassCatErrorCode</code> enum.
    */
-  private initObj(code:number):void {
-    this._code = code;
+  public init():void {
+    this._map = new Map<string, Domain>();
   }
 
   ////////////////////////////////////////////////////////////////////////////
@@ -65,11 +58,24 @@ export class GlassCatError extends Error {
   ////////////////////////////////////////////////////////////////////////////
 
   /**
-   * Returns the code associated with this error.
+   * Adds a domain to this <code>DomainContext</code> instance.
    * 
-   * @return {number} a constant of the <code>GlassCatErrorCode</code> enum.
+   * @param {Domain} domain the domain to add.
    */
-  public getCode():number {
-    return this._code;
+  public addDomain(domain:Domain):void {
+    this._map.set(domain.name, domain);
+  }
+
+  /**
+   * Returns a collection that contains all domains registered whithin this
+   * <code>DomainContext</code> instance.
+   * 
+   * @return {Array<Domain>} all the domains registered in this
+   *                         <code>DomainContext</code> instance.
+   */
+  public getDomainList():Domain[] {
+    let list:Domain[] = new Array<Domain>();
+    this._map.forEach( (value:Domain)=> { list.push(value); } );
+    return list;
   }
 }

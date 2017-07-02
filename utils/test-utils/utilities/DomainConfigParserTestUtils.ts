@@ -14,10 +14,17 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
+import * as configUtils from "./DomainConfigurationUtils";
+
 /*!
- * This module constains utilities used by the GlassCatErrorTest test suite.
+ * This module constains utilities used by the DomainConfigParserTest test
+ * suite.
  */
 
 // Utilities:
-export const ERROR_MSG:string = "GlassCat internal error";
-export const EMPTY_STRING:string = "";
+export const DOMAINS_CONFIG:any = {
+  domains: [ configUtils.CONFIG ]
+};
+export const INVALID_DOMAINS_CONFIG:any = {
+  domain: configUtils.CONFIG
+};

@@ -15,9 +15,15 @@
 //   limitations under the License.
 
 /*!
- * This module constains utilities used by the GlassCatErrorTest test suite.
+ * This module constains utilities used by the MappedPathUtilTest test suite.
  */
 
 // Utilities:
-export const ERROR_MSG:string = "GlassCat internal error";
-export const EMPTY_STRING:string = "";
+export const CONTEXTROOT:string = "contextroot";
+export const URI_PATH:string = "my/uri/path";
+export const GLASSCAT_URI_PATTERN:string = "${glasscat}/my/uri/path";
+export const GLASSCAT_URI_PATH:string = "contextroot/server/com/onsoft/glasscat/my/uri/path";
+export const ROOT_URI_PATTERN:string = "${root}/my/uri/path";
+export const ROOT_URI_PATH:string = "contextroot/my/uri/path";
+export const MODULES_URI_PATTERN:string = "${modules}/my/uri/path";
+export const MODULES_URI_PATH:string = "contextroot/public/modules/my/uri/path";

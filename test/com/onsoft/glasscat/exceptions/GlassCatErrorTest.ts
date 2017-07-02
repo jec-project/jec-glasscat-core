@@ -17,6 +17,8 @@
 import { TestSuite, Test } from "jec-juta";
 import { expect } from "chai";
 import { GlassCatError } from "../../../../../src/com/onsoft/glasscat/exceptions/GlassCatError";
+import { GlassCatErrorCode } from "../../../../../src/com/onsoft/glasscat/exceptions/GlassCatErrorCode";
+
 import * as utils from "../../../../../utils/test-utils/utilities/GlassCatErrorTestUtils";
 
 @TestSuite({
@@ -33,10 +35,29 @@ export class GlassCatErrorTest {
   }
   
   @Test({
-    description: "should return the same string as passed in the class constructor"
+    description: "should return the same 'code' number as passed in the class constructor"
+  })
+  public getCodeTest():void {
+    let error:GlassCatError =
+          new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, utils.ERROR_MSG);
+    expect(error.getCode()).to.equal(GlassCatErrorCode.SINGLETON_ERROR);
+  }
+  
+  @Test({
+    description: "should return the same 'message' string as passed in the class constructor"
   })
   public messageTest():void {
-    let error:GlassCatError = new GlassCatError(utils.ERROR_MSG);
+    let error:GlassCatError =
+          new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, utils.ERROR_MSG);
     expect(error.message).to.equal(utils.ERROR_MSG);
+  }
+  
+  @Test({
+    description: "should return an empty string when no message is passed in the class constructor"
+  })
+  public nullMessageTest():void {
+    let error:GlassCatError =
+                           new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR);
+    expect(error.message).to.equal(utils.EMPTY_STRING);
   }
 }

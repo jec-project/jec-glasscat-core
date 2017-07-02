@@ -15,9 +15,9 @@
 //   limitations under the License.
 
 /*!
- * This module constains utilities used by the GlassCatErrorTest test suite.
+ * This module constains utilities used by the DomainStateTest test suite.
  */
 
 // Utilities:
-export const ERROR_MSG:string = "GlassCat internal error";
-export const EMPTY_STRING:string = "";
+export const STATEFUL:string = "stateful";
+export const STATELESS:string = "stateless";

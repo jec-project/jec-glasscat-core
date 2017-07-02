@@ -15,9 +15,10 @@
 //   limitations under the License.
 
 /*!
- * This module constains utilities used by the GlassCatErrorTest test suite.
+ * This module constains utilities used by the ConfigLoaderBaseTest test suite.
  */
 
 // Utilities:
-export const ERROR_MSG:string = "GlassCat internal error";
-export const EMPTY_STRING:string = "";
+export const VALID_CONFIG_PATH:string = "utils/test-utils/files/valid-domain-config.json";
+export const INVALID_CONFIG_PATH:string = "utils/test-utils/files/invalid-config-file.json";
+export const INVALID_PATH:string = "utils/test-utils/valid-config-file.json";

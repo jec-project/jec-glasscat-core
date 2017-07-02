@@ -14,10 +14,10 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-/*!
- * This module constains utilities used by the GlassCatErrorTest test suite.
- */
+import { TestSuite } from "jec-juta";
 
-// Utilities:
-export const ERROR_MSG:string = "GlassCat internal error";
-export const EMPTY_STRING:string = "";
+@TestSuite({
+  description: "TODO: we must implement a complex test suite for testing the DomainConfigUpdater class methods",
+  disabled: true
+})
+export class DomainConfigUpdaterTest { }

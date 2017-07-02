@@ -15,9 +15,21 @@
 //   limitations under the License.
 
 /*!
- * This module constains utilities used by the GlassCatErrorTest test suite.
+ * This module constains utilities used by domain config test suites.
  */
 
 // Utilities:
-export const ERROR_MSG:string = "GlassCat internal error";
-export const EMPTY_STRING:string = "";
+export const CONFIG_NAME:string = "test-ejp";
+export const CONFIG_HOST:string = "localhost";
+export const CONFIG_TARGET:string = "${root}/test";
+export const CONFIG_SERVER:string = "test-server";
+export const CONFIG_TYPE:string = "ejp";
+export const CONFIG:any = {
+  name: CONFIG_NAME,
+  host: CONFIG_HOST,
+  target: CONFIG_TARGET,
+  connector: {
+    server: CONFIG_SERVER,
+    type: CONFIG_TYPE
+  }
+};

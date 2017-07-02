@@ -14,10 +14,26 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-/*!
- * This module constains utilities used by the GlassCatErrorTest test suite.
- */
+import { TestSuite, Test, BeforeClass } from "jec-juta";
+import { expect } from "chai";
+import { DomainConfig } from "../../../../../../src/com/onsoft/glasscat/context/domains/DomainConfig";
 
-// Utilities:
-export const ERROR_MSG:string = "GlassCat internal error";
-export const EMPTY_STRING:string = "";
+@TestSuite({
+  description: "Test the DomainConfig class properties"
+})
+export class DomainConfigTest {
+
+  public config:DomainConfig = null;
+
+  @BeforeClass()
+  public initTest():void {
+    this.config = new DomainConfig();
+  }
+
+  @Test({
+    description: "should have a 'domains' property set to 'null'"
+  })
+  public domainsTest():void {
+    expect(this.config).to.have.property("domains", null);
+  }
+}

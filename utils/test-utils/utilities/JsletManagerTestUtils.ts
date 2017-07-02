@@ -14,10 +14,24 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
+import {Jslet, JsletContext, HttpJslet} from "jec-exchange";
+import {JsletContextTestImpl} from "../classes/JsletContextTestImpl";
+
 /*!
- * This module constains utilities used by the GlassCatErrorTest test suite.
+ * This module constains utilities used by the JsletManagerTest test suite.
  */
 
 // Utilities:
-export const ERROR_MSG:string = "GlassCat internal error";
-export const EMPTY_STRING:string = "";
+export const UNDEFINED_CONTEXT_REF:string = "anything";
+export const CONTEXT_REF:string = "my-context-root";
+export const JSLET_URL:string = "foo";
+export const buildContext:Function = function():JsletContext {
+  let ctx:JsletContext = new JsletContextTestImpl();
+  return ctx;
+};
+export const buildJslet:Function = function():Jslet {
+  let jslet:HttpJslet = new HttpJslet();
+  (jslet as any).__webJsletMetadata = { urlPatterns: [JSLET_URL] };
+  return jslet;
+};
+

@@ -1,0 +1,13 @@
+{
+  "domains": [
+    {
+      "name": "test-ejp",
+      "host": "localhost",
+      "target": "${root}/test",
+      "connector": {
+        "type": "ejp",
+        "server": "test-server"
+      }
+    }
+  ]
+}
