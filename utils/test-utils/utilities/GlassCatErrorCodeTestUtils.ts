@@ -14,26 +14,12 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test, BeforeAll } from "jec-juta";
-import { expect } from "chai";
-import { SecurityConfig } from "../../../../../../src/com/onsoft/glasscat/context/core/SecurityConfig";
+/*!
+ * This module constains utilities used by the GlassCatErrorCodeTest test suite.
+ */
 
-@TestSuite({
-  description: "Test the SecurityConfig class properties"
-})
-export class SecurityConfigTest {
-
-  public config:SecurityConfig = null;
-
-  @BeforeAll()
-  public initTest():void {
-    this.config = new SecurityConfig();
-  }
-
-  @Test({
-    description: "should have a 'headerModules' property set to 'null'"
-  })
-  public headerModulesTest():void {
-    expect(this.config).to.have.property("headerModules", null);
-  }
-}
+// Utilities:
+export const SINGLETON_ERROR:number = 0;
+export const CONFIG_LOADING_FAILURE:number = 1;
+export const CONFIG_SERIALIZATION_ERROR:number = 2;
+export const CONFIG_UPDATE_ERROR:number = 3;

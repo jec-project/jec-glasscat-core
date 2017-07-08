@@ -1,0 +1,75 @@
+{
+  "webapp": {
+    "name": "test-ejp",
+    "contextRoot": "test",
+    "welcomeFile": "index.html",
+    "description": "Test configuration file",
+    "version": "1.0.0",
+    "author": "ONSOFT SYSTEMS",
+    "state": "stateful",
+    "bootstrap": [
+      {
+        "path": "bootstrap/InitApp",
+        "priority": 1
+      }
+    ],
+    "jslets": {
+      "enableAutowire": false,
+      "config": [
+        "jslets/Status"
+      ]
+    },
+    "login": {
+      "authMethod": "ejp-form",
+      "formConfig": {
+        "loginUrl": "/login",
+        "errorUrl": "/error/login"
+      },
+      "realm": {
+        "type": "test-file",
+        "securedArea": "GlassCat Test Project",
+        "connectorFactory": "path/to/Factory"
+      }
+    },
+    "session": {
+      "storage": "local",
+      "errorUrl": "/login",
+      "maxAge": 3600
+    },
+    "resourceMap": [
+      {
+        "name": "font-awesome",
+        "value": "/styles/font-awesome/fonts"
+      }
+    ],
+    "security": {
+      "roles": [
+        {
+          "name": "ADMIN",
+          "path": "security/AdminRole"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "ConsoleConstraint",
+          "roles": [
+            "ADMIN"
+          ],
+          "urlPattern": "/console/*",
+          "errorUrl": "/login"
+        }
+      ],
+      "staticResources": [
+        {
+          "urlPattern": "/vendor/*"
+        },
+        {
+          "urlPattern": "/styles/*"
+        },
+        {
+          "urlPattern": "/node_modules/*"
+        }
+      ]
+    }
+  }
+}

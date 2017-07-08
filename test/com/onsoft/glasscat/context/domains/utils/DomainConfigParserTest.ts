@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test, BeforeClass } from "jec-juta";
+import { TestSuite, Test, BeforeAll } from "jec-juta";
 import { expect, assert } from "chai";
 import { DomainConfigParser } from "../../../../../../../src/com/onsoft/glasscat/context/domains/utils/DomainConfigParser";
 import { DomainConfig } from "../../../../../../../src/com/onsoft/glasscat/context/domains/DomainConfig";
@@ -31,7 +31,7 @@ export class DomainConfigParserTest {
 
   private parser:DomainConfigParser = null;
 
-  @BeforeClass()
+  @BeforeAll()
   public initTest():void {
     this.parser = new DomainConfigParser();
   }

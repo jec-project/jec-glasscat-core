@@ -25,7 +25,7 @@ export interface ConfigLoader {
   /**
    * Loads and returns a configuration file for a GlassCat container.
    *
-   * @return {Object} a configuration file for a GlassCat container.
+   * @return {any} a configuration file for a GlassCat container.
    */
   loadSync():any;
   

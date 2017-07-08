@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test, BeforeClass } from "jec-juta";
+import { TestSuite, Test, BeforeAll } from "jec-juta";
 import { expect } from "chai";
 import { UrlPatternBuilder } from "../../../../../../src/com/onsoft/glasscat/util/url/UrlPatternBuilder";
 import { UrlPattern } from "jec-commons";
@@ -29,7 +29,7 @@ export class UrlPatternBuilderTest {
 
   public builder:UrlPatternBuilder = null;
 
-  @BeforeClass()
+  @BeforeAll()
   public initTest():void {
     this.builder = new UrlPatternBuilder();
   }

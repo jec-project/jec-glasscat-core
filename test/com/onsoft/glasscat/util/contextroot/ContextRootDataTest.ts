@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test, BeforeClass } from "jec-juta";
+import { TestSuite, Test, BeforeAll } from "jec-juta";
 import { expect } from "chai";
 import { ContextRootData } from "../../../../../../src/com/onsoft/glasscat/util/contextroot/ContextRootData";
 
@@ -25,7 +25,7 @@ export class ContextRootDataTest {
 
   public data:ContextRootData = null;
 
-  @BeforeClass()
+  @BeforeAll()
   public initTest():void {
     this.data = new ContextRootData();
   }

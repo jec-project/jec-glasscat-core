@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test, BeforeClass } from "jec-juta";
+import { TestSuite, Test, BeforeAll } from "jec-juta";
 import { expect } from "chai";
 import { DomainBuilder } from "../../../../../../../src/com/onsoft/glasscat/context/domains/utils/DomainBuilder";
 import { Domain } from "../../../../../../../src/com/onsoft/glasscat/context/domains/Domain";
@@ -30,7 +30,7 @@ export class DomainBuilderTest {
   public builder:DomainBuilder = null;
   public result:Domain = null;
 
-  @BeforeClass()
+  @BeforeAll()
   public initTest():void {
     this.builder = new DomainBuilder();
     this.result = this.builder.buildDomain(utils.CONFIG);

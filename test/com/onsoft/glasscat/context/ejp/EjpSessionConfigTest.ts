@@ -16,31 +16,38 @@
 
 import { TestSuite, Test, BeforeAll } from "jec-juta";
 import { expect } from "chai";
-import { LoggersConfig } from "../../../../../../src/com/onsoft/glasscat/context/core/LoggersConfig";
+import { EjpSessionConfig } from "../../../../../../src/com/onsoft/glasscat/context/ejp/EjpSessionConfig";
 
 @TestSuite({
-  description: "Test the LoggersConfig class properties"
+  description: "Test the EjpSessionConfig class properties"
 })
-export class LoggersConfigTest {
+export class EjpSessionConfigTest {
 
-  public config:LoggersConfig = null;
+  public config:EjpSessionConfig = null;
 
   @BeforeAll()
   public initTest():void {
-    this.config = new LoggersConfig();
+    this.config = new EjpSessionConfig();
   }
 
   @Test({
-    description: "should have a 'factories' property set to 'null'"
+    description: "should have a 'storage' property set to 'null'"
   })
-  public factoriesTest():void {
-    expect(this.config).to.have.property("factories", null);
+  public storageTest():void {
+    expect(this.config).to.have.property("storage", null);
   }
   
   @Test({
-    description: "should have a 'logLevel' property set to 'null'"
+    description: "should have a 'errorUrl' property set to 'null'"
   })
-  public logLevelTest():void {
-    expect(this.config).to.have.property("logLevel", null);
+  public errorUrlTest():void {
+    expect(this.config).to.have.property("errorUrl", null);
+  }
+  
+  @Test({
+    description: "should have a 'maxAge' property set to '3600'"
+  })
+  public maxAgeTest():void {
+    expect(this.config).to.have.property("maxAge", 3600);
   }
 }

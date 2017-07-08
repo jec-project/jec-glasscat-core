@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test, BeforeClass } from "jec-juta";
+import { TestSuite, Test, BeforeAll } from "jec-juta";
 import { expect } from "chai";
 import { HttpMonitoringConfig } from "../../../../../../src/com/onsoft/glasscat/context/core/HttpMonitoringConfig";
 
@@ -25,8 +25,8 @@ export class HttpMonitoringConfigTest {
 
   public config:HttpMonitoringConfig = null;
 
-  @BeforeClass()
-  public initProject():void {
+  @BeforeAll()
+  public initTest():void {
     this.config = new HttpMonitoringConfig();
   }
 

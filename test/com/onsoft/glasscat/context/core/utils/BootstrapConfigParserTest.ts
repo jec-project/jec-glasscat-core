@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test, BeforeClass, AfterClass } from "jec-juta";
+import { TestSuite, Test, BeforeAll, AfterAll } from "jec-juta";
 import { expect } from "chai";
 import { BootstrapConfig } from "../../../../../../../src/com/onsoft/glasscat/context/core/BootstrapConfig";
 import { GlasscatConfig } from "../../../../../../../src/com/onsoft/glasscat/context/core/GlasscatConfig";
@@ -40,14 +40,14 @@ export class BootstrapConfigParserTest {
   public config:BootstrapConfig = null;
   public parser:BootstrapConfigParser = null;
   
-  @BeforeClass()
+  @BeforeAll()
   public initConfig():void {
     let  configFile:any = utils.loadConfigFile();
     this.parser = new BootstrapConfigParser();
     this.config = this.parser.parse(configFile);
   }
 
-  @AfterClass()
+  @AfterAll()
   public deleteConfig():void {
     this.config = null;
     this.parser = null;

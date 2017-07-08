@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test, BeforeClass } from "jec-juta";
+import { TestSuite, Test, BeforeAll } from "jec-juta";
 import { expect } from "chai";
 import { HttpListenerConfig } from "../../../../../../src/com/onsoft/glasscat/context/core/HttpListenerConfig";
 
@@ -25,8 +25,8 @@ export class HttpListenerConfigTest {
 
   public config:HttpListenerConfig = null;
 
-  @BeforeClass()
-  public initProject():void {
+  @BeforeAll()
+  public initTest():void {
     this.config = new HttpListenerConfig();
   }
 

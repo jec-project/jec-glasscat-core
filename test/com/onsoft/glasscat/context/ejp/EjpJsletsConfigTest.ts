@@ -16,31 +16,38 @@
 
 import { TestSuite, Test, BeforeAll } from "jec-juta";
 import { expect } from "chai";
-import { LoggersConfig } from "../../../../../../src/com/onsoft/glasscat/context/core/LoggersConfig";
+import { EjpJsletsConfig } from "../../../../../../src/com/onsoft/glasscat/context/ejp/EjpJsletsConfig";
 
 @TestSuite({
-  description: "Test the LoggersConfig class properties"
+  description: "Test the EjpJsletsConfig class properties"
 })
-export class LoggersConfigTest {
+export class EjpJsletsConfigTest {
 
-  public config:LoggersConfig = null;
+  public config:EjpJsletsConfig = null;
 
   @BeforeAll()
   public initTest():void {
-    this.config = new LoggersConfig();
+    this.config = new EjpJsletsConfig();
   }
 
   @Test({
-    description: "should have a 'factories' property set to 'null'"
+    description: "should have a 'configFile' property set to 'null'"
   })
-  public factoriesTest():void {
-    expect(this.config).to.have.property("factories", null);
+  public configFileTest():void {
+    expect(this.config).to.have.property("configFile", null);
   }
   
   @Test({
-    description: "should have a 'logLevel' property set to 'null'"
+    description: "should have a 'config' property set to 'null'"
   })
-  public logLevelTest():void {
-    expect(this.config).to.have.property("logLevel", null);
+  public configTest():void {
+    expect(this.config).to.have.property("config", null);
+  }
+  
+  @Test({
+    description: "should have a 'enableAutowire' property set to 'false'"
+  })
+  public enableAutowireTest():void {
+    expect(this.config).to.have.property("enableAutowire", false);
   }
 }

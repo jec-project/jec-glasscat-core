@@ -59,7 +59,7 @@
   "peerDependencies": {
     "jec-commons": "^1.1.1",
     "jec-commons-node": "^1.0.1",
-    "jec-juta": "^1.0.3",
-    "jec-tiger": "^1.0.1"
+    "jec-juta": "^1.1.0",
+    "jec-tiger": "^1.1.0"
   }
 }

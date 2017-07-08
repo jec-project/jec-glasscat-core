@@ -39,8 +39,7 @@ export class DomainContextBuilder {
   /**
    * Builds and returns a domain context from the specified config file.
    *
-   * @param {Object} config the configuration file from which to build the
-   *                        context.
+   * @param {any} config the configuration file from which to build the context.
    * @return {DomainContext} a new <code>DomainContext</code> instance built 
    *                         from the specified config file.
    */

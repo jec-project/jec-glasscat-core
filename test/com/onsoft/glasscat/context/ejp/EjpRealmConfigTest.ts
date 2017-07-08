@@ -16,31 +16,38 @@
 
 import { TestSuite, Test, BeforeAll } from "jec-juta";
 import { expect } from "chai";
-import { LoggersConfig } from "../../../../../../src/com/onsoft/glasscat/context/core/LoggersConfig";
+import { EjpRealmConfig } from "../../../../../../src/com/onsoft/glasscat/context/ejp/EjpRealmConfig";
 
 @TestSuite({
-  description: "Test the LoggersConfig class properties"
+  description: "Test the EjpRealmConfig class properties"
 })
-export class LoggersConfigTest {
+export class EjpRealmConfigTest {
 
-  public config:LoggersConfig = null;
+  public config:EjpRealmConfig = null;
 
   @BeforeAll()
   public initTest():void {
-    this.config = new LoggersConfig();
+    this.config = new EjpRealmConfig();
   }
 
   @Test({
-    description: "should have a 'factories' property set to 'null'"
+    description: "should have a 'type' property set to 'null'"
   })
-  public factoriesTest():void {
-    expect(this.config).to.have.property("factories", null);
+  public typeTest():void {
+    expect(this.config).to.have.property("type", null);
   }
   
   @Test({
-    description: "should have a 'logLevel' property set to 'null'"
+    description: "should have a 'securedArea' property set to 'null'"
   })
-  public logLevelTest():void {
-    expect(this.config).to.have.property("logLevel", null);
+  public securedAreaTest():void {
+    expect(this.config).to.have.property("securedArea", null);
+  }
+  
+  @Test({
+    description: "should have a 'connectorFactory' property set to 'null'"
+  })
+  public connectorFactoryTest():void {
+    expect(this.config).to.have.property("connectorFactory", null);
   }
 }

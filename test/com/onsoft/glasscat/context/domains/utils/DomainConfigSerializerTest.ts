@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test, BeforeClass, Async } from "jec-juta";
+import { TestSuite, Test, BeforeAll, Async } from "jec-juta";
 import { expect, assert } from "chai";
 import { DomainConfigSerializer } from "../../../../../../../src/com/onsoft/glasscat/context/domains/utils/DomainConfigSerializer";
 import { GlassCatError } from "../../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatError";
@@ -29,7 +29,7 @@ export class DomainConfigSerializerTest {
 
   private serializer:DomainConfigSerializer = null;
 
-  @BeforeClass()
+  @BeforeAll()
   public initTest():void {
     this.serializer = new DomainConfigSerializer();
   }

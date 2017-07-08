@@ -47,8 +47,7 @@ export class BootstrapConfigParser {
    * Parses the <code>glasscat</code> property and returns a new 
    * <code>GlasscatConfig</code> instance.
    * 
-   * @param {Object} bootstrap the data loaded from a boostrap configuration
-   *                           file.
+   * @param {any} bootstrap the data loaded from a boostrap configuration file.
    * @return {GlasscatConfig} a <code>GlasscatConfig</code> instance built from 
    *                          the specified data.
    */
@@ -64,8 +63,7 @@ export class BootstrapConfigParser {
    * Parses the <code>config</code> property and returns a new 
    * <code>ToolsConfig</code> instance.
    * 
-   * @param {Object} bootstrap the data loaded from a boostrap configuration
-   *                           file.
+   * @param {any} bootstrap the data loaded from a boostrap configuration file.
    * @return {ToolsConfig} a <code>ToolsConfig</code> instance built from the 
    *                       specified data.
    */
@@ -83,8 +81,8 @@ export class BootstrapConfigParser {
    * Parses a property from the <code>http.listeners</code> array and returns a 
    * new <code>HttpListenerConfig</code> instance.
    * 
-   * @param {Object} httpListener the HTTP listener data loaded from a boostrap
-   *                              configuration file.
+   * @param {any} httpListener the HTTP listener data loaded from a boostrap
+   *                           configuration file.
    * @return {HttpListenerConfig} a <code>HttpListenerConfig</code> instance 
    *                              built from the specified data.
    */
@@ -105,8 +103,8 @@ export class BootstrapConfigParser {
    * Parses the <code>monitoring</code> property and returns a new
    * <code>HttpMonitoringConfig</code> instance.
    * 
-   * @param {Object} monitoring the HTTP listener monitoring data loaded from a 
-   *                            boostrap configuration file.
+   * @param {any} monitoring the HTTP listener monitoring data loaded from a 
+   *                         boostrap configuration file.
    * @return {HttpMonitoringConfig} a <code>HttpMonitoringConfig</code> instance  
    *                                built from the specified data.
    */
@@ -123,8 +121,7 @@ export class BootstrapConfigParser {
    * Parses the <code>http</code> property and returns a new 
    * <code>HttpConfig</code> instance.
    * 
-   * @param {Object} httpData the data loaded from a boostrap configuration
-   *                          file.
+   * @param {any} httpData the data loaded from a boostrap configuration file.
    * @return {HttpConfig} a <code>HttpConfig</code> instance built from the 
    *                      specified data.
    */
@@ -149,8 +146,7 @@ export class BootstrapConfigParser {
    * Parses the <code>loggers</code> property and returns a new 
    * <code>LoggersConfig</code> instance.
    * 
-   * @param {Object} loggers the data loaded from a boostrap configuration
-   *                           file.
+   * @param {any} loggers the data loaded from a boostrap configuration file.
    * @return {LoggersConfig} a <code>LoggersConfig</code> instance built from  
    *                         the specified data.
    */
@@ -180,8 +176,7 @@ export class BootstrapConfigParser {
    * Parses the <code>security</code> property and returns a new 
    * <code>SecurityConfig</code> instance.
    * 
-   * @param {Object} security the data loaded from a boostrap configuration
-   *                           file.
+   * @param {any} security the data loaded from a boostrap configuration file.
    * @return {SecurityConfig} a <code>SecurityConfig</code> instance built from  
    *                          the specified data.
    */
@@ -198,8 +193,7 @@ export class BootstrapConfigParser {
    * Parses data loaded from a boostrap configuration file and returns the
    * <code>BootstrapConfig</code> instance built from the specified data.
    * 
-   * @param {Object} bootstrap the data loaded from a boostrap configuration
-   *                           file.
+   * @param {any} bootstrap the data loaded from a boostrap configuration file.
    * @return {BootstrapConfig} a <code>BootstrapConfig</code> instance built 
    *                           from the specified data.
    */

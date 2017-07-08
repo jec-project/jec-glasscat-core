@@ -16,31 +16,31 @@
 
 import { TestSuite, Test, BeforeAll } from "jec-juta";
 import { expect } from "chai";
-import { LoggersConfig } from "../../../../../../src/com/onsoft/glasscat/context/core/LoggersConfig";
+import { EjpResourceMapperConfig } from "../../../../../../src/com/onsoft/glasscat/context/ejp/EjpResourceMapperConfig";
 
 @TestSuite({
-  description: "Test the LoggersConfig class properties"
+  description: "Test the EjpResourceMapperConfig class properties"
 })
-export class LoggersConfigTest {
+export class EjpResourceMapperConfigTest {
 
-  public config:LoggersConfig = null;
+  public config:EjpResourceMapperConfig = null;
 
   @BeforeAll()
   public initTest():void {
-    this.config = new LoggersConfig();
+    this.config = new EjpResourceMapperConfig();
   }
 
   @Test({
-    description: "should have a 'factories' property set to 'null'"
+    description: "should have a 'name' property set to 'null'"
   })
-  public factoriesTest():void {
-    expect(this.config).to.have.property("factories", null);
+  public nameTest():void {
+    expect(this.config).to.have.property("name", null);
   }
   
   @Test({
-    description: "should have a 'logLevel' property set to 'null'"
+    description: "should have a 'value' property set to 'null'"
   })
-  public logLevelTest():void {
-    expect(this.config).to.have.property("logLevel", null);
+  public valueTest():void {
+    expect(this.config).to.have.property("value", null);
   }
 }

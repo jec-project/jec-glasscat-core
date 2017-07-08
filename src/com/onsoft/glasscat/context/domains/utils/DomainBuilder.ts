@@ -39,8 +39,8 @@ export class DomainBuilder {
    * Builds and returns the domain connector configuration from the specified
    * config.
    *
-   * @param {Object} connector the configuration properties from which to build 
-   *                           the domain connector configuration.
+   * @param {any} connector the configuration properties from which to build 
+   *                        the domain connector configuration.
    * @return {DomainConnectorConfig} a new <code>DomainConnectorConfig</code> 
    *                                 instance built from the the specified
    *                                 config.

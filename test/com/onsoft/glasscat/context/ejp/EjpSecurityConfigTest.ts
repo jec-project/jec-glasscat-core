@@ -16,31 +16,38 @@
 
 import { TestSuite, Test, BeforeAll } from "jec-juta";
 import { expect } from "chai";
-import { LoggersConfig } from "../../../../../../src/com/onsoft/glasscat/context/core/LoggersConfig";
+import { EjpSecurityConfig } from "../../../../../../src/com/onsoft/glasscat/context/ejp/EjpSecurityConfig";
 
 @TestSuite({
-  description: "Test the LoggersConfig class properties"
+  description: "Test the EjpSecurityConfig class properties"
 })
-export class LoggersConfigTest {
+export class EjpSecurityConfigTest {
 
-  public config:LoggersConfig = null;
+  public config:EjpSecurityConfig = null;
 
   @BeforeAll()
   public initTest():void {
-    this.config = new LoggersConfig();
+    this.config = new EjpSecurityConfig();
   }
 
   @Test({
-    description: "should have a 'factories' property set to 'null'"
+    description: "should have a 'constraints' property set to 'null'"
   })
-  public factoriesTest():void {
-    expect(this.config).to.have.property("factories", null);
+  public constraintsTest():void {
+    expect(this.config).to.have.property("constraints", null);
   }
   
   @Test({
-    description: "should have a 'logLevel' property set to 'null'"
+    description: "should have a 'roles' property set to 'null'"
   })
-  public logLevelTest():void {
-    expect(this.config).to.have.property("logLevel", null);
+  public rolesTest():void {
+    expect(this.config).to.have.property("roles", null);
+  }
+  
+  @Test({
+    description: "should have a 'staticResources' property set to 'null'"
+  })
+  public staticResourcesTest():void {
+    expect(this.config).to.have.property("staticResources", null);
   }
 }

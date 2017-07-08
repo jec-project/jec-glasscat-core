@@ -40,5 +40,12 @@ export enum GlassCatErrorCode {
    * configuration object.
    * This error code is initialized to <code>2</code>.
    */
-  CONFIG_SERIALIZATION_ERROR = 2
+  CONFIG_SERIALIZATION_ERROR = 2,
+  
+  /**
+   * Indicates that the exception is due to an error thrown while updating a
+   * configuration object.
+   * This error code is initialized to <code>3</code>.
+   */
+  CONFIG_UPDATE_ERROR = 3
 }

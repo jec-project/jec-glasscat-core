@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test, BeforeClass, AfterClass, Async } from "jec-juta";
+import { TestSuite, Test, BeforeAll, AfterAll, Async } from "jec-juta";
 import { expect, assert } from "chai";
 import { DomainConfigLoader } from "../../../../../../../src/com/onsoft/glasscat/context/domains/utils/DomainConfigLoader";
 import { MappedPathUtil } from "../../../../../../../src/com/onsoft/glasscat/util/paths/MappedPathUtil";
@@ -29,13 +29,13 @@ export class DomainConfigLoaderTest {
 
   private loader:DomainConfigLoader = null;
 
-  @BeforeClass()
+  @BeforeAll()
   public initTest():void {
     this.loader = new DomainConfigLoader();
     MappedPathUtil.getInstance().init(process.cwd());
   }
 
-  @AfterClass()
+  @AfterAll()
   public resetTest():void {
     this.loader = null;
     MappedPathUtil.getInstance().init(null);

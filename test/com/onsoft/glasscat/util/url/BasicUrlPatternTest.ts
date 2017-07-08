@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test, BeforeClass } from "jec-juta";
+import { TestSuite, Test, BeforeAll } from "jec-juta";
 import { expect } from "chai";
 import { BasicUrlPattern } from "../../../../../../src/com/onsoft/glasscat/util/url/BasicUrlPattern";
 
@@ -25,7 +25,7 @@ export class BasicUrlPatternTest {
 
   private pattern:BasicUrlPattern = null;
 
-  @BeforeClass()
+  @BeforeAll()
   public initTest():void {
     this.pattern = new BasicUrlPattern();
   }

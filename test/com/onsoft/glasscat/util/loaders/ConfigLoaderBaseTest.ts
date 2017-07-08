@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test, BeforeClass, AfterClass, Async } from "jec-juta";
+import { TestSuite, Test, BeforeAll, AfterAll, Async } from "jec-juta";
 import { expect, assert } from "chai";
 import { ConfigLoaderBaseImpl } from "../../../../../../utils/test-utils/classes/ConfigLoaderBaseImpl";
 import { MappedPathUtil } from "../../../../../../src/com/onsoft/glasscat/util/paths/MappedPathUtil";
@@ -30,13 +30,13 @@ export class ConfigLoaderBaseTest {
 
   private loader:ConfigLoaderBaseImpl = null;
 
-  @BeforeClass()
+  @BeforeAll()
   public initTest():void {
     this.loader = new ConfigLoaderBaseImpl();
     MappedPathUtil.getInstance().init(process.cwd());
   }
 
-  @AfterClass()
+  @AfterAll()
   public resetTest():void {
     this.loader = null;
     MappedPathUtil.getInstance().init(null);
