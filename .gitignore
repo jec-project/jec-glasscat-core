@@ -68,7 +68,6 @@ utils/**/*.js
 #####################################
 
 lib/
-src/com/onsoft/glasscat/context/ejp
 src/com/onsoft/glasscat/context/files
 src/com/onsoft/glasscat/context/utils
 src/com/onsoft/glasscat/context/validators
@@ -77,7 +76,6 @@ src/com/onsoft/glasscat/context/LoggerContext.ts
 src/com/onsoft/glasscat/core
 src/com/onsoft/glasscat/debug
 src/com/onsoft/glasscat/domains
-src/com/onsoft/glasscat/i18n
 src/com/onsoft/glasscat/jslets
 src/com/onsoft/glasscat/net
 src/com/onsoft/glasscat/security

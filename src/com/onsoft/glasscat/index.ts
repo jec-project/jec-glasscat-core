@@ -70,6 +70,8 @@ export {DomainState} from "./domains/containers/DomainState";
 //--> com/onsoft/glasscat/exceptions
 export {GlassCatError} from "./exceptions/GlassCatError";
 export {GlassCatErrorCode} from "./exceptions/GlassCatErrorCode";
+//--> com/onsoft/glasscat/i18n
+export {LocaleManager} from "./i18n/LocaleManager";
 
 //--> com/onsoft/glasscat/util/bootstrap
 export {BootstrapScriptSorter} from "./util/bootstrap/BootstrapScriptSorter";
@@ -83,6 +85,9 @@ export {ContextRootUtil} from "./util/contextroot/ContextRootUtil";*/
 //--> com/onsoft/glasscat/util/loaders
 export {ConfigLoader} from "./util/loaders/ConfigLoader";
 export {ConfigLoaderBase} from "./util/loaders/ConfigLoaderBase";
+//--> com/onsoft/glasscat/util/logging/basic
+//--> com/onsoft/glasscat/util/logging
+export {LoggerManager} from "./util/logging/LoggerManager";
 
 //--> com/onsoft/glasscat/util/paths
 export {MappedPathUtil} from "./util/paths/MappedPathUtil";

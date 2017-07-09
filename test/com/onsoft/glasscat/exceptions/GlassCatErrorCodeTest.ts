@@ -52,4 +52,47 @@ export class GlassCatErrorCodeTest {
   public CONFIG_UPDATE_ERRORTest():void {
     expect(GlassCatErrorCode.CONFIG_UPDATE_ERROR).to.equal(utils.CONFIG_UPDATE_ERROR);
   }
+  
+  @Test({
+    description: "GlassCatErrorCode.NULL_EJP_CONFIG should be equal to '4'"
+  })
+  public NULL_EJP_CONFIGTest():void {
+    expect(GlassCatErrorCode.NULL_EJP_CONFIG).to.equal(utils.NULL_EJP_CONFIG);
+  }
+
+  @Test({
+    description: "GlassCatErrorCode.EJP_CONFIG_MISSING_PROPERTY should be equal to '5'"
+  })
+  public EJP_CONFIG_MISSING_PROPERTYTest():void {
+    expect(
+      GlassCatErrorCode.EJP_CONFIG_MISSING_PROPERTY
+    ).to.equal(utils.EJP_CONFIG_MISSING_PROPERTY);
+  }
+
+  @Test({
+    description: "GlassCatErrorCode.EJP_CONFIG_INVALID_PROPERTY should be equal to '6'"
+  })
+  public EJP_CONFIG_INVALID_PROPERTYTest():void {
+    expect(
+      GlassCatErrorCode.EJP_CONFIG_INVALID_PROPERTY
+    ).to.equal(utils.EJP_CONFIG_INVALID_PROPERTY);
+  }
+
+  @Test({
+    description: "GlassCatErrorCode.EJP_CONFIG_INVALID_LOGIN should be equal to '7'"
+  })
+  public EJP_CONFIG_INVALID_LOGINTest():void {
+    expect(
+      GlassCatErrorCode.EJP_CONFIG_INVALID_LOGIN
+    ).to.equal(utils.EJP_CONFIG_INVALID_LOGIN);
+  }
+  
+  @Test({
+    description: "GlassCatErrorCode.EJP_CONFIG_INVALID_REALM should be equal to '8'"
+  })
+  public EJP_CONFIG_INVALID_REALMTest():void {
+    expect(
+      GlassCatErrorCode.EJP_CONFIG_INVALID_REALM
+    ).to.equal(utils.EJP_CONFIG_INVALID_REALM);
+  }
 }

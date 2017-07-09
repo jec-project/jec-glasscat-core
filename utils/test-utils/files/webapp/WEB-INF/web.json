@@ -26,7 +26,7 @@
         "errorUrl": "/error/login"
       },
       "realm": {
-        "type": "test-file",
+        "type": "file",
         "securedArea": "GlassCat Test Project",
         "connectorFactory": "path/to/Factory"
       }

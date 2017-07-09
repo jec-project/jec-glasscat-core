@@ -47,5 +47,40 @@ export enum GlassCatErrorCode {
    * configuration object.
    * This error code is initialized to <code>3</code>.
    */
-  CONFIG_UPDATE_ERROR = 3
+  CONFIG_UPDATE_ERROR = 3,
+
+  /**
+   * Indicates that the specified <code>EjpConfig</code> object must not be
+   * <code>null</code>.
+   * This error code is initialized to <code>4</code>.
+   */
+  NULL_EJP_CONFIG = 4,
+
+  /**
+   * Indicates that the specified <code>EjpConfig</code> object does not define
+   * a required property.
+   * This error code is initialized to <code>5</code>.
+   */
+  EJP_CONFIG_MISSING_PROPERTY = 5,
+  
+  /**
+   * Indicates that the specified <code>EjpConfig</code> object define an 
+   * invalid property.
+   * This error code is initialized to <code>6</code>.
+   */
+  EJP_CONFIG_INVALID_PROPERTY = 6,
+
+  /**
+   * Indicates that the specified <code>EjpConfig</code> object define an 
+   * invalid login configuration.
+   * This error code is initialized to <code>7</code>.
+   */
+  EJP_CONFIG_INVALID_LOGIN = 7,
+  
+  /**
+   * Indicates that the specified <code>EjpConfig</code> object define an 
+   * invalid realm configuration.
+   * This error code is initialized to <code>8</code>.
+   */
+  EJP_CONFIG_INVALID_REALM = 8
 }

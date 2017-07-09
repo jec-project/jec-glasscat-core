@@ -15,16 +15,16 @@
 //   limitations under the License.
 
 /*!
- * This module constains utilities used by the GlassCatErrorCodeTest test suite.
+ * This module constains utilities used by the LocaleManagerTest test suite.
  */
 
 // Utilities:
-export const SINGLETON_ERROR:number = 0;
-export const CONFIG_LOADING_FAILURE:number = 1;
-export const CONFIG_SERIALIZATION_ERROR:number = 2;
-export const CONFIG_UPDATE_ERROR:number = 3;
-export const NULL_EJP_CONFIG:number = 4;
-export const EJP_CONFIG_MISSING_PROPERTY:number = 5;
-export const EJP_CONFIG_INVALID_PROPERTY:number = 6;
-export const EJP_CONFIG_INVALID_LOGIN:number = 7;
-export const EJP_CONFIG_INVALID_REALM:number = 8;
+export const LOCALE:string = "en-US";
+export const TEST_CONFIG:any = {
+  directory: "./utils/test-utils/files/locales"
+};
+export const HELLO_WORLD_KEY:string = "hello.world";
+export const HELLO_WORLD:string = "Hello World!";
+export const HELLO_WORLD_NAME:string = "hello.name";
+export const HELLO_WORLD_PARAM:string = "John DOE";
+export const HELLO_JOHN_DOE:string = "Hello John DOE!";

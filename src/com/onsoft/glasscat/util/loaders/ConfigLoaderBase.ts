@@ -16,7 +16,7 @@
 
 import {MappedPathUtil} from "../paths/MappedPathUtil";
 import {LoggerManager} from "../logging/LoggerManager";
-import {Logger, JsonLoader} from "jec-commons";
+import {JsonLoader} from "jec-commons";
 import {LocaleManager} from "../../i18n/LocaleManager";
 import {GlassCatError} from "../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../exceptions/GlassCatErrorCode";
@@ -49,14 +49,14 @@ export abstract class ConfigLoaderBase {
     let loader:JsonLoader = new JsonLoader();
     let path:string = MappedPathUtil.getInstance().resolve(filePath);
     let json:any = null;
-    let logManager:Logger = null;
+    let logManager:LoggerManager = null;
     let i18n:LocaleManager = null;
     try {
       json = loader.loadSync(path);
     } catch(e) {
-      logManager = LoggerManager.getInstance();
+      logManager = (LoggerManager.getInstance() as LoggerManager);
       i18n = LocaleManager.getInstance();
-      if(logManager && i18n) {
+      if(logManager.isInitialized() && i18n.isInitialized()) {
         logManager.error(i18n.get("errors.loadingFile", e));
       }
       throw new GlassCatError(GlassCatErrorCode.CONFIG_LOADING_FAILURE, e);
@@ -79,12 +79,12 @@ export abstract class ConfigLoaderBase {
                                          error:(err:GlassCatError)=>void):void {
     let loader:JsonLoader = new JsonLoader();
     let path:string = MappedPathUtil.getInstance().resolve(filePath);
-    let logManager:Logger = null;
+    let logManager:LoggerManager = null;
     let i18n:LocaleManager = null;
     loader.load(path, success, (e:any)=> {
-      logManager = LoggerManager.getInstance();
+      logManager = (LoggerManager.getInstance() as LoggerManager);
       i18n = LocaleManager.getInstance();
-      if(logManager && i18n) {
+      if(logManager.isInitialized() && i18n.isInitialized()) {
         logManager.error(i18n.get("errors.loadingFile", e));
       };
       let glassCatError:GlassCatError = 

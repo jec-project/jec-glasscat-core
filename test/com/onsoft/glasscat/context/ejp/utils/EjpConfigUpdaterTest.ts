@@ -14,17 +14,10 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-/*!
- * This module constains utilities used by the GlassCatErrorCodeTest test suite.
- */
+import { TestSuite } from "jec-juta";
 
-// Utilities:
-export const SINGLETON_ERROR:number = 0;
-export const CONFIG_LOADING_FAILURE:number = 1;
-export const CONFIG_SERIALIZATION_ERROR:number = 2;
-export const CONFIG_UPDATE_ERROR:number = 3;
-export const NULL_EJP_CONFIG:number = 4;
-export const EJP_CONFIG_MISSING_PROPERTY:number = 5;
-export const EJP_CONFIG_INVALID_PROPERTY:number = 6;
-export const EJP_CONFIG_INVALID_LOGIN:number = 7;
-export const EJP_CONFIG_INVALID_REALM:number = 8;
+@TestSuite({
+  description: "TODO: we must implement a complex test suite for testing the EjpConfigUpdater class methods",
+  disabled: true
+})
+export class EjpConfigUpdaterTest { }
