@@ -17,8 +17,7 @@
 import {LoggerManager} from "../../../util/logging/LoggerManager";
 import {EjpConfig} from "../EjpConfig";
 import {DomainState} from "../../../domains/containers/DomainState";
-import {AuthMethod} from "../../../security/login/AuthMethod";
-import {RealmType} from "../../../security/realms/RealmType";
+import {AuthMethod, RealmType} from "jec-exchange";
 import {LocaleManager} from "../../../i18n/LocaleManager";
 import {SessionStorageType} from "../../../security/session/utils/SessionStorageType";
 import {UrlStringsEnum, LogLevel} from "jec-commons";

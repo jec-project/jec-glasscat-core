@@ -14,19 +14,17 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
+import { EjpFormConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpFormConfig";
+import * as configUtils from "../../../utils/test-utils/utilities/EjpConfigUtils";
+
 /*!
- * This module constains utilities used by the GlassCatErrorCodeTest test suite.
+ * This module constains utilities used by the EjpFormConfigTest test uite.
  */
 
 // Utilities:
-export const SINGLETON_ERROR:number = 0;
-export const CONFIG_LOADING_FAILURE:number = 1;
-export const CONFIG_SERIALIZATION_ERROR:number = 2;
-export const CONFIG_UPDATE_ERROR:number = 3;
-export const NULL_EJP_CONFIG:number = 4;
-export const EJP_CONFIG_MISSING_PROPERTY:number = 5;
-export const EJP_CONFIG_INVALID_PROPERTY:number = 6;
-export const EJP_CONFIG_INVALID_LOGIN:number = 7;
-export const EJP_CONFIG_INVALID_REALM:number = 8;
-export const INVALID_SECURITY_CONTEXT:number = 9;
-export const INVALID_ENCRYPTION_KEY:number = 10;
+export const buildConfig:Function = function():EjpFormConfig {
+  let formConfig:EjpFormConfig = new EjpFormConfig();
+  formConfig.errorUrl = configUtils.FORM_CONFIG_ERROR_URL;
+  formConfig.loginUrl = configUtils.FORM_CONFIG_LOGIN_URL;
+  return formConfig;
+};

@@ -82,5 +82,17 @@ export enum GlassCatErrorCode {
    * invalid realm configuration.
    * This error code is initialized to <code>8</code>.
    */
-  EJP_CONFIG_INVALID_REALM = 8
+  EJP_CONFIG_INVALID_REALM = 8,
+  
+  /**
+   * Indicates that the specified secutity context object is not valid.
+   * This error code is initialized to <code>9</code>.
+   */
+  INVALID_SECURITY_CONTEXT = 9,
+
+  /**
+   * Indicates that the specified encryption key is not valid.
+   * This error code is initialized to <code>10</code>.
+   */
+  INVALID_ENCRYPTION_KEY = 10
 }

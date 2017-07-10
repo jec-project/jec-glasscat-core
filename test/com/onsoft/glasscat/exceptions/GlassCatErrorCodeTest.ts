@@ -95,4 +95,22 @@ export class GlassCatErrorCodeTest {
       GlassCatErrorCode.EJP_CONFIG_INVALID_REALM
     ).to.equal(utils.EJP_CONFIG_INVALID_REALM);
   }
+
+  @Test({
+    description: "GlassCatErrorCode.INVALID_SECURITY_CONTEXT should be equal to '9'"
+  })
+  public INVALID_SECURITY_CONTEXTTest():void {
+    expect(
+      GlassCatErrorCode.INVALID_SECURITY_CONTEXT
+    ).to.equal(utils.INVALID_SECURITY_CONTEXT);
+  }
+
+  @Test({
+    description: "GlassCatErrorCode.INVALID_ENCRYPTION_KEY should be equal to '10'"
+  })
+  public INVALID_ENCRYPTION_KEYTest():void {
+    expect(
+      GlassCatErrorCode.INVALID_ENCRYPTION_KEY
+    ).to.equal(utils.INVALID_ENCRYPTION_KEY);
+  }
 }

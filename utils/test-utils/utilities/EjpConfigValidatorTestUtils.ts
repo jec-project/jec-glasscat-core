@@ -14,8 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { AuthMethod } from "../../../src/com/onsoft/glasscat/security/login/AuthMethod";
-import { RealmType } from "../../../src/com/onsoft/glasscat/security/realms/RealmType";
+import { AuthMethod, RealmType } from "jec-exchange";
 import { EjpConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpConfig";
 import { EjpWebAppConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpWebAppConfig";
 import { EjpBootstrapConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpBootstrapConfig";

@@ -73,8 +73,28 @@ export {GlassCatErrorCode} from "./exceptions/GlassCatErrorCode";
 //--> com/onsoft/glasscat/i18n
 export {LocaleManager} from "./i18n/LocaleManager";
 
+//--> com/onsoft/glasscat/security/core
+export {BasicSecurityConstraint} from "./security/core/BasicSecurityConstraint";
+export {BasicStaticResources} from "./security/core/BasicStaticResources";
+//--> com/onsoft/glasscat/security/crypto
+export {DefaultUserHashModule} from "./security/crypto/DefaultUserHashModule";
+//--> com/onsoft/glasscat/security/login/config
+export {EjpLoginStrategyConfig} from "./security/login/config/EjpLoginStrategyConfig";
+export {FormProperties} from "./security/login/config/FormProperties";
+export {LoginStrategyConfig} from "./security/login/config/LoginStrategyConfig";
+//--> com/onsoft/glasscat/security/login
+
+//--> com/onsoft/glasscat/security/realms/connectors
+export {AbstractRealmConnector} from "./security/realms/connectors/AbstractRealmConnector";
+//--> com/onsoft/glasscat/security/roles
+export {BasicSecurityRole} from "./security/roles/BasicSecurityRole";
+//--> com/onsoft/glasscat/security/utils
+export {SecurityConstraintBuilder} from "./security/utils/SecurityConstraintBuilder";
+export {StaticResourcesBuilder} from "./security/utils/StaticResourcesBuilder";
+
 //--> com/onsoft/glasscat/util/bootstrap
 export {BootstrapScriptSorter} from "./util/bootstrap/BootstrapScriptSorter";
+
 
 
 //--> com/onsoft/glasscat/util/contextroot

@@ -14,19 +14,18 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
+import {JsonLoader, LogLevelUtil} from "jec-commons";
+import {EjpStaticResourcesConfig} from "../../../src/com/onsoft/glasscat/context/ejp/EjpStaticResourcesConfig";
+
 /*!
- * This module constains utilities used by the GlassCatErrorCodeTest test suite.
+ * This module constains utilities used by the BasicStaticResourcesTest test
+ * suite.
  */
 
 // Utilities:
-export const SINGLETON_ERROR:number = 0;
-export const CONFIG_LOADING_FAILURE:number = 1;
-export const CONFIG_SERIALIZATION_ERROR:number = 2;
-export const CONFIG_UPDATE_ERROR:number = 3;
-export const NULL_EJP_CONFIG:number = 4;
-export const EJP_CONFIG_MISSING_PROPERTY:number = 5;
-export const EJP_CONFIG_INVALID_PROPERTY:number = 6;
-export const EJP_CONFIG_INVALID_LOGIN:number = 7;
-export const EJP_CONFIG_INVALID_REALM:number = 8;
-export const INVALID_SECURITY_CONTEXT:number = 9;
-export const INVALID_ENCRYPTION_KEY:number = 10;
+export const buildConfig:Function = function():EjpStaticResourcesConfig {
+  let config:EjpStaticResourcesConfig = new EjpStaticResourcesConfig();
+  config.urlPattern = CONFIG_URL_PATTERN;
+  return config;
+};
+export const CONFIG_URL_PATTERN:string = "url/pattern";

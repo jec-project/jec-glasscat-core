@@ -23,7 +23,7 @@ import {EjpConfigValidator} from "./EjpConfigValidator";
 import {EjpLoginConfig} from "../EjpLoginConfig";
 import {EjpFormConfig} from "../EjpFormConfig";
 import {EjpRealmConfig} from "../EjpRealmConfig";
-import {AuthMethod} from "../../../security/login/AuthMethod";
+import {AuthMethod} from "jec-exchange";
 import {EjpSessionConfig} from "../EjpSessionConfig";
 import {EjpResourceMapperConfig} from "../EjpResourceMapperConfig";
 import {EjpSecurityConfig} from "../EjpSecurityConfig";
