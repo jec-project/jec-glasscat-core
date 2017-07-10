@@ -88,6 +88,26 @@ export {LoginStrategyConfig} from "./security/login/config/LoginStrategyConfig";
 export {AbstractRealmConnector} from "./security/realms/connectors/AbstractRealmConnector";
 //--> com/onsoft/glasscat/security/roles
 export {BasicSecurityRole} from "./security/roles/BasicSecurityRole";
+//--> com/onsoft/glasscat/security/session/connectors
+export {LocalSessionStorage} from "./security/session/connectors/LocalSessionStorage";
+export {SessionStorage} from "./security/session/connectors/SessionStorage";
+//--> com/onsoft/glasscat/security/session/errors
+export {AuthenticationError} from "./security/session/errors/AuthenticationError";
+export {BasicSessionError} from "./security/session/errors/BasicSessionError";
+//--> com/onsoft/glasscat/security/session/utils
+export {CredentialsBuilder} from "./security/session/utils/CredentialsBuilder";
+export {SessionBuilder} from "./security/session/utils/SessionBuilder";
+export {SessionErrorBuilder} from "./security/session/utils/SessionErrorBuilder";
+export {SessionIdBuilder} from "./security/session/utils/SessionIdBuilder";
+export {SessionIdUtil} from "./security/session/utils/SessionIdUtil";
+export {SessionOwnerBuilder} from "./security/session/utils/SessionOwnerBuilder";
+export {SessionStorageSolver} from "./security/session/utils/SessionStorageSolver";
+
+//--> com/onsoft/glasscat/security/session
+export {BasicCredentials} from "./security/session/BasicCredentials";
+export {GlassCatSession} from "./security/session/GlassCatSession";
+export {GlassCatSessionId} from "./security/session/GlassCatSessionId";
+export {GlassCatSessionOwner} from "./security/session/GlassCatSessionOwner";
 //--> com/onsoft/glasscat/security/utils
 export {SecurityConstraintBuilder} from "./security/utils/SecurityConstraintBuilder";
 export {StaticResourcesBuilder} from "./security/utils/StaticResourcesBuilder";

@@ -81,7 +81,8 @@ src/com/onsoft/glasscat/net
 src/com/onsoft/glasscat/security/context
 src/com/onsoft/glasscat/security/login
 src/com/onsoft/glasscat/security/realms
-src/com/onsoft/glasscat/security/session
+src/com/onsoft/glasscat/security/session/managers
+src/com/onsoft/glasscat/security/session/utils/SessionUtil.ts
 src/com/onsoft/glasscat/services
 src/com/onsoft/glasscat/templates
 src/com/onsoft/glasscat/util/contextroot

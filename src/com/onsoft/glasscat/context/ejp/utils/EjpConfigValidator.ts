@@ -17,9 +17,8 @@
 import {LoggerManager} from "../../../util/logging/LoggerManager";
 import {EjpConfig} from "../EjpConfig";
 import {DomainState} from "../../../domains/containers/DomainState";
-import {AuthMethod, RealmType} from "jec-exchange";
+import {AuthMethod, RealmType, SessionStorageType} from "jec-exchange";
 import {LocaleManager} from "../../../i18n/LocaleManager";
-import {SessionStorageType} from "../../../security/session/utils/SessionStorageType";
 import {UrlStringsEnum, LogLevel} from "jec-commons";
 import {GlassCatError} from "../../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../../exceptions/GlassCatErrorCode";
@@ -193,7 +192,7 @@ export class EjpConfigValidator {
           stringVal = prop.storage;
           if(stringVal) {
             if(stringVal !== SessionStorageType.LOCAL &&
-               stringVal !== SessionStorageType.REDIS) {
+               stringVal !== SessionStorageType.DISTANT) {
                  return this.buildErrorObj(
                    GlassCatErrorCode.EJP_CONFIG_INVALID_PROPERTY,
                    "EJP configuration invalid property: 'webapp.session.storage' must be a constant of the SessionStorageType class"
