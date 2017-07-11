@@ -22,7 +22,7 @@ import {JsonLoader, LogLevelUtil} from "jec-commons";
  */
 
 // Utilities:
-const BOOTSTRAP_FILE:string = "utils/test-utils//files/bootstrap.json";
+const BOOTSTRAP_FILE:string = "utils/test-utils/files/bootstrap.json";
 export const loadConfigFile:Function = function():any {
   let loader:JsonLoader = new JsonLoader();
   return loader.loadSync(BOOTSTRAP_FILE);
@@ -33,12 +33,12 @@ export const LOG_LEVEL:string = LogLevelUtil.TRACE;
 export const FACTORY_0:any = {
   logLevel: LogLevelUtil.ERROR,
   name: "fileLogger",
-  factory: "${glasscat}/util/logging/basic/FileLoggerFactory"
+  factory: "${server}/logging/FileLoggerFactory"
 };
 export const FACTORY_1:any = {
   logLevel: undefined,
   name: "consoleLogger",
-  factory: "${glasscat}/util/logging/basic/ConsoleLoggerFactory"
+  factory: "${server}/logging/ConsoleLoggerFactory"
 };
 export const HTTP_LISTENER_CONFIG_0:any = {
   id: "admin",
@@ -60,5 +60,5 @@ export const HTTP_LISTENER_CONFIG_1:any = {
 };
 export const MONITORING:any = {
   enabled: false,
-  factory: "${glasscat}/net/http/monitoring/ConsoleTransactionMonitorFactory"
+  factory: "${server}/monitoring/ConsoleTransactionMonitorFactory"
 };

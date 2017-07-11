@@ -113,4 +113,22 @@ export class GlassCatErrorCodeTest {
       GlassCatErrorCode.INVALID_ENCRYPTION_KEY
     ).to.equal(utils.INVALID_ENCRYPTION_KEY);
   }
+
+  @Test({
+    description: "GlassCatErrorCode.INVALID_CONTEXT should be equal to '11'"
+  })
+  public INVALID_CONTEXTTest():void {
+    expect(
+      GlassCatErrorCode.INVALID_CONTEXT
+    ).to.equal(utils.INVALID_CONTEXT);
+  }
+  
+  @Test({
+    description: "GlassCatErrorCode.ADMIN_REALM_INIT_FAILURE should be equal to '12'"
+  })
+  public ADMIN_REALM_INIT_FAILURETest():void {
+    expect(
+      GlassCatErrorCode.ADMIN_REALM_INIT_FAILURE
+    ).to.equal(utils.ADMIN_REALM_INIT_FAILURE);
+  }
 }

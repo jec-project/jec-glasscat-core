@@ -16,20 +16,20 @@
 
 import { TestSuite, Test } from "jec-juta";
 import { expect } from "chai";
-import { AuthenticationError } from "../../../../../../../src/com/onsoft/glasscat/security/session/errors/AuthenticationError";
+import { BasicAuthenticationError } from "../../../../../../../src/com/onsoft/glasscat/security/session/errors/BasicAuthenticationError";
 import { HttpStatusCode } from "jec-commons";
 
 @TestSuite({
-  description: "Test the AuthenticationError class methods"
+  description: "Test the BasicAuthenticationError class methods"
 })
-export class AuthenticationErrorTest {
+export class BasicAuthenticationErrorTest {
 
   @Test({
     description: "should return the same status code as passed to the constructor function"
   })
   public getStatusCodeTest():void {
-    let error:AuthenticationError =
-                            new AuthenticationError(HttpStatusCode.BAD_GATEWAY);
+    let error:BasicAuthenticationError =
+                       new BasicAuthenticationError(HttpStatusCode.BAD_GATEWAY);
     expect(error.getStatusCode()).to.equal(HttpStatusCode.BAD_GATEWAY);
   }
 }

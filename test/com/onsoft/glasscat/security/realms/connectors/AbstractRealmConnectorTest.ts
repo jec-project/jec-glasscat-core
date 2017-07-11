@@ -21,7 +21,6 @@ import { AbstractRealmConnector } from "../../../../../../../src/com/onsoft/glas
 import { DefaultUserHashModule } from "../../../../../../../src/com/onsoft/glasscat/security/crypto/DefaultUserHashModule";
 
 import { RealmConnectorImpl } from "../../../../../../../utils/test-utils/classes/RealmConnectorImpl";
-import * as utils from "../../../../../../../utils/test-utils/utilities/FormPropertiesTestUtils";
 
 @TestSuite({
   description: "Test the AbstractRealmConnector class methods",

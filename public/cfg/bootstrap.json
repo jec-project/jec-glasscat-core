@@ -1,22 +1,12 @@
 {
   "glasscat": {
-    "version": "0.0.0",
+    "version": "1.0.0",
     "locale": "en-US"
   },
   "config": {
     "loggers": {
       "logLevel": "TRACE",
-      "factories": [
-        {
-          "name": "consoleLogger",
-          "factory": "${server}/logging/ConsoleLoggerFactory"
-        },
-        {
-          "name": "fileLogger",
-          "factory": "${server}/logging/FileLoggerFactory",
-          "logLevel": "ERROR"
-        }
-      ]
+      "factories": []
     },
     "http":{
       "listeners": [
@@ -26,20 +16,8 @@
           "domain":"localhost",
           "port":8484,
           "secured": false,
-          "server":"server1"
-        },
-        {
-          "id": "admin",
-          "address":"127.0.0.0",
-          "domain":"domain.com",
-          "port":9990,
-          "secured": true,
-          "sslPath": "${root}/public/cfg/ssl/admin/",
-          "server": "admin-server",
-          "monitoring": {
-            "enabled": false,
-            "factory": "${server}/monitoring/ConsoleTransactionMonitorFactory"
-          }
+          "server":"server1",
+          "sslPath": "public/cfg/ssl/admin/"
         }
       ],
       "security": {
@@ -64,7 +42,7 @@
         ]
       }
     },
-    "errorPage": "${server}/templates/error/errors.ejs"
+    "errorPage": "templates/error/errors.ejs"
   },
   "modules": {
 

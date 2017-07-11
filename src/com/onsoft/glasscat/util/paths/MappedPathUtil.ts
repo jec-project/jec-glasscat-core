@@ -119,10 +119,10 @@ export class MappedPathUtil {
   private _modulesPath:string = null;
 
   /**
-   * The pattern used by developers to refer to the GlassCat <code>src</code>
-   * directory in  configuration files.
+   * The pattern used by developers to refer to the JEC <code>server</code>
+   * directory in configuration files.
    */
-  private static readonly GLASSCAT_PATTERN:string = "${glasscat}";
+  private static readonly SERVER_PATTERN:string = "${server}";
 
   /**
    * The pattern used by developers to refer to the GlassCat <code>root</code>
@@ -130,7 +130,6 @@ export class MappedPathUtil {
    */
   private static readonly ROOT_PATTERN:string = "${root}";
 
-  
   /**
    * The pattern used by developers to refer to the GlassCat
    * <code>modules</code> directory in configuration files.
@@ -142,7 +141,6 @@ export class MappedPathUtil {
    * computed from the server root path.
    */
   private static readonly GLASSCAT_PATH:string = "/server/com/onsoft/glasscat";
-
 
   /**
    * A sting used to define the path to the GlassCat <code>modules</code>
@@ -165,9 +163,9 @@ export class MappedPathUtil {
     let resolved:string = path;
     if(resolved.indexOf(MappedPathUtil.ROOT_PATTERN) === 0) {
       resolved = resolved.replace(MappedPathUtil.ROOT_PATTERN, this._rootPath);
-    } else if(resolved.indexOf(MappedPathUtil.GLASSCAT_PATTERN) === 0) {
+    } else if(resolved.indexOf(MappedPathUtil.SERVER_PATTERN) === 0) {
       resolved = resolved.replace(
-        MappedPathUtil.GLASSCAT_PATTERN, this._glasscatPath
+        MappedPathUtil.SERVER_PATTERN, this._glasscatPath
       );
     } else if(resolved.indexOf(MappedPathUtil.MODULES_PATTERN) === 0) {
       resolved = resolved.replace(

@@ -14,7 +14,7 @@ import { JsletContext, Jslet, SessionError, HttpResponse, HttpRequest,
          WebJsletParams, SessionContext, SecurityContext, CookieOptions,
          SendFileOptions, SecurityRole, SecurityConstraint, StaticResources,
          SessionId, SessionOwner, Session, Credentials, UserHashModule,
-         Realm, RealmConnector } from "jec-exchange";
+         Realm, RealmConnector, AuthenticationError } from "jec-exchange";
 import * as express from "express";
 import * as http from "http";
 

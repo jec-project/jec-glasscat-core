@@ -16,17 +16,17 @@
 
 /**
  * A data transfert object for managing authentication errors.
- * 
- * 
  */
-export class AuthenticationError {
+import {AuthenticationError} from "jec-exchange";
+
+export class BasicAuthenticationError implements AuthenticationError {
 
   //////////////////////////////////////////////////////////////////////////////
   // Constructor function
   //////////////////////////////////////////////////////////////////////////////
 
   /**
-   * Initializes this <code>AuthenticationError</code> instance.
+   * Initializes this <code>BasicAuthenticationError</code> instance.
    * 
    * @param {number} statusCode the HTTP status code for this error. Valid 
    *                            values are constants of the 
@@ -51,10 +51,7 @@ export class AuthenticationError {
   //////////////////////////////////////////////////////////////////////////////
 
   /**
-   * Returns the HTTP status code for this error. Valid values are constants of 
-   * the <code>HttpStatusCode</code> ennum.
-   * 
-   * @return {number} a constant of the <code>HttpStatusCode</code> ennum.
+   * @inheritDoc
    */
   public getStatusCode():number {
     return this._statusCode;

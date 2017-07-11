@@ -14,16 +14,24 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-/*!
- * This module constains utilities used by the MappedPathUtilTest test suite.
- */
+import {Logger} from "jec-commons";
+import {LoggerContext} from "../../context/LoggerContext";
 
-// Utilities:
-export const CONTEXTROOT:string = "contextroot";
-export const URI_PATH:string = "my/uri/path";
-export const GLASSCAT_URI_PATTERN:string = "${server}/my/uri/path";
-export const GLASSCAT_URI_PATH:string = "contextroot/server/com/onsoft/glasscat/my/uri/path";
-export const ROOT_URI_PATTERN:string = "${root}/my/uri/path";
-export const ROOT_URI_PATH:string = "contextroot/my/uri/path";
-export const MODULES_URI_PATTERN:string = "${modules}/my/uri/path";
-export const MODULES_URI_PATH:string = "contextroot/public/modules/my/uri/path";
+/**
+ * The base interface for all logger factories of GlassCat containers.
+ */
+export interface LoggerFactory {
+
+  ////////////////////////////////////////////////////////////////////////////
+  // Public methods
+  ////////////////////////////////////////////////////////////////////////////
+
+  /**
+   * Builds and returns a new <code>Logger</code> instance.
+   *
+   * @param {LoggerContext} context the context used to create the new
+   *                                <code>Logger</code> instance.
+   * @return a new <code>Logger</code> instance.
+   */
+  build(context:LoggerContext):Logger;
+};

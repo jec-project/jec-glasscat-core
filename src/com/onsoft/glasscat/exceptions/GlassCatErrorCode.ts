@@ -94,5 +94,17 @@ export enum GlassCatErrorCode {
    * Indicates that the specified encryption key is not valid.
    * This error code is initialized to <code>10</code>.
    */
-  INVALID_ENCRYPTION_KEY = 10
+  INVALID_ENCRYPTION_KEY = 10,
+  
+  /**
+   * Indicates that the specified context object is not valid.
+   * This error code is initialized to <code>11</code>.
+   */
+  INVALID_CONTEXT = 11,
+
+  /**
+   * Indicates that an error curred while initializing the admin realm.
+   * This error code is initialized to <code>12</code>.
+   */
+  ADMIN_REALM_INIT_FAILURE = 12
 }

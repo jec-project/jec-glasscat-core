@@ -1,3 +1,4 @@
+
 //  DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
 //
 //   Copyright 2016-2017 Pascal ECHEMANN.
@@ -14,21 +15,19 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
+import { Credentials } from "jec-exchange";
+import {BasicCredentials} from "../../../src/com/onsoft/glasscat/security/session/BasicCredentials";
+
 /*!
- * This module constains utilities used by the GlassCatErrorCodeTest test suite.
+ * This module constains utilities used by the AdminFileRealmConnectorTest test
+ * suite.
  */
 
 // Utilities:
-export const SINGLETON_ERROR:number = 0;
-export const CONFIG_LOADING_FAILURE:number = 1;
-export const CONFIG_SERIALIZATION_ERROR:number = 2;
-export const CONFIG_UPDATE_ERROR:number = 3;
-export const NULL_EJP_CONFIG:number = 4;
-export const EJP_CONFIG_MISSING_PROPERTY:number = 5;
-export const EJP_CONFIG_INVALID_PROPERTY:number = 6;
-export const EJP_CONFIG_INVALID_LOGIN:number = 7;
-export const EJP_CONFIG_INVALID_REALM:number = 8;
-export const INVALID_SECURITY_CONTEXT:number = 9;
-export const INVALID_ENCRYPTION_KEY:number = 10;
-export const INVALID_CONTEXT:number = 11;
-export const ADMIN_REALM_INIT_FAILURE:number = 12;
+export const CONTEXTROOT:string = process.cwd();
+export const buildBadCredentials:Function = function():Credentials {
+  let credentials:Credentials = new BasicCredentials();
+  credentials.login = "foo";
+  credentials.password = "bar";
+  return credentials;
+};
