@@ -74,7 +74,8 @@ src/com/onsoft/glasscat/context/validators
 src/com/onsoft/glasscat/core
 src/com/onsoft/glasscat/debug
 src/com/onsoft/glasscat/domains
-src/com/onsoft/glasscat/jslets
+src/com/onsoft/glasscat/jslets/utils
+src/com/onsoft/glasscat/jslets/EjpJsletContext.ts
 src/com/onsoft/glasscat/net
 src/com/onsoft/glasscat/security/context
 src/com/onsoft/glasscat/security/realms/utils

@@ -71,6 +71,14 @@ export {DomainState} from "./domains/containers/DomainState";
 //--> com/onsoft/glasscat/domains/errors
 export {DomainRequestError} from "./domains/errors/DomainRequestError";
 export {NotFoundErrorBuilder} from "./domains/errors/NotFoundErrorBuilder";
+
+//--> com/onsoft/glasscat/jslets/jcad/connectors
+export {JsletConnector} from "./jslets/jcad/connectors/JsletConnector";
+//--> com/onsoft/glasscat/jslets/jcad/decorators
+export {WebJsletDecorator} from "./jslets/jcad/decorators/WebJsletDecorator";
+//--> com/onsoft/glasscat/jslets/jcad/
+export {JsletContextManager} from "./jslets/jcad/JsletContextManager";
+
 //--> com/onsoft/glasscat/exceptions
 export {GlassCatError} from "./exceptions/GlassCatError";
 export {GlassCatErrorCode} from "./exceptions/GlassCatErrorCode";
