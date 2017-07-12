@@ -69,22 +69,16 @@ utils/**/*.js
 
 lib/
 src/com/onsoft/glasscat/context/files
-src/com/onsoft/glasscat/context/utils
 src/com/onsoft/glasscat/context/validators
 src/com/onsoft/glasscat/core
-src/com/onsoft/glasscat/debug
 src/com/onsoft/glasscat/domains
 src/com/onsoft/glasscat/jslets/utils
 src/com/onsoft/glasscat/jslets/EjpJsletContext.ts
 src/com/onsoft/glasscat/net/url
-src/com/onsoft/glasscat/net/*.ts
 src/com/onsoft/glasscat/security/context
 src/com/onsoft/glasscat/security/realms/utils
 src/com/onsoft/glasscat/security/session/managers
 src/com/onsoft/glasscat/security/session/utils/SessionUtil.ts
 src/com/onsoft/glasscat/services/http/proxy
 src/com/onsoft/glasscat/services/http/utils
-src/com/onsoft/glasscat/services/http/*.ts
 src/com/onsoft/glasscat/util/contextroot
-src/com/onsoft/glasscat/util/paths/TemplatePaths.ts
-src/com/onsoft/glasscat/util/paths/TemplatePathsSolver.ts

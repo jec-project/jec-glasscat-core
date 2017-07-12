@@ -57,6 +57,9 @@ export {EjpStaticResourcesConfig} from "./context/ejp/EjpStaticResourcesConfig";
 export {EjpWebAppConfig} from "./context/ejp/EjpWebAppConfig";
 
 //--> com/onsoft/glasscat/context/utils
+export {GlassCatConfigLoader} from "./context/utils/GlassCatConfigLoader";
+export {GlassCatConfigUpdater} from "./context/utils/GlassCatConfigUpdater";
+export {GlassCatContextBuilder} from "./context/utils/GlassCatContextBuilder";
 export {LoggerContextBuilder} from "./context/utils/LoggerContextBuilder";
 //--> com/onsoft/glasscat/context
 export {GlassCatContext} from "./context/GlassCatContext";
@@ -66,7 +69,8 @@ export {LoggerContext} from "./context/LoggerContext";
 export {JsletManager} from "./core/JsletManager";
 
 export {SplashScreen} from "./core/SplashScreen";
-
+//--> com/onsoft/glasscat/debug/map
+export {SourceMapProcessor} from "./debug/map/SourceMapProcessor";
 //--> com/onsoft/glasscat/domains/containers
 export {DomainState} from "./domains/containers/DomainState";
 //--> com/onsoft/glasscat/domains/errors
@@ -87,7 +91,7 @@ export {GlassCatErrorCode} from "./exceptions/GlassCatErrorCode";
 export {LocaleManager} from "./i18n/LocaleManager";
 
 //--> com/onsoft/glasscat/net/http
-
+export {GlassCatHttpRequest} from "./net/http/GlassCatHttpRequest";
 //--> com/onsoft/glasscat/net/http/monitoring
 export {ConsoleTransactionMonitor} from "./net/http/monitoring/ConsoleTransactionMonitor";
 export {HttpTransaction} from "./net/http/monitoring/HttpTransaction";
@@ -112,6 +116,9 @@ export {LoginStrategyConfig} from "./security/login/config/LoginStrategyConfig";
 //--> com/onsoft/glasscat/security/realms/connectors
 export {AbstractRealmConnector} from "./security/realms/connectors/AbstractRealmConnector";
 export {AdminFileRealmConnector} from "./security/realms/connectors/AdminFileRealmConnector";
+//--> com/onsoft/glasscat/security/realms/utils
+export {DefaultRealmBuilder} from "./security/realms/utils/DefaultRealmBuilder";
+export {RealmBuilder} from "./security/realms/utils/RealmBuilder";
 //--> com/onsoft/glasscat/security/realms
 export {DefaultRealm} from "./security/realms/DefaultRealm";
 //--> com/onsoft/glasscat/security/roles
@@ -177,7 +184,8 @@ export {LoggerManager} from "./util/logging/LoggerManager";
 export {LoggerManagerBuilder} from "./util/logging/LoggerManagerBuilder";
 //--> com/onsoft/glasscat/util/paths
 export {MappedPathUtil} from "./util/paths/MappedPathUtil";
-
+export {TemplatePaths} from "./util/paths/TemplatePaths";
+export {TemplatePathsSolver} from "./util/paths/TemplatePathsSolver";
 //--> com/onsoft/glasscat/util/url
 export {BasicUrlPattern} from "./util/url/BasicUrlPattern";
 export {UrlPatternBuilder} from "./util/url/UrlPatternBuilder";
