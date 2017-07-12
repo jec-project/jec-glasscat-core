@@ -74,7 +74,6 @@ src/com/onsoft/glasscat/core
 src/com/onsoft/glasscat/domains
 src/com/onsoft/glasscat/jslets/utils
 src/com/onsoft/glasscat/jslets/EjpJsletContext.ts
-src/com/onsoft/glasscat/net/url
 src/com/onsoft/glasscat/security/context
 src/com/onsoft/glasscat/security/realms/utils
 src/com/onsoft/glasscat/security/session/managers

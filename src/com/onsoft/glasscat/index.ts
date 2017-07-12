@@ -99,6 +99,9 @@ export {TransactionManager} from "./net/http/monitoring/TransactionManager";
 export {TransactionMonitor} from "./net/http/monitoring/TransactionMonitor";
 export {TransactionMonitorDerivation} from "./net/http/monitoring/TransactionMonitorDerivation";
 export {TransactionMonitorFactory} from "./net/http/monitoring/TransactionMonitorFactory";
+//--> com/onsoft/glasscat/url
+export {RoutePattern} from "./net/url/RoutePattern";
+export {Routes} from "./net/url/Routes";
 //--> com/onsoft/glasscat/net
 export {ConnectionListener} from "./net/ConnectionListener";
 
