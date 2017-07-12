@@ -20,9 +20,9 @@ import { JsletContextManager } from "../../../../../../src/com/onsoft/glasscat/j
 import { JcadContext, JcadContextManager } from "jec-commons";
 import { GlassCatError } from "../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatError";
 import { GlassCatErrorCode } from "../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatErrorCode";
+import { JsletConnectorRefs } from "jec-exchange";
 
 import * as utils from "../../../../../../utils/test-utils/utilities/JsletContextManagerTestUtils";
-import { JsletConnectorRefs } from "jec-exchange";
 
 @TestSuite({
   description: "Test the JsletContextManager class methods",
@@ -51,7 +51,7 @@ export class JsletContextManagerTest {
   }
   
   @Test({
-    description: "should throw a GlassCatError exception of type of 'GlassCatErrorCode'",
+    description: "should throw a GlassCatError exception of type of 'GlassCatErrorCode.INVALID_CONTEXT'",
     order: 1
   })
   public createContextErrorCodeTest():void {

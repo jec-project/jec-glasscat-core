@@ -87,6 +87,13 @@ export {LocaleManager} from "./i18n/LocaleManager";
 
 //--> com/onsoft/glasscat/net/http
 
+//--> com/onsoft/glasscat/net/http/monitoring
+export {ConsoleTransactionMonitor} from "./net/http/monitoring/ConsoleTransactionMonitor";
+export {HttpTransaction} from "./net/http/monitoring/HttpTransaction";
+export {TransactionManager} from "./net/http/monitoring/TransactionManager";
+export {TransactionMonitor} from "./net/http/monitoring/TransactionMonitor";
+export {TransactionMonitorDerivation} from "./net/http/monitoring/TransactionMonitorDerivation";
+export {TransactionMonitorFactory} from "./net/http/monitoring/TransactionMonitorFactory";
 //--> com/onsoft/glasscat/net
 export {ConnectionListener} from "./net/ConnectionListener";
 
@@ -132,6 +139,11 @@ export {GlassCatSessionOwner} from "./security/session/GlassCatSessionOwner";
 export {SecurityConstraintBuilder} from "./security/utils/SecurityConstraintBuilder";
 export {StaticResourcesBuilder} from "./security/utils/StaticResourcesBuilder";
 
+//--> com/onsoft/glasscat/services/http/listeners
+export {DefaultHttpListener} from "./services/http/listeners/DefaultHttpListener";
+export {HttpListener} from "./services/http/listeners/HttpListener";
+export {HttpListenerFactory} from "./services/http/listeners/HttpListenerFactory";
+export {HttpMonitoring} from "./services/http/listeners/HttpMonitoring";
 
 //--> com/onsoft/glasscat/util/bootstrap
 export {BootstrapScriptSorter} from "./util/bootstrap/BootstrapScriptSorter";
