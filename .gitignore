@@ -85,7 +85,6 @@ src/com/onsoft/glasscat/security/session/utils/SessionUtil.ts
 src/com/onsoft/glasscat/services/http/proxy
 src/com/onsoft/glasscat/services/http/utils
 src/com/onsoft/glasscat/services/http/*.ts
-src/com/onsoft/glasscat/templates
 src/com/onsoft/glasscat/util/contextroot
 src/com/onsoft/glasscat/util/paths/TemplatePaths.ts
 src/com/onsoft/glasscat/util/paths/TemplatePathsSolver.ts

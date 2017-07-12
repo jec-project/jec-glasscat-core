@@ -14,30 +14,17 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { GuidGenerator } from "jec-commons";
+import { GuidGenerator, HttpStatusCode } from "jec-commons";
 import { SessionId } from "jec-exchange";
 import { GlassCatSessionId } from "../../../src/com/onsoft/glasscat/security/session/GlassCatSessionId";
 
 /*!
- * This module constains utilities used by the SessionIdUtilTest test suite.
+ * This module constains utilities used by all TemplateProcessor test suites.
  */
 
 // Utilities:
-
-const guidGen: GuidGenerator = new GuidGenerator();
-export const SESSION_ID_NAME:string = "JSSESSIONID";
-export const COOKIES:string = "cookies";
-export const AUTH_URI_PATH:string = "/my/auth/uri/path";
-export const EMPTY_COOKIE:any = {};
-export const VALID_BASIC_COOKIE:any = {
-  JSSESSIONID: String(guidGen.generate())
-};
-export const VALID_COMPLEX_GUID:string = guidGen.generate();
-export const COMPLEX_COOKIE_CONTENT:string = VALID_COMPLEX_GUID + ":authurl=" + AUTH_URI_PATH;
-export const VALID_COMPLEX_COOKIE:any = {
-  JSSESSIONID: COMPLEX_COOKIE_CONTENT
-};
-export const buildSessionId:Function = function():SessionId{
-  let id:SessionId = new GlassCatSessionId(VALID_COMPLEX_GUID);
-  return id;
-};
+export const INVALID_PATH:string = "path";
+export const VALID_PATH:string = "utils/test-utils/files/test.ejs";
+export const DATA:any = { title: "Test title", status: HttpStatusCode.BAD_REQUEST };
+export const RENDERED_DATA:string = "<h1>Test title</h1>";
+export const RENDERED_STATUS:string = "<p>400</p>";

@@ -38,6 +38,7 @@
     "jec-commons-node": "^1.0.1",
     "jec-exchange": "^1.1.1",
     "moment": "^2.18.1",
+    "print-message": "^2.1.0",
     "url-pattern": "^1.0.3"
   },
   "devDependencies": {

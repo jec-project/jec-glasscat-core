@@ -65,6 +65,7 @@ export {LoggerContext} from "./context/LoggerContext";
 //--> com/onsoft/glasscat/core
 export {JsletManager} from "./core/JsletManager";
 
+export {SplashScreen} from "./core/SplashScreen";
 
 //--> com/onsoft/glasscat/domains/containers
 export {DomainState} from "./domains/containers/DomainState";
@@ -144,6 +145,17 @@ export {DefaultHttpListener} from "./services/http/listeners/DefaultHttpListener
 export {HttpListener} from "./services/http/listeners/HttpListener";
 export {HttpListenerFactory} from "./services/http/listeners/HttpListenerFactory";
 export {HttpMonitoring} from "./services/http/listeners/HttpMonitoring";
+
+//--> com/onsoft/glasscat/templates/error
+export {ErrorTemplateProcessor} from "./templates/error/ErrorTemplateProcessor";
+//--> com/onsoft/glasscat/templates/status
+export {ErrorStatusBuilder} from "./templates/status/ErrorStatusBuilder";
+export {ForbiddenStatusBuilder} from "./templates/status/ForbiddenStatusBuilder";
+export {HttpStatusReport} from "./templates/status/HttpStatusReport";
+export {HttpStatusReportBuilder} from "./templates/status/HttpStatusReportBuilder";
+//--> com/onsoft/glasscat/templates/
+export {DefaultTemplateProcessor} from "./templates/DefaultTemplateProcessor";
+export {TemplateProcessor} from "./templates/TemplateProcessor";
 
 //--> com/onsoft/glasscat/util/bootstrap
 export {BootstrapScriptSorter} from "./util/bootstrap/BootstrapScriptSorter";
