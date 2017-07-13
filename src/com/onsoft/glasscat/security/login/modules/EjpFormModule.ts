@@ -22,11 +22,8 @@ import {GlassCatHttpResponse} from "../../../net/http/GlassCatHttpResponse";
 import {CredentialsBuilder} from "../../session/utils/CredentialsBuilder";
 
 /**
- * The __LoginModule__ implementation for the __AuthMethod.EJP_FORM__ login
- * strategy.
- *
- * @class EjpFormModule
- * @extends AbstractLoginModule
+ * The code>LoginModule</code> implementation for the
+ * code>AuthMethod.EJP_FORM</code> login strategy.
  */
 export class EjpFormModule extends AbstractLoginModule {
 
@@ -34,6 +31,9 @@ export class EjpFormModule extends AbstractLoginModule {
   // Constructor function
   //////////////////////////////////////////////////////////////////////////////
 
+  /**
+   * Creates a new <code>EjpFormModule</code> instance.
+   */
   constructor() {
     super();
   }

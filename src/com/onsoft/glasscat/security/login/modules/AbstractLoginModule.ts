@@ -24,10 +24,7 @@ import {DefaultRealmBuilder} from "../../realms/utils/DefaultRealmBuilder";
 import {SessionIdUtil} from "../../session/utils/SessionIdUtil";
 
 /**
- * The abstract class for all __LoginModule__ implementation.
- *
- * @class AbstractLoginModule
- * @implements LoginModule
+ * The abstract class for all <code>LoginModule</code> implementation.
  */
 export class AbstractLoginModule implements LoginModule {
 
@@ -35,6 +32,9 @@ export class AbstractLoginModule implements LoginModule {
   // Constructor function
   //////////////////////////////////////////////////////////////////////////////
 
+  /**
+   * Creates a new <code>AbstractLoginModule</code> instance.
+   */
   constructor() { }
 
   //////////////////////////////////////////////////////////////////////////////
@@ -42,32 +42,19 @@ export class AbstractLoginModule implements LoginModule {
   //////////////////////////////////////////////////////////////////////////////
 
   /**
-   * The reference to the __Realm__ instance for this login module.
-   * 
-   * @attribute _realm
-   * @protected
-   * @type Realm
-   * @default null
+   * The reference to the <code>Realm</code> instance for this login module.
    */
   protected __realm:Realm = null;
 
   /**
-   * The reference to the __LoginStrategy__ instance for this login module.
-   * 
-   * @attribute __strategy
-   * @type LoginStrategy
-   * @protected
-   * @default null
+   * The reference to the <code>LoginStrategy</code> instance for this login
+   * module.
    */
   protected __strategy:LoginStrategy = null;
 
   /**
-   * The reference to the __LoginStrategyConfig__ instance for this login module.
-   * 
-   * @attribute __loginStrategyConfig
-   * @type LoginStrategyConfig
-   * @protected
-   * @default null
+   * The reference to the <code>LoginStrategyConfig</code> instance for this
+   * login module.
    */
   protected __loginStrategyConfig:LoginStrategyConfig = null;
 

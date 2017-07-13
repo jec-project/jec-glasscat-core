@@ -43,12 +43,8 @@ import {GlassCatHttpResponse} from "../../net/http/GlassCatHttpResponse";
 import {NotFoundErrorBuilder} from "../../domains/errors/NotFoundErrorBuilder";
 
 /**
- * The __AbstractHttpService__ class represents the abstract class for all 
- * GlassCat HTTP services.
- *
- * @class AbstractHttpService
- * @constructor
- * @param {HttpListener} listener the HTTP listener for this HTTP service.
+ * The <code>AbstractHttpService</code> class represents the abstract class for  
+ * all GlassCat HTTP services.
  */
 export class AbstractHttpService implements HttpService {
 
@@ -56,6 +52,11 @@ export class AbstractHttpService implements HttpService {
   // Constructor function
   //////////////////////////////////////////////////////////////////////////////
 
+  /**
+   * Creates a new <code>AbstractHttpService</code> instance.
+   * 
+   * @param {HttpListener} listener the HTTP listener for this HTTP service.
+   */
   constructor(listener:HttpListener) {
     this.init(listener);
   }
@@ -65,87 +66,47 @@ export class AbstractHttpService implements HttpService {
   //////////////////////////////////////////////////////////////////////////////
 
   /**
-   * The HTTP listener associated with this __HttpService__ instance.
-   *
-   * @attribute __listener
-   * @protected
-   * @type HttpListener
-   * @default null
+   * The HTTP listener associated with this <code>HttpService</code> object.
    */
   protected __listener:HttpListener = null;
 
   /**
-   * The reference to the __Application__ object for this __HttpService__
-   * instance.
-   *
-   * @attribute __app
-   * @protected
-   * @type express.Application
-   * @default null
+   * The reference to the <code>express.Application</code> object for this
+   * <code>HttpService</code> object.
    */
   protected __app:express.Application = null;
 
   /**
-   * The virtual server for this __HttpService__ instance.
-   *
-   * @attribute __server
-   * @protected
-   * @type http.Server
-   * @default null
+   * The virtual server for this <code>HttpService</code> object.
    */
   protected __server:http.Server = null;
 
   /**
-   * The reference to the __DomainConnectorManager__ object for this
-   * __HttpService__ instance.
-   *
-   * @attribute __server
-   * @protected
-   * @type DomainConnectorManager
-   * @default null
+   * The reference to the <code>DomainConnectorManager</code> object for this
+   * <code>HttpService</code> object.
    */
   protected __connectorManager:DomainConnectorManager = null;
 
   /**
-   * The reference to the __SecurityManager__ object for this __HttpService__
-   * instance.
-   *
-   * @attribute __securityManager
-   * @protected
-   * @type SecurityManager
-   * @default null
+   * The reference to the <code>SecurityManager</code> object for this 
+   * <code>HttpService</code> object.
    */
   protected __securityManager:SecurityManager = null;
 
   /**
-   * The reference to the __TransactionManager__ object for this __HttpService__
-   * instance.
-   *
-   * @attribute __transactionManager
-   * @protected
-   * @type TransactionManager
-   * @default null
+   * The reference to the <code>TransactionManager</code> object for this
+   * <code>HttpService</code> object.
    */
   protected __transactionManager:TransactionManager = null;
 
   /**
    * Indicates whether to enable requests interception by the transcation
-   * manager (__true__), or not (__false__).
-   *
-   * @attribute __enableMonitoring
-   * @protected
-   * @type boolean
-   * @default false
+   * manager (<code>true</code>), or not (<code>false</code>).
    */
   protected __enableMonitoring:boolean = false;
 
   /**
    * The error manager for this HTTP service.
-   *
-   * @attribute __errorManager
-   * @protected
-   * @type HttpServiceErrorManager
-   * @default null
    */
   protected __errorManager:HttpServiceErrorManager = null;
 
@@ -154,26 +115,19 @@ export class AbstractHttpService implements HttpService {
   //////////////////////////////////////////////////////////////////////////////
 
   /**
-   * Indicates wether this __HttpService__ instance is active (__true__), or not
-   * (__false__).
-   *
-   * @attribute _isActive
-   * @private
-   * @type boolean
-   * @default false
+   * Indicates wether this <code>HttpService</code> instance is active
+   * (<code>true</code>), or not (<code>false</code>).
    */
   private _isActive:boolean = false;
 
   /**
    * The name of the server for this component.
-   *
-   * @attribute _server
-   * @private
-   * @type string
-   * @default null
    */
   private _server:string = null;
 
+  /**
+   * The builder that is used to create  <code>NotFoundError</code> instances.
+   */
   private _notFoundErrorBuilder:NotFoundErrorBuilder = null;
 
   //////////////////////////////////////////////////////////////////////////////
@@ -183,8 +137,6 @@ export class AbstractHttpService implements HttpService {
   /**
    * Initializes the immutable properties for this HTTP service.
    *
-   * @method init
-   * @private
    * @param {HttpListener} listener the HTTP listener for this HTTP service.
    */
   private init(listener:HttpListener):void {
@@ -204,11 +156,8 @@ export class AbstractHttpService implements HttpService {
   }
 
   /**
-   * Initialises the HTTPS service when the__listener.getSecured()__ method
-   * returns true.
-   *
-   * @method initSecuredServer
-   * @private
+   * Initialises the HTTPS service when the <code>listener.getSecured()</code> 
+   * method returns <code>true</code>.
    */
   private initSecuredServer():void {
     let pathUtil:MappedPathUtil = null;
@@ -234,12 +183,10 @@ export class AbstractHttpService implements HttpService {
   /**
    * The HTTP transaction interceptor for this HTTP service.
    *
-   * @method holdTransaction
-   * @private
-   * @param {express.Request} req the HTTP request for the current HTTP
+   * @param {express.Request} req the initial HTTP request for the current HTTP
    *                              transaction.
-   * @param {express.Response} res the HTTP response for the current HTTP
-   *                               transaction.
+   * @param {express.Response} res the initial HTTP response for the current 
+   *                               HTTP transaction.
    */
   private holdTransaction(req:express.Request, res:express.Response,
                                                next:Function):void {
@@ -250,12 +197,10 @@ export class AbstractHttpService implements HttpService {
   /**
    * The HTTP transaction filter for this HTTP service.
    *
-   * @method releaseTransaction
-   * @private
-   * @param {express.Request} req the HTTP request for the current HTTP
+   * @param {express.Request} req the initial HTTP request for the current HTTP
    *                              transaction.
-   * @param {express.Response} res the HTTP response for the current HTTP
-   *                               transaction.
+   * @param {express.Response} res the initial HTTP response for the current 
+   *                               HTTP transaction.
    */
   private releaseTransaction(req:express.Request, res:express.Response,
                                                   next:Function):void {
@@ -267,12 +212,10 @@ export class AbstractHttpService implements HttpService {
   /**
    * The HTTP session interceptor for this HTTP service.
    *
-   * @method checkSession
-   * @private
-   * @param {express.Request} req the HTTP request for the current HTTP
+   * @param {express.Request} req the initial HTTP request for the current HTTP
    *                              transaction.
-   * @param {express.Response} res the HTTP response for the current HTTP
-   *                               transaction.
+   * @param {express.Response} res the initial HTTP response for the current 
+   *                               HTTP transaction.
    * @param {Function} result the callback method used to handle the result of
    *                          the operation and go to the next middleware.
    */
@@ -300,12 +243,10 @@ export class AbstractHttpService implements HttpService {
   /**
    * The HTTP security layer for this HTTP service.
    *
-   * @method validateRequest
-   * @private
-   * @param {express.Request} req the HTTP request for the current HTTP
+   * @param {express.Request} req the initial HTTP request for the current HTTP
    *                              transaction.
-   * @param {express.Response} res the HTTP response for the current HTTP
-   *                               transaction.
+   * @param {express.Response} res the initial HTTP response for the current 
+   *                               HTTP transaction.
    */
   private validateRequest(req:express.Request, res:express.Response,
                                                            next:Function):void {
@@ -352,12 +293,10 @@ export class AbstractHttpService implements HttpService {
   /**
    * The HTTP message broker for this HTTP service.
    *
-   * @method processRequest
-   * @private
-   * @param {express.Request} req the HTTP request for the current HTTP
+   * @param {express.Request} req the initial HTTP request for the current HTTP
    *                              transaction.
-   * @param {express.Response} res the HTTP response for the current HTTP
-   *                               transaction.
+   * @param {express.Response} res the initial HTTP response for the current 
+   *                               HTTP transaction.
    */
   private processRequest(req:express.Request, res:express.Response,
                                                            next:Function):void {
@@ -421,9 +360,6 @@ export class AbstractHttpService implements HttpService {
 
   /**
    * Initializes the HTTP transaction interceptor.
-   *
-   * @method initTransactionInterceptor
-   * @private
    */
   private initTransactionInterceptor():void {
     if(this.__enableMonitoring) {
@@ -433,9 +369,6 @@ export class AbstractHttpService implements HttpService {
   
   /**
    * Initializes the HTTP transaction filter.
-   *
-   * @method initTransactionInterceptor
-   * @private
    */
   private initTransactionFilter():void {
     this.__app.use(this.releaseTransaction.bind(this));
@@ -443,9 +376,6 @@ export class AbstractHttpService implements HttpService {
 
   /**
    * Initializes the HTTP sessions security.
-   *
-   * @method initSessionsSecurity
-   * @private
    */
   private initSessionsSecurity():void {
     this.__app.use(cookieParser());
@@ -454,9 +384,6 @@ export class AbstractHttpService implements HttpService {
 
   /**
    * Creates the built-in interceptors for all HTTP requests.
-   *
-   * @method createTransactionInterceptors
-   * @private
    */
   private createTransactionInterceptors():void {
     this.__app.use(this.validateRequest.bind(this));
@@ -467,9 +394,6 @@ export class AbstractHttpService implements HttpService {
 
   /**
    * Initializes the error filter for this service.
-   *
-   * @method initErrorFilter
-   * @private
    */
   private initErrorFilter():void {
     this.__app.use((err:any, req:express.Request, res:express.Response,

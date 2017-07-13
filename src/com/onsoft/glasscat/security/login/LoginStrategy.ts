@@ -26,11 +26,6 @@ import {SessionIdUtil} from "../session/utils/SessionIdUtil";
 
 /**
  * Representation of a security constraint element for a GlassCat application.
- * 
- * @class LoginStrategy
- * @constructor
- * @param {LoginStrategy} strategyConfig the __LoginStrategyConfig__ that is   
- *                                       used to initialize this login strategy.
  */
 export class LoginStrategy {
 
@@ -38,6 +33,14 @@ export class LoginStrategy {
   // Constructor function
   //////////////////////////////////////////////////////////////////////////////
 
+  /**
+   * Creates a new <code>LoginStrategy</code> instance.
+   * 
+   * @param {LoginStrategyConfig} strategyConfig the
+   *                                            <code>LoginStrategyConfig</code> 
+   *                                             that is  used to initialize
+   *                                             this login strategy.
+   */
   constructor(strategyConfig:LoginStrategyConfig) {
     this.init(strategyConfig);
   }
@@ -47,42 +50,23 @@ export class LoginStrategy {
   //////////////////////////////////////////////////////////////////////////////
   
   /**
-   * The __LoginStrategyConfig__ instance for this login strategy.
-   * 
-   * @attribute _strategyConfig
-   * @type LoginStrategyConfig
-   * @private
-   * @default null
+   * The <code>LoginStrategyConfig</code> instance for this login strategy.
    */
   private _strategyConfig:LoginStrategyConfig = null;
   
   /**
-   * The __LoginModule__ instance for this login strategy.
-   * 
-   * @attribute _loginModule
-   * @type LoginModule
-   * @private
-   * @default null
+   * The <code>LoginModule</code> instance for this login strategy.
    */
   private _loginModule:LoginModule = null;
 
   /**
-   * The __JsletContext__ instance for this login strategy.
-   * 
-   * @attribute _jsletContext
-   * @type JsletContext
-   * @private
-   * @default null
+   * The <code>JsletContext</code> instance for this login strategy.
    */
   private _jsletContext:JsletContext = null;
   
   /**
-   * The reference to the __SessionContext__ instance for this login module.
-   * 
-   * @attribute _sessionContext
-   * @type SessionContext
-   * @private
-   * @default null
+   * The reference to the <code>SessionContext</code> instance for this login
+   * module.
    */
   private _sessionContext:SessionContext = null;
 
@@ -93,9 +77,8 @@ export class LoginStrategy {
   /**
    * Initializes this object.
    * 
-   * @method init
-   * @private
-   * @param {LoginStrategyConfig} strategyConfig the __LoginStrategyConfig__ 
+   * @param {LoginStrategyConfig} strategyConfig the
+   *                                            <code>LoginStrategyConfig</code> 
    *                                             that is  used to initialize
    *                                             this login strategy.
    */
@@ -116,6 +99,7 @@ export class LoginStrategy {
       case AuthMethod.BASIC :
         this._loginModule = new BasicModule();
         break;
+      //TODO: add warnings for unsuported cases
       case AuthMethod.DIGEST :
       case AuthMethod.FORM :
       case AuthMethod.NONE :
@@ -129,9 +113,7 @@ export class LoginStrategy {
 
   /**
    * Initializes the login strategy for the specified domain container.
-   * (Previously unused.)
    * 
-   * @method initStrategy
    * @param {DomainContainer} container the domain container for which to
    *                                    initialize the login strategy.
    */
@@ -146,15 +128,14 @@ export class LoginStrategy {
   /**
    * Applies the login strategy for the current HTTP transaction.
    *
-   * @method applyLoginStrategy
    * @param {HttpRequest} req the HTTP request for the current HTTP
    *                              transaction.
    * @param {HttpResponse} res the HTTP response for the current HTTP
    *                               transaction.
    * @param {Function} result the callback method used to handle the result of
    *                          the operation. When the operation has failed,
-   *                          the __result()__ methods takes an error object
-   *                          as parameter.
+   *                          the <code>result()</code> methods takes an error 
+   *                          object as parameter.
    */
   public applyLoginStrategy(req:HttpRequest, res:HttpResponse,
                                              result:(error?:any)=>void):void {
@@ -162,22 +143,21 @@ export class LoginStrategy {
   }
 
   /**
-   * Returns the __LoginStrategyConfig__ instance for this login strategy.
+   * Returns the <code>LoginStrategyConfig</code> instance for this login
+   * strategy.
    * 
-   * @method getLoginStrategyConfig
-   * @return {LoginStrategyConfig} the __LoginStrategyConfig__ instance for this
-   *                               login strategy.
+   * @return {LoginStrategyConfig} the <code>LoginStrategyConfig</code> instance 
+   *                               for this login strategy.
    */
   public getLoginStrategyConfig():LoginStrategyConfig {
     return this._strategyConfig;
   }
 
   /**
-   * Returns the __JsletContext__ instance for this login strategy.
+   * Returns the <code>JsletContext</code> instance for this login strategy.
    * 
-   * @method getJsletContext
-   * @return {JsletContext} the __JsletContext__ instance for this login
-   *                        strategy.
+   * @return {JsletContext} the <code>JsletContext</code> instance for this 
+   *                        login strategy.
    */
   public getJsletContext():JsletContext {
     return this._jsletContext;
@@ -186,13 +166,12 @@ export class LoginStrategy {
   /**
    * Authenticates the specified crendentials.
    *
-   * @method authenticate
    * @param {Credentials} credentials the user's credentials.
    * @param {Function} success the callback method called when the crendentials
-   *                   are authenticated.
+   *                           are authenticated.
    * @param {Function} error the callback method called when the crendentials
-   *                   are not authenticated. The callback method must specify
-   *                   an __error__ Object parameter.
+   *                         are not authenticated. The callback method must 
+   *                         specify an <code>error</code> Object parameter.
    */
   public authenticate(req:HttpRequest, res:HttpResponse,
                                                result:(error?:any)=>void):void {
@@ -220,15 +199,14 @@ export class LoginStrategy {
   /**
    * Invalidates the current session.
    *
-   * @method invalidateSession
-   * @param {HttpRequest} req the __HttpRequest__ instance for the current HTTP
-   *                          transaction.
-   * @param {HttpResponse} res the __HttpResponse__ instance for the current 
-   *                           HTTP transaction.
+   * @param {HttpRequest} req the <code>HttpRequest</code> instance for the 
+   *                          current HTTP transaction.
+   * @param {HttpResponse} res the <code>HttpResponse</code> instance for the  
+   *                           current HTTP transaction.
    * @param {Function} result the callback method used to handle the result of
-   *                          the operation. When the operation has failed,
-   *                          the __result()__ methods takes a __SessionError__  
-   *                          object as parameter.
+   *                          the operation. When the operation has failed, the
+   *                          <code>result()</code> methods takes a 
+   *                          <code>SessionError</code>   object as parameter.
    */
   public invalidateSession(req:HttpRequest, res:HttpResponse,
                                        result:(error?:SessionError)=>any):void {

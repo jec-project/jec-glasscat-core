@@ -23,11 +23,8 @@ import {CredentialsBuilder} from "../../session/utils/CredentialsBuilder";
 import {GlassCatHttpResponse} from "../../../net/http/GlassCatHttpResponse";
 
 /**
- * The __LoginModule__ implementation for the __AuthMethod.BASIC__ login
- * strategy.
- *
- * @class BasicModule
- * @extends AbstractLoginModule
+ * The <code>LoginModule</code> implementation for the
+ * <code>AuthMethod.BASIC</code> login strategy.
  */
 export class BasicModule extends AbstractLoginModule {
 
@@ -35,6 +32,9 @@ export class BasicModule extends AbstractLoginModule {
   // Constructor function
   //////////////////////////////////////////////////////////////////////////////
 
+  /**
+   * Creates a new <code>BasicModule</code> instance.
+   */
   constructor() {
     super();
   }
@@ -45,36 +45,16 @@ export class BasicModule extends AbstractLoginModule {
 
   /**
    * The name of the HTTP header used to store crendentials.
-   * 
-   * @attribute AUTHORIZATION
-   * @private
-   * @type string
-   * @static
-   * @final
-   * @default authorization
    */
   private static readonly AUTHORIZATION:string = "authorization";
 
   /**
-   * The reference to the __Basic __ string.
-   * 
-   * @attribute BASIC
-   * @private
-   * @type string
-   * @static
-   * @final
+   * The reference to the <code>Basic</code> string.
    */
   private static readonly BASIC:string = "Basic ";
 
   /**
-   * The reference to the credentials separator (__:__).
-   * 
-   * @attribute SEPARATOR
-   * @private
-   * @type string
-   * @static
-   * @final
-   * @default :
+   * The reference to the credentials separator (<code>:</code>).
    */
   private static readonly SEPARATOR:string = ":";
 
@@ -83,13 +63,11 @@ export class BasicModule extends AbstractLoginModule {
   //////////////////////////////////////////////////////////////////////////////
 
   /**
-   * Builds and returns the HTTP response value for the __WWW-Authenticate__
-   * header.
+   * Builds and returns the HTTP response value for the
+   * <code>WWW-Authenticate</code> header.
    * 
-   * @method buildRealm
-   * @private
-   * @return {string} the HTTP response value for the __WWW-Authenticate__
-   *                  header.
+   * @return {string} the HTTP response value for the
+   *                  <code>WWW-Authenticate</code> header.
    */
   private buildRealm():string {
     let response:string = "Basic realm=\""
@@ -99,9 +77,6 @@ export class BasicModule extends AbstractLoginModule {
 
   /**
    * Builds HTTP response if the user is not authorized to access the resource.
-   * 
-   * @method buildUnauthorizedResponse
-   * @private
    */
   private buildUnauthorizedResponse(res:HttpResponse):void {
     res.setHeader("WWW-Authenticate", this.buildRealm());

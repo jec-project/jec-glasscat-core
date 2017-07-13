@@ -32,3 +32,4 @@ export const INVALID_SECURITY_CONTEXT:number = 9;
 export const INVALID_ENCRYPTION_KEY:number = 10;
 export const INVALID_CONTEXT:number = 11;
 export const ADMIN_REALM_INIT_FAILURE:number = 12;
+export const INVALID_JSLET_CONFIG:number = 13;

@@ -106,5 +106,11 @@ export enum GlassCatErrorCode {
    * Indicates that an error curred while initializing the admin realm.
    * This error code is initialized to <code>12</code>.
    */
-  ADMIN_REALM_INIT_FAILURE = 12
+  ADMIN_REALM_INIT_FAILURE = 12,
+  
+  /**
+   * Indicates that the specified jsle configuration is not valid.
+   * This error code is initialized to <code>13</code>.
+   */
+  INVALID_JSLET_CONFIG = 13
 }

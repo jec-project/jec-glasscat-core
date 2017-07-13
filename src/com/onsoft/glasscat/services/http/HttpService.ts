@@ -19,62 +19,56 @@ import {DomainConnectorManager} from "../../core/DomainConnectorManager";
 import {SecurityManager} from "../../core/SecurityManager";
 
 /**
- * The __HttpService__ interface contains methods for services that manage HTTP
- * virtual servers.
- * @interface
+ * The <code>HttpService</code> interface contains methods for services that 
+ * manage HTTP virtual servers.
  */
 export interface HttpService {
 
   /**
-   * Returns the __HttpListener__ objects for this __HttpService__ instance.
+   * Returns the <code>HttpListener</code> objects for this 
+   * <code>HttpService</code> object.
    *
-   * @method getHttpListener
-   * @return {HttpListener} the __HttpListener__ objects for this __HttpService__
-   *                        instance.
+   * @return {HttpListener} the <code>HttpListener</code> objects for this 
+   *                        <code>HttpService</code> object.
    */
   getHttpListener():HttpListener;
 
   /**
-   * Initializes the __DomainConnectorManager__ object for this __HttpService__
-   * instance.
+   * Initializes the <code>DomainConnectorManager</code> object for this
+   * <code>HttpService</code> object.
    *
-   * @method initConnectors
    * @param {DomainConnectorManager} connectorManager the reference to the
-   *                                        __DomainConnectorManager__ instance.
+   *                                         <code>DomainConnectorManager</code>
+   *                                                  instance.
    */
   initConnectors(connectorManager:DomainConnectorManager):void;
   
   /**
-   * Initializes the __SecurityManager__ object for this __HttpService__
-   * instance.
+   * Initializes the <code>SecurityManager</code> instance for this
+   * <code>HttpService</code> object.
    *
-   * @method initSecurity
    * @param {SecurityManager} securityManager the reference to the
-   *                                          __SecurityManager__ instance.
+   *                                          <code>SecurityManager</code>
+   *                                          instance.
    */
   initSecurity(securityManager:SecurityManager):void;
 
   /**
-   * Starts the HTTP virtual server for this __HttpService__ instance.
-   *
-   * @method start
+   * Starts the HTTP virtual server for this <code>HttpService</code> object.
    */
   start():void;
 
   /**
-   * Stops the HTTP virtual server for this __HttpService__ instance.
-   *
-   * @method void
+   * Stops the HTTP virtual server for this <code>HttpService</code> object.
    */
   stop():void;
 
   /**
-   * Returns a boolean value that indicates wether this HttpService instance is
-   * active (__true__), or not (__false__).
+   * Returns a boolean value that indicates wether this <code>HttpService</code> 
+   * object is started (<code>true</code>), or not (<code>false</code>).
    *
-   * @method isActive
    * @return {boolean} a boolean value that indicates wether this service is
-   *                   active (__true__), or not (__false__).
+   *                   started (<code>true</code>), or not (<code>false</code>).
    */
   isActive():boolean;
 }

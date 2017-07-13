@@ -19,12 +19,8 @@ import {AbstractHttpService} from "./AbstractHttpService";
 import {HttpListener} from "./listeners/HttpListener";
 
 /**
- * The __DefaultHttpService__ class represents the GlassCat default 
+ * The <code>DefaultHttpService</code> class represents the GlassCat default 
  * implementation for HTTP services.
- *
- * @class DefaultHttpService
- * @constructor
- * @param {HttpListener} listener the HTTP listener for this HTTP service.
  */
 export class DefaultHttpService extends AbstractHttpService
                                  implements HttpService {
@@ -33,6 +29,11 @@ export class DefaultHttpService extends AbstractHttpService
   // Constructor function
   //////////////////////////////////////////////////////////////////////////////
 
+  /**
+   * Creates a new <code>DefaultHttpService</code> instance.
+   * 
+   * @param {HttpListener} listener the HTTP listener for this HTTP service.
+   */
   constructor(listener:HttpListener) {
     super(listener);
   }

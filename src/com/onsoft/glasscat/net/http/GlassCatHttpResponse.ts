@@ -19,20 +19,22 @@ import {HttpLocalProperties} from "../../services/http/utils/HttpLocalProperties
 import {HttpResponse, CookieOptions, SendFileOptions} from "jec-exchange";
 
 /**
- * The default GlassCat implementation of the __HttpResponse__ interface.
- * 
- * @class GlassCatHttpResponse
- * @implements HttpResponse
- * @constructor
- * @param {express.Response} req the original HTTP response wrapped by this 
- *                                __HttpRequest__ instance.
+ * The default GlassCat implementation of the <code>HttpResponse</code>
+ * interface.
  */
 export class GlassCatHttpResponse implements HttpResponse {
 
   ////////////////////////////////////////////////////////////////////////////
   // Constructor function
   ////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 
+  /**
+   * Creates a new <code>GlassCatHttpResponse</code> instance.
+   * 
+   * @param {express.Response} req the original HTTP response wrapped by this 
+   *                               <code>HttpResponse</code> object.
+   */
   constructor(res:express.Response) {
     this.init(res);
   }
@@ -42,12 +44,8 @@ export class GlassCatHttpResponse implements HttpResponse {
   ////////////////////////////////////////////////////////////////////////////
 
   /**
-   * The original HTTP response wrapped by this __HttpRequest__ instance.
-   * 
-   * @attribute __expRsq
-   * @protected
-   * @type {express.Response}
-   * @default null
+   * The original HTTP response wrapped by this <code>HttpResponse</code>
+   * object.
    */
   protected __expRsq:express.Response = null;
 
@@ -58,10 +56,8 @@ export class GlassCatHttpResponse implements HttpResponse {
   /**
    * Initializes this object.
    * 
-   * @method init
-   * @private
    * @param {express.Response} req the original HTTP response wrapped by this 
-   *                               __HttpRequest__ instance.
+   *                               <code>HttpResponse</code> object.
    */
   private init(res:express.Response):void {
     this.__expRsq = res;
@@ -223,7 +219,7 @@ export class GlassCatHttpResponse implements HttpResponse {
    * instance.
    * 
    * @return {HttpLocalProperties} the local properties for this
-   *                               <code>GlassCatHttpResponse</code> instance.
+   *                               <code>GlassCatHttpResponse</code> object.
    */
   public getLocalProperties():HttpLocalProperties {
     return this.__expRsq.locals.properties;  

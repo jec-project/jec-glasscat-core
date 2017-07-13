@@ -131,4 +131,13 @@ export class GlassCatErrorCodeTest {
       GlassCatErrorCode.ADMIN_REALM_INIT_FAILURE
     ).to.equal(utils.ADMIN_REALM_INIT_FAILURE);
   }
+  
+  @Test({
+    description: "GlassCatErrorCode.INVALID_JSLET_CONFIG should be equal to '132'"
+  })
+  public INVALID_JSLET_CONFIGTest():void {
+    expect(
+      GlassCatErrorCode.INVALID_JSLET_CONFIG
+    ).to.equal(utils.INVALID_JSLET_CONFIG);
+  }
 }
