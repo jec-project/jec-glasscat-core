@@ -34,8 +34,8 @@
     "ejs": "^2.5.6",
     "express": "^4.15.3",
     "i18n": "^0.8.3",
-    "jec-commons": "^1.1.1",
-    "jec-commons-node": "^1.0.1",
+    "jec-commons": "^1.1.2",
+    "jec-commons-node": "^1.0.2",
     "jec-exchange": "^1.1.1",
     "moment": "^2.18.1",
     "print-message": "^2.1.0",
@@ -50,17 +50,17 @@
     "grunt-jsdoc": "^2.1.0",
     "grunt-ts": "^6.0.0-beta.15",
     "grunt-typedoc": "^0.2.4",
-    "jec-juta": "^1.0.3",
-    "jec-tiger": "^1.0.1",
+    "jec-juta": "^1.1.1",
+    "jec-tiger": "^1.1.1",
     "mocha": "^3.3.0",
     "typedoc": "^0.6.0",
     "typescript": "^2.3.2",
     "typings": "^2.1.1"
   },
   "peerDependencies": {
-    "jec-commons": "^1.1.1",
-    "jec-commons-node": "^1.0.1",
-    "jec-juta": "^1.1.0",
-    "jec-tiger": "^1.1.0"
+    "jec-commons": "^1.1.2",
+    "jec-commons-node": "^1.0.2",
+    "jec-juta": "^1.1.1",
+    "jec-tiger": "^1.1.1"
   }
 }
