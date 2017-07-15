@@ -1,6 +1,6 @@
 {
   "name": "jec-glasscat-core",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "JEC GlassCat Core - The core components of the Glasscat Aplication Server.",
   "main": "lib/com/onsoft/glasscat/index",
   "types": "types/jec-glasscat-core.d.ts",
