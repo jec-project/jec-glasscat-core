@@ -121,7 +121,7 @@ export class LocaleManagerTest {
   }
   
   @Test({
-    description: "should return a phrase whith the correct substitued values",
+    description: "should return a phrase with the correct substitued values",
     order: 10
   })
   public getParamsTest():void {

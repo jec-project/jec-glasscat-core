@@ -37,14 +37,14 @@ export class UrlPatternUtils {
   ////////////////////////////////////////////////////////////////////////////
 
   /**
-   * Returns a boolean that indicates whether the specified URL matches whith
+   * Returns a boolean that indicates whether the specified URL matches with
    * the <code>UrlPattern</code> instance (<code>true</code>), or not
    * (<code>false</code>).
    * 
    * @param {string} url the URL to check.
    * @param {UrlPattern} pattern the <code>UrlPattern</code> instance to compare
    *                             with the  specified URL.
-   * @return {boolean} <code>true</code> whether the specified URL matches whith 
+   * @return {boolean} <code>true</code> whether the specified URL matches with 
    *                   the <code>UrlPattern</code> instance; <code>false</code>
    *                   otherwise.
    */

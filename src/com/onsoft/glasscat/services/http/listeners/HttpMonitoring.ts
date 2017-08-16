@@ -49,7 +49,7 @@ export class HttpMonitoring {
   //////////////////////////////////////////////////////////////////////////////
 
   /**
-   * The context associated whith this <code>HttpMonitoring</code> instance.
+   * The context associated with this <code>HttpMonitoring</code> instance.
    */
   private _config:HttpMonitoringConfig = null;
 

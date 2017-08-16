@@ -65,7 +65,7 @@ export class DomainConfigParserTest {
   }
   
   @Test({
-    description: "should return an object whith a valid 'domains' property"
+    description: "should return an object with a valid 'domains' property"
   })
   public parseValidTest():void {
     let result:any = this.parser.parse(utils.DOMAINS_CONFIG);
@@ -73,7 +73,7 @@ export class DomainConfigParserTest {
   }
 
   @Test({
-    description: "should return an object whith a Domain instance"
+    description: "should return an object with a Domain instance"
   })
   public parseDomainTest():void {
     let result:any = this.parser.parse(utils.DOMAINS_CONFIG);
@@ -81,7 +81,7 @@ export class DomainConfigParserTest {
   }
     
   @Test({
-    description: "should return an object whith a valid 'name' property"
+    description: "should return an object with a valid 'name' property"
   })
   public parseNameTest():void {
     let result:any = this.parser.parse(utils.DOMAINS_CONFIG);
@@ -90,7 +90,7 @@ export class DomainConfigParserTest {
   }
   
   @Test({
-    description: "should return an object whith a valid 'host' property"
+    description: "should return an object with a valid 'host' property"
   })
   public parseHostTest():void {
     let result:any = this.parser.parse(utils.DOMAINS_CONFIG);
@@ -99,7 +99,7 @@ export class DomainConfigParserTest {
   }
   
   @Test({
-    description: "should return an object whith a valid 'target' property"
+    description: "should return an object with a valid 'target' property"
   })
   public parseTargetTest():void {
     let result:any = this.parser.parse(utils.DOMAINS_CONFIG);
@@ -108,7 +108,7 @@ export class DomainConfigParserTest {
   }
   
   @Test({
-    description: "should return an object whith a valid 'connector' property"
+    description: "should return an object with a valid 'connector' property"
   })
   public parseDomainConnectorConfigTest():void {
     let result:any = this.parser.parse(utils.DOMAINS_CONFIG);
@@ -117,7 +117,7 @@ export class DomainConfigParserTest {
   }
   
   @Test({
-    description: "should return an object whith a valid 'type' property"
+    description: "should return an object with a valid 'type' property"
   })
   public parseTypeTest():void {
     let result:any = this.parser.parse(utils.DOMAINS_CONFIG);
@@ -126,7 +126,7 @@ export class DomainConfigParserTest {
   }
   
   @Test({
-    description: "should return an object whith a valid 'server' property"
+    description: "should return an object with a valid 'server' property"
   })
   public parseServerest():void {
     let result:any = this.parser.parse(utils.DOMAINS_CONFIG);

@@ -31,8 +31,9 @@ export interface DomainContainer extends JecContainer {
   /**
    * Initializes this <code>DomainContainer</code> instance.
    *
-   * @param {DomainConnector} connector the domain connector associated whith
-   *                                    this <code>DomainContainer</code> instance.
+   * @param {DomainConnector} connector the domain connector associated with
+   *                                    this <code>DomainContainer</code>
+   *                                    instance.
    * @param {JsletManager} jsletManager the reference to the  of
    *                                    <code>JsletManager</code> the GlassCat
    *                                    container.

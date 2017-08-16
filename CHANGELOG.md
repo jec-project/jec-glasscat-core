@@ -1,5 +1,18 @@
 # JEC GlassCat Core Project: Update Release Notes
 
+<a name="jec-glasscat-core-0.1.1"></a>
+## **0.1.1** (2017-08-16)
+
+### Bug Fixes
+
+- **TypeScript**: addition of the `@types/node` type definitions to the development environment.
+
+### Features
+
+- **build**: adding build script to npm install process for GlassCat instal optimisation
+- **index.ts**: refactoring index.ts file for better types generation
+- Dependencies upgrade
+
 <a name="jec-glasscat-core-0.1.0"></a>
 ## **0.1.0** (2017-07-15)
 

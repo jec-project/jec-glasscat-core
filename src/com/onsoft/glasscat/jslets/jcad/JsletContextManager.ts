@@ -56,7 +56,7 @@ export class JsletContextManager {
    * 
    * @param {string} jcadReference the reference of the context to initialize.
    * @param {Class} decoratorClass the reference to the decorator class
-   *                               associated whith the context to initialize.
+   *                               associated with the context to initialize.
    */
   private initContext(jcadReference:string, decoratorClass:any):void {
     let ctxManager:JcadContextManager = JcadContextManager.getInstance();

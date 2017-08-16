@@ -17,7 +17,7 @@ The JEC GlassCat Core Project needs the following system parameters in order to 
 Set up the JEC GlassCat Core module with:
 
 ```bash
-$ npm install jec-exchange --save
+$ npm install jec-glasscat-core --save
 ```
 
 ## Running Tests
@@ -43,7 +43,7 @@ The documentation generator is [TypeDoc](http://typedoc.org/)
 
 ## Update Release Notes
 
-**Current stable release:** [0.1.0](CHANGELOG.md#jec-glasscat-core-0.1.0)
+**Current stable release:** [0.1.1](CHANGELOG.md#jec-glasscat-core-0.1.1)
  
 For a complete listing of release notes for all JEC GlassCat Core update releases, see the [CHANGELOG](CHANGELOG.md) file. 
 
