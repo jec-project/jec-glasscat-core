@@ -14,26 +14,16 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {BootstrapScript} from "jec-commons";
+import { JcadContext, JcadContextFactory } from "jec-commons";
 
 /*!
- * This module constains utilities used by the BootstrapScriptSorterTest test
+ * This module constains utilities used by the BootstrapContextManagerTest test
  * suite.
  */
 
 // Utilities:
-export const buildBootstrapScriptColl:Function = function():BootstrapScript[]{
-  let coll:BootstrapScript[] = new Array<BootstrapScript>();
-  let cussor:number = 6;
-  let script:any = null;
-  while(cussor--) {
-    script = {
-      __priority: Math.round(Math.random() * 10),
-      getPriority: function() {
-        return this.__priority;
-      }
-    };
-    coll.push(script as BootstrapScript);
-  }
-  return coll;
-}
+export const builJcadContext:Function = function():JcadContext {
+  let ctxFactory:JcadContextFactory = new JcadContextFactory();
+  let context:JcadContext = ctxFactory.create();
+  return context;
+};

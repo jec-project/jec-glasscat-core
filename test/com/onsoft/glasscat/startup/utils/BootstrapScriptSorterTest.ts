@@ -16,8 +16,8 @@
 
 import { TestSuite, Test } from "jec-juta";
 import { expect } from "chai";
-import { BootstrapScriptSorter } from "../../../../../../src/com/onsoft/glasscat/util/bootstrap/BootstrapScriptSorter";
-import { EjpBootstrapConfig } from "../../../../../../src/com/onsoft/glasscat/context/ejp/EjpBootstrapConfig";
+import { BootstrapScriptSorter } from "../../../../../../src/com/onsoft/glasscat/startup/utils/BootstrapScriptSorter";
+import { BootstrapScript } from "jec-commons";
 
 import * as utils from "../../../../../../utils/test-utils/utilities/BootstrapScriptSorterTestUtils"; 
 
@@ -32,15 +32,15 @@ export class BootstrapScriptSorterTest {
   })
   public sortCollectionTest():void {
     let sorter:BootstrapScriptSorter = new BootstrapScriptSorter();
-    let collection:EjpBootstrapConfig[] = utils.buildBootstrapScriptColl();
+    let collection:BootstrapScript[] = utils.buildBootstrapScriptColl();
     let len:number = collection.length;
     let priority:number = 0;
-    let cfg:EjpBootstrapConfig = null;
+    let script:BootstrapScript = null;
     sorter.sortCollection(collection);
     while(len--) {
-      cfg = collection[len];
-      expect(cfg.priority >= priority).to.be.true;
-      priority = cfg.priority;
+      script = collection[len];
+      expect(script.getPriority() >= priority).to.be.true;
+      priority = script.getPriority();
     }
   }
 }

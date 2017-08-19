@@ -41,7 +41,8 @@ import {LoginStrategyConfig} from "../../security/login/config/LoginStrategyConf
 import {LoginStrategy} from "../../security/login/LoginStrategy";
 import {DefaultSourceFileInspector} from "../../context/files/DefaultSourceFileInspector";
 import {Logger, JecStringsEnum, UrlStringsEnum, HttpStatusCode, ClassLoader,
-        SourceFileInspector, JcadContext} from "jec-commons";
+  SourceFileInspector, JcadContext, BootstrapContext, BootstrapScript, InspectMode
+} from "jec-commons";
 import {JsletsAutowireProcessor} from "../../jslets/utils/JsletsAutowireProcessor";
 import {EjpConfig} from "../../context/ejp/EjpConfig";
 import {EjpWebAppConfig} from "../../context/ejp/EjpWebAppConfig";
@@ -53,8 +54,11 @@ import {EjpStaticResourcesConfig} from "../../context/ejp/EjpStaticResourcesConf
 import {EjpRoleConfig} from "../../context/ejp/EjpRoleConfig";
 import {EjpResourceMapperConfig} from "../../context/ejp/EjpResourceMapperConfig";
 import {JsletContextManager} from "../../jslets/jcad/JsletContextManager";
-import {BootstrapScriptSorter} from "../../util/bootstrap/BootstrapScriptSorter";
 import {NotFoundErrorBuilder} from "../errors/NotFoundErrorBuilder";
+import {BootstrapAutowireProcessor} from "../../startup/utils/BootstrapAutowireProcessor";
+import {BootstrapContextManager} from "../../startup/jcad/BootstrapContextManager";
+import {BootstrapContextBuilder} from "../../startup/utils/BootstrapContextBuilder";
+import {BootstrapScriptBuilder} from "../../startup/utils/BootstrapScriptBuilder";
 
 /**
  * The <code>EjpContainer</code> class is the concrete implementation of the
@@ -92,6 +96,12 @@ export class EjpContainer implements DomainContainer {
    */
   private _jsletContext:JsletContext = null;
   
+  /**
+   * The reference to the <code>BootstrapContext</code> instance for this domain
+   * container.
+   */
+  private _bootstrapContext:BootstrapContext = null
+
   /**
    * The context root for this domain container.
    */
@@ -142,10 +152,16 @@ export class EjpContainer implements DomainContainer {
 
   /**
    * The reference to the <code>JsletContextManager</code> that is used to 
-   * manage JCAD context objects for this container.
+   * manage JCAD jslet context objects for this container.
    */
-  private _contextManager:JsletContextManager = null;
+  private _jsletContextManager:JsletContextManager = null;
 
+  /**
+   * The reference to the <code>BootstrapContextManager</code> that is used to 
+   * manage JCAD bootstrap context objects for this container.
+   */
+  private _bootstrapContextManager:BootstrapContextManager = null;
+  
   /**
    * The reference to the builder used to create <code>NotFoundError</code>  
    * objects.
@@ -168,34 +184,39 @@ export class EjpContainer implements DomainContainer {
     let sessionContext:SessionContext = null;
     let webapp:EjpWebAppConfig = config.webapp;
     let jsletsConfig:EjpJsletsConfig = webapp.jslets;
-    let builder:JsletContextBuilder = JsletContextBuilder.getInstance();
+    let jsletContextBuilder:JsletContextBuilder =
+                                              JsletContextBuilder.getInstance();
     this.initState(config);
     this.initResourceMap(config);
     if(this._state === DomainState.STATEFUL) {
       securityContext = this.initSecurityContext(config);
       sessionContext = this.initSessionContext(config);
       this.createLoginStrategy(config);
-      this._jsletContext = builder.buildContext(
+      this._jsletContext = jsletContextBuilder.buildContext(
           this._connector, securityContext,
           sessionContext, this._loginStrategy
       );
       this.initLoginStrategy();
     } else {
-       this._jsletContext =builder.buildContext(
+       this._jsletContext = jsletContextBuilder.buildContext(
           this._connector, null, null, null
       );
     }
+
+    this.initBootstrapScripts(config);
+
     if(jsletsConfig.enableAutowire) {
       this.getSourceFileInspector().addProcessor(new JsletsAutowireProcessor());
     }
-    this.initBootstrapScripts(config);
-    this._sourceFileInspector.inspect();
+    
+    this._sourceFileInspector.inspect(InspectMode.READ_CACHE);
     if(webapp.jslets) {
-      builder.initJslets(this._jsletContext, jsletsConfig.config);
+      jsletContextBuilder.initJslets(this._jsletContext, jsletsConfig.config);
     }
     this._jsletManager.addContext(this._contextRoot, this._jsletContext);
     this._welcomeFile = config.webapp.welcomeFile;
     this._notFoundErrorBuilder = new NotFoundErrorBuilder();
+    this._sourceFileInspector.clearCache();
   }
 
   /**
@@ -264,22 +285,26 @@ export class EjpContainer implements DomainContainer {
    *                           with this <code>EjpContainer</code> instance.
    */
   private initBootstrapScripts(config:EjpConfig):void {
-    let loader:ClassLoader = new ClassLoader();
     let scripts:EjpBootstrapConfig[] = config.webapp.bootstrap;
-    let script:EjpBootstrapConfig = null;
-    let Contructor:any = null;
-    let sorter:BootstrapScriptSorter = null;
+    let scriptConfig:EjpBootstrapConfig = null;
+    let script:BootstrapScript = null;
     let len:number = -1;
+    let builder:BootstrapScriptBuilder = new BootstrapScriptBuilder();
+    let autoWireProcessor:BootstrapAutowireProcessor =
+                                               new BootstrapAutowireProcessor();
+    this._bootstrapContext = 
+            BootstrapContextBuilder.getInstance().buildContext(this._connector);
     if(scripts) {
-      sorter = new BootstrapScriptSorter();
-      sorter.sortCollection(scripts);
       len = scripts.length;
       while(len--) {
-        script = scripts[len];
-        Contructor = loader.loadClass(this._src + script.path);
-        new Contructor().run(this);
+        scriptConfig = scripts[len];
+        script = builder.build(this._src + scriptConfig.path);
+        this._bootstrapContext.addScript(script);
       }
     }
+    this.getSourceFileInspector().addProcessor(autoWireProcessor);
+    this._sourceFileInspector.inspect(InspectMode.FILL_CACHE);
+    this._sourceFileInspector.removeProcessor(autoWireProcessor);
   }
 
   /**
@@ -364,8 +389,8 @@ export class EjpContainer implements DomainContainer {
    * <code>EjpContainer</code> instance.
    */
   private initJsletContextManager():void {
-    this._contextManager = new JsletContextManager();
-    this._contextManager.createContext(this._connector.getJcadContext());
+    this._jsletContextManager = new JsletContextManager();
+    this._jsletContextManager.createContext(this._connector.getJcadContext());
   }
 
   /**
@@ -373,9 +398,28 @@ export class EjpContainer implements DomainContainer {
    * <code>EjpContainer</code> instance.
    */
   private deleteJsletContextManager():void {
-      this._contextManager.deleteContext();
+      this._jsletContextManager.deleteContext();
   }
 
+  /**
+   * Initializes the bootstrap JCAD context manager for this
+   * <code>EjpContainer</code> instance.
+   */
+  private initBootstrapContextManager():void {
+    this._bootstrapContextManager = new BootstrapContextManager();
+    this._bootstrapContextManager.createContext(
+      this._connector.getJcadContext()
+    );
+  }
+
+  /**
+   * Removes the bootstrap JCAD context manager associated with this 
+   * <code>EjpContainer</code> instance.
+   */
+  private deleteBootstrapContextManager():void {
+      this._bootstrapContextManager.deleteContext();
+  }
+  
   //////////////////////////////////////////////////////////////////////////////
   // Public methods
   //////////////////////////////////////////////////////////////////////////////
@@ -396,9 +440,11 @@ export class EjpContainer implements DomainContainer {
     this._webapp = target + JecStringsEnum.WEB_APP;
     this._src = target + JecStringsEnum.SRC;
     this._templateProcessor = new DefaultTemplateProcessor();
-     this.initJsletContextManager();
+    this.initBootstrapContextManager();
+    this.initJsletContextManager();
     this.initSourceFileInspector();
     this.initConfig(connector.getConfig());
+    this.deleteBootstrapContextManager();
     this.deleteJsletContextManager();
     msg = i18n.get("domains.containers.init");
     msg += "\n   => " + i18n.get("domains.containers.contextRoot", this._contextRoot);
@@ -413,6 +459,13 @@ export class EjpContainer implements DomainContainer {
     return this._jsletContext;
   }
 
+  /**
+   * @inheritDoc
+   */
+  public getBootstrapContext():BootstrapContext {
+    return this._bootstrapContext;
+  }
+  
   /**
    * @inheritDoc
    */

@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {EjpBootstrapConfig} from "../../context/ejp/EjpBootstrapConfig";
+import {BootstrapScript} from "jec-commons";
 
 /**
  * A helper class for sorting collections of EJP configuration bootstrap
@@ -38,18 +38,19 @@ export class BootstrapScriptSorter {
   /**
    * The function that is used to compare the specified objects.
    *
-   * @param {EjpBootstrapConfig} obj1 the first object to compare.
-   * @param {EjpBootstrapConfig} obj2 the second object to compare.
+   * @param {BootstrapScript} obj1 the first object to compare.
+   * @param {BootstrapScript} obj2 the second object to compare.
    * @return {number} a number that indicates the sort order for the specified
    *                  objects.
    */
-  private sortFunction(obj1:EjpBootstrapConfig,
-                                               obj2:EjpBootstrapConfig):number {
-    let a:number = obj1.priority;
-    let b:number = obj2.priority;
-    if(a === undefined && b === undefined) return 0;
-    else if(a === undefined) return -1;
-    else if(b === undefined) return 1;
+  private sortFunction(obj1:any, obj2:any):number {
+    //let a:number = obj1.getPriority();
+    //let b:number = obj2.getPriority();
+    let a:number = obj1.__priority;
+    let b:number = obj2.__priority;
+    if(a === null || a === undefined && b === null || b === undefined) return 0;
+    else if(a === null || a === undefined) return -1;
+    else if(b === null || b === undefined) return 1;
     else if(a > b) return -1;
     else if(a < b) return 1;
     return 0;
@@ -62,10 +63,9 @@ export class BootstrapScriptSorter {
   /**
    * Sorts the specified collection from higher to lower IDs.
    *
-   * @param {Array<EjpBootstrapConfig>} bootstrapCollection the collection to
-   *                                                        sort.
+   * @param {Array<BootstrapScript} bootstrapCollection the collection to sort.
    */
-  public sortCollection(bootstrapCollection:EjpBootstrapConfig[]):void {
+  public sortCollection(bootstrapCollection:BootstrapScript[]):void {
     bootstrapCollection.sort(this.sortFunction);
   }
 }

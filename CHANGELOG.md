@@ -12,6 +12,7 @@
 - **build**: adding build script to npm install process for GlassCat instal optimisation
 - **index.ts**: refactoring index.ts file for better types generation
 - Dependencies upgrade
+- **@Bootstrap**: adding the `@Bootstrap` decorator implementation as specified by JEC
 
 <a name="jec-glasscat-core-0.1.0"></a>
 ## **0.1.0** (2017-07-15)

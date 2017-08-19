@@ -20,17 +20,19 @@ import {LocaleManager} from "../i18n/LocaleManager";
 import {LoggerManager} from "../util/logging/LoggerManager";
 import {UrlPatternUtils} from "../util/url/UrlPatternUtils";
 import {UrlPatternBuilder} from "../util/url/UrlPatternBuilder";
-import {DomainConnector} from "../domains/connectors/DomainConnector";
-import {ContextRootUtil} from "../util/contextroot/ContextRootUtil";;
+import {ContextRootUtil} from "../util/contextroot/ContextRootUtil";
 import {LoginStrategy} from "../security/login/LoginStrategy";
 import {SecurityManager} from "../core/SecurityManager";
+import {AbstractContainerContext} from "../context/core/AbstractContainerContext";
+import {DomainConnector} from "../domains/connectors/DomainConnector";
 import {Logger, JecStringsEnum, UrlStringsEnum, UrlPattern} from "jec-commons";
 
 /**
  * The <code>EjpJsletContext</code> class represents the jslets context for a
  * <code>EjpContainer</code> instance.
  */
-export class EjpJsletContext implements JsletContext {
+export class EjpJsletContext extends AbstractContainerContext
+                             implements JsletContext {
   
   ////////////////////////////////////////////////////////////////////////////
   // Constructor function
@@ -54,7 +56,8 @@ export class EjpJsletContext implements JsletContext {
   constructor(connector:DomainConnector, securityContext:SecurityContext,
                                          sessionContext:SessionContext,
                                          loginStrategy:LoginStrategy) {
-    this.init(connector, securityContext, sessionContext, loginStrategy);
+    super(connector);
+    this.init(securityContext, sessionContext, loginStrategy);
   }
 
   ////////////////////////////////////////////////////////////////////////////
@@ -83,11 +86,6 @@ export class EjpJsletContext implements JsletContext {
   private _urlPatternColl:UrlPattern[] = null;
 
   /**
-   * The domain connector on which is deployed this jslet context.
-   */
-  private _connector:DomainConnector = null;
-
-  /**
    * The security context associated with this <code>JsletContext</code> object.
    */
   private _securityContext:SecurityContext = null;
@@ -109,8 +107,6 @@ export class EjpJsletContext implements JsletContext {
   /**
    * Initializes this object.
    * 
-   * @param {DomainConnector} connector The domain connector on which is 
-   *                                    deployed this jslet context.
    * @param {SecurityContext} securityContext the <code>SecurityContext</code> 
    *                                          associated with this
    *                                          <code>JsletContext</code> object.
@@ -121,12 +117,10 @@ export class EjpJsletContext implements JsletContext {
    *                                      associated with this 
    *                                      <code>JsletContext</code> object.
    */
-  private init(connector:DomainConnector, securityContext:SecurityContext,
-                                          sessionContext:SessionContext,
-                                          loginStrategy:LoginStrategy):void {
-    this._connector = connector;
+  private init(securityContext:SecurityContext, sessionContext:SessionContext,
+                                             loginStrategy:LoginStrategy):void {
     this._securityContext = securityContext;
-    this._sessionContext = sessionContext
+    this._sessionContext = sessionContext;
     this._jsletMap = new Map<string, Jslet>();
     this._urlPatternUtils = new UrlPatternUtils();
     this._urlPatternBuilder = new UrlPatternBuilder();
@@ -189,27 +183,6 @@ export class EjpJsletContext implements JsletContext {
   /**
    * @inheritDoc
    */
-  public getStatusInfo():any {
-     return this._connector.getStatusInfo();
-  }
-
-  /**
-   * @inheritDoc
-   */
-  public getDirectoryPath():string {
-     return this._connector.getTarget() + JecStringsEnum.WEB_APP;
-  }
-
-  /**
-   * @inheritDoc
-   */
-  public getSourcePath():string{
-     return this._connector.getTarget() + JecStringsEnum.SRC;
-  }
-
-  /**
-   * @inheritDoc
-   */
   public getSecurityContext():SecurityContext {
      return this._securityContext;
   }
@@ -235,12 +208,5 @@ export class EjpJsletContext implements JsletContext {
   public invalidateSession(req:HttpRequest, res:HttpResponse,
                                        result:(error?:SessionError)=>any):void {
     this._loginStrategy.invalidateSession(req, res, result);
-  }
-  
-  /**
-   * @inheritDoc
-   */
-  public getLogger():Logger {
-    return LoggerManager.getInstance();
   }
 }

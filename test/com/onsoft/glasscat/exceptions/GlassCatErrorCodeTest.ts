@@ -133,11 +133,21 @@ export class GlassCatErrorCodeTest {
   }
   
   @Test({
-    description: "GlassCatErrorCode.INVALID_JSLET_CONFIG should be equal to '132'"
+    description: "GlassCatErrorCode.INVALID_JSLET_CONFIG should be equal to '13'"
   })
   public INVALID_JSLET_CONFIGTest():void {
     expect(
       GlassCatErrorCode.INVALID_JSLET_CONFIG
     ).to.equal(utils.INVALID_JSLET_CONFIG);
   }
+
+  @Test({
+    description: "GlassCatErrorCode.INVALID_BOOTSTRAP_CONFIG should be equal to '14'"
+  })
+  public INVALID_BOOTSTRAP_CONFIGTest():void {
+    expect(
+      GlassCatErrorCode.INVALID_BOOTSTRAP_CONFIG
+    ).to.equal(utils.INVALID_BOOTSTRAP_CONFIG);
+  }
+  
 }

@@ -18,8 +18,9 @@ import {LoggerManager} from "../../util/logging/LoggerManager";
 import {LocaleManager} from "../../i18n/LocaleManager";
 import {DomainConnector} from "../../domains/connectors/DomainConnector";
 import {Logger, UrlStringsEnum, SourceFileInspector, FilePreProcessor,
-        FileProperties} from "jec-commons";
+        FileProperties, InspectMode} from "jec-commons";
 import {WalkPathUtil} from "jec-commons-node";
+import {CacheableFile} from "./CacheableFile";
 
 /**
  * The default <code>SourceFileInspector</code> implementation for all GlassCat
@@ -68,6 +69,13 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
    */
   private _walkUtil:WalkPathUtil = null;
 
+  /**
+   * The cache used by this inspector whent inspect mode is
+   * <code>InspectMode.READ_CACHE</code>, or
+   * <code>InspectMode.FILL_CACHE</code>.
+   */
+  private _cache:Map<string, CacheableFile[]> = null;
+
   ////////////////////////////////////////////////////////////////////////////
   // Private methods
   ////////////////////////////////////////////////////////////////////////////
@@ -79,18 +87,36 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
     this._processors = new Array<FilePreProcessor>();
     this._sourcePaths = new Array<string>();
     this._walkUtil = new WalkPathUtil();
+    this._cache = new Map<string, CacheableFile[]>();
   }
 
   /**
    * Inspects the specified source path.
    * 
    * @param {string} sourcePath the source path to inspect.
+   * @param {number} inspectMode specifies the process used by this file
+   *                             inspector to inspect files. Valid values are
+   *                             the constants of the <code>InspectMode</code>
+   *                             class.
    */
-  private inspectSourcePath(sourcePath:string):void {
+  private inspectSourcePath(sourcePath:string, inspectMode:number):void {
     let file:string = null;
     let targetPath:string = this._target + sourcePath;
+    let cacheableFile:CacheableFile = null;
+    let fillCacheMode:boolean = inspectMode === InspectMode.FILL_CACHE;
+    let cachedFiles:Array<CacheableFile> = null;
+    if(fillCacheMode) {
+      cachedFiles = new Array<CacheableFile>();
+      this._cache.set(sourcePath, cachedFiles);
+    }
     this.notifyProcessStart(targetPath);
     this._walkUtil.walkSync(targetPath, (file:FileProperties)=> {
+      if(fillCacheMode) {
+        cacheableFile = new CacheableFile();
+        cacheableFile.file = file;
+        cacheableFile.sourcePath = sourcePath;
+        cachedFiles.push(cacheableFile);
+      }
       this.processFile(file);
     });
     this.notifyProcessComplete(targetPath);
@@ -135,6 +161,25 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
     }
   }
 
+  /**
+   * Inspects all files in the cache.
+   */
+  private inspectCache():void {
+    let len:number = -1;
+    let cacheableFile:CacheableFile = null
+    let targetPath:string = this._target;
+    this._cache.forEach((value:CacheableFile[], srcPath:string)=> {
+      targetPath = this._target + srcPath;
+      this.notifyProcessStart(targetPath);
+      len = value.length;
+      while(len--) {
+        cacheableFile = value[len];
+        this.processFile(cacheableFile.file);
+      }
+      this.notifyProcessComplete(targetPath);
+    });
+  }
+
   ////////////////////////////////////////////////////////////////////////////
   // Public methods
   ////////////////////////////////////////////////////////////////////////////
@@ -177,6 +222,23 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
   /**
    * @inheritDoc
    */
+  public removeProcessor(processor:FilePreProcessor):boolean {
+    let result:boolean = false;
+    let id:number = this._processors.indexOf(processor);
+    if(id !== -1) {
+      this._processors.splice(id, 1);
+      LoggerManager.getInstance().info(
+        LocaleManager.getInstance().get(
+          "srcInspector.processorRemoved", processor.constructor.name
+        )
+      );
+    }
+    return result;
+  }
+
+  /**
+   * @inheritDoc
+   */
   public addSourcePath(path:string):void {
     this._sourcePaths.push(path);
     LoggerManager.getInstance().info(
@@ -189,17 +251,31 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
   /**
    * @inheritDoc
    */
-  public inspect():void {
+  public inspect(inspectMode:number):void {
     let len:number = this._processors.length;
     let logManager:Logger = LoggerManager.getInstance();
     let i18n:LocaleManager = LocaleManager.getInstance();
     if(len > 0) {
       logManager.info(i18n.get("srcInspector.lookupStart"));
-      len = this._sourcePaths.length;
-      while(len--) {
-        this.inspectSourcePath(this._sourcePaths[len]);
+      logManager.info(
+        i18n.get("srcInspector.inspectMode", String(inspectMode))
+      );
+      if(inspectMode === InspectMode.READ_CACHE) {
+        this.inspectCache();
+      } else {
+        len = this._sourcePaths.length;
+        while(len--) {
+          this.inspectSourcePath(this._sourcePaths[len], inspectMode);
+        }
       }
       logManager.info(i18n.get("srcInspector.lookupComplete"));
     }
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public clearCache():void {
+    this._cache.clear();
   }
 }

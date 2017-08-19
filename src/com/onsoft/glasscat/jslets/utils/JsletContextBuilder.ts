@@ -40,7 +40,7 @@ export class JsletContextBuilder {
   constructor() {
     if(JsletContextBuilder._locked || JsletContextBuilder.INSTANCE) {
       let msg:string = LocaleManager.getInstance().get(
-        "errors.singleton", "HttpStatusReportBuilder"
+        "errors.singleton", "JsletContextBuilder"
       );
       throw new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, msg);
     }
@@ -81,8 +81,8 @@ export class JsletContextBuilder {
   /**
    * Creates and returns a new <code>Jslet</code> instance.
    *
-   * @param {any} path the path to the jslet class file.
-   * @param {any} target the path to the EJP for which to build the jslet.
+   * @param {string} path the path to the jslet class file.
+   * @param {string} target the path to the EJP for which to build the jslet.
    * @return {Jslet} a new <code>Jslet</code> instance.
    */
   private buildJslet(path:string, target:string):Jslet {
@@ -119,6 +119,7 @@ export class JsletContextBuilder {
    * @param {LoginStrategy} loginStrategy the <code>LoginStrategy</code> 
    *                                      associated with this
    *                                      <code>JsletContext</code> instance.
+   * @return {JsletContext} a new <code>JsletContext</code> instance.
    */
   public buildContext(connector:DomainConnector,
                       securityContext:SecurityContext,
@@ -138,7 +139,7 @@ export class JsletContextBuilder {
    * Loads and adds the specified list jslets path references for the specified
    * <code>JsletContext</code> instance.
    *
-   * @param {Array<String>} jslets an array of jslets references to initialize.
+   * @param {Array<string>} jslets an array of jslets references to initialize.
    */
   public initJslets(context:JsletContext, jslets:string[]):void {
     let len:number = -1;

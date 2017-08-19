@@ -33,3 +33,4 @@ export const INVALID_ENCRYPTION_KEY:number = 10;
 export const INVALID_CONTEXT:number = 11;
 export const ADMIN_REALM_INIT_FAILURE:number = 12;
 export const INVALID_JSLET_CONFIG:number = 13;
+export const INVALID_BOOTSTRAP_CONFIG:number = 14;

@@ -14,26 +14,23 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {BootstrapScript} from "jec-commons";
+import { BootstrapParams } from "jec-commons";
+import { BootstrapImpl } from "../classes/BootstrapImpl";
 
 /*!
- * This module constains utilities used by the BootstrapScriptSorterTest test
+ * This module constains utilities used by the BootstrapDecoratorTest test
  * suite.
  */
 
 // Utilities:
-export const buildBootstrapScriptColl:Function = function():BootstrapScript[]{
-  let coll:BootstrapScript[] = new Array<BootstrapScript>();
-  let cussor:number = 6;
-  let script:any = null;
-  while(cussor--) {
-    script = {
-      __priority: Math.round(Math.random() * 10),
-      getPriority: function() {
-        return this.__priority;
-      }
-    };
-    coll.push(script as BootstrapScript);
-  }
-  return coll;
-}
+export const PRIORITY:number = 10;
+export const buildBootstrapScript:Function = function():any {
+  let bootstrap:BootstrapImpl = new BootstrapImpl();
+  return bootstrap.constructor;
+};
+export const buildParams:Function = function():BootstrapParams {
+  let params:BootstrapParams = ({
+    priority: PRIORITY
+  } as BootstrapParams);
+  return params;
+};

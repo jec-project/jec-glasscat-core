@@ -20,7 +20,7 @@ import {JsletManager} from "../../core/JsletManager";
 import {HttpResponse, HttpRequest, JsletContext} from "jec-exchange";
 import {HttpLocalProperties} from "../../services/http/utils/HttpLocalProperties";
 import {LoginStrategy} from "../../security/login/LoginStrategy";
-import {Logger, SourceFileInspector, JecContainer} from "jec-commons";
+import {Logger, SourceFileInspector, JecContainer, BootstrapContext} from "jec-commons";
 
 /**
  * The <code>DomainContainer</code> interface provides the API for managing 
@@ -41,6 +41,15 @@ export interface DomainContainer extends JecContainer {
   init(connector:DomainConnector, jsletManager:JsletManager):void;
 
   /**
+   * Returns the <code>BootstrapContext</code> object associated with this
+   * container.
+   *
+   * @return {BootstrapContext} the <code>BootstrapContext</code> object for 
+   *                            this container.
+   */
+  getBootstrapContext():BootstrapContext;
+
+  /**
    * Returns the <code>JsletContext</code> object associated with this
    * container.
    *
@@ -48,7 +57,7 @@ export interface DomainContainer extends JecContainer {
    *                        container.
    */
   getJsletContext():JsletContext;
-
+  
   /**
    * Returns the <code>LoginStrategy</code> object associated with this
    * container.

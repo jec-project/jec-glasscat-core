@@ -14,26 +14,14 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {BootstrapScript} from "jec-commons";
+import {ContainerContext} from "jec-commons";
+import {AbstractContainerContext} from "../../../src/com/onsoft/glasscat/context/core/AbstractContainerContext";
+import {DomainConnector} from "../../../src/com/onsoft/glasscat/domains/connectors/DomainConnector";
 
-/*!
- * This module constains utilities used by the BootstrapScriptSorterTest test
- * suite.
- */
+export class ContainerContextImpl extends AbstractContainerContext
+                                                   implements ContainerContext {
 
-// Utilities:
-export const buildBootstrapScriptColl:Function = function():BootstrapScript[]{
-  let coll:BootstrapScript[] = new Array<BootstrapScript>();
-  let cussor:number = 6;
-  let script:any = null;
-  while(cussor--) {
-    script = {
-      __priority: Math.round(Math.random() * 10),
-      getPriority: function() {
-        return this.__priority;
-      }
-    };
-    coll.push(script as BootstrapScript);
+  constructor(connector:DomainConnector) {
+    super(connector);
   }
-  return coll;
 }
