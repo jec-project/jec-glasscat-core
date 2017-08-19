@@ -202,9 +202,7 @@ export class EjpContainer implements DomainContainer {
           this._connector, null, null, null
       );
     }
-
     this.initBootstrapScripts(config);
-
     if(jsletsConfig.enableAutowire) {
       this.getSourceFileInspector().addProcessor(new JsletsAutowireProcessor());
     }

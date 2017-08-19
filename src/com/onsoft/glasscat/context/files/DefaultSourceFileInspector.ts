@@ -18,7 +18,7 @@ import {LoggerManager} from "../../util/logging/LoggerManager";
 import {LocaleManager} from "../../i18n/LocaleManager";
 import {DomainConnector} from "../../domains/connectors/DomainConnector";
 import {Logger, UrlStringsEnum, SourceFileInspector, FilePreProcessor,
-        FileProperties, InspectMode} from "jec-commons";
+        FileProperties, InspectMode, InspectModeUtil} from "jec-commons";
 import {WalkPathUtil} from "jec-commons-node";
 import {CacheableFile} from "./CacheableFile";
 
@@ -76,6 +76,12 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
    */
   private _cache:Map<string, CacheableFile[]> = null;
 
+  /**
+   * The helper object that converts <code>InspectMode</code> constants to
+   * strings for log messages.
+   */
+  private _inspectModeUtil:InspectModeUtil = null;
+
   ////////////////////////////////////////////////////////////////////////////
   // Private methods
   ////////////////////////////////////////////////////////////////////////////
@@ -88,6 +94,7 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
     this._sourcePaths = new Array<string>();
     this._walkUtil = new WalkPathUtil();
     this._cache = new Map<string, CacheableFile[]>();
+    this._inspectModeUtil = new InspectModeUtil();
   }
 
   /**
@@ -258,7 +265,10 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
     if(len > 0) {
       logManager.info(i18n.get("srcInspector.lookupStart"));
       logManager.info(
-        i18n.get("srcInspector.inspectMode", String(inspectMode))
+        i18n.get(
+          "srcInspector.inspectMode",
+          this._inspectModeUtil.inspectModeToString(inspectMode)
+        )
       );
       if(inspectMode === InspectMode.READ_CACHE) {
         this.inspectCache();
