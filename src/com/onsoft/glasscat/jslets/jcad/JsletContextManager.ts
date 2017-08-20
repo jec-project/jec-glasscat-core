@@ -89,7 +89,7 @@ export class JsletContextManager {
   /**
    * Initializes the JCAD context associated with this context manager.
    * 
-   * @param {JcadContext} jcadContext the context of the Glasscat container.
+   * @param {JcadContext} jcadContext the context of the GlassCat container.
    */
   public createContext(jcadContext:JcadContext):void {
     if(!jcadContext) {

@@ -71,12 +71,12 @@ export class TemplatePathsSolver {
   }
 
   /**
-   * Creates and returns the Glasscat <code>src</code> relative path reference
+   * Creates and returns the GlassCat <code>src</code> relative path reference
    * for the template file to create.
    * 
    * @param {string} path the fixed template file path.
    *
-   * @return {string} the Glasscat <code>src</code> relative path reference for 
+   * @return {string} the GlassCat <code>src</code> relative path reference for 
    *                  the template file to create.
    */
   private resolveRelativePath(path:string):string {

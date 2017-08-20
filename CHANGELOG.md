@@ -1,5 +1,14 @@
 # JEC GlassCat Core Project: Update Release Notes
 
+<a name="jec-glasscat-core-0.1.2"></a>
+## **0.1.1** (2017-08-20)
+
+### Bug Fixes
+
+### Features
+
+- Fixing peer dependencies for GlassCat alpha releases integration
+
 <a name="jec-glasscat-core-0.1.1"></a>
 ## **0.1.1** (2017-08-16)
 

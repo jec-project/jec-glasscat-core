@@ -19,7 +19,7 @@ import {Session, SessionId, SessionOwner} from "jec-exchange";
 
 /**
  * The <code>GlassCatSession</code> class is the default implementation of the
- * <code>Session</code> interface for Glasscat containers.
+ * <code>Session</code> interface for GlassCat containers.
  */
 export class GlassCatSession implements Session {
 
