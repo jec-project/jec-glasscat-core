@@ -1,7 +1,18 @@
 # JEC GlassCat Core Project: Update Release Notes
 
+<a name="jec-glasscat-core-0.1.3"></a>
+## **0.1.3** (2017-08-20)
+
+### Bug Fixes
+
+- **postinstall**: removing the post install script
+
+### Features
+
+- **dist**: adding binaries to the `dist` folder
+
 <a name="jec-glasscat-core-0.1.2"></a>
-## **0.1.1** (2017-08-20)
+## **0.1.2** (2017-08-20)
 
 ### Bug Fixes
 
