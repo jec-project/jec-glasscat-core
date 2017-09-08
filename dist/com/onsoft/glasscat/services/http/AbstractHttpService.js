@@ -29,12 +29,14 @@ class AbstractHttpService {
         this._isActive = false;
         this._server = null;
         this._notFoundErrorBuilder = null;
+        this.GLASSCAT = "GlassCat";
         this.init(listener);
     }
     init(listener) {
         this.__listener = listener;
         this._server = listener.getServer();
         this.__app = express();
+        this.__app.disable("x-powered-by");
         this.initSecuredServer();
         this.__errorManager = new HttpServiceErrorManager_1.HttpServiceErrorManager();
         this.__enableMonitoring = listener.enableMonitoring();
@@ -73,6 +75,7 @@ class AbstractHttpService {
     }
     checkSession(req, res, next) {
         let properties = new HttpLocalProperties_1.HttpLocalProperties();
+        res.setHeader(jec_commons_1.HttpHeader.X_POWERED_BY, this.GLASSCAT);
         res.locals.properties = properties;
         this.__securityManager.processSession(this, req, res, (err) => {
             if (err) {

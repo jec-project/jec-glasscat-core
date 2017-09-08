@@ -112,6 +112,7 @@ export class ContextRootUtil {
     let referer:string = UrlStringsEnum.EMPTY_STRING;
     let index:number = -1;
     let buffer:string[] = null;
+    let host:string = reqest.header(ContextRootUtil.HOST);
     this._contextRootData.reset();
     if(ResourceProxy.getInstance().testUrl(path)) {
       this._contextRootData.containsNestedResource = true;
@@ -121,7 +122,7 @@ export class ContextRootUtil {
       if(index !== -1) {
         path = path.substr(0, index);
         referer = reqest.header(ContextRootUtil.REFERER);
-        if(referer) {
+        if(referer && referer.indexOf(host) !== -1) {
           referer = referer.replace(
               UrlStringsEnum.SCHEME_DELIMITER, 
               UrlStringsEnum.EMPTY_STRING
@@ -130,15 +131,13 @@ export class ContextRootUtil {
           this._contextRootData.contextRoot = buffer[0] + buffer[1];
         } else {
           //console.log("no referer:", path);
-          this._contextRootData.contextRoot =
-                   reqest.protocol + reqest.header(ContextRootUtil.HOST) + path;
+          this._contextRootData.contextRoot = reqest.protocol + host + path;
         }
       } else {
         //console.log("no slash:", path);
         this._contextRootData.needsRedirection = true;
         this._contextRootData.newPath = path + UrlStringsEnum.SLASH
-        this._contextRootData.contextRoot =
-                   reqest.protocol + reqest.header(ContextRootUtil.HOST) + path;
+        this._contextRootData.contextRoot = reqest.protocol + host + path;
       }
     }
     return this._contextRootData;

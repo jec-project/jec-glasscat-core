@@ -1,5 +1,16 @@
 # JEC GlassCat Core Project: Update Release Notes
 
+<a name="jec-glasscat-core-0.1.4"></a>
+## **0.1.4** (2017-09-06)
+
+### Bug Fixes
+
+- **HTTP Host Redirection**: fixing the issue that prevents HTTP calls between multiple EJPs 
+
+### Features
+
+- Dependencies upgrade
+
 <a name="jec-glasscat-core-0.1.3"></a>
 ## **0.1.3** (2017-08-20)
 

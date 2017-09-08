@@ -30,7 +30,7 @@ import {DomainContainer} from "../../domains/containers/DomainContainer";
 import {ContextRootData} from "../../util/contextroot/ContextRootData";
 import {HttpRequest, HttpResponse, SessionError} from "jec-exchange";
 import {GlassCatHttpRequest} from "../../net/http/GlassCatHttpRequest";
-import {HttpStatusCode, EncodingFormat} from "jec-commons";
+import {HttpStatusCode, EncodingFormat, HttpHeader} from "jec-commons";
 import {ResourceProxy} from "./proxy/ResourceProxy";
 import {SecurityManager} from "../../core/SecurityManager";
 import {TransactionManager} from "../../net/http/monitoring/TransactionManager";
@@ -126,10 +126,15 @@ export class AbstractHttpService implements HttpService {
   private _server:string = null;
 
   /**
-   * The builder that is used to create  <code>NotFoundError</code> instances.
+   * The builder that is used to create <code>NotFoundError</code> instances.
    */
   private _notFoundErrorBuilder:NotFoundErrorBuilder = null;
 
+  /**
+   * The reference to the <code>GlassCat</code> name.
+   */
+  private readonly GLASSCAT:string = "GlassCat";
+  
   //////////////////////////////////////////////////////////////////////////////
   // Private methods
   //////////////////////////////////////////////////////////////////////////////
@@ -143,6 +148,7 @@ export class AbstractHttpService implements HttpService {
     this.__listener = listener;
     this._server = listener.getServer();
     this.__app = express();
+    this.__app.disable("x-powered-by");
     this.initSecuredServer();
     this.__errorManager = new HttpServiceErrorManager();
     this.__enableMonitoring = listener.enableMonitoring();
@@ -204,7 +210,7 @@ export class AbstractHttpService implements HttpService {
    */
   private releaseTransaction(req:express.Request, res:express.Response,
                                                   next:Function):void {
-    if(this.__enableMonitoring) {
+      if(this.__enableMonitoring) {
       this.__transactionManager.closeTransaction(req, res);
     };
   }
@@ -222,6 +228,7 @@ export class AbstractHttpService implements HttpService {
   private checkSession(req:express.Request, res:express.Response,
                                             next:Function):void {
     let properties:HttpLocalProperties = new HttpLocalProperties();
+    res.setHeader(HttpHeader.X_POWERED_BY, this.GLASSCAT);
     res.locals.properties = properties;
     this.__securityManager.processSession(
       this, req, res,
