@@ -14,34 +14,33 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {CacheControlPolicy} from "jec-commons";
+import {Decorator, CacheControlPolicy} from "jec-commons";
 
 /**
- * Represents a static resources configuration property for an EJP deployed in a 
- * GlassCat container.
+ * The <code>StaticResourceDecorator</code> class defines the 
+ * <code>Decorator</code> implementation for the JEC 
+ * <code>@StaticResource</code> decorator.
  */
-export class EjpStaticResourcesConfig {
-
+export class StaticResourceDecorator implements Decorator {
+  
   ////////////////////////////////////////////////////////////////////////////
   // Constructor function
   ////////////////////////////////////////////////////////////////////////////
 
   /**
-   * Creates a new <code>EjpStaticResourcesConfig</code> instance.
+   * Creates a new <code>StaticResourceDecorator</code> instance.
    */
   constructor() {}
 
   ////////////////////////////////////////////////////////////////////////////
-  // Public properties
+  // public methods
   ////////////////////////////////////////////////////////////////////////////
 
   /**
-   * The URL pattern associated with this static resources.
+   * @inheritDoc
    */
-  public urlPattern:string = null;
-
-  /**
-   * The cache control policy associated with this static resources.
-   */
-  public cacheControlPolicy:CacheControlPolicy = null;
+  public decorate(target:any, params:CacheControlPolicy):any {
+    
+    return target;
+  }
 }

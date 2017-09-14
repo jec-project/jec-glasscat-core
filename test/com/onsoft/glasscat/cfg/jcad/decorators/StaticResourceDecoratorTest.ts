@@ -15,32 +15,27 @@
 //   limitations under the License.
 
 import { TestSuite, Test, BeforeAll } from "jec-juta";
-import { expect } from "chai";
-import { EjpStaticResourcesConfig } from "../../../../../../src/com/onsoft/glasscat/context/ejp/EjpStaticResourcesConfig";
+import * as chai from "chai";
+import * as spies from "chai-spies";
+import { Decorator } from "jec-commons";
+import { StaticResourceDecorator } from "../../../../../../../src/com/onsoft/glasscat/cfg/jcad/decorators/StaticResourceDecorator";
+
+//import * as utils from "../../../../../../../utils/test-utils/utilities/StaticResourceDecoratorTestUtils";
+
+// Chai declarations:
+const expect:any = chai.expect;
+chai.use(spies);
 
 @TestSuite({
-  description: "Test the EjpStaticResourcesConfig class properties"
+  description: "Test the StaticResourceDecorator class methods",
+  disabled: true
 })
-export class EjpStaticResourcesConfigTest {
+export class StaticResourceDecoratorTest {
 
-  public config:EjpStaticResourcesConfig = null;
+  public decorator:Decorator = null;
 
   @BeforeAll()
   public initTest():void {
-    this.config = new EjpStaticResourcesConfig();
-  }
-
-  @Test({
-    description: "should have a 'urlPattern' property set to 'null'"
-  })
-  public urlPatternTest():void {
-    expect(this.config).to.have.property("urlPattern", null);
-  }
-  
-  @Test({
-    description: "should have a 'cacheControlPolicy' property set to 'null'"
-  })
-  public cacheControlPolicyTest():void {
-    expect(this.config).to.have.property("cacheControlPolicy", null);
+    this.decorator = new StaticResourceDecorator();
   }
 }

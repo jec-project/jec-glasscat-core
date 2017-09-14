@@ -14,16 +14,8 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { JcadContext, JcadContextFactory } from "jec-commons";
-
 /*!
- * This module constains utilities used by the BootstrapContextManagerTest test
- * suite.
+ * This module constains utilities used by the JEC decorators test suites.
  */
 
-// Utilities:
-export const builJcadContext:Function = function():JcadContext {
-  let ctxFactory:JcadContextFactory = new JcadContextFactory();
-  let context:JcadContext = ctxFactory.create();
-  return context;
-};
+ export const TODO:any = null;

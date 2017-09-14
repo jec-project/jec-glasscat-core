@@ -14,34 +14,24 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {CacheControlPolicy} from "jec-commons";
+import {Decorator, DecoratorConnector, AbstractDecoratorConnector} from "jec-commons";
 
 /**
- * Represents a static resources configuration property for an EJP deployed in a 
- * GlassCat container.
+ * The <code>JecConfigConnector</code> class defines the 
+ * <code>DecoratorConnector</code> implementation for the config decorator in a
+ * GlassCat server, such as <code>@StaticResource</code>, or
+ * <code>@CacheControl</code>, etc..
  */
-export class EjpStaticResourcesConfig {
-
+export class JecConfigConnector extends AbstractDecoratorConnector {
+  
   ////////////////////////////////////////////////////////////////////////////
   // Constructor function
   ////////////////////////////////////////////////////////////////////////////
 
   /**
-   * Creates a new <code>EjpStaticResourcesConfig</code> instance.
+   * Creates a new <code>JecConfigConnector</code> instance.
    */
-  constructor() {}
-
-  ////////////////////////////////////////////////////////////////////////////
-  // Public properties
-  ////////////////////////////////////////////////////////////////////////////
-
-  /**
-   * The URL pattern associated with this static resources.
-   */
-  public urlPattern:string = null;
-
-  /**
-   * The cache control policy associated with this static resources.
-   */
-  public cacheControlPolicy:CacheControlPolicy = null;
+  constructor(jcadReference:string, decorator:Decorator) {
+    super(jcadReference, decorator);
+  }
 }

@@ -5,11 +5,14 @@
 
 ### Bug Fixes
 
-- **HTTP Host Redirection**: fixing the issue that prevents HTTP calls between multiple EJPs 
+- **HTTP Host Redirection**: fixing the issue that prevents HTTP calls between multiple EJPs
+- **bootstrap.json path**: setting the `GlassCatConfigUpdater.BOOTSTRAP_FILE_PATH` property to the correct path
 
 ### Features
 
 - Dependencies upgrade
+- Adding `@CacheControl` support
+- Adding `@StaticResource` support
 
 <a name="jec-glasscat-core-0.1.3"></a>
 ## **0.1.3** (2017-08-20)

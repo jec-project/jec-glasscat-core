@@ -19,7 +19,7 @@ import { HttpJsletImpl } from "../classes/HttpJsletImpl";
 //import { WebJsletDecorator } from "../../../src/com/onsoft/glasscat/jslets/jcad/decorators/WebJsletDecorator";
 
 /*!
- * This module constains utilities used by the UrlUtilsTest test suite.
+ * This module constains utilities used by the  WebJsletTest test suite.
  */
 
 // Utilities:

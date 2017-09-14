@@ -42,7 +42,7 @@ export class GlassCatConfigUpdater {
    * The path to the bootstrap configuration file.
    */
   private static readonly BOOTSTRAP_FILE_PATH:string =
-                                       "${root}/public/cfg/bootstrap_test.json";
+                                            "${root}/public/cfg/bootstrap.json";
 
   ////////////////////////////////////////////////////////////////////////////
   // Public methods
@@ -68,7 +68,7 @@ export class GlassCatConfigUpdater {
     fs.writeFile(
       path,
       data,
-      (error:any)=> {
+      (error:NodeJS.ErrnoException)=> {
         if(error) {
           glassCatError = new GlassCatError(
             GlassCatErrorCode.CONFIG_UPDATE_ERROR,

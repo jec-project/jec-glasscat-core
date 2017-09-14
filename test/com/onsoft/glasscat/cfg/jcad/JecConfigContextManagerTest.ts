@@ -16,25 +16,25 @@
 
 import { TestSuite, Test, BeforeAll, TestSorters } from "jec-juta";
 import { expect } from "chai";
-import { BootstrapContextManager } from "../../../../../../src/com/onsoft/glasscat/startup/jcad/BootstrapContextManager";
-import { JcadContext, JcadContextManager, BootstrapConnectorRefs } from "jec-commons";
+import { JecConfigContextManager } from "../../../../../../src/com/onsoft/glasscat/cfg/jcad/JecConfigContextManager";
+import { JcadContext, JcadContextManager, ConfigConnectorRefs } from "jec-commons";
 import { GlassCatError } from "../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatError";
 import { GlassCatErrorCode } from "../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatErrorCode";
 
 import * as utils from "../../../../../../utils/test-utils/utilities/ContextManagerTestUtils";
 
 @TestSuite({
-  description: "Test the BootstrapContextManager class methods",
+  description: "Test the JecConfigContextManager class methods",
   testOrder: TestSorters.ORDER_ASCENDING
 })
-export class BootstrapContextManagerTest {
+export class JecConfigContextManagerTest {
 
-  public manager:BootstrapContextManager = null;
+  public manager:JecConfigContextManager = null;
   public context:JcadContext = null;
 
   @BeforeAll()
   public initTest():void {
-    this.manager = new BootstrapContextManager();
+    this.manager = new JecConfigContextManager();
     this.context = utils.builJcadContext();
   }
 
@@ -62,24 +62,46 @@ export class BootstrapContextManagerTest {
   }
   
   @Test({
-    description: "should register the specified context into the JCAD manager",
+    description: "should register the 'CacheControl' context into the JCAD manager",
     order: 2
   })
-  public createContextTest():void {
+  public createCacheControlContextTest():void {
     this.manager.createContext(this.context);
     expect(
-      this.manager.hasContext(BootstrapConnectorRefs.BOOTSTRAP_CONNECTOR_REF)
+      this.manager.hasContext(ConfigConnectorRefs.CACHE_CONTROL_CONNECTOR_REF)
     ).to.be.true;
   }
   
   @Test({
-    description: "should remove the specified context from the JCAD manager",
+    description: "should remove the 'CacheControl' context from the JCAD manager",
     order: 3
   })
-  public deleteContextTest():void {
+  public deleteCacheControlContextTest():void {
     this.manager.deleteContext();
     expect(
-      this.manager.hasContext(BootstrapConnectorRefs.BOOTSTRAP_CONNECTOR_REF)
+      this.manager.hasContext(ConfigConnectorRefs.CACHE_CONTROL_CONNECTOR_REF)
+    ).to.be.false;
+  }
+  
+  @Test({
+    description: "should register the 'StaticResource' context into the JCAD manager",
+    order: 4
+  })
+  public createStaticResourceContextTest():void {
+    this.manager.createContext(this.context);
+    expect(
+      this.manager.hasContext(ConfigConnectorRefs.STATIC_RESOURCE_CONNECTOR_REF)
+    ).to.be.true;
+  }
+  
+  @Test({
+    description: "should remove the 'StaticResource' context from the JCAD manager",
+    order: 5
+  })
+  public deleteStaticResourceContextTest():void {
+    this.manager.deleteContext();
+    expect(
+      this.manager.hasContext(ConfigConnectorRefs.STATIC_RESOURCE_CONNECTOR_REF)
     ).to.be.false;
   }
 }

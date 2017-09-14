@@ -19,6 +19,6 @@ class GlassCatConfigUpdater {
         });
     }
 }
-GlassCatConfigUpdater.BOOTSTRAP_FILE_PATH = "${root}/public/cfg/bootstrap_test.json";
+GlassCatConfigUpdater.BOOTSTRAP_FILE_PATH = "${root}/public/cfg/bootstrap.json";
 exports.GlassCatConfigUpdater = GlassCatConfigUpdater;
 ;
