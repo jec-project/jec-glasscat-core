@@ -46,7 +46,7 @@ export class LoggerManager extends AbstractLogger {
   //////////////////////////////////////////////////////////////////////////////
 
   /**
-   * Prevents <code>MappedPathUtil</code> illegal instanciations.
+   * Prevents <code>LoggerManager</code> illegal instanciations.
    */
   private static _locked:boolean = true;
 
