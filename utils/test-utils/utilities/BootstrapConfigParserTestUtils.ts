@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {JsonLoader, LogLevelUtil} from "jec-commons";
+import {JsonLoader, LogLevelString} from "jec-commons";
 
 /*!
  * This module constains utilities used by the BootstrapConfigParserTest test
@@ -29,9 +29,9 @@ export const loadConfigFile:Function = function():any {
 };
 export const GLASSCAT_VERSION:string = "0.0.0";
 export const GLASSCAT_LOCALE:string = "en-US";
-export const LOG_LEVEL:string = LogLevelUtil.TRACE;
+export const LOG_LEVEL:string = LogLevelString.TRACE;
 export const FACTORY_0:any = {
-  logLevel: LogLevelUtil.ERROR,
+  logLevel: LogLevelString.ERROR,
   name: "fileLogger",
   factory: "${server}/logging/FileLoggerFactory"
 };

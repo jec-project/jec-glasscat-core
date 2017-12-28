@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { LogLevelUtil } from "jec-commons";
+import { LogLevelString } from "jec-commons";
 
 /*!
  * This module constains utilities used by the GlassCatLogFormatterTest test
@@ -24,6 +24,6 @@ import { LogLevelUtil } from "jec-commons";
 // Utilities:
 export const APPENDER:string = "\n";
 export const TIME_FORMAT:string = "MM/DD/YY HH:mm:ss.SSS";
-export const LOG_LEVEL:string = LogLevelUtil.DEBUG;
+export const LOG_LEVEL:string = LogLevelString.DEBUG;
 export const MARKER:string = "foo bar";
 export const FORMAT_RESULT:RegExp = /\[\d{2}\/\d{2}\/\d{2}\s\d{2}:\d{2}:\d{2}.\d{3}\]\[GlassCat\] DEBUG: foo bar/;

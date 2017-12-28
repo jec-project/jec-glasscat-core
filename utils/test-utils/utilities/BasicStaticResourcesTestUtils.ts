@@ -14,7 +14,6 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {JsonLoader, LogLevelUtil} from "jec-commons";
 import {EjpStaticResourcesConfig} from "../../../src/com/onsoft/glasscat/context/ejp/EjpStaticResourcesConfig";
 
 /*!

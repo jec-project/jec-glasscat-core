@@ -14,7 +14,6 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {JsonLoader, LogLevelUtil} from "jec-commons";
 import {GlassCatSessionId} from "../../../src/com/onsoft/glasscat/security/session/GlassCatSessionId";
 import {GlassCatSession} from "../../../src/com/onsoft/glasscat/security/session/GlassCatSession";
 import { SessionId, SessionErrorType, Session } from "jec-exchange";

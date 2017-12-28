@@ -1,6 +1,6 @@
 {
   "name": "jec-glasscat-core",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "JEC GlassCat Core - The core components of the GlassCat Aplication Server.",
   "main": "dist/com/onsoft/jec-glasscat-core-index",
   "types": "types/jec-glasscat-core.d.ts",
@@ -34,9 +34,9 @@
     "ejs": "^2.5.6",
     "express": "^4.15.3",
     "i18n": "^0.8.3",
-    "jec-commons": "^1.1.7",
-    "jec-commons-node": "^1.0.6",
-    "jec-exchange": "^1.1.5",
+    "jec-commons": "^1.1.8",
+    "jec-commons-node": "^1.0.7",
+    "jec-exchange": "^1.1.6",
     "moment": "^2.18.1",
     "print-message": "^2.1.0",
     "url-pattern": "^1.0.3"
@@ -45,16 +45,16 @@
     "@types/node": "^8.0.13",
     "chai": "^3.5.0",
     "chai-spies": "^0.7.1",
-    "jec-juta": "^1.1.6",
-    "jec-tiger": "^1.1.7",
-    "mocha": "^3.3.0",
-    "typedoc": "^0.8.0",
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-mocha-test": "^0.13.2",
-    "grunt-ts": "^6.0.0-beta.16",
+    "grunt-ts": "^6.0.0-beta.17",
     "grunt-typedoc": "^0.2.4",
-    "typescript": "^2.5.1"
+    "jec-juta": "^1.1.7",
+    "jec-tiger": "^1.1.8",
+    "mocha": "^3.3.0",
+    "typedoc": "^0.8.0",
+    "typescript": "^2.6.2"
   }
 }
