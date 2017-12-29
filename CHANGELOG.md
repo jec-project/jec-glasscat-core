@@ -9,7 +9,6 @@
 
 - Dependencies upgrade
 - Fixing `LogLevelUtil` breaking changes
-- Adding the new `facade` package to facilitate development of external frameworks 
 
 <a name="jec-glasscat-core-0.1.4"></a>
 ## **0.1.4** (2017-09-06)

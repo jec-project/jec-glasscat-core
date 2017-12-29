@@ -47,7 +47,11 @@ export class SessionStorageSolverTest {
   })
   public getSessionStorageLocalTest():void {
     expect(
-      this.solver.getSessionStorage(({ storage: SessionStorageType.LOCAL } as EjpSessionConfig))
+      this.solver.getSessionStorage(({ 
+            storage: SessionStorageType.LOCAL,
+            errorUrl: null,
+            maxAge: 3600
+      } as EjpSessionConfig))
     ).to.be.an.instanceOf(LocalSessionStorage);
   }
   

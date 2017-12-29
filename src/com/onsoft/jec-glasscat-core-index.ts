@@ -105,9 +105,6 @@ export {NotFoundErrorBuilder} from "./glasscat/domains/errors/NotFoundErrorBuild
 //--> com/onsoft/glasscat/exceptions
 export {GlassCatError} from "./glasscat/exceptions/GlassCatError";
 export {GlassCatErrorCode} from "./glasscat/exceptions/GlassCatErrorCode";
-//--> com/onsoft/glasscat/facade
-export {DelegatedContainer} from "./glasscat/facade/DelegatedContainer";
-export {DelegatedContainerBuilder} from "./glasscat/facade/DelegatedContainerBuilder";
 //--> com/onsoft/glasscat/i18n
 export {LocaleManager} from "./glasscat/i18n/LocaleManager";
 //--> com/onsoft/glasscat/jslets/jcad/connectors
