@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const LoggerManager_1 = require("../util/logging/LoggerManager");
-const LocaleManager_1 = require("../i18n/LocaleManager");
 const ContextRootUtil_1 = require("../util/contextroot/ContextRootUtil");
+const GlassCatLocaleManager_1 = require("../i18n/GlassCatLocaleManager");
 class DomainConnectorManager {
     constructor() {
         this._connectorMap = null;
@@ -15,7 +15,7 @@ class DomainConnectorManager {
         this._contextRootUtil = new ContextRootUtil_1.ContextRootUtil();
     }
     addConnector(connector, listener) {
-        let i18n = LocaleManager_1.LocaleManager.getInstance();
+        let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
         let contextRootRef = this._contextRootUtil.buildContextRoot(connector, listener);
         this._connectorMap.set(contextRootRef, connector);
         let msg = i18n.get("domains.connectors.added");

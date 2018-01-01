@@ -15,7 +15,7 @@
 //   limitations under the License.
 
 import {LoggerManager} from "../../util/logging/LoggerManager";
-import {LocaleManager} from "../../i18n/LocaleManager";
+import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 import {DecoratorProperties, FileProperties, FilePreProcessor} from "jec-commons";
 import {JsletContext} from "jec-exchange";
 import {JsletContextBuilder} from "./JsletContextBuilder";
@@ -108,7 +108,7 @@ export class JsletsAutowireProcessor implements FilePreProcessor {
       file = this._jsletFiles[len];
       jsletPath = file.path.substring(pathLength) + file.name;
       LoggerManager.getInstance().info(
-          LocaleManager.getInstance().get(
+        GlassCatLocaleManager.getInstance().get(
             "jslet.autowireDetect", jsletPath
           )
         );

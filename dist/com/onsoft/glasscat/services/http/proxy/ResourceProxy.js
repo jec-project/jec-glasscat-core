@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const jec_commons_1 = require("jec-commons");
-const LocaleManager_1 = require("../../../i18n/LocaleManager");
+const GlassCatLocaleManager_1 = require("../../../i18n/GlassCatLocaleManager");
 const fs = require("fs");
 const GlassCatError_1 = require("../../../exceptions/GlassCatError");
 const GlassCatErrorCode_1 = require("../../../exceptions/GlassCatErrorCode");
 class ResourceProxy {
     constructor() {
         if (ResourceProxy._locked || ResourceProxy.INSTANCE) {
-            let msg = LocaleManager_1.LocaleManager.getInstance().get("errors.singleton", "ResourceProxy");
+            let msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.singleton", "ResourceProxy");
             throw new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.SINGLETON_ERROR, msg);
         }
         ResourceProxy._locked = true;

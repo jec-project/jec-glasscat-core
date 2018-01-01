@@ -18,7 +18,7 @@ import {JecStringsEnum, UrlStringsEnum} from "jec-commons";
 import {DomainConnectorManager} from "../../../core/DomainConnectorManager";
 import {DomainConnector} from "../../../domains/connectors/DomainConnector";
 import {HttpListener} from "../listeners/HttpListener";
-import {LocaleManager} from "../../../i18n/LocaleManager";
+import {GlassCatLocaleManager} from "../../../i18n/GlassCatLocaleManager";
 import * as fs from "fs";
 import {GlassCatError} from "../../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../../exceptions/GlassCatErrorCode";
@@ -38,8 +38,9 @@ export class ResourceProxy {
    */
   constructor() {
     if(ResourceProxy._locked || ResourceProxy.INSTANCE) {
-      let msg:string =
-           LocaleManager.getInstance().get("errors.singleton", "ResourceProxy");
+      let msg:string = GlassCatLocaleManager.getInstance().get(
+        "errors.singleton", "ResourceProxy"
+      );
       throw new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, msg);
     }
     ResourceProxy._locked = true;

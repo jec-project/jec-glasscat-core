@@ -18,7 +18,8 @@ import {DomainContainer} from "./DomainContainer";
 import {LoggerManager} from "../../util/logging/LoggerManager";
 import {JsletContextBuilder} from "../../jslets/utils/JsletContextBuilder";
 import {DomainConnector} from "../connectors/DomainConnector";
-import {LocaleManager} from "../../i18n/LocaleManager";
+import {LocaleManager} from "jec-commons-node";
+import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 import {EjpConnector} from "../connectors/EjpConnector";
 import {JsletManager} from "../../core/JsletManager";
 import {JsletContext, HttpJslet, Jslet, HttpRequest, HttpResponse,
@@ -41,8 +42,8 @@ import {LoginStrategyConfig} from "../../security/login/config/LoginStrategyConf
 import {LoginStrategy} from "../../security/login/LoginStrategy";
 import {DefaultSourceFileInspector} from "../../context/files/DefaultSourceFileInspector";
 import {Logger, JecStringsEnum, UrlStringsEnum, HttpStatusCode, ClassLoader,
-  SourceFileInspector, JcadContext, BootstrapContext, BootstrapScript, InspectMode
-} from "jec-commons";
+        SourceFileInspector, JcadContext, BootstrapContext, BootstrapScript,
+        InspectMode, BeanManager} from "jec-commons";
 import {JsletsAutowireProcessor} from "../../jslets/utils/JsletsAutowireProcessor";
 import {EjpConfig} from "../../context/ejp/EjpConfig";
 import {EjpWebAppConfig} from "../../context/ejp/EjpWebAppConfig";
@@ -59,6 +60,7 @@ import {BootstrapAutowireProcessor} from "../../startup/utils/BootstrapAutowireP
 import {BootstrapContextManager} from "../../startup/jcad/BootstrapContextManager";
 import {BootstrapContextBuilder} from "../../startup/utils/BootstrapContextBuilder";
 import {BootstrapScriptBuilder} from "../../startup/utils/BootstrapScriptBuilder";
+import {SokokeLoggerProxy, SokokeAutowireProcessor, JdiContextManager} from "jec-sokoke";
 
 /**
  * The <code>EjpContainer</code> class is the concrete implementation of the
@@ -157,6 +159,12 @@ export class EjpContainer implements DomainContainer {
   private _jsletContextManager:JsletContextManager = null;
 
   /**
+   * The reference to the <code>JdiContextManager</code> that is used to manage
+   * JDI jslet context objects for this container.
+   */
+  private _jdiContextManager:JdiContextManager = null;
+
+  /**
    * The reference to the <code>BootstrapContextManager</code> that is used to 
    * manage JCAD bootstrap context objects for this container.
    */
@@ -167,6 +175,11 @@ export class EjpContainer implements DomainContainer {
    * objects.
    */
   private _notFoundErrorBuilder:NotFoundErrorBuilder = null;
+
+  /**
+   * The reference to the <code>BeanManager</code> object for this container.
+   */
+  private _beanManager:BeanManager = null;
 
   //////////////////////////////////////////////////////////////////////////////
   // Private methods
@@ -203,9 +216,8 @@ export class EjpContainer implements DomainContainer {
       );
     }
     this.initBootstrapScripts(config);
-    if(jsletsConfig.enableAutowire) {
-      this.getSourceFileInspector().addProcessor(new JsletsAutowireProcessor());
-    }
+    this.initJdiEngine();
+    this.initJsletAutowireProcessor(jsletsConfig);
     
     this._sourceFileInspector.inspect(InspectMode.READ_CACHE);
     if(webapp.jslets) {
@@ -264,12 +276,14 @@ export class EjpContainer implements DomainContainer {
    */
   private initState(config:EjpConfig):void {
     let state:string = config.webapp.state;
+    let msg:string = null;
     if(state) {
       if(state === DomainState.STATEFUL || state === DomainState.STATELESS) {
         this._state = state;
       } else {
-        let msg:string = LocaleManager.getInstance().get("errors.invalidState");
+        msg = GlassCatLocaleManager.getInstance().get("errors.invalidState");
         LoggerManager.getInstance().error(msg);
+        //TODO: create a GlassCatErrorCode for this error:
         throw new Error(msg);
       }
     } else this._state = DomainState.STATELESS;
@@ -306,6 +320,27 @@ export class EjpContainer implements DomainContainer {
   }
 
   /**
+   * Initializes the jslet autowiring processor.
+   *
+   * @param {EjpJsletsConfig} jsletsConfig the <code>EjpConfig</code> config  
+   *                                       object associated with this
+   *                                       <code>EjpContainer</code> instance.
+   */
+  private initJsletAutowireProcessor(jsletsConfig:EjpJsletsConfig):void {
+    if(jsletsConfig.enableAutowire) {
+      this.getSourceFileInspector().addProcessor(new JsletsAutowireProcessor());
+    }
+  }
+
+  /**
+   * Initializes the JDI autowiring processor and API.
+   */
+  private initJdiEngine():void {
+    SokokeLoggerProxy.getInstance().setLogger(this.getLogger());
+    this.getSourceFileInspector().addProcessor(new SokokeAutowireProcessor());
+  }
+
+  /**
    * Initializes the session context for this <code>EjpContainer</code>
    * instance.
    *
@@ -315,9 +350,9 @@ export class EjpContainer implements DomainContainer {
   private initSessionContext(config:EjpConfig):SessionContext {
     let sessionContext:SessionContext =
                                new EjpSessionContext(this._contextRoot, config);
-    let msg:string = 
-      LocaleManager.getInstance()
-                   .get("security.context.sessionAdded", this._contextRoot);
+    let msg:string = GlassCatLocaleManager.getInstance().get(
+      "security.context.sessionAdded", this._contextRoot
+    );
     LoggerManager.getInstance().info(msg);
     return sessionContext;
   }
@@ -343,9 +378,9 @@ export class EjpContainer implements DomainContainer {
     let roles:EjpRoleConfig[] = null;
     let role:EjpRoleConfig = null;
     let len:number = -1;
-    let msg:string = 
-      LocaleManager.getInstance()
-                   .get("security.context.securityAdded", this._contextRoot);
+    let msg:string = GlassCatLocaleManager.getInstance().get(
+      "security.context.securityAdded", this._contextRoot
+    );
     LoggerManager.getInstance().info(msg);
     if(security) {
       resourcesBuilder = new StaticResourcesBuilder();
@@ -383,20 +418,24 @@ export class EjpContainer implements DomainContainer {
   }
 
   /**
-   * Initializes the jslet JCAD context manager for this
+   * Initializes the jslet and JDI JCAD context managers for this
    * <code>EjpContainer</code> instance.
    */
-  private initJsletContextManager():void {
+  private initJecContextManagers():void {
+    let containerContext:JcadContext = this._connector.getJcadContext();
+    this._jdiContextManager = new JdiContextManager();
+    this._jdiContextManager.createContext(containerContext);
     this._jsletContextManager = new JsletContextManager();
-    this._jsletContextManager.createContext(this._connector.getJcadContext());
+    this._jsletContextManager.createContext(containerContext);
   }
 
   /**
-   * Removes the jslet JCAD context manager associated with this 
+   * Removes the jslet and JDI JCAD context managers associated with this 
    * <code>EjpContainer</code> instance.
    */
-  private deleteJsletContextManager():void {
+  private deleteJecContextManagers():void {
       this._jsletContextManager.deleteContext();
+      this._jdiContextManager.deleteContext();
   }
 
   /**
@@ -426,7 +465,7 @@ export class EjpContainer implements DomainContainer {
    * @inheritDoc
    */
   public init(connector:DomainConnector, jsletManager:JsletManager):void {
-    let i18n:LocaleManager = LocaleManager.getInstance();
+    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     let msg:string = "domain container initialization start";
     LoggerManager.getInstance().info(msg);
     msg = "domain connector: name=" + connector.getName();
@@ -439,15 +478,22 @@ export class EjpContainer implements DomainContainer {
     this._src = target + JecStringsEnum.SRC;
     this._templateProcessor = new DefaultTemplateProcessor();
     this.initBootstrapContextManager();
-    this.initJsletContextManager();
+    this.initJecContextManagers();
     this.initSourceFileInspector();
     this.initConfig(connector.getConfig());
     this.deleteBootstrapContextManager();
-    this.deleteJsletContextManager();
+    this.deleteJecContextManagers();
     msg = i18n.get("domains.containers.init");
     msg += "\n   => " + i18n.get("domains.containers.contextRoot", this._contextRoot);
     msg += "\n   * " + i18n.get("domains.containers.type", this.toString());
     LoggerManager.getInstance().info(msg);
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public getBeanManager():BeanManager {
+    return this._beanManager;
   }
 
   /**

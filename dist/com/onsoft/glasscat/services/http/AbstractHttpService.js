@@ -6,7 +6,7 @@ const https = require("https");
 const fs = require("fs");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-const LocaleManager_1 = require("../../i18n/LocaleManager");
+const GlassCatLocaleManager_1 = require("../../i18n/GlassCatLocaleManager");
 const GlassCatHttpRequest_1 = require("../../net/http/GlassCatHttpRequest");
 const jec_commons_1 = require("jec-commons");
 const ResourceProxy_1 = require("./proxy/ResourceProxy");
@@ -202,12 +202,12 @@ class AbstractHttpService {
         let port = this.__listener.getPort();
         this.__server = this.__app.listen(port);
         this._isActive = true;
-        LoggerManager_1.LoggerManager.getInstance().info(LocaleManager_1.LocaleManager.getInstance().get("http.servers.start", this._server, String(port)));
+        LoggerManager_1.LoggerManager.getInstance().info(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("http.servers.start", this._server, String(port)));
     }
     stop() {
         this.__server.close();
         this._isActive = false;
-        LoggerManager_1.LoggerManager.getInstance().info(LocaleManager_1.LocaleManager.getInstance().get("http.servers.stop", this._server));
+        LoggerManager_1.LoggerManager.getInstance().info(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("http.servers.stop", this._server));
     }
     isActive() {
         return this._isActive;

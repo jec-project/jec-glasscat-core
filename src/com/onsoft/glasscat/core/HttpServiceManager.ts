@@ -16,10 +16,11 @@
 
 import {HttpService} from "../services/http/HttpService";
 import {LoggerManager} from "../util/logging/LoggerManager";
-import {LocaleManager} from "../i18n/LocaleManager";
+import {LocaleManager} from "jec-commons-node";
 import {HttpListener} from "../services/http/listeners/HttpListener";
 import {DomainConnectorManager} from "../core/DomainConnectorManager";
 import {SecurityManager} from "../core/SecurityManager";
+import {GlassCatLocaleManager} from "../i18n/GlassCatLocaleManager";
 
 /**
  * The manager for all HTTP services of the current GlassCat container.
@@ -87,7 +88,7 @@ export class HttpServiceManager {
    * @param {HttpService} service the service to add.
    */
   public addService(service:HttpService):void {
-    let i18n:LocaleManager = LocaleManager.getInstance();
+    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     this._httpServiceMap.set(service.getHttpListener().getServer(), service);
     let msg:string = i18n.get("http.services.service.added");
     let listener:HttpListener = service.getHttpListener();
@@ -124,7 +125,7 @@ export class HttpServiceManager {
    */
   public startServices():void {
     LoggerManager.getInstance().info(
-      LocaleManager.getInstance().get("http.services.start")
+      GlassCatLocaleManager.getInstance().get("http.services.start")
     );
     let logMapElements = function (svc:HttpService, key:String) {
       if(!svc.isActive()) svc.start();
@@ -137,7 +138,7 @@ export class HttpServiceManager {
    */
   public stopServices():void {
     LoggerManager.getInstance().info(
-      LocaleManager.getInstance().get("http.services.stop")
+      GlassCatLocaleManager.getInstance().get("http.services.stop")
     );
     let logMapElements = function (svc:HttpService, key:String) {
       if(svc.isActive()) svc.stop();

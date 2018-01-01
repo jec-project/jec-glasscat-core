@@ -20,7 +20,7 @@ import * as fs from "fs";
 import * as path from "path";
 import * as readline from "readline";
 import * as stream from "stream";
-import {LocaleManager} from "../../../i18n/LocaleManager";
+import {GlassCatLocaleManager} from "../../../i18n/GlassCatLocaleManager";
 import {LoggerManager} from "../../../util/logging/LoggerManager";
 import { EncodingFormat, HttpStatusCode } from "jec-commons";
 import {MappedPathUtil} from "../../../util/paths/MappedPathUtil";
@@ -113,11 +113,11 @@ export class AdminFileRealmConnector extends AbstractRealmConnector
    */
   private throwInitError(error:any):void {
     let msg:string = null;
-    if(LocaleManager.getInstance().isInitialized()) {
-       msg = LocaleManager.getInstance().get("errors.keystoreFile");
+    let loggerManager:LoggerManager = null;
+    if(GlassCatLocaleManager.getInstance().isInitialized()) {
+       msg = GlassCatLocaleManager.getInstance().get("errors.keystoreFile");
     }
-    let loggerManager:LoggerManager =
-                                 (LoggerManager.getInstance() as LoggerManager);
+    loggerManager = (LoggerManager.getInstance() as LoggerManager);
     if(loggerManager.isInitialized()) loggerManager.error(error);
     throw new GlassCatError(GlassCatErrorCode.ADMIN_REALM_INIT_FAILURE, msg);
   }

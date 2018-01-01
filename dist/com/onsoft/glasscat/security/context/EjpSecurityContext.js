@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const LoggerManager_1 = require("../../util/logging/LoggerManager");
-const LocaleManager_1 = require("../../i18n/LocaleManager");
+const GlassCatLocaleManager_1 = require("../../i18n/GlassCatLocaleManager");
 const UrlPatternUtils_1 = require("../../util/url/UrlPatternUtils");
 const ContextRootUtil_1 = require("../../util/contextroot/ContextRootUtil");
 const jec_commons_1 = require("jec-commons");
@@ -26,7 +26,7 @@ class EjpSecurityContext {
     addSecurityRole(role) {
         let name = role.getName();
         this._securityRoleMap.set(name, role);
-        let msg = LocaleManager_1.LocaleManager.getInstance().get("security.roles.added", name);
+        let msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("security.roles.added", name);
         LoggerManager_1.LoggerManager.getInstance().info(msg);
     }
     getSecurityRole(name) {
@@ -38,8 +38,7 @@ class EjpSecurityContext {
         let url = urlPattern.baseUrl;
         this._constraintsMap.set(url, constraint);
         this._urlPatternColl.push(urlPattern);
-        let msg = LocaleManager_1.LocaleManager.getInstance()
-            .get("security.constraint.added", this._contextRoot, name);
+        let msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("security.constraint.added", this._contextRoot, name);
         LoggerManager_1.LoggerManager.getInstance().info(msg);
     }
     getSecurityConstraint(url) {

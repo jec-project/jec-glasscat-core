@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const LoggerManager_1 = require("../util/logging/LoggerManager");
-const LocaleManager_1 = require("../i18n/LocaleManager");
+const GlassCatLocaleManager_1 = require("../i18n/GlassCatLocaleManager");
 class HttpServiceManager {
     constructor() {
         this._httpServiceMap = null;
@@ -17,7 +17,7 @@ class HttpServiceManager {
         });
     }
     addService(service) {
-        let i18n = LocaleManager_1.LocaleManager.getInstance();
+        let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
         this._httpServiceMap.set(service.getHttpListener().getServer(), service);
         let msg = i18n.get("http.services.service.added");
         let listener = service.getHttpListener();
@@ -31,7 +31,7 @@ class HttpServiceManager {
         return this._httpServiceMap.get(name);
     }
     startServices() {
-        LoggerManager_1.LoggerManager.getInstance().info(LocaleManager_1.LocaleManager.getInstance().get("http.services.start"));
+        LoggerManager_1.LoggerManager.getInstance().info(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("http.services.start"));
         let logMapElements = function (svc, key) {
             if (!svc.isActive())
                 svc.start();
@@ -39,7 +39,7 @@ class HttpServiceManager {
         this._httpServiceMap.forEach(logMapElements);
     }
     stopServices() {
-        LoggerManager_1.LoggerManager.getInstance().info(LocaleManager_1.LocaleManager.getInstance().get("http.services.stop"));
+        LoggerManager_1.LoggerManager.getInstance().info(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("http.services.stop"));
         let logMapElements = function (svc, key) {
             if (svc.isActive())
                 svc.stop();

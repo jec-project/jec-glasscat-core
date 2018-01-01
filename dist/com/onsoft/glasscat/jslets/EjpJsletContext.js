@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const LocaleManager_1 = require("../i18n/LocaleManager");
+const GlassCatLocaleManager_1 = require("../i18n/GlassCatLocaleManager");
 const LoggerManager_1 = require("../util/logging/LoggerManager");
 const UrlPatternUtils_1 = require("../util/url/UrlPatternUtils");
 const UrlPatternBuilder_1 = require("../util/url/UrlPatternBuilder");
@@ -42,7 +42,7 @@ class EjpJsletContext extends AbstractContainerContext_1.AbstractContainerContex
             this._jsletMap.set(urlPattern.baseUrl, jslet);
         }
         jslet.init();
-        let i18n = LocaleManager_1.LocaleManager.getInstance();
+        let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
         var msg = i18n.get("jslet.added", httpJslet.getName(), patterns.toString(), httpJslet.getTemplate());
         LoggerManager_1.LoggerManager.getInstance().info(msg);
     }

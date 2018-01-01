@@ -15,7 +15,7 @@
 //   limitations under the License.
 
 import {LoggerManager} from "../../util/logging/LoggerManager";
-import {LocaleManager} from "../../i18n/LocaleManager";
+import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 import {SecurityRole, Jslet, SecurityConstraint, StaticResources,
         SecurityContext, Session, SessionError, SessionErrorType} from "jec-exchange";
 import {SecurityManager} from "../../core/SecurityManager";
@@ -114,8 +114,9 @@ export class EjpSecurityContext implements SecurityContext {
   public addSecurityRole(role:SecurityRole):void {
     let name:string = role.getName();
     this._securityRoleMap.set(name, role);
-    let msg:string =
-                  LocaleManager.getInstance().get("security.roles.added", name);
+    let msg:string = GlassCatLocaleManager.getInstance().get(
+      "security.roles.added", name
+    );
     LoggerManager.getInstance().info(msg);
   }
 
@@ -135,9 +136,9 @@ export class EjpSecurityContext implements SecurityContext {
     let url:string = urlPattern.baseUrl;
     this._constraintsMap.set(url, constraint);
     this._urlPatternColl.push(urlPattern);
-    let msg:string =
-        LocaleManager.getInstance()
-                     .get("security.constraint.added", this._contextRoot, name);
+    let msg:string = GlassCatLocaleManager.getInstance().get(
+      "security.constraint.added", this._contextRoot, name
+    );
     LoggerManager.getInstance().info(msg);
   }
 
@@ -169,7 +170,7 @@ export class EjpSecurityContext implements SecurityContext {
     this._staticResourcesMap.set(url, resources);
     this._urlPatternColl.push(urlPattern);
     /*let msg:string =
-        LocaleManager.getInstance()
+        GlassCatLocaleManager.getInstance()
                      .get("security.constraint.added", this._contextRoot, name);
     LoggerManager.getInstance().info(msg);*/
   }

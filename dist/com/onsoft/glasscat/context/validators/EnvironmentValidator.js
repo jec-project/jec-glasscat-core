@@ -2,11 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const os = require("os");
 const LoggerManager_1 = require("../../util/logging/LoggerManager");
-const LocaleManager_1 = require("../../i18n/LocaleManager");
+const GlassCatLocaleManager_1 = require("../../i18n/GlassCatLocaleManager");
 class EnvironmentValidator {
     constructor() { }
     validate(kernel) {
-        let i18n = LocaleManager_1.LocaleManager.getInstance();
+        let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
         let env = i18n.get("environment.start");
         env += "\n   * "
             + i18n.get("environment.host", os.type(), os.platform(), os.release());

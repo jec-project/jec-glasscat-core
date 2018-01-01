@@ -15,13 +15,13 @@
 //   limitations under the License.
 
 import {LoggerManager} from "../../util/logging/LoggerManager";
-import {LocaleManager} from "../../i18n/LocaleManager";
+import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 import {DomainContainer} from "../../domains/containers/DomainContainer";
 import {BootstrapScriptBuilder} from "./BootstrapScriptBuilder";
 import {BootstrapScriptRunner} from "./BootstrapScriptRunner";
 import {DecoratorProperties, FileProperties, FilePreProcessor,
-  BootstrapContext, BootstrapScript, JecStringsEnum
-} from "jec-commons";
+        BootstrapContext, BootstrapScript, JecStringsEnum
+       } from "jec-commons";
 
 /**
  * The <code>BootstrapAutowireProcessor</code> class allows to find all 
@@ -115,7 +115,7 @@ export class BootstrapAutowireProcessor implements FilePreProcessor {
       file = this._bootstrapFiles[len];
       bootstrapPath = file.path.substring(pathLength) + file.name;
       LoggerManager.getInstance().info(
-          LocaleManager.getInstance().get(
+        GlassCatLocaleManager.getInstance().get(
             "bootstrap.autowireDetect", bootstrapPath
           )
         );

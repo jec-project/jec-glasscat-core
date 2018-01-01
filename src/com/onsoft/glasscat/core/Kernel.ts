@@ -20,7 +20,7 @@ import {HttpServiceManager} from "./HttpServiceManager";
 import {SplashScreen} from "./SplashScreen";
 import {LoggerManager} from "../util/logging/LoggerManager";
 import {HttpServiceBuilder} from "../services/http/utils/HttpServiceBuilder";
-import {LocaleManager} from "../i18n/LocaleManager";
+import {GlassCatLocaleManager} from "../i18n/GlassCatLocaleManager";
 import {DomainConnectorManager} from "./DomainConnectorManager";
 import {DomainConnectorManagerBuilder} from "../domains/connectors/utils/DomainConnectorManagerBuilder";
 import {JsletManager} from "./JsletManager";
@@ -133,7 +133,7 @@ export class Kernel {
    * Initializes the locales for this GlassCat container.
    */
   private initLocales():void {
-    LocaleManager.getInstance().init(this._context.getLocale());
+    GlassCatLocaleManager.getInstance().init(this._context.getLocale());
   }
 
   /**

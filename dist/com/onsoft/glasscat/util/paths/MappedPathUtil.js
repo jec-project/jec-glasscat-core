@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const LocaleManager_1 = require("../../i18n/LocaleManager");
+const GlassCatLocaleManager_1 = require("../../i18n/GlassCatLocaleManager");
 const GlassCatError_1 = require("../../exceptions/GlassCatError");
 const GlassCatErrorCode_1 = require("../../exceptions/GlassCatErrorCode");
 class MappedPathUtil {
@@ -10,7 +10,7 @@ class MappedPathUtil {
         this._glasscatPath = null;
         this._modulesPath = null;
         if (MappedPathUtil._locked || MappedPathUtil.INSTANCE) {
-            let msg = LocaleManager_1.LocaleManager.getInstance().get("errors.singleton", "MappedPathUtil");
+            let msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.singleton", "MappedPathUtil");
             throw new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.SINGLETON_ERROR, msg);
         }
         MappedPathUtil._locked = true;

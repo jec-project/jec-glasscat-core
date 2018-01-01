@@ -88,7 +88,7 @@ export class LoginStrategy {
     
     /*if(!authMethod) {
       LoggerManager.getInstance().error(
-        LocaleManager.getInstance().get("context.invalid")
+        GlassCatLocaleManager.getInstance().get("context.invalid")
       );
     }*/
 

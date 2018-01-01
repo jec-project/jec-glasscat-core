@@ -15,10 +15,9 @@
 //   limitations under the License.
 
 import {LoggerManager} from "../../../util/logging/LoggerManager";
-import {LocaleManager} from "../../../i18n/LocaleManager";
 import * as express from "express";
 import {HttpTransaction} from "./HttpTransaction";
-import {TransactionMonitor} from ".//TransactionMonitor";
+import {TransactionMonitor} from "./TransactionMonitor";
 
 /**
  * The manager for monitoring transactions over the current GlassCat server.

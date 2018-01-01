@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const LoggerManager_1 = require("../../util/logging/LoggerManager");
-const LocaleManager_1 = require("../../i18n/LocaleManager");
 const jec_commons_1 = require("jec-commons");
 const jec_commons_node_1 = require("jec-commons-node");
 const CacheableFile_1 = require("./CacheableFile");
+const GlassCatLocaleManager_1 = require("../../i18n/GlassCatLocaleManager");
 class DefaultSourceFileInspector {
     constructor() {
         this._processors = null;
@@ -80,7 +80,7 @@ class DefaultSourceFileInspector {
     }
     setWatcher(connector) {
         let logManager = LoggerManager_1.LoggerManager.getInstance();
-        let i18n = LocaleManager_1.LocaleManager.getInstance();
+        let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
         if (this._connector) {
             logManager.error(i18n.get("srcInspector.initError"));
         }
@@ -96,25 +96,25 @@ class DefaultSourceFileInspector {
     }
     addProcessor(processor) {
         this._processors.push(processor);
-        LoggerManager_1.LoggerManager.getInstance().info(LocaleManager_1.LocaleManager.getInstance().get("srcInspector.processorAdded", processor.constructor.name));
+        LoggerManager_1.LoggerManager.getInstance().info(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("srcInspector.processorAdded", processor.constructor.name));
     }
     removeProcessor(processor) {
         let result = false;
         let id = this._processors.indexOf(processor);
         if (id !== -1) {
             this._processors.splice(id, 1);
-            LoggerManager_1.LoggerManager.getInstance().info(LocaleManager_1.LocaleManager.getInstance().get("srcInspector.processorRemoved", processor.constructor.name));
+            LoggerManager_1.LoggerManager.getInstance().info(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("srcInspector.processorRemoved", processor.constructor.name));
         }
         return result;
     }
     addSourcePath(path) {
         this._sourcePaths.push(path);
-        LoggerManager_1.LoggerManager.getInstance().info(LocaleManager_1.LocaleManager.getInstance().get("srcInspector.sourcePathAdded", path));
+        LoggerManager_1.LoggerManager.getInstance().info(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("srcInspector.sourcePathAdded", path));
     }
     inspect(inspectMode) {
         let len = this._processors.length;
         let logManager = LoggerManager_1.LoggerManager.getInstance();
-        let i18n = LocaleManager_1.LocaleManager.getInstance();
+        let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
         if (len > 0) {
             logManager.info(i18n.get("srcInspector.lookupStart"));
             logManager.info(i18n.get("srcInspector.inspectMode", this._inspectModeUtil.inspectModeToString(inspectMode)));

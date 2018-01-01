@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const LoggerManager_1 = require("../../util/logging/LoggerManager");
 const JsletContextBuilder_1 = require("../../jslets/utils/JsletContextBuilder");
-const LocaleManager_1 = require("../../i18n/LocaleManager");
+const GlassCatLocaleManager_1 = require("../../i18n/GlassCatLocaleManager");
 const DefaultTemplateProcessor_1 = require("../../templates/DefaultTemplateProcessor");
 const StaticResourcesBuilder_1 = require("../../security/utils/StaticResourcesBuilder");
 const SecurityConstraintBuilder_1 = require("../../security/utils/SecurityConstraintBuilder");
@@ -21,6 +21,7 @@ const BootstrapAutowireProcessor_1 = require("../../startup/utils/BootstrapAutow
 const BootstrapContextManager_1 = require("../../startup/jcad/BootstrapContextManager");
 const BootstrapContextBuilder_1 = require("../../startup/utils/BootstrapContextBuilder");
 const BootstrapScriptBuilder_1 = require("../../startup/utils/BootstrapScriptBuilder");
+const jec_sokoke_1 = require("jec-sokoke");
 class EjpContainer {
     constructor() {
         this._connector = null;
@@ -37,8 +38,10 @@ class EjpContainer {
         this._templateProcessor = null;
         this._loginStrategy = null;
         this._jsletContextManager = null;
+        this._jdiContextManager = null;
         this._bootstrapContextManager = null;
         this._notFoundErrorBuilder = null;
+        this._beanManager = null;
     }
     initConfig(config) {
         let securityContext = null;
@@ -59,9 +62,8 @@ class EjpContainer {
             this._jsletContext = jsletContextBuilder.buildContext(this._connector, null, null, null);
         }
         this.initBootstrapScripts(config);
-        if (jsletsConfig.enableAutowire) {
-            this.getSourceFileInspector().addProcessor(new JsletsAutowireProcessor_1.JsletsAutowireProcessor());
-        }
+        this.initJdiEngine();
+        this.initJsletAutowireProcessor(jsletsConfig);
         this._sourceFileInspector.inspect(jec_commons_1.InspectMode.READ_CACHE);
         if (webapp.jslets) {
             jsletContextBuilder.initJslets(this._jsletContext, jsletsConfig.config);
@@ -95,12 +97,13 @@ class EjpContainer {
     ;
     initState(config) {
         let state = config.webapp.state;
+        let msg = null;
         if (state) {
             if (state === DomainState_1.DomainState.STATEFUL || state === DomainState_1.DomainState.STATELESS) {
                 this._state = state;
             }
             else {
-                let msg = LocaleManager_1.LocaleManager.getInstance().get("errors.invalidState");
+                msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.invalidState");
                 LoggerManager_1.LoggerManager.getInstance().error(msg);
                 throw new Error(msg);
             }
@@ -129,10 +132,18 @@ class EjpContainer {
         this._sourceFileInspector.inspect(jec_commons_1.InspectMode.FILL_CACHE);
         this._sourceFileInspector.removeProcessor(autoWireProcessor);
     }
+    initJsletAutowireProcessor(jsletsConfig) {
+        if (jsletsConfig.enableAutowire) {
+            this.getSourceFileInspector().addProcessor(new JsletsAutowireProcessor_1.JsletsAutowireProcessor());
+        }
+    }
+    initJdiEngine() {
+        jec_sokoke_1.SokokeLoggerProxy.getInstance().setLogger(this.getLogger());
+        this.getSourceFileInspector().addProcessor(new jec_sokoke_1.SokokeAutowireProcessor());
+    }
     initSessionContext(config) {
         let sessionContext = new EjpSessionContext_1.EjpSessionContext(this._contextRoot, config);
-        let msg = LocaleManager_1.LocaleManager.getInstance()
-            .get("security.context.sessionAdded", this._contextRoot);
+        let msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("security.context.sessionAdded", this._contextRoot);
         LoggerManager_1.LoggerManager.getInstance().info(msg);
         return sessionContext;
     }
@@ -150,8 +161,7 @@ class EjpContainer {
         let roles = null;
         let role = null;
         let len = -1;
-        let msg = LocaleManager_1.LocaleManager.getInstance()
-            .get("security.context.securityAdded", this._contextRoot);
+        let msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("security.context.securityAdded", this._contextRoot);
         LoggerManager_1.LoggerManager.getInstance().info(msg);
         if (security) {
             resourcesBuilder = new StaticResourcesBuilder_1.StaticResourcesBuilder();
@@ -182,12 +192,16 @@ class EjpContainer {
         this._sourceFileInspector = new DefaultSourceFileInspector_1.DefaultSourceFileInspector();
         this._sourceFileInspector.setWatcher(this._connector);
     }
-    initJsletContextManager() {
+    initJecContextManagers() {
+        let containerContext = this._connector.getJcadContext();
+        this._jdiContextManager = new jec_sokoke_1.JdiContextManager();
+        this._jdiContextManager.createContext(containerContext);
         this._jsletContextManager = new JsletContextManager_1.JsletContextManager();
-        this._jsletContextManager.createContext(this._connector.getJcadContext());
+        this._jsletContextManager.createContext(containerContext);
     }
-    deleteJsletContextManager() {
+    deleteJecContextManagers() {
         this._jsletContextManager.deleteContext();
+        this._jdiContextManager.deleteContext();
     }
     initBootstrapContextManager() {
         this._bootstrapContextManager = new BootstrapContextManager_1.BootstrapContextManager();
@@ -197,7 +211,7 @@ class EjpContainer {
         this._bootstrapContextManager.deleteContext();
     }
     init(connector, jsletManager) {
-        let i18n = LocaleManager_1.LocaleManager.getInstance();
+        let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
         let msg = "domain container initialization start";
         LoggerManager_1.LoggerManager.getInstance().info(msg);
         msg = "domain connector: name=" + connector.getName();
@@ -210,15 +224,18 @@ class EjpContainer {
         this._src = target + jec_commons_1.JecStringsEnum.SRC;
         this._templateProcessor = new DefaultTemplateProcessor_1.DefaultTemplateProcessor();
         this.initBootstrapContextManager();
-        this.initJsletContextManager();
+        this.initJecContextManagers();
         this.initSourceFileInspector();
         this.initConfig(connector.getConfig());
         this.deleteBootstrapContextManager();
-        this.deleteJsletContextManager();
+        this.deleteJecContextManagers();
         msg = i18n.get("domains.containers.init");
         msg += "\n   => " + i18n.get("domains.containers.contextRoot", this._contextRoot);
         msg += "\n   * " + i18n.get("domains.containers.type", this.toString());
         LoggerManager_1.LoggerManager.getInstance().info(msg);
+    }
+    getBeanManager() {
+        return this._beanManager;
     }
     getJsletContext() {
         return this._jsletContext;

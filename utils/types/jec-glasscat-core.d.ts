@@ -10,8 +10,9 @@ declare module "jec-glasscat-core" {
 import { SourceFileInspector, FilePreProcessor, FileProperties, JcadContext,
          JecContainer, Decorator, AbstractDecoratorConnector, UrlPattern,
          AbstractLogger, LogFormatter, BootstrapParams, BootstrapContext,
-         Logger, BootstrapScript, ContainerContext, CacheControlPolicy
-        } from "jec-commons";
+         Logger, BootstrapScript, ContainerContext, CacheControlPolicy,
+         BeanManager } from "jec-commons";
+import { LocaleManager } from "jec-commons-node";
 import { JsletContext, Jslet, SessionError, HttpResponse, HttpRequest,
          WebJsletParams, SessionContext, SecurityContext, CookieOptions,
          SendFileOptions, SecurityRole, SecurityConstraint, StaticResources,

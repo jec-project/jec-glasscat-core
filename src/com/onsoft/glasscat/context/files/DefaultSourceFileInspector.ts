@@ -15,12 +15,12 @@
 //   limitations under the License.
 
 import {LoggerManager} from "../../util/logging/LoggerManager";
-import {LocaleManager} from "../../i18n/LocaleManager";
 import {DomainConnector} from "../../domains/connectors/DomainConnector";
 import {Logger, UrlStringsEnum, SourceFileInspector, FilePreProcessor,
         FileProperties, InspectMode, InspectModeUtil} from "jec-commons";
-import {WalkPathUtil} from "jec-commons-node";
+import {WalkPathUtil, LocaleManager} from "jec-commons-node";
 import {CacheableFile} from "./CacheableFile";
+import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 
 /**
  * The default <code>SourceFileInspector</code> implementation for all GlassCat
@@ -196,7 +196,7 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
    */
   public setWatcher(connector:DomainConnector):void {
     let logManager:Logger = LoggerManager.getInstance();
-    let i18n:LocaleManager = LocaleManager.getInstance();
+    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     if(this._connector) {
       logManager.error(i18n.get("srcInspector.initError"));
     } else {
@@ -220,7 +220,7 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
   public addProcessor(processor:FilePreProcessor):void {
     this._processors.push(processor);
     LoggerManager.getInstance().info(
-      LocaleManager.getInstance().get(
+      GlassCatLocaleManager.getInstance().get(
         "srcInspector.processorAdded", processor.constructor.name
       )
     );
@@ -235,7 +235,7 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
     if(id !== -1) {
       this._processors.splice(id, 1);
       LoggerManager.getInstance().info(
-        LocaleManager.getInstance().get(
+        GlassCatLocaleManager.getInstance().get(
           "srcInspector.processorRemoved", processor.constructor.name
         )
       );
@@ -249,7 +249,7 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
   public addSourcePath(path:string):void {
     this._sourcePaths.push(path);
     LoggerManager.getInstance().info(
-      LocaleManager.getInstance().get(
+      GlassCatLocaleManager.getInstance().get(
         "srcInspector.sourcePathAdded", path
       )
     );
@@ -261,7 +261,7 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
   public inspect(inspectMode:number):void {
     let len:number = this._processors.length;
     let logManager:Logger = LoggerManager.getInstance();
-    let i18n:LocaleManager = LocaleManager.getInstance();
+    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     if(len > 0) {
       logManager.info(i18n.get("srcInspector.lookupStart"));
       logManager.info(

@@ -17,7 +17,8 @@
 import {Jslet, JsletContext, SecurityContext, SessionContext} from "jec-exchange";
 import {EjpJsletContext} from "../EjpJsletContext";
 import {ClassLoader} from "jec-commons";
-import {LocaleManager} from "../../i18n/LocaleManager";
+import {LocaleManager} from "jec-commons-node";
+import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 import {LoggerManager} from "../../util/logging/LoggerManager";
 import {DomainConnector} from "../../domains/connectors/DomainConnector";
 import {LoginStrategy} from "../../security/login/LoginStrategy";
@@ -39,7 +40,7 @@ export class JsletContextBuilder {
    */
   constructor() {
     if(JsletContextBuilder._locked || JsletContextBuilder.INSTANCE) {
-      let msg:string = LocaleManager.getInstance().get(
+      let msg:string = GlassCatLocaleManager.getInstance().get(
         "errors.singleton", "JsletContextBuilder"
       );
       throw new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, msg);
@@ -129,7 +130,7 @@ export class JsletContextBuilder {
                                                    securityContext,
                                                    sessionContext,
                                                    loginStrategy);
-    let i18n:LocaleManager = LocaleManager.getInstance();
+    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     var msg:string = i18n.get("jslet.newContext", connector.getContextRoot());
     LoggerManager.getInstance().info(msg);
     return context;

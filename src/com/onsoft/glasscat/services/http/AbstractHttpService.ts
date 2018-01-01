@@ -24,7 +24,7 @@ import * as https from "https";
 import * as fs from "fs";
 import * as bodyParser from "body-parser";
 import * as cookieParser from "cookie-parser";
-import {LocaleManager} from "../../i18n/LocaleManager";
+import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 import {DomainConnectorManager} from "../../core/DomainConnectorManager";
 import {DomainContainer} from "../../domains/containers/DomainContainer";
 import {ContextRootData} from "../../util/contextroot/ContextRootData";
@@ -457,7 +457,7 @@ export class AbstractHttpService implements HttpService {
     this.__server = this.__app.listen(port);
     this._isActive = true;
     LoggerManager.getInstance().info(
-      LocaleManager.getInstance().get(
+      GlassCatLocaleManager.getInstance().get(
         "http.servers.start",
         this._server,
         String(port)
@@ -472,7 +472,7 @@ export class AbstractHttpService implements HttpService {
     this.__server.close();
     this._isActive = false;
     LoggerManager.getInstance().info(
-      LocaleManager.getInstance().get("http.servers.stop", this._server)
+      GlassCatLocaleManager.getInstance().get("http.servers.stop", this._server)
     );
   }
 

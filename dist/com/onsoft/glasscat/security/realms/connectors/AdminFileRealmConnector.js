@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const AbstractRealmConnector_1 = require("./AbstractRealmConnector");
 const fs = require("fs");
 const readline = require("readline");
-const LocaleManager_1 = require("../../../i18n/LocaleManager");
+const GlassCatLocaleManager_1 = require("../../../i18n/GlassCatLocaleManager");
 const LoggerManager_1 = require("../../../util/logging/LoggerManager");
 const jec_commons_1 = require("jec-commons");
 const MappedPathUtil_1 = require("../../../util/paths/MappedPathUtil");
@@ -42,10 +42,11 @@ class AdminFileRealmConnector extends AbstractRealmConnector_1.AbstractRealmConn
     }
     throwInitError(error) {
         let msg = null;
-        if (LocaleManager_1.LocaleManager.getInstance().isInitialized()) {
-            msg = LocaleManager_1.LocaleManager.getInstance().get("errors.keystoreFile");
+        let loggerManager = null;
+        if (GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().isInitialized()) {
+            msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.keystoreFile");
         }
-        let loggerManager = LoggerManager_1.LoggerManager.getInstance();
+        loggerManager = LoggerManager_1.LoggerManager.getInstance();
         if (loggerManager.isInitialized())
             loggerManager.error(error);
         throw new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.ADMIN_REALM_INIT_FAILURE, msg);

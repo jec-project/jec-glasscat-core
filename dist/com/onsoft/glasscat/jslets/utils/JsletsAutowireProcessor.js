@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const LoggerManager_1 = require("../../util/logging/LoggerManager");
-const LocaleManager_1 = require("../../i18n/LocaleManager");
+const GlassCatLocaleManager_1 = require("../../i18n/GlassCatLocaleManager");
 const JsletContextBuilder_1 = require("./JsletContextBuilder");
 class JsletsAutowireProcessor {
     constructor() {
@@ -34,7 +34,7 @@ class JsletsAutowireProcessor {
         while (len--) {
             file = this._jsletFiles[len];
             jsletPath = file.path.substring(pathLength) + file.name;
-            LoggerManager_1.LoggerManager.getInstance().info(LocaleManager_1.LocaleManager.getInstance().get("jslet.autowireDetect", jsletPath));
+            LoggerManager_1.LoggerManager.getInstance().info(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("jslet.autowireDetect", jsletPath));
             jslets.push(jsletPath);
         }
         JsletContextBuilder_1.JsletContextBuilder.getInstance().initJslets(context, jslets);

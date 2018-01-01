@@ -19,7 +19,7 @@ import {HttpRequest, HttpResponse, SessionError, SessionErrorType,
         AuthenticationError} from "jec-exchange";
 import {HttpStatusCode} from "jec-commons";
 import {LoggerManager} from "../../../util/logging/LoggerManager";
-import {LocaleManager} from "../../../i18n/LocaleManager";
+import {GlassCatLocaleManager} from "../../../i18n/GlassCatLocaleManager";
 import {ErrorStatusBuilder} from "../../../templates/status/ErrorStatusBuilder";
 import {ForbiddenStatusBuilder} from "../../../templates/status/ForbiddenStatusBuilder";
 import {DomainRequestError} from "../../../domains/errors/DomainRequestError";
@@ -61,7 +61,7 @@ export class HttpServiceErrorManager {
                                     errorTemplatePath:string):void {
     properties.transactionFails = true;
     LoggerManager.getInstance().error(
-      LocaleManager.getInstance().get(
+      GlassCatLocaleManager.getInstance().get(
         "errors.nestedResource",
         error.message
       )
@@ -93,7 +93,7 @@ export class HttpServiceErrorManager {
     let statusCode:number = error.statusCode;
     if(statusCode === HttpStatusCode.INTERNAL_SERVER_ERROR) {
       LoggerManager.getInstance().error(
-        LocaleManager.getInstance().get(
+        GlassCatLocaleManager.getInstance().get(
             "errors.session.storageAccessError",
              error.message
         )
@@ -145,7 +145,7 @@ export class HttpServiceErrorManager {
       // user and log the error:
       case SessionErrorType.SESSION_PERSISTENCE_FAILED:
         LoggerManager.getInstance().error(
-          LocaleManager.getInstance().get(
+          GlassCatLocaleManager.getInstance().get(
             errorType,
             error.toString()
           )

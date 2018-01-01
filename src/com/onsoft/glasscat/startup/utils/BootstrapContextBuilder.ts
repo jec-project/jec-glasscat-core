@@ -16,7 +16,8 @@
 
 import {EjpBootstrapContext} from "../EjpBootstrapContext";
 import {BootstrapContext} from "jec-commons";
-import {LocaleManager} from "../../i18n/LocaleManager";
+import {LocaleManager} from "jec-commons-node";
+import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 import {LoggerManager} from "../../util/logging/LoggerManager";
 import {DomainConnector} from "../../domains/connectors/DomainConnector";
 import {GlassCatError} from "../../exceptions/GlassCatError";
@@ -37,7 +38,7 @@ export class BootstrapContextBuilder {
    */
   constructor() {
     if(BootstrapContextBuilder._locked || BootstrapContextBuilder.INSTANCE) {
-      let msg:string = LocaleManager.getInstance().get(
+      let msg:string = GlassCatLocaleManager.getInstance().get(
         "errors.singleton", "BootstrapContextBuilder"
       );
       throw new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, msg);
@@ -87,8 +88,8 @@ export class BootstrapContextBuilder {
    */
   public buildContext(connector:DomainConnector):BootstrapContext {
     let context:BootstrapContext = new EjpBootstrapContext(connector);
-    let i18n:LocaleManager = LocaleManager.getInstance();
-    var msg:string = 
+    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
+    let msg:string = 
                    i18n.get("bootstrap.newContext", connector.getContextRoot());
     LoggerManager.getInstance().info(msg);
     return context;

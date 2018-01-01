@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const MappedPathUtil_1 = require("../paths/MappedPathUtil");
 const LoggerManager_1 = require("../logging/LoggerManager");
 const jec_commons_1 = require("jec-commons");
-const LocaleManager_1 = require("../../i18n/LocaleManager");
+const GlassCatLocaleManager_1 = require("../../i18n/GlassCatLocaleManager");
 const GlassCatError_1 = require("../../exceptions/GlassCatError");
 const GlassCatErrorCode_1 = require("../../exceptions/GlassCatErrorCode");
 class ConfigLoaderBase {
@@ -19,7 +19,7 @@ class ConfigLoaderBase {
         }
         catch (e) {
             logManager = LoggerManager_1.LoggerManager.getInstance();
-            i18n = LocaleManager_1.LocaleManager.getInstance();
+            i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
             if (logManager.isInitialized() && i18n.isInitialized()) {
                 logManager.error(i18n.get("errors.loadingFile", e));
             }
@@ -34,7 +34,7 @@ class ConfigLoaderBase {
         let i18n = null;
         loader.load(path, success, (e) => {
             logManager = LoggerManager_1.LoggerManager.getInstance();
-            i18n = LocaleManager_1.LocaleManager.getInstance();
+            i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
             if (logManager.isInitialized() && i18n.isInitialized()) {
                 logManager.error(i18n.get("errors.loadingFile", e));
             }

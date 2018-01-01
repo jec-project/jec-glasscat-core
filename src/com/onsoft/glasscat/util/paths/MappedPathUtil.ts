@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {LocaleManager} from "../../i18n/LocaleManager";
+import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 import {GlassCatError} from "../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../exceptions/GlassCatErrorCode";
 
@@ -33,8 +33,9 @@ export class MappedPathUtil {
    */
   constructor() {
     if(MappedPathUtil._locked || MappedPathUtil.INSTANCE) {
-      let msg:string =
-          LocaleManager.getInstance().get("errors.singleton", "MappedPathUtil");
+      let msg:string = GlassCatLocaleManager.getInstance().get(
+        "errors.singleton", "MappedPathUtil"
+      );
       throw new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, msg);
     }
     MappedPathUtil._locked = true;

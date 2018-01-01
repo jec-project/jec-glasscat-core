@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const LoggerManager_1 = require("../../util/logging/LoggerManager");
-const LocaleManager_1 = require("../../i18n/LocaleManager");
+const GlassCatLocaleManager_1 = require("../../i18n/GlassCatLocaleManager");
 const jec_exchange_1 = require("jec-exchange");
 const EjpSessionManager_1 = require("../session/managers/EjpSessionManager");
 const SessionBuilder_1 = require("../session/utils/SessionBuilder");
@@ -43,7 +43,7 @@ class EjpSessionContext {
         result(this._sessionErrorBuilder.build(sessionId, jec_exchange_1.SessionErrorType.SESSION_EXPIRED));
         this.unloadSession(sessionId, (err) => {
             if (err) {
-                LoggerManager_1.LoggerManager.getInstance().error(LocaleManager_1.LocaleManager.getInstance().get("errors.session.sessionStorageAccessError", err.toString()));
+                LoggerManager_1.LoggerManager.getInstance().error(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.session.sessionStorageAccessError", err.toString()));
             }
         });
     }

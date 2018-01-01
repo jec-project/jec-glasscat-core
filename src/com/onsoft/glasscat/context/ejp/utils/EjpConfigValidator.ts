@@ -18,7 +18,7 @@ import {LoggerManager} from "../../../util/logging/LoggerManager";
 import {EjpConfig} from "../EjpConfig";
 import {DomainState} from "../../../domains/containers/DomainState";
 import {AuthMethod, RealmType, SessionStorageType} from "jec-exchange";
-import {LocaleManager} from "../../../i18n/LocaleManager";
+import {GlassCatLocaleManager} from "../../../i18n/GlassCatLocaleManager";
 import {UrlStringsEnum, LogLevel} from "jec-commons";
 import {GlassCatError} from "../../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../../exceptions/GlassCatErrorCode";
@@ -28,6 +28,8 @@ import {GlassCatErrorCode} from "../../../exceptions/GlassCatErrorCode";
  */
 export class EjpConfigValidator {
 
+  //TODO: implement i18n for valddation messages.
+  
   ////////////////////////////////////////////////////////////////////////////
   // Constructor function
   ////////////////////////////////////////////////////////////////////////////

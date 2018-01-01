@@ -16,9 +16,10 @@
 
 import {DomainConnector} from "../domains/connectors/DomainConnector";
 import {LoggerManager} from "../util/logging/LoggerManager";
-import {LocaleManager} from "../i18n/LocaleManager";
+import {LocaleManager} from "jec-commons-node";
 import {ContextRootUtil} from "../util/contextroot/ContextRootUtil";
 import {HttpListener} from "../services/http/listeners/HttpListener";
+import {GlassCatLocaleManager} from "../i18n/GlassCatLocaleManager";
 
 /**
  * The <code>DomainConnectorManager</code> class provides the API for accessing 
@@ -84,7 +85,7 @@ export class DomainConnectorManager {
    *                                specified connector.
    */
   public addConnector(connector:DomainConnector, listener:HttpListener):void {
-    let i18n:LocaleManager = LocaleManager.getInstance();
+    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     let contextRootRef:string = 
                     this._contextRootUtil.buildContextRoot(connector, listener);
     this._connectorMap.set(contextRootRef, connector);

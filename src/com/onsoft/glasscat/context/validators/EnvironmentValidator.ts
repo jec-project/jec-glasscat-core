@@ -18,7 +18,8 @@ import * as os from "os";
 import {Kernel} from "../../core/Kernel";
 import {LoggerManager} from "../../util/logging/LoggerManager";
 import {KernelValidator} from "./KernelValidator";
-import {LocaleManager} from "../../i18n/LocaleManager";
+import {LocaleManager} from "jec-commons-node";
+import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 
 /**
  * A utility class for validating GlassCat container deployement environments.
@@ -42,7 +43,7 @@ export class EnvironmentValidator implements KernelValidator {
    * @inheritDoc
    */
   public validate(kernel:Kernel):void {
-    let i18n:LocaleManager = LocaleManager.getInstance();
+    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     let env:string = i18n.get("environment.start");
     env += "\n   * "
         + i18n.get("environment.host", os.type(), os.platform(), os.release());

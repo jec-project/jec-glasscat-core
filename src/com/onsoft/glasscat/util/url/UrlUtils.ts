@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {LocaleManager} from "../../i18n/LocaleManager";
+import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 import {GlassCatError} from "../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../exceptions/GlassCatErrorCode";
 
@@ -32,8 +32,9 @@ export class UrlUtils {
    */
   constructor() {
     if(UrlUtils._locked || UrlUtils.INSTANCE) {
-      let msg:string =
-                LocaleManager.getInstance().get("errors.singleton", "UrlUtils");
+      let msg:string = GlassCatLocaleManager.getInstance().get(
+        "errors.singleton", "UrlUtils"
+      );
       throw new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, msg);
     }
     UrlUtils._locked = true;

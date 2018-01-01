@@ -14,7 +14,8 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {LocaleManager} from "../i18n/LocaleManager";
+import {LocaleManager} from "jec-commons-node";
+import {GlassCatLocaleManager} from "../i18n/GlassCatLocaleManager";
 import {LoggerManager} from "../util/logging/LoggerManager";
 import {AbstractContainerContext} from "../context/core/AbstractContainerContext";
 import {DomainConnector} from "../domains/connectors/DomainConnector";
@@ -70,8 +71,8 @@ export class EjpBootstrapContext extends AbstractContainerContext
    * @inheritDoc
    */
   public addScript(script:BootstrapScript):void {
-    let i18n:LocaleManager = LocaleManager.getInstance();
-    var msg:string = i18n.get(
+    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
+    let msg:string = i18n.get(
       "bootstrap.added", script.constructor.name
     );
     this._scriptList.push(script);

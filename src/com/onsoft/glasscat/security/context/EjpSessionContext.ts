@@ -15,7 +15,7 @@
 //   limitations under the License.
 
 import {LoggerManager} from "../../util/logging/LoggerManager";
-import {LocaleManager} from "../../i18n/LocaleManager";
+import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 import {HttpRequest, HttpResponse, Session, SessionOwner, SessionError,
         SessionErrorType, SessionContext, SessionId} from "jec-exchange";
 import {SessionManager} from "../session/managers/SessionManager";
@@ -159,7 +159,7 @@ export class EjpSessionContext implements SessionContext {
       (err:SessionError) => {
         if(err) {
           LoggerManager.getInstance().error(
-            LocaleManager.getInstance().get(
+            GlassCatLocaleManager.getInstance().get(
               "errors.session.sessionStorageAccessError", err.toString()
             )
           );

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const LoggerManager_1 = require("../../util/logging/LoggerManager");
-const LocaleManager_1 = require("../../i18n/LocaleManager");
+const GlassCatLocaleManager_1 = require("../../i18n/GlassCatLocaleManager");
 const BootstrapScriptBuilder_1 = require("./BootstrapScriptBuilder");
 const BootstrapScriptRunner_1 = require("./BootstrapScriptRunner");
 const jec_commons_1 = require("jec-commons");
@@ -40,7 +40,7 @@ class BootstrapAutowireProcessor {
         while (len--) {
             file = this._bootstrapFiles[len];
             bootstrapPath = file.path.substring(pathLength) + file.name;
-            LoggerManager_1.LoggerManager.getInstance().info(LocaleManager_1.LocaleManager.getInstance().get("bootstrap.autowireDetect", bootstrapPath));
+            LoggerManager_1.LoggerManager.getInstance().info(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("bootstrap.autowireDetect", bootstrapPath));
             script = builder.build(src + bootstrapPath);
             context.addScript(script);
         }

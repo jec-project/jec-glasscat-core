@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const HttpStatusReport_1 = require("./HttpStatusReport");
-const LocaleManager_1 = require("../../i18n/LocaleManager");
+const GlassCatLocaleManager_1 = require("../../i18n/GlassCatLocaleManager");
 const GlassCatError_1 = require("../../exceptions/GlassCatError");
 const GlassCatErrorCode_1 = require("../../exceptions/GlassCatErrorCode");
 class HttpStatusReportBuilder {
@@ -9,7 +9,7 @@ class HttpStatusReportBuilder {
         this._version = null;
         this._codeName = null;
         if (HttpStatusReportBuilder._locked || HttpStatusReportBuilder.INSTANCE) {
-            let msg = LocaleManager_1.LocaleManager.getInstance().get("errors.singleton", "HttpStatusReportBuilder");
+            let msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.singleton", "HttpStatusReportBuilder");
             throw new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.SINGLETON_ERROR, msg);
         }
         HttpStatusReportBuilder._locked = true;

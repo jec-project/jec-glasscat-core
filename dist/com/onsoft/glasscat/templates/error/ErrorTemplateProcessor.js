@@ -2,13 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const ejs = require("ejs");
 const LoggerManager_1 = require("../../util/logging/LoggerManager");
-const LocaleManager_1 = require("../../i18n/LocaleManager");
+const GlassCatLocaleManager_1 = require("../../i18n/GlassCatLocaleManager");
 const GlassCatError_1 = require("../../exceptions/GlassCatError");
 const GlassCatErrorCode_1 = require("../../exceptions/GlassCatErrorCode");
 class ErrorTemplateProcessor {
     constructor() {
         if (ErrorTemplateProcessor._locked || ErrorTemplateProcessor.INSTANCE) {
-            let msg = LocaleManager_1.LocaleManager.getInstance().get("errors.singleton", "ErrorTemplateProcessor");
+            let msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.singleton", "ErrorTemplateProcessor");
             throw new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.SINGLETON_ERROR, msg);
         }
         ErrorTemplateProcessor._locked = true;

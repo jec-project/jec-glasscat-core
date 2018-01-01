@@ -20,7 +20,7 @@ import {EjpConfig} from "../EjpConfig";
 import {EjpConfigSerializer} from "./EjpConfigSerializer";
 import {MappedPathUtil} from "../../../util/paths/MappedPathUtil";
 import * as fs from "fs";
-import {LocaleManager} from "../../../i18n/LocaleManager";
+import {GlassCatLocaleManager} from "../../../i18n/GlassCatLocaleManager";
 import {GlassCatError} from "../../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../../exceptions/GlassCatErrorCode";
 
@@ -81,7 +81,7 @@ export class EjpConfigUpdater {
     let glassCatError:GlassCatError = null;
     let stringErr:string = null;
     LoggerManager.getInstance().info(
-      LocaleManager.getInstance().get("ejp.updateStart", path)
+      GlassCatLocaleManager.getInstance().get("ejp.updateStart", path)
     );
     this._serializer.serialize(
       config,
@@ -90,7 +90,7 @@ export class EjpConfigUpdater {
         fs.writeFile(path, data, (err:NodeJS.ErrnoException)=> {
           if(err) {
             LoggerManager.getInstance().info(
-              LocaleManager.getInstance().get(
+              GlassCatLocaleManager.getInstance().get(
                 "ejp.updateFailed",
                 path,
                 err.message
@@ -103,7 +103,8 @@ export class EjpConfigUpdater {
             result(glassCatError);
           } else {
             LoggerManager.getInstance().info(
-              LocaleManager.getInstance().get("ejp.updateComplete", path)
+              GlassCatLocaleManager.getInstance()
+                                   .get("ejp.updateComplete", path)
             );
             result(null);
           }
@@ -112,7 +113,7 @@ export class EjpConfigUpdater {
       (err:any)=> {
         stringErr = err.toString();
         LoggerManager.getInstance().info(
-          LocaleManager.getInstance().get(
+          GlassCatLocaleManager.getInstance().get(
             "ejp.updateFailed",
             path,
             stringErr

@@ -1,6 +1,0 @@
-{
-	"hello": {
-		"world": "Hello World!",
-		"name": "Hello %s!"
-	}
-}

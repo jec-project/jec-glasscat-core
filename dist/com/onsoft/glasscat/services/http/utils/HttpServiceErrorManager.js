@@ -3,21 +3,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const jec_exchange_1 = require("jec-exchange");
 const jec_commons_1 = require("jec-commons");
 const LoggerManager_1 = require("../../../util/logging/LoggerManager");
-const LocaleManager_1 = require("../../../i18n/LocaleManager");
+const GlassCatLocaleManager_1 = require("../../../i18n/GlassCatLocaleManager");
 const ErrorStatusBuilder_1 = require("../../../templates/status/ErrorStatusBuilder");
 const ForbiddenStatusBuilder_1 = require("../../../templates/status/ForbiddenStatusBuilder");
 class HttpServiceErrorManager {
     constructor() { }
     processNestedResourceError(properties, error, httpRequest, httpResponse, errorTemplatePath) {
         properties.transactionFails = true;
-        LoggerManager_1.LoggerManager.getInstance().error(LocaleManager_1.LocaleManager.getInstance().get("errors.nestedResource", error.message));
+        LoggerManager_1.LoggerManager.getInstance().error(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.nestedResource", error.message));
         ErrorStatusBuilder_1.ErrorStatusBuilder.getInstance().build(httpRequest, httpResponse, errorTemplatePath, jec_commons_1.HttpStatusCode.INTERNAL_SERVER_ERROR);
     }
     processDomainRequestError(properties, error, httpRequest, httpResponse, errorTemplatePath) {
         properties.transactionFails = true;
         let statusCode = error.statusCode;
         if (statusCode === jec_commons_1.HttpStatusCode.INTERNAL_SERVER_ERROR) {
-            LoggerManager_1.LoggerManager.getInstance().error(LocaleManager_1.LocaleManager.getInstance().get("errors.session.storageAccessError", error.message));
+            LoggerManager_1.LoggerManager.getInstance().error(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.session.storageAccessError", error.message));
         }
         ErrorStatusBuilder_1.ErrorStatusBuilder.getInstance().build(httpRequest, httpResponse, errorTemplatePath, statusCode, error.detailsCode);
     }
@@ -35,7 +35,7 @@ class HttpServiceErrorManager {
                 }
                 break;
             case jec_exchange_1.SessionErrorType.SESSION_PERSISTENCE_FAILED:
-                LoggerManager_1.LoggerManager.getInstance().error(LocaleManager_1.LocaleManager.getInstance().get(errorType, error.toString()));
+                LoggerManager_1.LoggerManager.getInstance().error(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get(errorType, error.toString()));
                 ErrorStatusBuilder_1.ErrorStatusBuilder.getInstance().build(httpRequest, httpResponse, errorTemplatePath, jec_commons_1.HttpStatusCode.INTERNAL_SERVER_ERROR, errorType);
         }
     }

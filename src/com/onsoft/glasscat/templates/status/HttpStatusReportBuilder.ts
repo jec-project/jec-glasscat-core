@@ -15,7 +15,7 @@
 //   limitations under the License.
 
 import {HttpStatusReport} from"./HttpStatusReport";
-import {LocaleManager} from "../../i18n/LocaleManager";
+import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 import {GlassCatError} from "../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../exceptions/GlassCatErrorCode";
 
@@ -33,7 +33,7 @@ export class HttpStatusReportBuilder {
    */
   constructor() {
     if(HttpStatusReportBuilder._locked || HttpStatusReportBuilder.INSTANCE) {
-      let msg:string = LocaleManager.getInstance().get(
+      let msg:string = GlassCatLocaleManager.getInstance().get(
         "errors.singleton", "HttpStatusReportBuilder"
       );
       throw new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, msg);

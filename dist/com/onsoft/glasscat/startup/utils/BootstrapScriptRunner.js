@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const BootstrapScriptSorter_1 = require("./BootstrapScriptSorter");
 const LoggerManager_1 = require("../../util/logging/LoggerManager");
-const LocaleManager_1 = require("../../i18n/LocaleManager");
+const GlassCatLocaleManager_1 = require("../../i18n/GlassCatLocaleManager");
 class BootstrapScriptRunner {
     constructor() { }
     runAll(container) {
@@ -12,7 +12,7 @@ class BootstrapScriptRunner {
         let script = null;
         let len = scripts.length;
         let logManager = LoggerManager_1.LoggerManager.getInstance();
-        let i18n = LocaleManager_1.LocaleManager.getInstance();
+        let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
         if (len > 0) {
             sorter = new BootstrapScriptSorter_1.BootstrapScriptSorter();
             sorter.sortCollection(scripts);

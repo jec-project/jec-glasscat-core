@@ -15,7 +15,8 @@
 //   limitations under the License.
 
 import {HttpStatusReport} from"./HttpStatusReport";
-import {LocaleManager} from "../../i18n/LocaleManager";
+import {LocaleManager} from "jec-commons-node";
+import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 import {HttpRequest, HttpResponse} from "jec-exchange";
 import {LoggerManager} from "../../util/logging/LoggerManager";
 import {HttpStatusReportBuilder} from "../../templates/status/HttpStatusReportBuilder";
@@ -38,7 +39,7 @@ export class ErrorStatusBuilder {
    */
   constructor() {
     if(ErrorStatusBuilder._locked || ErrorStatusBuilder.INSTANCE) {
-      let msg:string = LocaleManager.getInstance().get(
+      let msg:string = GlassCatLocaleManager.getInstance().get(
         "errors.singleton", "ErrorStatusBuilder"
       );
       throw new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, msg);
@@ -99,7 +100,7 @@ export class ErrorStatusBuilder {
                statusCode:number = HttpStatusCode.NOT_FOUND,
                detailsCode:string = "httpErrors.error.description"):void {
     let url:string = req.getOriginalUrl();
-    let i18n:LocaleManager = LocaleManager.getInstance();
+    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     let statusReport:HttpStatusReport = 
       HttpStatusReportBuilder.getInstance().build(
         statusCode,

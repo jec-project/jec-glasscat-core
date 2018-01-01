@@ -15,7 +15,8 @@
 //   limitations under the License.
 
 import {Logger, LogLevel, LogLevelUtil, AbstractLogger} from "jec-commons";
-import {LocaleManager} from "../../i18n/LocaleManager";
+import {LocaleManager} from "jec-commons-node";
+import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 import {GlassCatError} from "../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../exceptions/GlassCatErrorCode";
 
@@ -34,8 +35,9 @@ export class LoggerManager extends AbstractLogger {
   constructor() {
     super();
     if(LoggerManager._locked || LoggerManager.INSTANCE) {
-      let msg:string =
-           LocaleManager.getInstance().get("errors.singleton", "LoggerManager");
+      let msg:string = GlassCatLocaleManager.getInstance().get(
+        "errors.singleton", "LoggerManager"
+      );
       throw new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, msg);
     }
     LoggerManager._locked = true;
@@ -78,7 +80,7 @@ export class LoggerManager extends AbstractLogger {
    * @param {number} logLevel the log level for the GlassCat container.
    */
   public init(loggers:Logger[], logLevel:number) {
-    let i18n:LocaleManager = LocaleManager.getInstance();
+    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     let llu:LogLevelUtil = null;
     let msg:string = null;
     let loggerNum:number = 1;

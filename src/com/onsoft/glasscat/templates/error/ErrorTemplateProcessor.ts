@@ -17,7 +17,7 @@
 import {TemplateProcessor} from "../TemplateProcessor";
 import * as ejs from "ejs";
 import {LoggerManager} from "../../util/logging/LoggerManager";
-import {LocaleManager} from "../../i18n/LocaleManager";
+import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 import {HttpRequest, HttpResponse} from "jec-exchange";
 import {GlassCatError} from "../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../exceptions/GlassCatErrorCode";
@@ -37,7 +37,7 @@ export class ErrorTemplateProcessor implements TemplateProcessor {
    */
   constructor() {
     if(ErrorTemplateProcessor._locked || ErrorTemplateProcessor.INSTANCE) {
-      let msg:string = LocaleManager.getInstance().get(
+      let msg:string = GlassCatLocaleManager.getInstance().get(
         "errors.singleton", "ErrorTemplateProcessor"
       );
       throw new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, msg);

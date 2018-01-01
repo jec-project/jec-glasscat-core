@@ -18,7 +18,8 @@ import {GlassCatContext} from "../GlassCatContext";
 import {Kernel} from "../../core/Kernel";
 import {LoggerManager} from "../../util/logging/LoggerManager";
 import {KernelValidator} from "./KernelValidator";
-import {LocaleManager} from "../../i18n/LocaleManager";
+import {LocaleManager} from "jec-commons-node";
+import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 
 /**
  * A utility class for validating GlassCat container contexts.
@@ -42,7 +43,7 @@ export class ContextValidator implements KernelValidator {
    * @inheritDoc
    */
   public validate(kernel:Kernel):void {
-    let i18n:LocaleManager = LocaleManager.getInstance();
+    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     LoggerManager.getInstance().info(i18n.get("context.start"));
     let isValid:boolean = true;
     let context:GlassCatContext = kernel.getContext();

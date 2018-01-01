@@ -16,7 +16,8 @@
 
 import {JsletContext, Jslet, HttpJslet, SecurityContext, HttpRequest,
         HttpResponse, SessionError, SessionContext} from "jec-exchange";
-import {LocaleManager} from "../i18n/LocaleManager";
+import {LocaleManager} from "jec-commons-node";
+import {GlassCatLocaleManager} from "../i18n/GlassCatLocaleManager";
 import {LoggerManager} from "../util/logging/LoggerManager";
 import {UrlPatternUtils} from "../util/url/UrlPatternUtils";
 import {UrlPatternBuilder} from "../util/url/UrlPatternBuilder";
@@ -149,7 +150,7 @@ export class EjpJsletContext extends AbstractContainerContext
       this._jsletMap.set(urlPattern.baseUrl, jslet);
     }
     jslet.init();
-    let i18n:LocaleManager = LocaleManager.getInstance();
+    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     var msg:string = i18n.get(
       "jslet.added",
       httpJslet.getName(),

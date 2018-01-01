@@ -18,7 +18,8 @@ import {BootstrapScript, BootstrapContext, Logger} from "jec-commons";
 import {BootstrapScriptSorter} from "./BootstrapScriptSorter";
 import {DomainContainer} from "../../domains/containers/DomainContainer";
 import {LoggerManager} from "../../util/logging/LoggerManager";
-import {LocaleManager} from "../../i18n/LocaleManager";
+import {LocaleManager} from "jec-commons-node";
+import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 
 /**
  * The helper class that runs all <code>BootstrapScript</code> classes
@@ -52,7 +53,7 @@ export class BootstrapScriptRunner {
     let script:BootstrapScript = null;
     let len:number = scripts.length;
     let logManager:Logger = LoggerManager.getInstance();
-    let i18n:LocaleManager = LocaleManager.getInstance();
+    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     if(len > 0) {
       sorter = new BootstrapScriptSorter();
       sorter.sortCollection(scripts);

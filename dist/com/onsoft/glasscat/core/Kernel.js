@@ -4,7 +4,7 @@ const GlassCatContextBuilder_1 = require("../context/utils/GlassCatContextBuilde
 const HttpServiceManager_1 = require("./HttpServiceManager");
 const SplashScreen_1 = require("./SplashScreen");
 const HttpServiceBuilder_1 = require("../services/http/utils/HttpServiceBuilder");
-const LocaleManager_1 = require("../i18n/LocaleManager");
+const GlassCatLocaleManager_1 = require("../i18n/GlassCatLocaleManager");
 const DomainConnectorManagerBuilder_1 = require("../domains/connectors/utils/DomainConnectorManagerBuilder");
 const JsletManager_1 = require("./JsletManager");
 const HttpStatusReportBuilder_1 = require("../templates/status/HttpStatusReportBuilder");
@@ -38,7 +38,7 @@ class Kernel {
         builder.buildServices(this._httpServiceManager, this._context.getHttpListenerConfigList());
     }
     initLocales() {
-        LocaleManager_1.LocaleManager.getInstance().init(this._context.getLocale());
+        GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().init(this._context.getLocale());
     }
     initDomainConnectors() {
         let dcmb = new DomainConnectorManagerBuilder_1.DomainConnectorManagerBuilder();
