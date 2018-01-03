@@ -24,6 +24,7 @@ import { GlassCatContext } from "../../../../../../src/com/onsoft/glasscat/conte
 import { BootstrapConfig } from "../../../../../../src/com/onsoft/glasscat/context/core/BootstrapConfig";
 import { BootstrapConfigParser } from "../../../../../../src/com/onsoft/glasscat/context/core/utils/BootstrapConfigParser";
 import { JsonLoader, JsonLoaderError, Logger } from "jec-commons";
+import { DefaultJsonLoader } from "jec-commons-node";
 
 import * as utils from "../../../../../../utils/test-utils/utilities/GlassCatLogFormatterTestUtils"; 
 
@@ -93,7 +94,7 @@ export class LoggerManagerBuilderTest {
   }
 
   public initContext(done:(ctx:GlassCatContext)=>void):void {
-    let loader:JsonLoader = new JsonLoader();
+    let loader:JsonLoader = new DefaultJsonLoader();
     let configParser:BootstrapConfigParser = null;
     let context:GlassCatContext = null;
     let config:any = null;

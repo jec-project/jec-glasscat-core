@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { GuidGenerator } from "jec-commons";
+import { GuidGenerator, GuidGeneratorBase } from "jec-commons";
 import { SessionId } from "jec-exchange";
 import { GlassCatSessionId } from "../../../src/com/onsoft/glasscat/security/session/GlassCatSessionId";
 
@@ -24,7 +24,7 @@ import { GlassCatSessionId } from "../../../src/com/onsoft/glasscat/security/ses
 
 // Utilities:
 
-const guidGen: GuidGenerator = new GuidGenerator();
+const guidGen: GuidGenerator = new GuidGeneratorBase();
 export const SESSION_ID_NAME:string = "JSSESSIONID";
 export const COOKIES:string = "cookies";
 export const AUTH_URI_PATH:string = "/my/auth/uri/path";

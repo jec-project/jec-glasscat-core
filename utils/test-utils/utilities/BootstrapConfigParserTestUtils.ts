@@ -15,6 +15,7 @@
 //   limitations under the License.
 
 import {JsonLoader, LogLevelString} from "jec-commons";
+import {DefaultJsonLoader} from "jec-commons-node";
 
 /*!
  * This module constains utilities used by the BootstrapConfigParserTest test
@@ -24,7 +25,7 @@ import {JsonLoader, LogLevelString} from "jec-commons";
 // Utilities:
 const BOOTSTRAP_FILE:string = "utils/test-utils/files/bootstrap.json";
 export const loadConfigFile:Function = function():any {
-  let loader:JsonLoader = new JsonLoader();
+  let loader:JsonLoader = new DefaultJsonLoader();
   return loader.loadSync(BOOTSTRAP_FILE);
 };
 export const GLASSCAT_VERSION:string = "0.0.0";

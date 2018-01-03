@@ -19,7 +19,7 @@ import { expect } from "chai";
 import { SessionIdBuilder } from "../../../../../../../src/com/onsoft/glasscat/security/session/utils/SessionIdBuilder";
 import { GlassCatSessionId } from "../../../../../../../src/com/onsoft/glasscat/security/session/GlassCatSessionId";
 import { SessionId } from "jec-exchange";
-import { GuidGenerator } from "jec-commons";
+import { GuidGenerator, GuidGeneratorBase } from "jec-commons";
 
 @TestSuite({
   description: "Test the SessionIdBuilder class properties"
@@ -32,7 +32,7 @@ export class SessionIdBuilderTest {
   @BeforeAll()
   public initTest():void {
     this.builder = new SessionIdBuilder();
-    this.guidGen = new GuidGenerator();
+    this.guidGen = new GuidGeneratorBase();
   }
 
   @Test({

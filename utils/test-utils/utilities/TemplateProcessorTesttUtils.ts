@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { GuidGenerator, HttpStatusCode } from "jec-commons";
+import { HttpStatusCode } from "jec-commons";
 import { SessionId } from "jec-exchange";
 import { GlassCatSessionId } from "../../../src/com/onsoft/glasscat/security/session/GlassCatSessionId";
 

@@ -2,14 +2,14 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const MappedPathUtil_1 = require("../paths/MappedPathUtil");
 const LoggerManager_1 = require("../logging/LoggerManager");
-const jec_commons_1 = require("jec-commons");
+const jec_commons_node_1 = require("jec-commons-node");
 const GlassCatLocaleManager_1 = require("../../i18n/GlassCatLocaleManager");
 const GlassCatError_1 = require("../../exceptions/GlassCatError");
 const GlassCatErrorCode_1 = require("../../exceptions/GlassCatErrorCode");
 class ConfigLoaderBase {
     constructor() { }
     loadConfigSync(filePath) {
-        let loader = new jec_commons_1.JsonLoader();
+        let loader = new jec_commons_node_1.DefaultJsonLoader();
         let path = MappedPathUtil_1.MappedPathUtil.getInstance().resolve(filePath);
         let json = null;
         let logManager = null;
@@ -28,7 +28,7 @@ class ConfigLoaderBase {
         return json;
     }
     loadConfig(filePath, success, error) {
-        let loader = new jec_commons_1.JsonLoader();
+        let loader = new jec_commons_node_1.DefaultJsonLoader();
         let path = MappedPathUtil_1.MappedPathUtil.getInstance().resolve(filePath);
         let logManager = null;
         let i18n = null;

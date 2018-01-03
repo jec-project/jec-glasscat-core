@@ -12,7 +12,7 @@ class HttpTransaction {
         this.init(url);
     }
     init(url) {
-        let generator = new jec_commons_1.GuidGenerator();
+        let generator = new jec_commons_1.GuidGeneratorBase();
         this._initialTimestamp = Date.now();
         this._id = generator.generate();
         this._url = url;

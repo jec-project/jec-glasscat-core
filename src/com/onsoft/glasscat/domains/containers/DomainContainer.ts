@@ -20,7 +20,7 @@ import {JsletManager} from "../../core/JsletManager";
 import {HttpResponse, HttpRequest, JsletContext} from "jec-exchange";
 import {HttpLocalProperties} from "../../services/http/utils/HttpLocalProperties";
 import {LoginStrategy} from "../../security/login/LoginStrategy";
-import {Logger, SourceFileInspector, JecContainer, BootstrapContext} from "jec-commons";
+import {SourceFileInspector, JecContainer, BootstrapContext} from "jec-commons";
 
 /**
  * The <code>DomainContainer</code> interface provides the API for managing 
@@ -107,11 +107,4 @@ export interface DomainContainer extends JecContainer {
    *                  or <code>undefined</code>.
    */
   getMappedResource(name:string):string;
-  
-  /**
-   * Returns the logger associated with this GlassCat container.
-   *
-   * @return {Logger} the logger associated with this GlassCat container.
-   */
-  getLogger():Logger;
 }

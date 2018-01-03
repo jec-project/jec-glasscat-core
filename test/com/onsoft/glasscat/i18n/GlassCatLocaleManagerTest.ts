@@ -17,7 +17,7 @@
 import { TestSuite, Test } from "jec-juta";
 import { expect } from "chai";
 import { GlassCatLocaleManager } from "../../../../../src/com/onsoft/glasscat/i18n/GlassCatLocaleManager";
-import { SingletonError } from "jec-commons";
+import { GlassCatError } from "../../../../../src/com/onsoft/glasscat/exceptions/GlassCatError";
 import { LocaleManager, LocaleManagerBase } from "jec-commons-node";
 
 @TestSuite({
@@ -32,7 +32,7 @@ export class SokokeLocaleManagerTest {
     let buildInstance:Function = function():void {
       new GlassCatLocaleManager();
     };
-    expect(buildInstance).to.throw(SingletonError);
+    expect(buildInstance).to.throw(GlassCatError);
   }
 
   @Test({

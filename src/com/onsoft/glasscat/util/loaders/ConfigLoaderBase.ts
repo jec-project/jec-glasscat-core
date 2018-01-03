@@ -17,7 +17,7 @@
 import {MappedPathUtil} from "../paths/MappedPathUtil";
 import {LoggerManager} from "../logging/LoggerManager";
 import {JsonLoader} from "jec-commons";
-import {LocaleManager} from "jec-commons-node";
+import {LocaleManager, DefaultJsonLoader} from "jec-commons-node";
 import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 import {GlassCatError} from "../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../exceptions/GlassCatErrorCode";
@@ -47,7 +47,7 @@ export abstract class ConfigLoaderBase {
    * @return {any} a configuration file for a GlassCat container.
    */
   protected loadConfigSync(filePath:string):any {
-    let loader:JsonLoader = new JsonLoader();
+    let loader:JsonLoader = new DefaultJsonLoader();
     let path:string = MappedPathUtil.getInstance().resolve(filePath);
     let json:any = null;
     let logManager:LoggerManager = null;
@@ -78,7 +78,7 @@ export abstract class ConfigLoaderBase {
    */
   protected loadConfig(filePath:string, success:(data:any)=>void,
                                          error:(err:GlassCatError)=>void):void {
-    let loader:JsonLoader = new JsonLoader();
+    let loader:JsonLoader = new DefaultJsonLoader();
     let path:string = MappedPathUtil.getInstance().resolve(filePath);
     let logManager:LoggerManager = null;
     let i18n:LocaleManager = null;

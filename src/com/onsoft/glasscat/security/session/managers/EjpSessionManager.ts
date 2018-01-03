@@ -15,7 +15,7 @@
 //   limitations under the License.
 
 import {SessionManager} from "./SessionManager";
-import {GuidGenerator} from "jec-commons";
+import {GuidGenerator, GuidGeneratorBase} from "jec-commons";
 import * as crypto from "crypto";
 import {SecurityManager} from "../../../core/SecurityManager";
 import {Session, SessionError, SessionId} from "jec-exchange";
@@ -81,7 +81,7 @@ export class EjpSessionManager implements SessionManager {
    * Initializes this session manager.
    */
   private init():void {
-    let generator:GuidGenerator = new GuidGenerator();
+    let generator:GuidGenerator = new GuidGeneratorBase();
     this._guid = generator.generate();
     this._sessionIdBuilder = new SessionIdBuilder();
   }

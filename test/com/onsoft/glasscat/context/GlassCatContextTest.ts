@@ -20,6 +20,7 @@ import { GlassCatContext } from "../../../../../src/com/onsoft/glasscat/context/
 import { BootstrapConfig } from "../../../../../src/com/onsoft/glasscat/context/core/BootstrapConfig";
 import { BootstrapConfigParser } from "../../../../../src/com/onsoft/glasscat/context/core/utils/BootstrapConfigParser";
 import { JsonLoader, JsonLoaderError, LogLevelUtil } from "jec-commons";
+import { DefaultJsonLoader } from "jec-commons-node";
 
 @TestSuite({
   description: "Test the GlassCatContext class methods"
@@ -32,7 +33,7 @@ export class GlassCatContextTest {
 
   @BeforeAll()
   public initTest(@Async done:Function):void {
-    let loader:JsonLoader = new JsonLoader();
+    let loader:JsonLoader = new DefaultJsonLoader();
     let configParser:BootstrapConfigParser = null;
     loader.load(
       process.cwd() + "/public/cfg/bootstrap.json",
