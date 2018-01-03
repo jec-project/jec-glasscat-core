@@ -18,7 +18,7 @@ import {TransactionMonitor} from "../../../net/http/monitoring/TransactionMonito
 import {TransactionMonitorDerivation} from "../../../net/http/monitoring/TransactionMonitorDerivation";
 import {TransactionMonitorFactory} from "../../../net/http/monitoring/TransactionMonitorFactory";
 import {MappedPathUtil} from "../../../util/paths/MappedPathUtil";
-import {ClassLoader} from "jec-commons";
+import {ClassLoader, DefaultClassLoader} from "jec-commons";
 import {HttpMonitoringConfig} from "../../../context/core/HttpMonitoringConfig";
 import {GlassCatError} from "../../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../../exceptions/GlassCatErrorCode";
@@ -92,7 +92,7 @@ export class HttpMonitoring {
     this._enableMonitoring = config.enabled;
     if(this._enableMonitoring) {
       if(factory) {
-        loader = new ClassLoader();
+        loader = new DefaultClassLoader();
         classPath = MappedPathUtil.getInstance().resolve(factory);
         Contructor = loader.loadClass(classPath);
         builder = new Contructor();

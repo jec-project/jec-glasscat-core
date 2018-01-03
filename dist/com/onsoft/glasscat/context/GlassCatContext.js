@@ -36,7 +36,7 @@ class GlassCatContext {
         let ctxBuiler = new LoggerContextBuilder_1.LoggerContextBuilder();
         let loggerContext = null;
         let llu = new jec_commons_1.LogLevelUtil();
-        let loader = new jec_commons_1.ClassLoader();
+        let loader = new jec_commons_1.DefaultClassLoader();
         let Contructor = null;
         let classPath = null;
         let logLevel = null;

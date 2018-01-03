@@ -25,7 +25,7 @@ class HttpMonitoring {
         this._enableMonitoring = config.enabled;
         if (this._enableMonitoring) {
             if (factory) {
-                loader = new jec_commons_1.ClassLoader();
+                loader = new jec_commons_1.DefaultClassLoader();
                 classPath = MappedPathUtil_1.MappedPathUtil.getInstance().resolve(factory);
                 Contructor = loader.loadClass(classPath);
                 builder = new Contructor();

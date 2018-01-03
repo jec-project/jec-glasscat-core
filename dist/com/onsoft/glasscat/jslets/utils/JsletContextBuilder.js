@@ -22,7 +22,7 @@ class JsletContextBuilder {
         return JsletContextBuilder.INSTANCE;
     }
     buildJslet(path, target) {
-        let loader = new jec_commons_1.ClassLoader();
+        let loader = new jec_commons_1.DefaultClassLoader();
         let jslet = null;
         let Contructor = null;
         try {

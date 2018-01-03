@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {ClassLoader, BootstrapScript} from "jec-commons";
+import {ClassLoader, DefaultClassLoader, BootstrapScript} from "jec-commons";
 import {GlassCatError} from "../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../exceptions/GlassCatErrorCode";
 
@@ -47,7 +47,7 @@ export class BootstrapScriptBuilder {
    * @return {BootstrapScript} a new <code>BootstrapScript</code> instance.
    */
   public build(path:string, priority:number = null):BootstrapScript {
-    let loader:ClassLoader = new ClassLoader();
+    let loader:ClassLoader = new DefaultClassLoader();
     let script:BootstrapScript = null;
     let Contructor:any = null;
     try {
