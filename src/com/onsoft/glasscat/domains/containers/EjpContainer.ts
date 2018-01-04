@@ -43,7 +43,7 @@ import {LoginStrategy} from "../../security/login/LoginStrategy";
 import {DefaultSourceFileInspector} from "../../context/files/DefaultSourceFileInspector";
 import {Logger, JecStringsEnum, UrlStringsEnum, HttpStatusCode, ClassLoader,
         SourceFileInspector, JcadContext, BootstrapContext, BootstrapScript,
-        InspectMode, BeanManager, DefaultClassLoader} from "jec-commons";
+        InspectMode, BeanManager, DefaultClassLoader, Locale} from "jec-commons";
 import {JsletsAutowireProcessor} from "../../jslets/utils/JsletsAutowireProcessor";
 import {EjpConfig} from "../../context/ejp/EjpConfig";
 import {EjpWebAppConfig} from "../../context/ejp/EjpWebAppConfig";
@@ -132,6 +132,11 @@ export class EjpContainer implements DomainContainer {
    */
   private _state:string = null;
 
+  /**
+   * The locale of this GlassCat container.
+   */
+  private _locale:Locale = null;
+  
   /**
    * The map used to store mapped resources references.
    */
@@ -470,6 +475,7 @@ export class EjpContainer implements DomainContainer {
     LoggerManager.getInstance().info(msg);
     msg = "domain connector: name=" + connector.getName();
     LoggerManager.getInstance().info(msg);
+    this._locale = GlassCatLocaleManager.getInstance().getLocale();
     this._connector = connector as EjpConnector;
     this._jsletManager = jsletManager;
     this._contextRoot = connector.getContextRoot();
@@ -604,6 +610,13 @@ export class EjpContainer implements DomainContainer {
    */
   public getState():string {
     return this._state;
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public getLocale():Locale {
+    return this._locale;
   }
 
   /**

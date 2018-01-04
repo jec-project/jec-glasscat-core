@@ -33,6 +33,7 @@ class EjpContainer {
         this._src = null;
         this._welcomeFile = null;
         this._state = null;
+        this._locale = null;
         this._resourceMap = null;
         this._sourceFileInspector = null;
         this._templateProcessor = null;
@@ -216,6 +217,7 @@ class EjpContainer {
         LoggerManager_1.LoggerManager.getInstance().info(msg);
         msg = "domain connector: name=" + connector.getName();
         LoggerManager_1.LoggerManager.getInstance().info(msg);
+        this._locale = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().getLocale();
         this._connector = connector;
         this._jsletManager = jsletManager;
         this._contextRoot = connector.getContextRoot();
@@ -316,6 +318,9 @@ class EjpContainer {
     }
     getState() {
         return this._state;
+    }
+    getLocale() {
+        return this._locale;
     }
     toString() {
         return "[DomainContainer::EjpContainer]";
