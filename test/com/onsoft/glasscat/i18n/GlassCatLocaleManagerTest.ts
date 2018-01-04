@@ -23,7 +23,7 @@ import { LocaleManager, LocaleManagerBase } from "jec-commons-node";
 @TestSuite({
   description: "Test the GlassCatLocaleManager class methods"
 })
-export class SokokeLocaleManagerTest {
+export class GlassCatLocaleManagerTest {
 
   @Test({
     description: "should throw a SingletonError error when calling the constructor function"
