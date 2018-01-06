@@ -11,7 +11,7 @@ import { SourceFileInspector, FilePreProcessor, FileProperties, JcadContext,
          JecContainer, Decorator, AbstractDecoratorConnector, UrlPattern,
          AbstractLogger, LogFormatter, BootstrapParams, BootstrapContext,
          Logger, BootstrapScript, ContainerContext, CacheControlPolicy,
-         BeanManager, Locale } from "jec-commons";
+         Locale } from "jec-commons";
 import { LocaleManager } from "jec-commons-node";
 import { JsletContext, Jslet, SessionError, HttpResponse, HttpRequest,
          WebJsletParams, SessionContext, SecurityContext, CookieOptions,

@@ -42,7 +42,6 @@ class EjpContainer {
         this._jdiContextManager = null;
         this._bootstrapContextManager = null;
         this._notFoundErrorBuilder = null;
-        this._beanManager = null;
     }
     initConfig(config) {
         let securityContext = null;
@@ -235,9 +234,6 @@ class EjpContainer {
         msg += "\n   => " + i18n.get("domains.containers.contextRoot", this._contextRoot);
         msg += "\n   * " + i18n.get("domains.containers.type", this.toString());
         LoggerManager_1.LoggerManager.getInstance().info(msg);
-    }
-    getBeanManager() {
-        return this._beanManager;
     }
     getJsletContext() {
         return this._jsletContext;

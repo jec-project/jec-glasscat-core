@@ -1,6 +1,6 @@
 //  DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
 //
-//   Copyright 2016-2017 Pascal ECHEMANN.
+//   Copyright 2016-2018 Pascal ECHEMANN.
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
 //   you may not use this file except in compliance with the License.
@@ -43,7 +43,7 @@ import {LoginStrategy} from "../../security/login/LoginStrategy";
 import {DefaultSourceFileInspector} from "../../context/files/DefaultSourceFileInspector";
 import {Logger, JecStringsEnum, UrlStringsEnum, HttpStatusCode, ClassLoader,
         SourceFileInspector, JcadContext, BootstrapContext, BootstrapScript,
-        InspectMode, BeanManager, DefaultClassLoader, Locale} from "jec-commons";
+        InspectMode, DefaultClassLoader, Locale} from "jec-commons";
 import {JsletsAutowireProcessor} from "../../jslets/utils/JsletsAutowireProcessor";
 import {EjpConfig} from "../../context/ejp/EjpConfig";
 import {EjpWebAppConfig} from "../../context/ejp/EjpWebAppConfig";
@@ -180,11 +180,6 @@ export class EjpContainer implements DomainContainer {
    * objects.
    */
   private _notFoundErrorBuilder:NotFoundErrorBuilder = null;
-
-  /**
-   * The reference to the <code>BeanManager</code> object for this container.
-   */
-  private _beanManager:BeanManager = null;
 
   //////////////////////////////////////////////////////////////////////////////
   // Private methods
@@ -493,13 +488,6 @@ export class EjpContainer implements DomainContainer {
     msg += "\n   => " + i18n.get("domains.containers.contextRoot", this._contextRoot);
     msg += "\n   * " + i18n.get("domains.containers.type", this.toString());
     LoggerManager.getInstance().info(msg);
-  }
-
-  /**
-   * @inheritDoc
-   */
-  public getBeanManager():BeanManager {
-    return this._beanManager;
   }
 
   /**

@@ -8,8 +8,7 @@
 ### Features
 
 - Dependencies upgrade
-- Fixing `LogLevelUtil` breaking changes
-- Adding support for the new `BeanManager` interface
+- Adding support for the new `jec-jdi` module
 - Fixing `jec-commons` module break changes
 
 <a name="jec-glasscat-core-0.1.4"></a>
