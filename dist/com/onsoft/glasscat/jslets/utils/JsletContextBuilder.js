@@ -22,11 +22,10 @@ class JsletContextBuilder {
         return JsletContextBuilder.INSTANCE;
     }
     buildJslet(path, target) {
-        let loader = new jec_commons_1.DefaultClassLoader();
         let jslet = null;
         let Contructor = null;
         try {
-            Contructor = loader.loadClass(target + path);
+            Contructor = jec_commons_1.GlobalClassLoader.getInstance().loadClass(target + path);
             jslet = new Contructor();
         }
         catch (e) {

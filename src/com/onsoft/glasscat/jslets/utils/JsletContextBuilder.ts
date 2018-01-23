@@ -16,7 +16,7 @@
 
 import {Jslet, JsletContext, SecurityContext, SessionContext} from "jec-exchange";
 import {EjpJsletContext} from "../EjpJsletContext";
-import {ClassLoader, DefaultClassLoader} from "jec-commons";
+import {GlobalClassLoader} from "jec-commons";
 import {LocaleManager} from "jec-commons-node";
 import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 import {LoggerManager} from "../../util/logging/LoggerManager";
@@ -87,11 +87,10 @@ export class JsletContextBuilder {
    * @return {Jslet} a new <code>Jslet</code> instance.
    */
   private buildJslet(path:string, target:string):Jslet {
-    let loader:ClassLoader = new DefaultClassLoader();
     let jslet:Jslet = null;
     let Contructor:any = null;
     try {
-      Contructor = loader.loadClass(target + path);
+      Contructor = GlobalClassLoader.getInstance().loadClass(target + path);
       jslet = new Contructor();
     } catch(e){
       // TODO: log error message

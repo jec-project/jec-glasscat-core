@@ -43,7 +43,7 @@ import {LoginStrategy} from "../../security/login/LoginStrategy";
 import {DefaultSourceFileInspector} from "../../context/files/DefaultSourceFileInspector";
 import {Logger, JecStringsEnum, UrlStringsEnum, HttpStatusCode, ClassLoader,
         SourceFileInspector, JcadContext, BootstrapContext, BootstrapScript,
-        InspectMode, DefaultClassLoader, Locale} from "jec-commons";
+        InspectMode, GlobalClassLoader, Locale} from "jec-commons";
 import {JsletsAutowireProcessor} from "../../jslets/utils/JsletsAutowireProcessor";
 import {EjpConfig} from "../../context/ejp/EjpConfig";
 import {EjpWebAppConfig} from "../../context/ejp/EjpWebAppConfig";
@@ -370,7 +370,7 @@ export class EjpContainer implements DomainContainer {
     let constraint:SecurityConstraint = null;
     let staticRes:StaticResources = null;
     let Contructor:any = null;
-    let loader:ClassLoader = new DefaultClassLoader();
+    let loader:ClassLoader = GlobalClassLoader.getInstance();
     let constraints:EjpConstraintConfig[] = null;
     let resources:EjpStaticResourcesConfig[] = null;
     let resourcesBuilder:StaticResourcesBuilder = null;

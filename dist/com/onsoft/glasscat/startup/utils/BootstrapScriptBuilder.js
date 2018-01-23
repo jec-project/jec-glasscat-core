@@ -6,11 +6,10 @@ const GlassCatErrorCode_1 = require("../../exceptions/GlassCatErrorCode");
 class BootstrapScriptBuilder {
     constructor() { }
     build(path, priority = null) {
-        let loader = new jec_commons_1.DefaultClassLoader();
         let script = null;
         let Contructor = null;
         try {
-            Contructor = loader.loadClass(path);
+            Contructor = jec_commons_1.GlobalClassLoader.getInstance().loadClass(path);
             script = new Contructor();
         }
         catch (e) {

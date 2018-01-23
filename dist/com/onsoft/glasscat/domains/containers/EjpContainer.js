@@ -153,7 +153,7 @@ class EjpContainer {
         let constraint = null;
         let staticRes = null;
         let Contructor = null;
-        let loader = new jec_commons_1.DefaultClassLoader();
+        let loader = jec_commons_1.GlobalClassLoader.getInstance();
         let constraints = null;
         let resources = null;
         let resourcesBuilder = null;

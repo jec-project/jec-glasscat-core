@@ -16,7 +16,6 @@ class HttpMonitoring {
         if (!config) {
             throw new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.INVALID_CONTEXT, "Config must not be null.");
         }
-        let loader = null;
         let Contructor = null;
         let classPath = null;
         let builder = null;
@@ -25,9 +24,8 @@ class HttpMonitoring {
         this._enableMonitoring = config.enabled;
         if (this._enableMonitoring) {
             if (factory) {
-                loader = new jec_commons_1.DefaultClassLoader();
                 classPath = MappedPathUtil_1.MappedPathUtil.getInstance().resolve(factory);
-                Contructor = loader.loadClass(classPath);
+                Contructor = jec_commons_1.GlobalClassLoader.getInstance().loadClass(classPath);
                 builder = new Contructor();
                 this._transactionMonitor = builder.build();
             }
