@@ -20,7 +20,7 @@ import { SessionOwnerBuilder } from "../../../../../../../src/com/onsoft/glassca
 import { GlassCatSessionOwner } from "../../../../../../../src/com/onsoft/glasscat/security/session/GlassCatSessionOwner";
 import { BasicSecurityRole } from "../../../../../../../src/com/onsoft/glasscat/security/roles/BasicSecurityRole";
 
-import { GuidGeneratorBase } from "jec-commons";
+import { GlobalGuidGenerator } from "jec-commons";
 import { SecurityRole, SessionOwner } from "jec-exchange";
 
 @TestSuite({
@@ -36,7 +36,7 @@ export class SessionOwnerBuilderTest {
   @BeforeAll()
   public initTest():void {
     this.builder = new SessionOwnerBuilder();
-    this.ownerId = new GuidGeneratorBase().generate();
+    this.ownerId = GlobalGuidGenerator.getInstance().generate();
     this.ownerAlias = "ownerAlias";
     this.ownerRoles = [new BasicSecurityRole("ownerRole")];
   }

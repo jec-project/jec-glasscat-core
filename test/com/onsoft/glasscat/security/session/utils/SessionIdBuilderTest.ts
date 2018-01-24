@@ -19,7 +19,7 @@ import { expect } from "chai";
 import { SessionIdBuilder } from "../../../../../../../src/com/onsoft/glasscat/security/session/utils/SessionIdBuilder";
 import { GlassCatSessionId } from "../../../../../../../src/com/onsoft/glasscat/security/session/GlassCatSessionId";
 import { SessionId } from "jec-exchange";
-import { GuidGenerator, GuidGeneratorBase } from "jec-commons";
+import { GlobalGuidGenerator } from "jec-commons";
 
 @TestSuite({
   description: "Test the SessionIdBuilder class properties"
@@ -27,12 +27,10 @@ import { GuidGenerator, GuidGeneratorBase } from "jec-commons";
 export class SessionIdBuilderTest {
 
   public builder:SessionIdBuilder = null;
-  public guidGen:GuidGenerator = null;
 
   @BeforeAll()
   public initTest():void {
     this.builder = new SessionIdBuilder();
-    this.guidGen = new GuidGeneratorBase();
   }
 
   @Test({
@@ -40,7 +38,7 @@ export class SessionIdBuilderTest {
   })
   public buildTest():void {
     expect(
-      this.builder.buildSessionId(this.guidGen.generate())
+      this.builder.buildSessionId(GlobalGuidGenerator.getInstance().generate())
     ).to.be.an.instanceOf(GlassCatSessionId);
   }
   
@@ -48,7 +46,7 @@ export class SessionIdBuilderTest {
     description: "should return the same GUID as  defied by the SessionId object as passed to the constructor function"
   })
   public getIdTest():void {
-    let guid:string = this.guidGen.generate();
+    let guid:string = GlobalGuidGenerator.getInstance().generate();
     let session:SessionId = this.builder.buildSessionId(guid);
     expect(session.getId()).to.equal(guid);
   }

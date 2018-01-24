@@ -13,8 +13,7 @@ class EjpSessionManager {
         this.init();
     }
     init() {
-        let generator = new jec_commons_1.GuidGeneratorBase();
-        this._guid = generator.generate();
+        this._guid = jec_commons_1.GlobalGuidGenerator.getInstance().generate();
         this._sessionIdBuilder = new SessionIdBuilder_1.SessionIdBuilder();
     }
     getSessionStorage() {

@@ -12,9 +12,8 @@ class HttpTransaction {
         this.init(url);
     }
     init(url) {
-        let generator = new jec_commons_1.GuidGeneratorBase();
         this._initialTimestamp = Date.now();
-        this._id = generator.generate();
+        this._id = jec_commons_1.GlobalGuidGenerator.getInstance().generate();
         this._url = url;
     }
     getInitialTimestamp() {

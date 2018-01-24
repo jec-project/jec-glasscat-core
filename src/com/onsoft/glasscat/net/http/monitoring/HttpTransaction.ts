@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {GuidGenerator, GuidGeneratorBase} from "jec-commons";
+import {GlobalGuidGenerator} from "jec-commons";
 
 /**
  * Represents an HTTP transaction in the GlassCat architecture.
@@ -42,9 +42,8 @@ export class HttpTransaction {
    * @param {string} url the URL for this HTTP transaction.
    */
   private init(url:string):void {
-    let generator:GuidGenerator = new GuidGeneratorBase();
     this._initialTimestamp = Date.now();
-    this._id = generator.generate();
+    this._id = GlobalGuidGenerator.getInstance().generate();
     this._url = url;
   }
 
