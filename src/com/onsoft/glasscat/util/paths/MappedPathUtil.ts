@@ -17,6 +17,7 @@
 import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 import {GlassCatError} from "../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../exceptions/GlassCatErrorCode";
+import * as path from "path";
 
 /**
  * A helper class that is used to resolve configuration paths based upon
@@ -157,11 +158,11 @@ export class MappedPathUtil {
    * Resolves the specified <code>path</code> into an absolute path built from
    * the GlassCat root directory.
    * 
-   * @param {string} path the path to resolve.
+   * @param {string} rawPath the path to resolve.
    * @return {string} the resolved path.
    */
-  public resolve(path:string):string {
-    let resolved:string = path;
+  public resolve(rawPath:string):string {
+    let resolved:string = rawPath;
     if(resolved.indexOf(MappedPathUtil.ROOT_PATTERN) === 0) {
       resolved = resolved.replace(MappedPathUtil.ROOT_PATTERN, this._rootPath);
     } else if(resolved.indexOf(MappedPathUtil.SERVER_PATTERN) === 0) {
@@ -173,6 +174,6 @@ export class MappedPathUtil {
         MappedPathUtil.MODULES_PATTERN, this._modulesPath
       );
     }
-    return resolved;
+    return path.normalize(resolved);
   }
 };

@@ -16,7 +16,7 @@
 
 import {DomainConnectorManager} from "../../../core/DomainConnectorManager";
 import {DomainConnector} from "../DomainConnector";
-import {DomainConnectorBuilder} from "././DomainConnectorBuilder";
+import {DomainConnectorBuilder} from "./DomainConnectorBuilder";
 import {HttpServiceManager} from "../../../core/HttpServiceManager";
 import {HttpService} from "../../../services/http/HttpService";
 import {HttpListener} from "../../../services/http/listeners/HttpListener";

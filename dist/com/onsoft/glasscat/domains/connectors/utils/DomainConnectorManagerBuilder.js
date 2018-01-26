@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const DomainConnectorManager_1 = require("../../../core/DomainConnectorManager");
-const DomainConnectorBuilder_1 = require("././DomainConnectorBuilder");
+const DomainConnectorBuilder_1 = require("./DomainConnectorBuilder");
 const MappedPathUtil_1 = require("../../../util/paths/MappedPathUtil");
 const DomainConfigLoader_1 = require("../../../context/domains/utils/DomainConfigLoader");
 class DomainConnectorManagerBuilder {

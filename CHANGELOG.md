@@ -5,6 +5,8 @@
 
 ### Bug Fixes
 
+- **MappedPathUtil**: fixing paths structure by using the `path.normalize()` method
+
 ### Features
 
 - Dependencies upgrade

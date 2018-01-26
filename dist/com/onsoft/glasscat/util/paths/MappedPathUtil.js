@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const GlassCatLocaleManager_1 = require("../../i18n/GlassCatLocaleManager");
 const GlassCatError_1 = require("../../exceptions/GlassCatError");
 const GlassCatErrorCode_1 = require("../../exceptions/GlassCatErrorCode");
+const path = require("path");
 class MappedPathUtil {
     constructor() {
         this._initialized = false;
@@ -31,8 +32,8 @@ class MappedPathUtil {
     isInitialized() {
         return this._initialized;
     }
-    resolve(path) {
-        let resolved = path;
+    resolve(rawPath) {
+        let resolved = rawPath;
         if (resolved.indexOf(MappedPathUtil.ROOT_PATTERN) === 0) {
             resolved = resolved.replace(MappedPathUtil.ROOT_PATTERN, this._rootPath);
         }
@@ -42,7 +43,7 @@ class MappedPathUtil {
         else if (resolved.indexOf(MappedPathUtil.MODULES_PATTERN) === 0) {
             resolved = resolved.replace(MappedPathUtil.MODULES_PATTERN, this._modulesPath);
         }
-        return resolved;
+        return path.normalize(resolved);
     }
 }
 MappedPathUtil._locked = true;
