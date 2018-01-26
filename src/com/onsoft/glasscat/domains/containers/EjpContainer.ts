@@ -60,7 +60,7 @@ import {BootstrapAutowireProcessor} from "../../startup/utils/BootstrapAutowireP
 import {BootstrapContextManager} from "../../startup/jcad/BootstrapContextManager";
 import {BootstrapContextBuilder} from "../../startup/utils/BootstrapContextBuilder";
 import {BootstrapScriptBuilder} from "../../startup/utils/BootstrapScriptBuilder";
-import {SokokeLoggerProxy, SokokeAutowireProcessor, JdiContextManager} from "jec-sokoke";
+import {SokokeLoggerProxy, SokokeAutowireProcessor, JdiJcadContextManager} from "jec-sokoke";
 
 /**
  * The <code>EjpContainer</code> class is the concrete implementation of the
@@ -164,10 +164,10 @@ export class EjpContainer implements DomainContainer {
   private _jsletContextManager:JsletContextManager = null;
 
   /**
-   * The reference to the <code>JdiContextManager</code> that is used to manage
-   * JDI jslet context objects for this container.
+   * The reference to the <code>JdiJcadContextManager</code> that is used to 
+   * manage JCAD JDI jslet context objects for this container.
    */
-  private _jdiContextManager:JdiContextManager = null;
+  private _jdiJcadContextManager:JdiJcadContextManager = null;
 
   /**
    * The reference to the <code>BootstrapContextManager</code> that is used to 
@@ -423,8 +423,8 @@ export class EjpContainer implements DomainContainer {
    */
   private initJecContextManagers():void {
     let containerContext:JcadContext = this._connector.getJcadContext();
-    this._jdiContextManager = new JdiContextManager();
-    this._jdiContextManager.createContext(containerContext);
+    this._jdiJcadContextManager = new JdiJcadContextManager();
+    this._jdiJcadContextManager.createContext(containerContext);
     this._jsletContextManager = new JsletContextManager();
     this._jsletContextManager.createContext(containerContext);
   }
@@ -435,7 +435,7 @@ export class EjpContainer implements DomainContainer {
    */
   private deleteJecContextManagers():void {
       this._jsletContextManager.deleteContext();
-      this._jdiContextManager.deleteContext();
+      this._jdiJcadContextManager.deleteContext();
   }
 
   /**
