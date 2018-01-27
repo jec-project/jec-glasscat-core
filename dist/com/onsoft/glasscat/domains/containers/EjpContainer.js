@@ -39,7 +39,7 @@ class EjpContainer {
         this._templateProcessor = null;
         this._loginStrategy = null;
         this._jsletContextManager = null;
-        this._jdiJcadContextManager = null;
+        this._jdiContextManager = null;
         this._bootstrapContextManager = null;
         this._notFoundErrorBuilder = null;
     }
@@ -194,14 +194,14 @@ class EjpContainer {
     }
     initJecContextManagers() {
         let containerContext = this._connector.getJcadContext();
-        this._jdiJcadContextManager = new jec_sokoke_1.JdiJcadContextManager();
-        this._jdiJcadContextManager.createContext(containerContext);
+        this._jdiContextManager = new jec_sokoke_1.JdiContextManager();
+        this._jdiContextManager.createContext(containerContext);
         this._jsletContextManager = new JsletContextManager_1.JsletContextManager();
         this._jsletContextManager.createContext(containerContext);
     }
     deleteJecContextManagers() {
         this._jsletContextManager.deleteContext();
-        this._jdiJcadContextManager.deleteContext();
+        this._jdiContextManager.deleteContext();
     }
     initBootstrapContextManager() {
         this._bootstrapContextManager = new BootstrapContextManager_1.BootstrapContextManager();
