@@ -224,7 +224,6 @@ export class EjpContainer implements DomainContainer {
     this.initBootstrapScripts(config);
     this.initJdiEngine();
     this.initJsletAutowireProcessor(jsletsConfig);
-    this._sourceFileInspector.afterProcess = this.afterProcess.bind(this);
     this._sourceFileInspector.inspect(InspectMode.READ_CACHE);
     if(webapp.jslets) {
       jsletContextBuilder.initJslets(this._jsletContext, jsletsConfig.config);
@@ -345,20 +344,6 @@ export class EjpContainer implements DomainContainer {
     SokokeLoggerProxy.getInstance().setLogger(this.getLogger());
     this._jdiProcessor = new SokokeAutowireProcessor();
     this._sourceFileInspector.addProcessor(this._jdiProcessor);
-  }
-
-  /**
-   * The callback method invoked by the source file inspector to ensure that the
-   * Sokoke file processor is called first during the 'complete' notification.
-   * 
-   * @param {any} wacher the reference to the watcher object for the source file
-   *                     inspector.
-   */
-  private afterProcess(wacher:any):void {
-    //--> Ensure that the Sokoke file processor is called first for checking
-    //    circular bean dependencies, befaor any bean injection:
-    this._sourceFileInspector.addProcessor(this._jdiProcessor);
-    this._sourceFileInspector.removeProcessor(this._jdiProcessor);
   }
 
   /**
