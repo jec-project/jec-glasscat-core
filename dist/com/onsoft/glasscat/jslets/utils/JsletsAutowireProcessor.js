@@ -34,7 +34,7 @@ class JsletsAutowireProcessor {
         while (len--) {
             file = this._jsletFiles[len];
             jsletPath = file.path.substring(pathLength) + file.name;
-            LoggerManager_1.LoggerManager.getInstance().info(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("jslet.autowireDetect", jsletPath));
+            LoggerManager_1.LoggerManager.getInstance().debug(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("jslet.autowireDetect", jsletPath));
             jslets.push(jsletPath);
         }
         JsletContextBuilder_1.JsletContextBuilder.getInstance().initJslets(context, jslets);

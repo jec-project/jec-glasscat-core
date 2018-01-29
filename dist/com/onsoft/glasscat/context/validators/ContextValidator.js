@@ -6,7 +6,7 @@ class ContextValidator {
     constructor() { }
     validate(kernel) {
         let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
-        LoggerManager_1.LoggerManager.getInstance().info(i18n.get("context.start"));
+        LoggerManager_1.LoggerManager.getInstance().debug(i18n.get("context.start"));
         let isValid = true;
         let context = kernel.getContext();
         let ctxVer = context.getVersion();

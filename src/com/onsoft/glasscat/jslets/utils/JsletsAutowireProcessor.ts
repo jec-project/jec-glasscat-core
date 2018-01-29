@@ -107,7 +107,7 @@ export class JsletsAutowireProcessor implements FilePreProcessor {
     while(len--) {
       file = this._jsletFiles[len];
       jsletPath = file.path.substring(pathLength) + file.name;
-      LoggerManager.getInstance().info(
+      LoggerManager.getInstance().debug(
         GlassCatLocaleManager.getInstance().get(
             "jslet.autowireDetect", jsletPath
           )

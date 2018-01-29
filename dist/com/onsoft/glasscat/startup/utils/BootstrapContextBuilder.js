@@ -22,9 +22,8 @@ class BootstrapContextBuilder {
     }
     buildContext(connector) {
         let context = new EjpBootstrapContext_1.EjpBootstrapContext(connector);
-        let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
-        let msg = i18n.get("bootstrap.newContext", connector.getContextRoot());
-        LoggerManager_1.LoggerManager.getInstance().info(msg);
+        let msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("bootstrap.newContext", connector.getContextRoot());
+        LoggerManager_1.LoggerManager.getInstance().debug(msg);
         return context;
     }
 }

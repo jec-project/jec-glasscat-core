@@ -14,7 +14,7 @@ class EnvironmentValidator {
         env += "\n   * " + i18n.get("environment.directory", os.homedir());
         env += "\n   * " + i18n.get("environment.totalMemory", String(os.totalmem()));
         env += "\n   * " + i18n.get("environment.freeMemory", String(os.freemem()));
-        LoggerManager_1.LoggerManager.getInstance().info(env);
+        LoggerManager_1.LoggerManager.getInstance().debug(env);
         env = i18n.get("cpus.start");
         let cpuList = os.cpus();
         let len = cpuList.length;
@@ -27,7 +27,7 @@ class EnvironmentValidator {
             env += "\n   * " + i18n.get("cpus.speed", String(cpuInf.speed));
             cpuNum++;
         }
-        LoggerManager_1.LoggerManager.getInstance().info(env);
+        LoggerManager_1.LoggerManager.getInstance().debug(env);
     }
 }
 exports.EnvironmentValidator = EnvironmentValidator;

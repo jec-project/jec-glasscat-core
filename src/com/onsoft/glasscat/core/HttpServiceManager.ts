@@ -106,7 +106,7 @@ export class HttpServiceManager {
                           "http.services.service.secured",
                            String(listener.getSecured())
                          );
-    LoggerManager.getInstance().info(msg);
+    LoggerManager.getInstance().debug(msg);
   }
 
   /**

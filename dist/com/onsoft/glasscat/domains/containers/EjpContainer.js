@@ -214,9 +214,7 @@ class EjpContainer {
     }
     init(connector, jsletManager) {
         let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
-        let msg = "domain container initialization start";
-        LoggerManager_1.LoggerManager.getInstance().info(msg);
-        msg = "domain connector: name=" + connector.getName();
+        let msg = i18n.get("domains.start", connector.getName());
         LoggerManager_1.LoggerManager.getInstance().info(msg);
         this._locale = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().getLocale();
         this._connector = connector;

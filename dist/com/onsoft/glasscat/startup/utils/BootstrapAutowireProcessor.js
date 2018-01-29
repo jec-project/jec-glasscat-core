@@ -40,7 +40,7 @@ class BootstrapAutowireProcessor {
         while (len--) {
             file = this._bootstrapFiles[len];
             bootstrapPath = file.path.substring(pathLength) + file.name;
-            LoggerManager_1.LoggerManager.getInstance().info(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("bootstrap.autowireDetect", bootstrapPath));
+            LoggerManager_1.LoggerManager.getInstance().debug(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("bootstrap.autowireDetect", bootstrapPath));
             script = builder.build(src + bootstrapPath);
             context.addScript(script);
         }

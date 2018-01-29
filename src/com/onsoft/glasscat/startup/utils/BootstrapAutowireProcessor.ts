@@ -114,7 +114,7 @@ export class BootstrapAutowireProcessor implements FilePreProcessor {
     while(len--) {
       file = this._bootstrapFiles[len];
       bootstrapPath = file.path.substring(pathLength) + file.name;
-      LoggerManager.getInstance().info(
+      LoggerManager.getInstance().debug(
         GlassCatLocaleManager.getInstance().get(
             "bootstrap.autowireDetect", bootstrapPath
           )

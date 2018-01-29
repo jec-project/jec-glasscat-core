@@ -25,7 +25,7 @@ class HttpServiceManager {
         msg += "\n   * " + i18n.get("http.services.service.server", listener.getServer());
         msg += "\n   * " + i18n.get("http.services.service.config", listener.getAdress(), String(listener.getPort()));
         msg += "\n   * " + i18n.get("http.services.service.secured", String(listener.getSecured()));
-        LoggerManager_1.LoggerManager.getInstance().info(msg);
+        LoggerManager_1.LoggerManager.getInstance().debug(msg);
     }
     getService(name) {
         return this._httpServiceMap.get(name);

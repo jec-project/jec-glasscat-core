@@ -92,19 +92,22 @@ export class LoggerManager extends AbstractLogger {
       this._loggers = loggers;
       llu = new LogLevelUtil();
       msg = i18n.get("loggers.init", llu.logLevelToString(logLevel));
-      len = this._loggers.length;
-      while(len--) {
-        logger = this._loggers[len];
-        msg += "\n   => " + i18n.get("loggers.num", String(loggerNum));
-        msg += "\n   * " + i18n.get("loggers.name", String(logger.getName()));
-        msg += "\n   * " + i18n.get("loggers.classref", String(logger));
-        msg += "\n   * " + i18n.get(
-          "loggers.internalLogLevel",
-          String(llu.logLevelToString(logger.getLogLevel()))
-        );
-        loggerNum++;
-      }
       this.info(msg);
+      if(this.__logLevel <= LogLevel.DEBUG) {
+        len = this._loggers.length;
+        while(len--) {
+          logger = this._loggers[len];
+          msg += "\n   => " + i18n.get("loggers.num", String(loggerNum));
+          msg += "\n   * " + i18n.get("loggers.name", String(logger.getName()));
+          msg += "\n   * " + i18n.get("loggers.classref", String(logger));
+          msg += "\n   * " + i18n.get(
+            "loggers.internalLogLevel",
+            String(llu.logLevelToString(logger.getLogLevel()))
+          );
+          loggerNum++;
+        }
+        this.debug(msg);
+      }
       this._initialized = true;
     } else {
       this.__name = null;

@@ -18,7 +18,7 @@ class BootstrapScriptRunner {
             sorter.sortCollection(scripts);
             while (len--) {
                 script = scripts[len];
-                logManager.info(i18n.get("bootstrap.run", script.constructor.name));
+                logManager.debug(i18n.get("bootstrap.run", script.constructor.name));
                 script.run(container);
             }
         }

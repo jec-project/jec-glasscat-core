@@ -131,7 +131,7 @@ export class JsletContextBuilder {
                                                    loginStrategy);
     let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     var msg:string = i18n.get("jslet.newContext", connector.getContextRoot());
-    LoggerManager.getInstance().info(msg);
+    LoggerManager.getInstance().debug(msg);
     return context;
   }
 

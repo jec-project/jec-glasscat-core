@@ -51,7 +51,7 @@ export class EnvironmentValidator implements KernelValidator {
     env += "\n   * " + i18n.get("environment.directory", os.homedir());
     env += "\n   * " + i18n.get("environment.totalMemory", String(os.totalmem()));
     env += "\n   * " + i18n.get("environment.freeMemory", String(os.freemem()));
-    LoggerManager.getInstance().info(env);
+    LoggerManager.getInstance().debug(env);
     env = i18n.get("cpus.start");
     let cpuList:os.CpuInfo[] = os.cpus();
     let len:number = cpuList.length;
@@ -64,6 +64,6 @@ export class EnvironmentValidator implements KernelValidator {
       env += "\n   * " + i18n.get("cpus.speed", String(cpuInf.speed));
       cpuNum++;
     }
-    LoggerManager.getInstance().info(env);
+    LoggerManager.getInstance().debug(env);
   }
 };

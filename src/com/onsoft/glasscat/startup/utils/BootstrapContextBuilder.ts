@@ -16,7 +16,6 @@
 
 import {EjpBootstrapContext} from "../EjpBootstrapContext";
 import {BootstrapContext} from "jec-commons";
-import {LocaleManager} from "jec-commons-node";
 import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 import {LoggerManager} from "../../util/logging/LoggerManager";
 import {DomainConnector} from "../../domains/connectors/DomainConnector";
@@ -88,10 +87,10 @@ export class BootstrapContextBuilder {
    */
   public buildContext(connector:DomainConnector):BootstrapContext {
     let context:BootstrapContext = new EjpBootstrapContext(connector);
-    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
-    let msg:string = 
-                   i18n.get("bootstrap.newContext", connector.getContextRoot());
-    LoggerManager.getInstance().info(msg);
+    let msg:string = GlassCatLocaleManager.getInstance().get(
+      "bootstrap.newContext", connector.getContextRoot()
+    );
+    LoggerManager.getInstance().debug(msg);
     return context;
   }
 }

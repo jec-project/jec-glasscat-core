@@ -35,16 +35,19 @@ class LoggerManager extends jec_commons_1.AbstractLogger {
             this._loggers = loggers;
             llu = new jec_commons_1.LogLevelUtil();
             msg = i18n.get("loggers.init", llu.logLevelToString(logLevel));
-            len = this._loggers.length;
-            while (len--) {
-                logger = this._loggers[len];
-                msg += "\n   => " + i18n.get("loggers.num", String(loggerNum));
-                msg += "\n   * " + i18n.get("loggers.name", String(logger.getName()));
-                msg += "\n   * " + i18n.get("loggers.classref", String(logger));
-                msg += "\n   * " + i18n.get("loggers.internalLogLevel", String(llu.logLevelToString(logger.getLogLevel())));
-                loggerNum++;
-            }
             this.info(msg);
+            if (this.__logLevel <= jec_commons_1.LogLevel.DEBUG) {
+                len = this._loggers.length;
+                while (len--) {
+                    logger = this._loggers[len];
+                    msg += "\n   => " + i18n.get("loggers.num", String(loggerNum));
+                    msg += "\n   * " + i18n.get("loggers.name", String(logger.getName()));
+                    msg += "\n   * " + i18n.get("loggers.classref", String(logger));
+                    msg += "\n   * " + i18n.get("loggers.internalLogLevel", String(llu.logLevelToString(logger.getLogLevel())));
+                    loggerNum++;
+                }
+                this.debug(msg);
+            }
             this._initialized = true;
         }
         else {

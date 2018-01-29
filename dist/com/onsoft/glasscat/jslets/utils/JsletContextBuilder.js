@@ -37,7 +37,7 @@ class JsletContextBuilder {
         let context = new EjpJsletContext_1.EjpJsletContext(connector, securityContext, sessionContext, loginStrategy);
         let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
         var msg = i18n.get("jslet.newContext", connector.getContextRoot());
-        LoggerManager_1.LoggerManager.getInstance().info(msg);
+        LoggerManager_1.LoggerManager.getInstance().debug(msg);
         return context;
     }
     initJslets(context, jslets) {

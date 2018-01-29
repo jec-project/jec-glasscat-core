@@ -472,10 +472,7 @@ export class EjpContainer implements DomainContainer {
    */
   public init(connector:DomainConnector, jsletManager:JsletManager):void {
     let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
-    let msg:string = "domain container initialization start";
-    LoggerManager.getInstance().info(msg);
-    //TODO : add i18n for the following log
-    msg = "domain connector: name=" + connector.getName();
+    let msg:string = i18n.get("domains.start", connector.getName());
     LoggerManager.getInstance().info(msg);
     this._locale = GlassCatLocaleManager.getInstance().getLocale();
     this._connector = connector as EjpConnector;
