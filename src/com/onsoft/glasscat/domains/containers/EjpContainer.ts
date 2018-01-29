@@ -181,6 +181,12 @@ export class EjpContainer implements DomainContainer {
    */
   private _notFoundErrorBuilder:NotFoundErrorBuilder = null;
 
+  /**
+   * The reference to the <code>SokokeAutowireProcessor</code> instance used to
+   * process JDI decorators.
+   */
+  private _jdiProcessor:SokokeAutowireProcessor = null;
+
   //////////////////////////////////////////////////////////////////////////////
   // Private methods
   //////////////////////////////////////////////////////////////////////////////
@@ -218,7 +224,7 @@ export class EjpContainer implements DomainContainer {
     this.initBootstrapScripts(config);
     this.initJdiEngine();
     this.initJsletAutowireProcessor(jsletsConfig);
-    
+    this._sourceFileInspector.afterProcess = this.afterProcess.bind(this);
     this._sourceFileInspector.inspect(InspectMode.READ_CACHE);
     if(webapp.jslets) {
       jsletContextBuilder.initJslets(this._jsletContext, jsletsConfig.config);
@@ -314,7 +320,7 @@ export class EjpContainer implements DomainContainer {
         this._bootstrapContext.addScript(script);
       }
     }
-    this.getSourceFileInspector().addProcessor(autoWireProcessor);
+    this._sourceFileInspector.addProcessor(autoWireProcessor);
     this._sourceFileInspector.inspect(InspectMode.FILL_CACHE);
     this._sourceFileInspector.removeProcessor(autoWireProcessor);
   }
@@ -328,7 +334,7 @@ export class EjpContainer implements DomainContainer {
    */
   private initJsletAutowireProcessor(jsletsConfig:EjpJsletsConfig):void {
     if(jsletsConfig.enableAutowire) {
-      this.getSourceFileInspector().addProcessor(new JsletsAutowireProcessor());
+      this._sourceFileInspector.addProcessor(new JsletsAutowireProcessor());
     }
   }
 
@@ -337,7 +343,22 @@ export class EjpContainer implements DomainContainer {
    */
   private initJdiEngine():void {
     SokokeLoggerProxy.getInstance().setLogger(this.getLogger());
-    this.getSourceFileInspector().addProcessor(new SokokeAutowireProcessor());
+    this._jdiProcessor = new SokokeAutowireProcessor();
+    this._sourceFileInspector.addProcessor(this._jdiProcessor);
+  }
+
+  /**
+   * The callback method invoked by the source file inspector to ensure that the
+   * Sokoke file processor is called first during the 'complete' notification.
+   * 
+   * @param {any} wacher the reference to the watcher object for the source file
+   *                     inspector.
+   */
+  private afterProcess(wacher:any):void {
+    //--> Ensure that the Sokoke file processor is called first for checking
+    //    circular bean dependencies, befaor any bean injection:
+    this._sourceFileInspector.addProcessor(this._jdiProcessor);
+    this._sourceFileInspector.removeProcessor(this._jdiProcessor);
   }
 
   /**
@@ -468,6 +489,7 @@ export class EjpContainer implements DomainContainer {
     let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     let msg:string = "domain container initialization start";
     LoggerManager.getInstance().info(msg);
+    //TODO : add i18n for the following log
     msg = "domain connector: name=" + connector.getName();
     LoggerManager.getInstance().info(msg);
     this._locale = GlassCatLocaleManager.getInstance().getLocale();

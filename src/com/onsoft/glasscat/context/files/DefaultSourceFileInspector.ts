@@ -117,6 +117,7 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
       this._cache.set(sourcePath, cachedFiles);
     }
     this.notifyProcessStart(targetPath);
+    if(this.beforeProcess) this.beforeProcess(this._connector);
     this._walkUtil.walkSync(targetPath, (file:FileProperties)=> {
       if(fillCacheMode) {
         cacheableFile = new CacheableFile();
@@ -126,6 +127,7 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
       }
       this.processFile(file);
     });
+    if(this.afterProcess) this.afterProcess(this._connector);
     this.notifyProcessComplete(targetPath);
   }
 
@@ -178,14 +180,30 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
     this._cache.forEach((value:CacheableFile[], srcPath:string)=> {
       targetPath = this._target + srcPath;
       this.notifyProcessStart(targetPath);
+      if(this.beforeProcess) this.beforeProcess(this._connector);
       len = value.length;
       while(len--) {
         cacheableFile = value[len];
         this.processFile(cacheableFile.file);
       }
+      if(this.afterProcess) this.afterProcess(this._connector);
       this.notifyProcessComplete(targetPath);
     });
   }
+
+  ////////////////////////////////////////////////////////////////////////////
+  // Public properties
+  ////////////////////////////////////////////////////////////////////////////
+  
+  /**
+   * @inheritDoc
+   */
+  public beforeProcess:Function = null;
+  
+  /**
+   * @inheritDoc
+   */
+  public afterProcess:Function = null;
 
   ////////////////////////////////////////////////////////////////////////////
   // Public methods
@@ -202,7 +220,7 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
     } else {
       this._connector = connector;
       this._target = connector.getTarget() + UrlStringsEnum.SLASH;
-      logManager.info(i18n.get("srcInspector.init"));
+      logManager.debug(i18n.get("srcInspector.init"));
       this.addSourcePath("src");
     }
   }
@@ -219,7 +237,7 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
    */
   public addProcessor(processor:FilePreProcessor):void {
     this._processors.push(processor);
-    LoggerManager.getInstance().info(
+    LoggerManager.getInstance().debug(
       GlassCatLocaleManager.getInstance().get(
         "srcInspector.processorAdded", processor.constructor.name
       )
@@ -234,7 +252,7 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
     let id:number = this._processors.indexOf(processor);
     if(id !== -1) {
       this._processors.splice(id, 1);
-      LoggerManager.getInstance().info(
+      LoggerManager.getInstance().debug(
         GlassCatLocaleManager.getInstance().get(
           "srcInspector.processorRemoved", processor.constructor.name
         )
@@ -248,7 +266,7 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
    */
   public addSourcePath(path:string):void {
     this._sourcePaths.push(path);
-    LoggerManager.getInstance().info(
+    LoggerManager.getInstance().debug(
       GlassCatLocaleManager.getInstance().get(
         "srcInspector.sourcePathAdded", path
       )
@@ -263,8 +281,8 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
     let logManager:Logger = LoggerManager.getInstance();
     let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     if(len > 0) {
-      logManager.info(i18n.get("srcInspector.lookupStart"));
-      logManager.info(
+      logManager.debug(i18n.get("srcInspector.lookupStart"));
+      logManager.debug(
         i18n.get(
           "srcInspector.inspectMode",
           this._inspectModeUtil.inspectModeToString(inspectMode)
@@ -278,7 +296,7 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
           this.inspectSourcePath(this._sourcePaths[len], inspectMode);
         }
       }
-      logManager.info(i18n.get("srcInspector.lookupComplete"));
+      logManager.debug(i18n.get("srcInspector.lookupComplete"));
     }
   }
 

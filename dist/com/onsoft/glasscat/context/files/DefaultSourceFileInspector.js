@@ -14,6 +14,8 @@ class DefaultSourceFileInspector {
         this._walkUtil = null;
         this._cache = null;
         this._inspectModeUtil = null;
+        this.beforeProcess = null;
+        this.afterProcess = null;
         this.init();
     }
     init() {
@@ -34,6 +36,8 @@ class DefaultSourceFileInspector {
             this._cache.set(sourcePath, cachedFiles);
         }
         this.notifyProcessStart(targetPath);
+        if (this.beforeProcess)
+            this.beforeProcess(this._connector);
         this._walkUtil.walkSync(targetPath, (file) => {
             if (fillCacheMode) {
                 cacheableFile = new CacheableFile_1.CacheableFile();
@@ -43,6 +47,8 @@ class DefaultSourceFileInspector {
             }
             this.processFile(file);
         });
+        if (this.afterProcess)
+            this.afterProcess(this._connector);
         this.notifyProcessComplete(targetPath);
     }
     processFile(file) {
@@ -70,11 +76,15 @@ class DefaultSourceFileInspector {
         this._cache.forEach((value, srcPath) => {
             targetPath = this._target + srcPath;
             this.notifyProcessStart(targetPath);
+            if (this.beforeProcess)
+                this.beforeProcess(this._connector);
             len = value.length;
             while (len--) {
                 cacheableFile = value[len];
                 this.processFile(cacheableFile.file);
             }
+            if (this.afterProcess)
+                this.afterProcess(this._connector);
             this.notifyProcessComplete(targetPath);
         });
     }
@@ -87,7 +97,7 @@ class DefaultSourceFileInspector {
         else {
             this._connector = connector;
             this._target = connector.getTarget() + jec_commons_1.UrlStringsEnum.SLASH;
-            logManager.info(i18n.get("srcInspector.init"));
+            logManager.debug(i18n.get("srcInspector.init"));
             this.addSourcePath("src");
         }
     }
@@ -96,28 +106,28 @@ class DefaultSourceFileInspector {
     }
     addProcessor(processor) {
         this._processors.push(processor);
-        LoggerManager_1.LoggerManager.getInstance().info(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("srcInspector.processorAdded", processor.constructor.name));
+        LoggerManager_1.LoggerManager.getInstance().debug(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("srcInspector.processorAdded", processor.constructor.name));
     }
     removeProcessor(processor) {
         let result = false;
         let id = this._processors.indexOf(processor);
         if (id !== -1) {
             this._processors.splice(id, 1);
-            LoggerManager_1.LoggerManager.getInstance().info(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("srcInspector.processorRemoved", processor.constructor.name));
+            LoggerManager_1.LoggerManager.getInstance().debug(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("srcInspector.processorRemoved", processor.constructor.name));
         }
         return result;
     }
     addSourcePath(path) {
         this._sourcePaths.push(path);
-        LoggerManager_1.LoggerManager.getInstance().info(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("srcInspector.sourcePathAdded", path));
+        LoggerManager_1.LoggerManager.getInstance().debug(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("srcInspector.sourcePathAdded", path));
     }
     inspect(inspectMode) {
         let len = this._processors.length;
         let logManager = LoggerManager_1.LoggerManager.getInstance();
         let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
         if (len > 0) {
-            logManager.info(i18n.get("srcInspector.lookupStart"));
-            logManager.info(i18n.get("srcInspector.inspectMode", this._inspectModeUtil.inspectModeToString(inspectMode)));
+            logManager.debug(i18n.get("srcInspector.lookupStart"));
+            logManager.debug(i18n.get("srcInspector.inspectMode", this._inspectModeUtil.inspectModeToString(inspectMode)));
             if (inspectMode === jec_commons_1.InspectMode.READ_CACHE) {
                 this.inspectCache();
             }
@@ -127,7 +137,7 @@ class DefaultSourceFileInspector {
                     this.inspectSourcePath(this._sourcePaths[len], inspectMode);
                 }
             }
-            logManager.info(i18n.get("srcInspector.lookupComplete"));
+            logManager.debug(i18n.get("srcInspector.lookupComplete"));
         }
     }
     clearCache() {

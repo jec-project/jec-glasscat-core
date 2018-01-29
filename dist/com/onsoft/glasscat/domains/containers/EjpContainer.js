@@ -42,6 +42,7 @@ class EjpContainer {
         this._jdiContextManager = null;
         this._bootstrapContextManager = null;
         this._notFoundErrorBuilder = null;
+        this._jdiProcessor = null;
     }
     initConfig(config) {
         let securityContext = null;
@@ -64,6 +65,7 @@ class EjpContainer {
         this.initBootstrapScripts(config);
         this.initJdiEngine();
         this.initJsletAutowireProcessor(jsletsConfig);
+        this._sourceFileInspector.afterProcess = this.afterProcess.bind(this);
         this._sourceFileInspector.inspect(jec_commons_1.InspectMode.READ_CACHE);
         if (webapp.jslets) {
             jsletContextBuilder.initJslets(this._jsletContext, jsletsConfig.config);
@@ -128,18 +130,23 @@ class EjpContainer {
                 this._bootstrapContext.addScript(script);
             }
         }
-        this.getSourceFileInspector().addProcessor(autoWireProcessor);
+        this._sourceFileInspector.addProcessor(autoWireProcessor);
         this._sourceFileInspector.inspect(jec_commons_1.InspectMode.FILL_CACHE);
         this._sourceFileInspector.removeProcessor(autoWireProcessor);
     }
     initJsletAutowireProcessor(jsletsConfig) {
         if (jsletsConfig.enableAutowire) {
-            this.getSourceFileInspector().addProcessor(new JsletsAutowireProcessor_1.JsletsAutowireProcessor());
+            this._sourceFileInspector.addProcessor(new JsletsAutowireProcessor_1.JsletsAutowireProcessor());
         }
     }
     initJdiEngine() {
         jec_sokoke_1.SokokeLoggerProxy.getInstance().setLogger(this.getLogger());
-        this.getSourceFileInspector().addProcessor(new jec_sokoke_1.SokokeAutowireProcessor());
+        this._jdiProcessor = new jec_sokoke_1.SokokeAutowireProcessor();
+        this._sourceFileInspector.addProcessor(this._jdiProcessor);
+    }
+    afterProcess(wacher) {
+        this._sourceFileInspector.addProcessor(this._jdiProcessor);
+        this._sourceFileInspector.removeProcessor(this._jdiProcessor);
     }
     initSessionContext(config) {
         let sessionContext = new EjpSessionContext_1.EjpSessionContext(this._contextRoot, config);
