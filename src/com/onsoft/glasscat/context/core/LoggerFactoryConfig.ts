@@ -14,6 +14,8 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
+import {LogLevelString} from "jec-commons";
+
 /**
  * The <code>LoggerFactoryConfig</code> class represents an item of the
  * <code>loggers.factories</code> data specified by a bootstrap configuration
@@ -47,5 +49,5 @@ export class LoggerFactoryConfig {
   /**
    * The log level of the logger factory.
    */
-  public logLevel:string = null;
+  public logLevel:LogLevelString = null;
 }

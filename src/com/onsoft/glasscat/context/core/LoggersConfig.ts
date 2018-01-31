@@ -15,6 +15,7 @@
 //   limitations under the License.
 
 import {LoggerFactoryConfig} from"./LoggerFactoryConfig";
+import {LogLevelString} from "jec-commons";
 
 /**
  * The <code>LoggersConfig</code> class represents an item of the
@@ -38,7 +39,7 @@ export class LoggersConfig {
   /**
    * The log level associated with the loggers.
    */
-  public logLevel:string = null;
+  public logLevel:LogLevelString = null;
 
   /**
    * The collection of logger factories defined for a GlassCat container into

@@ -16,7 +16,8 @@
 
 import {LoggerFactory} from "../util/logging/LoggerFactory";
 import {LoggerContext} from "./LoggerContext";
-import {LogLevel, LogLevelUtil, ClassLoader, GlobalClassLoader} from "jec-commons";
+import {LogLevel, LogLevelUtil, ClassLoader, GlobalClassLoader,
+        LogLevelString} from "jec-commons";
 import {LoggerContextBuilder} from "./utils/LoggerContextBuilder";
 import {MappedPathUtil} from "../util/paths/MappedPathUtil";
 import {HttpListenerConfig} from "./core/HttpListenerConfig";
@@ -121,7 +122,7 @@ export class GlassCatContext {
     let loader:ClassLoader = GlobalClassLoader.getInstance();
     let Contructor:any = null;
     let classPath:string = null;
-    let logLevel:string = null;
+    let logLevel:LogLevelString = null;
     this._loggerContexts = new Array<LoggerContext>();
     while(len--) {
       factoryData = factoryRefs[len];

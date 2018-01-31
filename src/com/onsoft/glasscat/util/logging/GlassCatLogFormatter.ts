@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {LogFormatter} from "jec-commons";
+import {LogFormatter, LogLevelString} from "jec-commons";
 import * as moment from "moment";
 
 /**
@@ -53,7 +53,7 @@ export class GlassCatLogFormatter implements LogFormatter {
   /**
    * @inheritDoc
    */
-  public format(level:string, marker:any, useAppender:boolean = false,
+  public format(level:LogLevelString, marker:any, useAppender:boolean = false,
                                           context:string = ""):string {
     let time:string =  moment().format(this.timeFormat);
     let msg:string = `[${time}][GlassCat]${context} ${level}: ${marker}`;

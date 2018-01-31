@@ -23,6 +23,7 @@ import {HttpConfig} from "../HttpConfig";
 import {HttpListenerConfig} from "../HttpListenerConfig";
 import {HttpMonitoringConfig} from "../HttpMonitoringConfig";
 import {SecurityConfig} from "../SecurityConfig";
+import { LogLevelString } from "jec-commons";
 
 /**
  * A parser utility for creating GlassCat <code>BootstrapConfig</code> instances
@@ -164,7 +165,7 @@ export class BootstrapConfigParser {
         factory = new LoggerFactoryConfig();
         rawFactory = factories[len];
         factory.name = rawFactory.name;
-        factory.logLevel = rawFactory.logLevel;
+        factory.logLevel = (rawFactory.logLevel as LogLevelString);
         factory.factory = rawFactory.factory;
         cfg.factories.push(factory);
       }
