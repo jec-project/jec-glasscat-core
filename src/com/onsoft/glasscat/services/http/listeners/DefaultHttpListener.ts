@@ -74,7 +74,7 @@ export class DefaultHttpListener implements HttpListener {
   /**
    * The protocol of the server associated with this HTTP listener.
    */
-  private _protocol:string = null;
+  private _protocol:HttpConnectionType = null;
 
   /**
    * The domain associated with this HTTP listener.
@@ -165,7 +165,7 @@ export class DefaultHttpListener implements HttpListener {
   /**
    * @inheritDoc
    */
-  public getProtocol():string {
+  public getProtocol():HttpConnectionType {
     return this._protocol;
   }
 

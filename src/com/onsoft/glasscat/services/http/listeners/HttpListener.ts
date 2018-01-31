@@ -16,6 +16,7 @@
 
 import {ConnectionListener} from "../../../net/ConnectionListener";
 import {TransactionMonitor} from "../../../net/http/monitoring/TransactionMonitor";
+import {HttpConnectionType} from "jec-commons";
 
 /**
  * The HTTP listener elements represents a listen socket that has an IP address,
@@ -36,10 +37,10 @@ export interface HttpListener extends ConnectionListener {
    * Returns the protocol scheme of the server associated with this HTTP
    * listener.
    *
-   * @return {string} the protocol scheme of the server associated with this
-   *                  HTTP listener.
+   * @return {HttpConnectionType} the protocol scheme of the server
+   *                              associated with this HTTP listener.
    */
-  getProtocol():string;
+  getProtocol():HttpConnectionType;
 
   /**
    * Returns the domain associated with this HTTP listener.
