@@ -77,9 +77,9 @@ export class LoggerManager extends AbstractLogger {
    *
    * @param {Array<Logger>} loggers the list of <code>Loggers</code> declared 
    *                                for a GlassCat container.
-   * @param {number} logLevel the log level for the GlassCat container.
+   * @param {LogLevel} logLevel the log level for the GlassCat container.
    */
-  public init(loggers:Logger[], logLevel:number) {
+  public init(loggers:Logger[], logLevel:LogLevel) {
     let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     let llu:LogLevelUtil = null;
     let msg:string = null;
@@ -150,7 +150,7 @@ export class LoggerManager extends AbstractLogger {
   /**
    * @inheritDoc
    */
-  public setLogLevel(logLevel:number):void {}
+  public setLogLevel(logLevel:LogLevel):void {}
 
   /**
    * @inheritDoc

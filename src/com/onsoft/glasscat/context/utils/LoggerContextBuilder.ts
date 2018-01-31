@@ -17,6 +17,7 @@
 import * as fs from "fs";
 import {LoggerContext} from "../LoggerContext";
 import {LoggerFactory} from "../../util/logging/LoggerFactory";
+import {LogLevel} from "jec-commons";
 
 /**
  * A Builder utility for managing GlassCat container logger contexts.
@@ -40,14 +41,14 @@ export class LoggerContextBuilder {
    * Builds the container context from the bootstrap file.
    *
    * @param {string} name the name of the logger for this context.
-   * @param {LoggerFactory} factory the reference to the logger factory for this
-   *                                context.
-   * @param {number} logLevel the specific log level for this context.
+   * @param {LoggerFactory} factory the reference to the logger factory for 
+   *                                this context.
+   * @param {LogLevel} logLevel the specific log level for this context.
    * @return {LoggerContext} a context object which represents a logger
    *                         definition.
    */
   public buildContext(name:string, factory:LoggerFactory,
-                                                logLevel:number):LoggerContext {
+                                            logLevel:LogLevel):LoggerContext {
     let ctx:LoggerContext = new LoggerContext();
     ctx.name = name;
     ctx.factory = factory;

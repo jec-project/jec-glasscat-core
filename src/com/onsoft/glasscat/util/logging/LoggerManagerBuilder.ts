@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {Logger} from "jec-commons";
+import {Logger, LogLevel} from "jec-commons";
 import {LoggerFactory} from "./LoggerFactory";
 import {LoggerManager} from "./LoggerManager";
 import {LoggerContext} from "../../context/LoggerContext";
@@ -76,7 +76,7 @@ export class LoggerManagerBuilder {
       loggerContext = loggerContexts[len];
       loggers.push(loggerContext.factory.build(loggerContext));
     }
-    let logLevel:number = this._ctx.getLogLevel();
+    let logLevel:LogLevel = this._ctx.getLogLevel();
     let manager:Logger = LoggerManager.getInstance();
     (manager as LoggerManager).init(loggers, logLevel);
     return manager;

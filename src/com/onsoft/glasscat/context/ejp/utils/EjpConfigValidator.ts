@@ -47,9 +47,9 @@ export class EjpConfigValidator {
    * Sends the specified log to the logger, if it exists.
    *
    * @param {string} message the message to log.
-   * @param {number} logLevel a constant of the <code>LogLevel</code> class.
+   * @param {LogLevel} logLevel a value of the <code>LogLevel</code> enum.
    */
-  private printLog(message:string, logLevel:number):void {
+  private printLog(message:string, logLevel:LogLevel):void {
     let logger:LoggerManager = (LoggerManager.getInstance() as LoggerManager);
     if(logger.isInitialized()) {
       switch(logLevel) {

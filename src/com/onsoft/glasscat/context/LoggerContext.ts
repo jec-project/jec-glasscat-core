@@ -46,8 +46,7 @@ export class LoggerContext {
   public name:string = null;
 
   /**
-   * The specific log level for this context. Valid values are constants of the
-   * <code>LogLevel</code> enum.
+   * The specific log level for this context.
    */
-  public logLevel:number = LogLevel.TRACE;
+  public logLevel:LogLevel = LogLevel.TRACE;
 }
