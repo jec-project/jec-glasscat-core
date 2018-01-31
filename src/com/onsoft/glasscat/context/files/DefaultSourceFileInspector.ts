@@ -101,12 +101,10 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
    * Inspects the specified source path.
    * 
    * @param {string} sourcePath the source path to inspect.
-   * @param {number} inspectMode specifies the process used by this file
-   *                             inspector to inspect files. Valid values are
-   *                             the constants of the <code>InspectMode</code>
-   *                             class.
+   * @param {InspectMode} inspectMode specifies the process used by this file
+   *                                  inspector to inspect files.
    */
-  private inspectSourcePath(sourcePath:string, inspectMode:number):void {
+  private inspectSourcePath(sourcePath:string, inspectMode:InspectMode):void {
     let file:string = null;
     let targetPath:string = this._target + sourcePath;
     let cacheableFile:CacheableFile = null;

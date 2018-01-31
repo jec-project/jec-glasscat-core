@@ -17,8 +17,8 @@
 import {UserHashModule} from "jec-exchange";
 import * as crypto from "crypto";
 import {EncodingFormat} from "jec-commons";
-import { GlassCatError } from "../../exceptions/GlassCatError";
-import { GlassCatErrorCode } from "../../exceptions/GlassCatErrorCode";
+import {GlassCatError} from "../../exceptions/GlassCatError";
+import {GlassCatErrorCode} from "../../exceptions/GlassCatErrorCode";
 
 /**
  * The default implementation of the <code>UserHashModule</code> interface.
