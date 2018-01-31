@@ -71,7 +71,7 @@ export class GlassCatContext {
   /**
    * The level of logging outputs for this context.
    */
-  private _logLevel:number = LogLevel.TRACE;
+  private _logLevel:LogLevel = LogLevel.TRACE;
 
   //////////////////////////////////////////////////////////////////////////////
   // Private methods
@@ -156,9 +156,9 @@ export class GlassCatContext {
   /**
    * Returns the log level for this context.
    *
-   * @return {number} the log level for this context.
+   * @return {LogLevel} the log level for this context.
    */
-  public getLogLevel():number {
+  public getLogLevel():LogLevel {
     return this._logLevel;
   }
 
