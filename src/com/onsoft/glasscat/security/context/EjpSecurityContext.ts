@@ -16,8 +16,8 @@
 
 import {LoggerManager} from "../../util/logging/LoggerManager";
 import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
-import {SecurityRole, Jslet, SecurityConstraint, StaticResources,
-        SecurityContext, Session, SessionError, SessionErrorType} from "jec-exchange";
+import {SecurityRole, SecurityConstraint, StaticResources, SecurityContext,
+        Session} from "jec-exchange";
 import {SecurityManager} from "../../core/SecurityManager";
 import {UrlPatternUtils} from "../../util/url/UrlPatternUtils";
 import {ContextRootUtil} from "../../util/contextroot/ContextRootUtil";

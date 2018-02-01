@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {SessionError, SessionId} from "jec-exchange";
+import {SessionError, SessionId, SessionErrorType} from "jec-exchange";
 import {BasicSessionError} from "../errors/BasicSessionError";
 
 /**
@@ -40,17 +40,14 @@ export class SessionErrorBuilder {
    * the specified parameters.
    * 
    * @param {SessionId} sessionId the ID of the session that throws the error.
-   * @param {string} errorType the type of the session error. Valid values are
-   *                           constants of the <code>SessionErrorType</code>
-   *                           class.
+   * @param {SessionErrorType} type the type of the session error.
    * @param {string} message a string that contains the details of the session
    *                         error.
    * @return {SessionError} a new <code>SessionError</code> instance.
    */
-  public build(sessionId:SessionId, errorType:string,
+  public build(sessionId:SessionId, type:SessionErrorType,
                                     message?:string):SessionError {
-    let error:SessionError =
-                           new BasicSessionError(sessionId, errorType, message);
+    let error:SessionError = new BasicSessionError(sessionId, type, message);
     return error;
   }
 }

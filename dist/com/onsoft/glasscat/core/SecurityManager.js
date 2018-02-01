@@ -95,6 +95,7 @@ class SecurityManager {
         let crd = this._contextRootUtil.extractContextRoot(req);
         let properties = res.locals.properties;
         let cookies = null;
+        let errorType = null;
         properties.contextRootData = crd;
         connector = this._connectorManager.getDomainConnector(crd.contextRoot);
         properties.connector = connector;
@@ -125,7 +126,7 @@ class SecurityManager {
                         properties.sessionId = sessionId;
                         sessionContext.loadSession(sessionId, (err) => {
                             if (err) {
-                                let errorType = err.getErrorType();
+                                errorType = err.getErrorType();
                                 if (errorType === jec_exchange_1.SessionErrorType.INVALID_SESSION_ID) {
                                     result();
                                 }

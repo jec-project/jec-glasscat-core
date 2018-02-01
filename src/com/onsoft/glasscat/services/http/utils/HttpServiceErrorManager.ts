@@ -125,7 +125,7 @@ export class HttpServiceErrorManager {
                              httpResponse:HttpResponse,
                              errorTemplatePath:string):void {
     properties.transactionFails = true;
-    let errorType:string = error.getErrorType();
+    let errorType:SessionErrorType = error.getErrorType();
     switch(errorType) {
       // Session expired => we have to redirect the user:
       case SessionErrorType.SESSION_EXPIRED:

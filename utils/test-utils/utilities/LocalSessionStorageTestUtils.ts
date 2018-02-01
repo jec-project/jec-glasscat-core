@@ -16,7 +16,7 @@
 
 import {GlassCatSessionId} from "../../../src/com/onsoft/glasscat/security/session/GlassCatSessionId";
 import {GlassCatSession} from "../../../src/com/onsoft/glasscat/security/session/GlassCatSession";
-import { SessionId, SessionErrorType, Session } from "jec-exchange";
+import {SessionId, Session} from "jec-exchange";
 
 /*!
  * This module constains utilities used by the LocalSessionStorageTest test

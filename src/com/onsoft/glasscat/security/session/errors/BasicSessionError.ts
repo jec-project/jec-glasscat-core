@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {SessionId, SessionError} from "jec-exchange";
+import {SessionId, SessionError, SessionErrorType} from "jec-exchange";
 
 /**
  * A data transfert object for managing session errors.
@@ -29,13 +29,12 @@ export class BasicSessionError implements SessionError {
    * Initializes this <code>BasicSessionError</code> instance.
    * 
    * @param {SessionId} sessionId the ID of the session that throws the error.
-   * @param {string} errorType the type of the session error. Valid values are
-   *                           constants of the <code>SessionErrorType</code>
-   *                           class.
+   * @param {SessionErrorType} errorType the type of the session error.
    * @param {string} message a string that contains the details of the session
    *                         error.
    */
-  constructor(sessionId:SessionId, errorType:string, message?:string) {
+  constructor(sessionId:SessionId, errorType:SessionErrorType,
+                                                              message?:string) {
     this.initObj(sessionId, errorType, message);
   }
   
@@ -49,10 +48,9 @@ export class BasicSessionError implements SessionError {
   private _sessionId:SessionId = null;
 
   /**
-   * Indicates the type of this session error. Valid values are constants of the
-   * <code>SessionErrorType</code> class.
+   * Indicates the type of this session error.
    */
-  private _errorType:string = null;
+  private _errorType:SessionErrorType = null;
   
   /**
    * A string that contains the details of the session error.
@@ -67,13 +65,12 @@ export class BasicSessionError implements SessionError {
    * Initializes this object.
    * 
    * @param {SessionId} sessionId the ID of the session that throws the error.
-   * @param {string} errorType the type of the session error. Valid values are
-   *                           constants of the <code>SessionErrorType</code>
-   *                           class.
+   * @param {SessionErrorType} errorType the type of the session error.
    * @param {string} message a string that contains the details of the session
    *                         error.
    */
-  private initObj(sessionId:SessionId, errorType:string, message?:string):void {
+  private initObj(sessionId:SessionId, errorType:SessionErrorType,
+                                                         message?:string):void {
     this._sessionId = sessionId;
     this._errorType = errorType;
     this._message = message;
@@ -93,7 +90,7 @@ export class BasicSessionError implements SessionError {
   /**
    * @inheritDoc
    */
-  public getErrorType():string {
+  public getErrorType():SessionErrorType {
     return this._errorType;
   }
   

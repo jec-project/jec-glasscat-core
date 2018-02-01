@@ -29,5 +29,5 @@ const buildSession:Function = function():SessionId {
   return session;
 };
 export const SESSION_ID:SessionId = buildSession();
-export const ERROR_TYPE:string = SessionErrorType.INVALID_SESSION_ID;
+export const ERROR_TYPE:SessionErrorType = SessionErrorType.INVALID_SESSION_ID;
 export const ERROR_MESSAGE:string = "session error";

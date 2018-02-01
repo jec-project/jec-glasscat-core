@@ -246,6 +246,7 @@ export class SecurityManager {
     let crd:ContextRootData = this._contextRootUtil.extractContextRoot(req);
     let properties:HttpLocalProperties = res.locals.properties;
     let cookies:any = null;
+    let errorType:SessionErrorType = null;
     properties.contextRootData = crd;
     connector = this._connectorManager.getDomainConnector(crd.contextRoot);
     properties.connector = connector;
@@ -280,7 +281,7 @@ export class SecurityManager {
               sessionId,
               (err:SessionError) => {
                 if(err) {
-                  let errorType:string = err.getErrorType();
+                  errorType = err.getErrorType();
                   // Session does not exists => owner is not authenticated yet:
                    if(errorType === SessionErrorType.INVALID_SESSION_ID) {
                      result();
