@@ -18,6 +18,7 @@
  * A data transfert object for managing authentication errors.
  */
 import {AuthenticationError} from "jec-exchange";
+import {HttpStatusCode} from "jec-commons";
 
 export class BasicAuthenticationError implements AuthenticationError {
 
@@ -28,11 +29,9 @@ export class BasicAuthenticationError implements AuthenticationError {
   /**
    * Initializes this <code>BasicAuthenticationError</code> instance.
    * 
-   * @param {number} statusCode the HTTP status code for this error. Valid 
-   *                            values are constants of the 
-   *                            <code>HttpStatusCode</code> ennum.
+   * @param {HttpStatusCode} statusCode the HTTP status code for this error.
    */
-  constructor(statusCode:number) {
+  constructor(statusCode:HttpStatusCode) {
     this._statusCode = statusCode;
   }
   
@@ -41,10 +40,9 @@ export class BasicAuthenticationError implements AuthenticationError {
   //////////////////////////////////////////////////////////////////////////////
 
   /**
-   * The HTTP status code for this error. Valid values are constants of the
-   * <code>HttpStatusCode</code> ennum.
+   * The HTTP status code for this error.
    */
-  private _statusCode:number = 0;
+  private _statusCode:HttpStatusCode = null;
   
   //////////////////////////////////////////////////////////////////////////////
   // Public methods
@@ -53,7 +51,7 @@ export class BasicAuthenticationError implements AuthenticationError {
   /**
    * @inheritDoc
    */
-  public getStatusCode():number {
+  public getStatusCode():HttpStatusCode {
     return this._statusCode;
   }
 }

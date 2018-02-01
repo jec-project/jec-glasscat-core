@@ -34,7 +34,7 @@ export class DomainRequestErrorTest {
     description: "should have a 'statusCode' property set to '-1'"
   })
   public statusCodeTest():void {
-    expect(this.error).to.have.property("statusCode", -1);
+    expect(this.error).to.have.property("statusCode", null);
   }
   
   @Test({

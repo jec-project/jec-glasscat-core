@@ -89,15 +89,14 @@ export class ErrorStatusBuilder {
    *                           error status page.
    * @param {string} templatePath the path to the tempate to use for creating  
    *                              the error status page.
-   * @param {number} statusCode the HTTP status code for this error access
-   *                            message. Default value is
-   *                            <code>HttpStatusCode.NOT_FOUND</code>.
+   * @param {HttpStatusCode} statusCode the HTTP status code for this error 
+   *                                    access message.
    * @param {string} detailsCode the reference to the locale details for this
    *                             error access message.
    * @return {HttpStatusReport} a new <code>HttpStatusReport</code> object.
    */
   public build(req:HttpRequest, res:HttpResponse, templatePath:string,
-               statusCode:number = HttpStatusCode.NOT_FOUND,
+               statusCode:HttpStatusCode = HttpStatusCode.NOT_FOUND,
                detailsCode:string = "httpErrors.error.description"):void {
     let url:string = req.getOriginalUrl();
     let i18n:LocaleManager = GlassCatLocaleManager.getInstance();

@@ -168,7 +168,7 @@ export class SecurityManager {
     let session:Session = null;
     let err:AuthenticationError = null;
     let sessionId:SessionId = null;
-    let errorStatusCode:number = 0;
+    let errorStatusCode:HttpStatusCode = (0 as HttpStatusCode);
     if(crd.containsNestedResource) {
       crd.newPath = ResourceProxy.getInstance().getProxyPath(
         req.url, listener, this._connectorManager

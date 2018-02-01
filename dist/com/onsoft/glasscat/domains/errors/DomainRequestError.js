@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class DomainRequestError {
     constructor() {
-        this.statusCode = -1;
+        this.statusCode = null;
         this.detailsCode = "httpErrors.error.description";
         this.message = null;
     }

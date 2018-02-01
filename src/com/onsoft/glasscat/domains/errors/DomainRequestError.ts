@@ -14,6 +14,8 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
+import {HttpStatusCode} from "jec-commons";
+
 /**
  * A basic Data Transfert Object for propagating domain container transaction
  * errors through a GlassCat application.
@@ -36,7 +38,7 @@ export class DomainRequestError {
   /**
    * The HTTP status code associated with this error.
    */
-  public statusCode:number = -1;
+  public statusCode:HttpStatusCode = null;
 
   /**
    * The details code associated with this error.

@@ -20,10 +20,10 @@
 
 // Utilities:
 export const CONTEXTROOT:string = "contextroot";
-export const URI_PATH:string = "my/uri/path";
-export const GLASSCAT_URI_PATTERN:string = "${server}/my/uri/path";
-export const GLASSCAT_URI_PATH:string = "contextroot/server/com/onsoft/glasscat/my/uri/path";
-export const ROOT_URI_PATTERN:string = "${root}/my/uri/path";
-export const ROOT_URI_PATH:string = "contextroot/my/uri/path";
-export const MODULES_URI_PATTERN:string = "${modules}/my/uri/path";
-export const MODULES_URI_PATH:string = "contextroot/public/modules/my/uri/path";
+export const URI_PATH:string = "my\\uri\\path";
+export const GLASSCAT_URI_PATTERN:string = "${server}\\my\\uri\\path";
+export const GLASSCAT_URI_PATH:string = "contextroot\\server\\com\\onsoft\\glasscat\\my\\uri\\path";
+export const ROOT_URI_PATTERN:string = "${root}\\my\\uri\\path";
+export const ROOT_URI_PATH:string = "contextroot\\my\\uri\\path";
+export const MODULES_URI_PATTERN:string = "${modules}\\my\\uri\\path";
+export const MODULES_URI_PATH:string = "contextroot\\public\\modules\\my\\uri\\path";

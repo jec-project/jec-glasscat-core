@@ -17,6 +17,7 @@
 import * as express from "express";
 import {HttpLocalProperties} from "../../services/http/utils/HttpLocalProperties";
 import {HttpResponse, CookieOptions, SendFileOptions} from "jec-exchange";
+import {HttpStatusCode} from "jec-commons";
 
 /**
  * The default GlassCat implementation of the <code>HttpResponse</code>
@@ -177,7 +178,7 @@ export class GlassCatHttpResponse implements HttpResponse {
   /**
    * @inheritDoc
    */
-  public sendStatus(statusCode:number):HttpResponse {
+  public sendStatus(statusCode:HttpStatusCode):HttpResponse {
     this.__expRsq.sendStatus(statusCode);
     return this;
   }
@@ -193,7 +194,7 @@ export class GlassCatHttpResponse implements HttpResponse {
   /**
    * @inheritDoc
    */
-  public status(statusCode:number):HttpResponse {
+  public status(statusCode:HttpStatusCode):HttpResponse {
     this.__expRsq.status(statusCode);
     return this;
   }

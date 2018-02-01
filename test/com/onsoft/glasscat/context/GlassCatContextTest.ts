@@ -21,6 +21,7 @@ import { BootstrapConfig } from "../../../../../src/com/onsoft/glasscat/context/
 import { BootstrapConfigParser } from "../../../../../src/com/onsoft/glasscat/context/core/utils/BootstrapConfigParser";
 import { JsonLoader, JsonLoaderError, LogLevelUtil } from "jec-commons";
 import { DefaultJsonLoader } from "jec-commons-node";
+import * as path from "path";
 
 @TestSuite({
   description: "Test the GlassCatContext class methods"
@@ -130,7 +131,7 @@ export class GlassCatContextTest {
   })
   public getErrorPageTest():void {
     expect(this.context.getErrorPage()).to.equal(
-      this.bootstrapFile.config.errorPage
+      path.normalize(this.bootstrapFile.config.errorPage)
     );
   }
 

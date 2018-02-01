@@ -22,7 +22,7 @@ import * as readline from "readline";
 import * as stream from "stream";
 import {GlassCatLocaleManager} from "../../../i18n/GlassCatLocaleManager";
 import {LoggerManager} from "../../../util/logging/LoggerManager";
-import { EncodingFormat, HttpStatusCode } from "jec-commons";
+import {EncodingFormat, HttpStatusCode} from "jec-commons";
 import {MappedPathUtil} from "../../../util/paths/MappedPathUtil";
 import {DefaultUserHashModule} from "../../crypto/DefaultUserHashModule";
 import {SessionOwnerBuilder} from "../../session/utils/SessionOwnerBuilder";

@@ -90,7 +90,7 @@ export class HttpServiceErrorManager {
                                    httpResponse:HttpResponse,
                                    errorTemplatePath:string):void {
     properties.transactionFails = true;
-    let statusCode:number = error.statusCode;
+    let statusCode:HttpStatusCode = error.statusCode;
     if(statusCode === HttpStatusCode.INTERNAL_SERVER_ERROR) {
       LoggerManager.getInstance().error(
         GlassCatLocaleManager.getInstance().get(
