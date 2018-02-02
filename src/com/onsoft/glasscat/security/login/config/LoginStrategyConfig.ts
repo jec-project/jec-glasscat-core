@@ -15,6 +15,7 @@
 //   limitations under the License.
 
 import {FormProperties} from "./FormProperties";
+import {AuthMethod} from "jec-exchange";
 
 /**
  * The <code>LoginStrategyConfig<code> interface provides the basic set of API  
@@ -24,13 +25,12 @@ export interface LoginStrategyConfig {
 
   /**
    * Returns the authentication method specified for this
-   * <code>LoginStrategyConfig</code> object. Possible values are constants of
-   * the <code>AuthMethod</code> class.
+   * <code>LoginStrategyConfig</code> object.
    * 
-   * @return {string} the authentication method specified for this 
-   *                  <code>LoginStrategyConfig</code> object.
+   * @return {AuthMethod} the authentication method specified for this 
+   *                      <code>LoginStrategyConfig</code> object.
    */
-  getAuthMethod():string;
+  getAuthMethod():AuthMethod;
 
   /**
    * Returns the form configuration specified for this 

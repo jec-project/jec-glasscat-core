@@ -16,6 +16,7 @@
 
 import {EjpFormConfig} from "./EjpFormConfig";
 import {EjpRealmConfig} from "./EjpRealmConfig";
+import {AuthMethod} from "jec-exchange";
 
 /**
  * Represents the login configuration for an EJP deployed in a GlassCat
@@ -37,10 +38,9 @@ export class EjpLoginConfig {
   ////////////////////////////////////////////////////////////////////////////
 
   /**
-   * The authentication method used by the GlassCat container. Valid values are
-   * the constants of the <code>AuthMethod</code> class.
+   * The authentication method used by the GlassCat container.
    */
-  public authMethod:string = null;
+  public authMethod:AuthMethod = null;
 
   /**
    * The configuration of the authentication for used by the GlassCat container.

@@ -14,6 +14,8 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
+import { AuthMethod, SessionStorageType, RealmType } from "jec-exchange";
+
 /*!
  * This module constains utilities used to test EJP configuration files.
  */
@@ -35,14 +37,14 @@ export const WEBAPP_STATE:string = "stateful";
 export const BOOTSTRAP_PATH:string = "bootstrap/InitApp";
 export const BOOTSTRAP_PRIORITY:number = 1;
 export const SESSION_ERROR_URL:string = "/login";
-export const SESSION_STORAGE:string = "local";
+export const SESSION_STORAGE:SessionStorageType = SessionStorageType.LOCAL;
 export const SESSION_MAX_AGE:number = 3600;
 export const RESOURCEMAP_NAME:string = "font-awesome";
 export const RESOURCEMAP_VALUE:string = "/styles/font-awesome/fonts";
-export const LOGIN_AUTH_METHOD:string = "ejp-form";
+export const LOGIN_AUTH_METHOD:AuthMethod = ("ejp-form" as AuthMethod);
 export const FORM_CONFIG_ERROR_URL:string = "/error/login";
 export const FORM_CONFIG_LOGIN_URL:string = "/login";
-export const REALM_TYPE:string = "file";
+export const REALM_TYPE:RealmType = RealmType.FILE;
 export const REALM_SECURED_AREA:string = "GlassCat Test Project";
 export const REALM_CONNECTOR_FACTORY:string = "path/to/Factory";
 export const ROLE_NAME:string = "ADMIN";

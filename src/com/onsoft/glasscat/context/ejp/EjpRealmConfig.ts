@@ -14,6 +14,8 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
+import {RealmType} from "jec-exchange";
+
 /**
  * Represents the realm configuration for an EJP deployed in a GlassCat
  * container.
@@ -34,10 +36,9 @@ export class EjpRealmConfig {
   ////////////////////////////////////////////////////////////////////////////
 
   /**
-   * Indicates the type of the realm. Valid values are the constants of the
-   * <code>RealmType</code> class.
+   * Indicates the type of the realm..
    */
-  public type:string = null;
+  public type:RealmType = null;
   
   /**
    * The property used for generating the basic authentication response header.

@@ -14,6 +14,8 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
+import {SessionStorageType} from "jec-exchange";
+
 /**
  * Represents the <code>webapp.session</code> configuration property for an EJP  
  * deployed in a GlassCat container.
@@ -34,10 +36,9 @@ export class EjpSessionConfig {
   ////////////////////////////////////////////////////////////////////////////
 
   /**
-   * The type of storage for this session configuration. Valid values are the
-   * constants of the <code>SessionStorageType</code> class.
+   * The type of storage for this session configuration.
    */
-  public storage:string = null;
+  public storage:SessionStorageType = null;
   
   /**
    * The error URL for this session configuration.

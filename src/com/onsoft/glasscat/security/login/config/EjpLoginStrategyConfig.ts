@@ -59,7 +59,7 @@ export class EjpLoginStrategyConfig implements LoginStrategyConfig {
         "context must not be null"
       );
     }
-    let authMethod:string = context.authMethod;
+    let authMethod:AuthMethod = context.authMethod;
     let realm:any = null;
     if(authMethod) {
       this._context = context;
@@ -88,10 +88,9 @@ export class EjpLoginStrategyConfig implements LoginStrategyConfig {
 
   /**
    * The authentication method specified for this
-   * <code>LoginStrategyConfig</code> object. Possible values are constants of
-   * the <code>AuthMethod</code> class.
+   * <code>LoginStrategyConfig</code> object.
    */
-  private _authMethod:string = null;
+  private _authMethod:AuthMethod = null;
 
   /**
    * The form configuration for this <code>LoginStrategyConfig</code> object.
@@ -111,7 +110,7 @@ export class EjpLoginStrategyConfig implements LoginStrategyConfig {
   /**
    * @inheritDoc
    */
-  public getAuthMethod():string {
+  public getAuthMethod():AuthMethod {
     return this._authMethod;
   }
 

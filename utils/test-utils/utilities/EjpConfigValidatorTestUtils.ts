@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { AuthMethod, RealmType } from "jec-exchange";
+import { AuthMethod, RealmType, SessionStorageType } from "jec-exchange";
 import { EjpConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpConfig";
 import { EjpWebAppConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpWebAppConfig";
 import { EjpBootstrapConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpBootstrapConfig";
@@ -36,7 +36,6 @@ import * as configUtils from "../../../utils/test-utils/utilities/EjpConfigUtils
  */
 
 // Utilities:
-const INVALID:string = "invalid";
 export const buildNoWebappConfig:Function = function():EjpConfig {
   return new EjpConfig();
 };
@@ -63,7 +62,7 @@ export const buildEmptyContextRootConfig:Function = function():EjpConfig {
 export const buildInvalidStateConfig:Function = function():EjpConfig {
   let config:EjpConfig = buildNoContextRootConfig();
   config.webapp.contextRoot = configUtils.WEBAPP_CONTEXTROOT;
-  config.webapp.state = INVALID;
+  config.webapp.state = "invalid";
   return config;
 };
 export const buildLoginConfig:Function = function():EjpConfig {
@@ -75,7 +74,7 @@ export const buildLoginConfig:Function = function():EjpConfig {
 };
 export const buildInvalidAuthMethodConfig:Function = function():EjpConfig {
   let config:EjpConfig = buildLoginConfig();
-  config.webapp.login.authMethod = INVALID;
+  config.webapp.login.authMethod = ("invalid" as AuthMethod);
   return config;
 };
 export const buildInvalidFormConfig:Function = function():EjpConfig {
@@ -94,7 +93,7 @@ export const buildValidLoginConfig:Function = function():EjpConfig {
 };
 export const buildInValidRealmType:Function = function():EjpConfig {
   let config:EjpConfig = buildValidLoginConfig();
-  config.webapp.login.realm.type = INVALID;
+  config.webapp.login.realm.type = ("invalid" as RealmType);
   return config;
 };
 export const buildInValidRealmFactory:Function = function():EjpConfig {
@@ -115,7 +114,7 @@ export const buildInValidSession:Function = function():EjpConfig {
   let session:EjpSessionConfig = new EjpSessionConfig();
   session.errorUrl = configUtils.SESSION_ERROR_URL;
   session.maxAge = configUtils.SESSION_MAX_AGE;
-  session.storage = INVALID;
+  session.storage = ("invalid" as SessionStorageType);
   config.webapp.session = session;
   return config;
 };

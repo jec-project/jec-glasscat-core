@@ -84,7 +84,7 @@ export class LoginStrategy {
    */
   private init(strategyConfig:LoginStrategyConfig):void {
     this._strategyConfig = strategyConfig;
-    let authMethod:string = this._strategyConfig.getAuthMethod();
+    let authMethod:AuthMethod = this._strategyConfig.getAuthMethod();
     
     /*if(!authMethod) {
       LoggerManager.getInstance().error(

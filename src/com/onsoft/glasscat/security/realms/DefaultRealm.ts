@@ -44,10 +44,9 @@ export class DefaultRealm implements Realm {
   //////////////////////////////////////////////////////////////////////////////
 
   /**
-   * The type of realm for this realm. Valid values are constants of the
-   * <code>RealmType</code> class.
+   * The type of realm for this realm.
    */
-  private _realmType:string = null;
+  private _realmType:RealmType = null;
 
   /**
    * The reference to the <code>RealmConnector</code> instance for this realm
@@ -69,9 +68,9 @@ export class DefaultRealm implements Realm {
     // TODO: use configuration object to set internal properties when connectors
     // will be available.
     this._realmType = RealmType.ADMIN_FILE;
-    if(this._realmType === RealmType.FILE) {
+    if(this._realmType as RealmType === RealmType.FILE) {
       this._realmConnector = new AdminFileRealmConnector();
-    } else if(this._realmType === RealmType.ADMIN_FILE) {
+    } else if(this._realmType as RealmType === RealmType.ADMIN_FILE) {
       this._realmConnector = new AdminFileRealmConnector();
     }
   }
@@ -83,7 +82,7 @@ export class DefaultRealm implements Realm {
   /**
    * @inheritDoc
    */
-  public getRealmType():string {
+  public getRealmType():RealmType {
     return this._realmType;
   }
 

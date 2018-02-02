@@ -225,7 +225,7 @@ export class EjpConfigSerializer {
     let realmConfig:EjpRealmConfig = null;
     let optConfig:any = null;
     let value:string = null;
-    let authMethod:string = null;
+    let authMethod:AuthMethod = null;
     if(loginConfig) {
       authMethod = loginConfig.authMethod;
       if(authMethod && authMethod !== AuthMethod.NONE) {
@@ -242,7 +242,7 @@ export class EjpConfigSerializer {
         realmConfig = loginConfig.realm;
         if(realmConfig) {
           optConfig = {};
-          value = realmConfig.type;
+          value = (realmConfig.type as string);
           if(value) optConfig.type = value;
           value = realmConfig.securedArea;
           if(value) optConfig.securedArea = value;

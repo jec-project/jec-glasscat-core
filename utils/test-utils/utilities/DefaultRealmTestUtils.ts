@@ -18,14 +18,14 @@ import { LoginStrategyConfig } from "../../../src/com/onsoft/glasscat/security/l
 import { EjpLoginStrategyConfig } from "../../../src/com/onsoft/glasscat/security/login/config/EjpLoginStrategyConfig";
 import { EjpLoginConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpLoginConfig";
 import { EjpRealmConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpRealmConfig";
-import { AuthMethod } from "jec-exchange";
+import { AuthMethod, RealmType } from "jec-exchange";
 
 /*!
  * This module constains utilities used by the DefaultRealmTest test suite.
  */
 
 export const CONTEXTROOT:string = process.cwd();
-export const buildLoginStrategyConfig:Function = function(type:string):LoginStrategyConfig {
+export const buildLoginStrategyConfig:Function = function(type:RealmType):LoginStrategyConfig {
   let cfg:LoginStrategyConfig = null;
   let context:EjpLoginConfig = new EjpLoginConfig();
   let realm:EjpRealmConfig = new EjpRealmConfig();
