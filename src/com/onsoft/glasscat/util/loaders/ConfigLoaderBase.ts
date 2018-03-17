@@ -16,8 +16,7 @@
 
 import {MappedPathUtil} from "../paths/MappedPathUtil";
 import {LoggerManager} from "../logging/LoggerManager";
-import {JsonLoader} from "jec-commons";
-import {LocaleManager, DefaultJsonLoader} from "jec-commons-node";
+import {LocaleManager, GlobalJsonLoader} from "jec-commons-node";
 import {GlassCatLocaleManager} from "../../i18n/GlassCatLocaleManager";
 import {GlassCatError} from "../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../exceptions/GlassCatErrorCode";
@@ -47,13 +46,12 @@ export abstract class ConfigLoaderBase {
    * @return {any} a configuration file for a GlassCat container.
    */
   protected loadConfigSync(filePath:string):any {
-    let loader:JsonLoader = new DefaultJsonLoader();
-    let path:string = MappedPathUtil.getInstance().resolve(filePath);
+    const path:string = MappedPathUtil.getInstance().resolve(filePath);
     let json:any = null;
     let logManager:LoggerManager = null;
     let i18n:LocaleManager = null;
     try {
-      json = loader.loadSync(path);
+      json = GlobalJsonLoader.getInstance().loadSync(path);
     } catch(e) {
       logManager = (LoggerManager.getInstance() as LoggerManager);
       i18n = GlassCatLocaleManager.getInstance();
@@ -78,19 +76,18 @@ export abstract class ConfigLoaderBase {
    */
   protected loadConfig(filePath:string, success:(data:any)=>void,
                                          error:(err:GlassCatError)=>void):void {
-    let loader:JsonLoader = new DefaultJsonLoader();
-    let path:string = MappedPathUtil.getInstance().resolve(filePath);
+    const path:string = MappedPathUtil.getInstance().resolve(filePath);
     let logManager:LoggerManager = null;
     let i18n:LocaleManager = null;
-    loader.load(path, success, (e:any)=> {
+    let gcError:GlassCatError = null;
+    GlobalJsonLoader.getInstance().load(path, success, (e:any)=> {
       logManager = (LoggerManager.getInstance() as LoggerManager);
       i18n = GlassCatLocaleManager.getInstance();
       if(logManager.isInitialized() && i18n.isInitialized()) {
         logManager.error(i18n.get("errors.loadingFile", e));
       };
-      let glassCatError:GlassCatError = 
-                 new GlassCatError(GlassCatErrorCode.CONFIG_LOADING_FAILURE, e);
-      error(glassCatError);
+      gcError = new GlassCatError(GlassCatErrorCode.CONFIG_LOADING_FAILURE, e);
+      error(gcError);
     });
   }
 };

@@ -55,8 +55,8 @@ export class EjpConfigParser {
    *                           the specified data.
    */
   private parseWebApp(manifest:any):EjpWebAppConfig {
-    let webapp:any = manifest.webapp;
-    let cfg:EjpWebAppConfig = new EjpWebAppConfig();
+    const webapp:any = manifest.webapp;
+    const cfg:EjpWebAppConfig = new EjpWebAppConfig();
     cfg.name = webapp.name;
     cfg.description = webapp.description;
     cfg.version = webapp.version;
@@ -81,8 +81,8 @@ export class EjpConfigParser {
    *                             from the specified data.
    */
   private parseSecurity(manifest:any):EjpSecurityConfig {
-    let security:any = manifest.webapp.security;
-    let cfg:EjpSecurityConfig = new EjpSecurityConfig();
+    const security:any = manifest.webapp.security;
+    const cfg:EjpSecurityConfig = new EjpSecurityConfig();
     if(security) {
       cfg.constraints = this.parseConstraintsConfig(security.constraints);
       cfg.roles = this.parseRolesConfig(security.roles);
@@ -106,7 +106,8 @@ export class EjpConfigParser {
    *                                          data.
    */
   private parseStaticConfig(staticResources:any):EjpStaticResourcesConfig[] {
-    let cfg:EjpStaticResourcesConfig[] = new Array<EjpStaticResourcesConfig>();
+    const cfg:EjpStaticResourcesConfig[] =
+                                          new Array<EjpStaticResourcesConfig>();
     let len:number = -1;
     let resourcesConfig:EjpStaticResourcesConfig = null;
     let rawResourcesConfig:any = null;
@@ -131,7 +132,7 @@ export class EjpConfigParser {
    *                                built from the specified data.
    */
   private parseRolesConfig(roles:any):EjpRoleConfig[] {
-    let cfg:EjpRoleConfig[] = new Array<EjpRoleConfig>();
+    const cfg:EjpRoleConfig[] = new Array<EjpRoleConfig>();
     let len:number = -1;
     let roleConfig:EjpRoleConfig = null;
     let rawRole:any = null;
@@ -158,7 +159,7 @@ export class EjpConfigParser {
    *                                      built from the specified data.
    */
   private parseConstraintsConfig(constraints:any):EjpConstraintConfig[] {
-    let cfg:EjpConstraintConfig[] = new Array<EjpConstraintConfig>();
+    const cfg:EjpConstraintConfig[] = new Array<EjpConstraintConfig>();
     let len:number = -1;
     let constraintConfig:EjpConstraintConfig = null;
     let rawConstraint:any = null;
@@ -185,8 +186,8 @@ export class EjpConfigParser {
    *                          specified data.
    */
   private parseLogin(manifest:any):EjpLoginConfig {
-    let login:any = manifest.webapp.login;
-    let cfg:EjpLoginConfig = new EjpLoginConfig();
+    const login:any = manifest.webapp.login;
+    const cfg:EjpLoginConfig = new EjpLoginConfig();
     if(login) {
       cfg.authMethod = login.authMethod;
       cfg.formConfig = this.parseFormConfig(manifest);
@@ -207,8 +208,8 @@ export class EjpConfigParser {
    *                         specified data.
    */
   private parseFormConfig(manifest:any):EjpFormConfig {
-    let form:any = manifest.webapp.login.formConfig;
-    let cfg:EjpFormConfig = new EjpFormConfig();
+    const form:any = manifest.webapp.login.formConfig;
+    const cfg:EjpFormConfig = new EjpFormConfig();
     if(form) {
       cfg.loginUrl = form.loginUrl;
       cfg.errorUrl = form.errorUrl;
@@ -225,8 +226,8 @@ export class EjpConfigParser {
    *                          specified data.
    */
   private parseRealm(manifest:any):EjpRealmConfig {
-    let realm:any = manifest.webapp.login.realm;
-    let cfg:EjpRealmConfig = new EjpRealmConfig();
+    const realm:any = manifest.webapp.login.realm;
+    const cfg:EjpRealmConfig = new EjpRealmConfig();
     if(realm) {
       cfg.type = realm.type;
       cfg.securedArea = realm.securedArea;
@@ -243,8 +244,8 @@ export class EjpConfigParser {
    *                           the specified data.
    */
   private parseJslets(manifest:any):EjpJsletsConfig {
-    let jslets:any = manifest.webapp.jslets;
-    let cfg:EjpJsletsConfig = new EjpJsletsConfig();
+    const jslets:any = manifest.webapp.jslets;
+    const cfg:EjpJsletsConfig = new EjpJsletsConfig();
     if(jslets) {
       if(jslets.enableAutowire !== undefined) {
         cfg.enableAutowire = jslets.enableAutowire;
@@ -267,8 +268,8 @@ export class EjpConfigParser {
    *                                  instance built from the specified data.
    */
   private parseBootstrapFiles(manifest:any):EjpBootstrapConfig[] {
-    let cfg:EjpBootstrapConfig[] = new Array<EjpBootstrapConfig>();
-    let bootstrapFiles:any = manifest.webapp.bootstrap;
+    const cfg:EjpBootstrapConfig[] = new Array<EjpBootstrapConfig>();
+    const bootstrapFiles:any = manifest.webapp.bootstrap;
     let len:number = -1;
     let file:any = null;
     let configFile:EjpBootstrapConfig = null;
@@ -294,9 +295,9 @@ export class EjpConfigParser {
    *                                 instances used for resource mapping.
    */
   private parseResourceMap(manifest:any):Array<EjpResourceMapperConfig> {
-    let cfg:Array<EjpResourceMapperConfig> =
+    const cfg:Array<EjpResourceMapperConfig> =
                                            new Array<EjpResourceMapperConfig>();
-    let resourceMapCfg:any = manifest.webapp.resourceMap;
+                                           const resourceMapCfg:any = manifest.webapp.resourceMap;
     let len:number = -1;
     let mapObj:any = null;
     let mapper:EjpResourceMapperConfig = null;
@@ -322,8 +323,8 @@ export class EjpConfigParser {
    *                            from the specified data.
    */
   private parseSession(manifest:any):EjpSessionConfig {
-    let cfg:EjpSessionConfig = new EjpSessionConfig();
-    let session:any = manifest.webapp.session;
+    const cfg:EjpSessionConfig = new EjpSessionConfig();
+    const session:any = manifest.webapp.session;
     if(session) {
       cfg.storage = session.storage;
       cfg.errorUrl = session.errorUrl;
@@ -345,7 +346,7 @@ export class EjpConfigParser {
    *                     specified data.
    */
   public parse(manifest:any):EjpConfig {
-    let cfg:EjpConfig = new EjpConfig();
+    const cfg:EjpConfig = new EjpConfig();
     cfg.webapp = this.parseWebApp(manifest);
     return cfg;
   }

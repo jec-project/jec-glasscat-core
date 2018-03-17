@@ -44,8 +44,8 @@ export class DomainContextBuilder {
    *                         from the specified config file.
    */
   public buildContext(config:any):DomainContext {
-    let ctx:DomainContext = new DomainContext();
-    let domains:any[] = config.domains;
+    const ctx:DomainContext = new DomainContext();
+    const domains:any[] = config.domains;
     let len:number = -1;
     let rawDomain:any = null;
     let domain:Domain = null;

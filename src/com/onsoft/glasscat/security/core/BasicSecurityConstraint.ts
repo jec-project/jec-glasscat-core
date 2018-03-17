@@ -84,11 +84,11 @@ export class BasicSecurityConstraint implements SecurityConstraint {
     if(!context) {
       throw new GlassCatError(GlassCatErrorCode.INVALID_SECURITY_CONTEXT);
     }
+    const urlPatternBuilder:UrlPatternBuilder = new UrlPatternBuilder();
+    const roles:string[] = context.roles;
     this._name = context.name;
     this._errorUrl = context.errorUrl;
-    let urlPatternBuilder:UrlPatternBuilder = new UrlPatternBuilder();
     this._urlPattern = urlPatternBuilder.build(context.urlPattern);
-    let roles:string[] = context.roles;
     let len:number = roles.length;
     this._roles = new Map<string, boolean>();
     while(len--){

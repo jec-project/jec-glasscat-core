@@ -12,17 +12,16 @@ class ContextRootUtil {
         this._contextRootData = new ContextRootData_1.ContextRootData();
     }
     buildContextRoot(connector, listener) {
-        let ctx = listener.getProtocol() + connector.getHost() + jec_commons_1.UrlStringsEnum.COLON +
+        const ctx = listener.getProtocol() + connector.getHost() + jec_commons_1.UrlStringsEnum.COLON +
             listener.getPort() + connector.getContextRoot();
         return ctx;
     }
     extractContextRoot(reqest) {
+        const host = reqest.header(ContextRootUtil.HOST);
         let path = reqest.path;
-        let ctx = jec_commons_1.UrlStringsEnum.EMPTY_STRING;
         let referer = jec_commons_1.UrlStringsEnum.EMPTY_STRING;
         let index = -1;
         let buffer = null;
-        let host = reqest.header(ContextRootUtil.HOST);
         this._contextRootData.reset();
         if (ResourceProxy_1.ResourceProxy.getInstance().testUrl(path)) {
             this._contextRootData.containsNestedResource = true;

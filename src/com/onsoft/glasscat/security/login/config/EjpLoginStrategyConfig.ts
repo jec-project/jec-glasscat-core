@@ -59,7 +59,7 @@ export class EjpLoginStrategyConfig implements LoginStrategyConfig {
         "context must not be null"
       );
     }
-    let authMethod:AuthMethod = context.authMethod;
+    const authMethod:AuthMethod = context.authMethod;
     let realm:any = null;
     if(authMethod) {
       this._context = context;

@@ -5,8 +5,8 @@ const DomainBuilder_1 = require("./DomainBuilder");
 class DomainConfigParser {
     constructor() { }
     parseDomains(domains) {
-        let builder = new DomainBuilder_1.DomainBuilder();
-        let cfg = new Array();
+        const builder = new DomainBuilder_1.DomainBuilder();
+        const cfg = new Array();
         let domain = null;
         let len = -1;
         if (domains) {
@@ -19,7 +19,7 @@ class DomainConfigParser {
         return cfg;
     }
     parse(manifest) {
-        let cfg = new DomainConfig_1.DomainConfig();
+        const cfg = new DomainConfig_1.DomainConfig();
         cfg.domains = this.parseDomains(manifest.domains);
         return cfg;
     }

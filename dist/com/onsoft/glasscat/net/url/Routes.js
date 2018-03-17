@@ -3,10 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const RoutePattern_1 = require("./RoutePattern");
 function Routes(metadata) {
     return function (target) {
-        let routes = metadata;
+        const routes = metadata;
         if (!routes)
             return target;
-        var oldInit = target.prototype.init;
+        const oldInit = target.prototype.init;
         target.__routesMetadata = metadata;
         target.prototype.init = function () {
             let len = routes.length;

@@ -6,9 +6,9 @@ const GlassCatErrorCode_1 = require("../../../exceptions/GlassCatErrorCode");
 class DomainConnectorBuilder {
     constructor() { }
     build(version, data, jsletManager, jcadContext) {
+        const connectorRef = data.connector;
+        const type = connectorRef.type;
         let connector = null;
-        let connectorRef = data.connector;
-        let type = connectorRef.type;
         if (type === DomainConnectorBuilder.EJP) {
             connector = new EjpConnector_1.EjpConnector();
         }

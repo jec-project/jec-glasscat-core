@@ -47,7 +47,7 @@ export class SecurityConstraintBuilder {
    *                           instance.
    */
   public build(context:EjpConstraintConfig):SecurityConstraint {
-    let constraint:SecurityConstraint = new BasicSecurityConstraint(context);
+    const constraint:SecurityConstraint = new BasicSecurityConstraint(context);
     return constraint;
   }
 }

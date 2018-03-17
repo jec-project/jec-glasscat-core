@@ -51,8 +51,8 @@ export class SessionStorageSolver {
    *                          <code>SessionContext<code> object.
    */
   public getSessionStorage(config:EjpSessionConfig):SessionStorage {
+    const storage:SessionStorageType = config.storage;
     let sessionStorage:SessionStorage = null;
-    let storage:SessionStorageType = config.storage
     if(storage) {
       switch(storage) {
         case SessionStorageType.DISTANT :

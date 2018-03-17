@@ -75,11 +75,11 @@ export class DomainConnectorManagerBuilder{
                jsletManager:JsletManager,
                securityManager:SecurityManager,
                jcadContext:JcadContext):DomainConnectorManager {
-    let manager:DomainConnectorManager = new DomainConnectorManager();
-    let domainConfigLoader:DomainConfigLoader = new DomainConfigLoader();
-    let json:any = domainConfigLoader.loadSync();
-    let dcBuilder:DomainConnectorBuilder = new DomainConnectorBuilder();
-    let domains:any = json.domains;
+    const manager:DomainConnectorManager = new DomainConnectorManager();
+    const domainConfigLoader:DomainConfigLoader = new DomainConfigLoader();
+    const json:any = domainConfigLoader.loadSync();
+    const dcBuilder:DomainConnectorBuilder = new DomainConnectorBuilder();
+    const domains:any = json.domains;
     let len:number = domains.length;
     let connector:DomainConnector = null;
     let httpService:HttpService = null;

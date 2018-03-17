@@ -15,7 +15,7 @@ class HttpServiceErrorManager {
     }
     processDomainRequestError(properties, error, httpRequest, httpResponse, errorTemplatePath) {
         properties.transactionFails = true;
-        let statusCode = error.statusCode;
+        const statusCode = error.statusCode;
         if (statusCode === jec_commons_1.HttpStatusCode.INTERNAL_SERVER_ERROR) {
             LoggerManager_1.LoggerManager.getInstance().error(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.session.storageAccessError", error.message));
         }
@@ -23,7 +23,7 @@ class HttpServiceErrorManager {
     }
     processSessionError(properties, error, httpRequest, httpResponse, errorTemplatePath) {
         properties.transactionFails = true;
-        let errorType = error.getErrorType();
+        const errorType = error.getErrorType();
         switch (errorType) {
             case jec_exchange_1.SessionErrorType.SESSION_EXPIRED:
                 httpResponse.status(jec_commons_1.HttpStatusCode.UNAUTHORIZED);

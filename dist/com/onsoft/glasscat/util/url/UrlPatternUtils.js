@@ -4,9 +4,9 @@ const jec_commons_1 = require("jec-commons");
 class UrlPatternUtils {
     constructor() { }
     match(url, pattern) {
+        const notStrict = !pattern.strict;
+        const baseUrl = pattern.baseUrl;
         let result = false;
-        let notStrict = !pattern.strict;
-        let baseUrl = pattern.baseUrl;
         let testUrl = url;
         if (notStrict) {
             testUrl += jec_commons_1.UrlStringsEnum.SLASH;

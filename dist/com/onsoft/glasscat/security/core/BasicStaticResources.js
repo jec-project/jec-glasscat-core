@@ -12,7 +12,7 @@ class BasicStaticResources {
         if (!context) {
             throw new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.INVALID_SECURITY_CONTEXT);
         }
-        let builder = new UrlPatternBuilder_1.UrlPatternBuilder();
+        const builder = new UrlPatternBuilder_1.UrlPatternBuilder();
         this._urlPattern = builder.build(context.urlPattern);
     }
     getUrlPattern() {

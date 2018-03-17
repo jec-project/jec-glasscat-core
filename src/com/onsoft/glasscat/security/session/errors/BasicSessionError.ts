@@ -105,7 +105,7 @@ export class BasicSessionError implements SessionError {
    * @override
    */
   public toString():string {
-    let result:string = "[Object::SessionError: sessionId=" +
+    const result:string = "[Object::SessionError: sessionId=" +
                          this._sessionId.getId() + " errorType=" +
                          this._errorType + " message=" + this._message + "]";
     return result;

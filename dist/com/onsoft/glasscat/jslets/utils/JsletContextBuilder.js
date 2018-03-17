@@ -9,7 +9,7 @@ const GlassCatErrorCode_1 = require("../../exceptions/GlassCatErrorCode");
 class JsletContextBuilder {
     constructor() {
         if (JsletContextBuilder._locked || JsletContextBuilder.INSTANCE) {
-            let msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.singleton", "JsletContextBuilder");
+            const msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.singleton", "JsletContextBuilder");
             throw new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.SINGLETON_ERROR, msg);
         }
         JsletContextBuilder._locked = true;
@@ -34,17 +34,17 @@ class JsletContextBuilder {
         return jslet;
     }
     buildContext(connector, securityContext, sessionContext, loginStrategy) {
-        let context = new EjpJsletContext_1.EjpJsletContext(connector, securityContext, sessionContext, loginStrategy);
-        let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
-        var msg = i18n.get("jslet.newContext", connector.getContextRoot());
+        const context = new EjpJsletContext_1.EjpJsletContext(connector, securityContext, sessionContext, loginStrategy);
+        const i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
+        const msg = i18n.get("jslet.newContext", connector.getContextRoot());
         LoggerManager_1.LoggerManager.getInstance().debug(msg);
         return context;
     }
     initJslets(context, jslets) {
+        const target = context.getSourcePath();
         let len = -1;
         let jslet = null;
         let path = null;
-        let target = context.getSourcePath();
         if (jslets) {
             len = jslets.length;
             while (len--) {

@@ -74,7 +74,7 @@ export class EjpConfigUpdater {
   public update(projectPath:string, config:EjpConfig,
                                     result:(err:GlassCatError)=>void,
                                     optimize:boolean = false):void {
-    let path:string =
+    const path:string =
       MappedPathUtil.getInstance().resolve(
           projectPath + EjpConfigLoader.MANIFEST_PATH
         );

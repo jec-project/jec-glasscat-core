@@ -38,7 +38,7 @@ export class SessionUtil {
    */
   public static getExirationTime(maxAge:number):number {
     //see http://mrcoles.com/blog/cookies-max-age-vs-expires/
-    let d = new Date();
+    const d = new Date();
     return d.setTime(d.getTime() + maxAge);
   }
 
@@ -54,7 +54,7 @@ export class SessionUtil {
    */
   public static setSessionCookie(res:any, sessionId:SessionId,
                                           service:HttpService):void {
-    let listener:HttpListener = service.getHttpListener();
+    const listener:HttpListener = service.getHttpListener();
     res.cookie(
       SessionIdUtil.SESSION_ID_NAME,
       SessionIdUtil.stringifySessionId(sessionId),

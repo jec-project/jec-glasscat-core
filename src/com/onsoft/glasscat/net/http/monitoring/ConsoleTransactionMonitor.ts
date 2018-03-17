@@ -40,10 +40,10 @@ export class ConsoleTransactionMonitor implements TransactionMonitor {
    * @inheritDoc
    */
   public send(transaction:HttpTransaction):void {
-    let time:number =
+    const time:number =
             transaction.getFinalTimestamp() - transaction.getInitialTimestamp();
-    let msg:string = "[Transaction: url=" + transaction.getUrl() + ", success="
-                     + transaction.getSuccess() + ", duration=" + time + " ms]"
+    const msg:string = "[Transaction: url=" + transaction.getUrl() 
+      + ", success=" + transaction.getSuccess() + ", duration=" + time + " ms]";
     console.log(msg);
   }
 }

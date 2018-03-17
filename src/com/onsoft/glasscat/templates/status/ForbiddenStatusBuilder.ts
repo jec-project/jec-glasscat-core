@@ -39,7 +39,7 @@ export class ForbiddenStatusBuilder {
    */
   constructor() {
     if(ForbiddenStatusBuilder._locked || ForbiddenStatusBuilder.INSTANCE) {
-      let msg:string = GlassCatLocaleManager.getInstance().get(
+      const msg:string = GlassCatLocaleManager.getInstance().get(
         "errors.singleton", "ForbiddenStatusBuilder"
       );
       throw new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, msg);
@@ -95,9 +95,9 @@ export class ForbiddenStatusBuilder {
    */
   public build(req:HttpRequest, res:HttpResponse, templatePath:string,
                detailsCode:string = "httpErrors.forbidden.description"):void {
-    let url:string = req.getOriginalUrl();
-    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
-    let statusReport:HttpStatusReport = 
+    const url:string = req.getOriginalUrl();
+    const i18n:LocaleManager = GlassCatLocaleManager.getInstance();
+    const statusReport:HttpStatusReport = 
       HttpStatusReportBuilder.getInstance().build(
         HttpStatusCode.FORBIDEN,
         i18n.get("httpErrors.forbidden.title"),

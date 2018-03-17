@@ -15,11 +15,11 @@ class BasicSecurityConstraint {
         if (!context) {
             throw new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.INVALID_SECURITY_CONTEXT);
         }
+        const urlPatternBuilder = new UrlPatternBuilder_1.UrlPatternBuilder();
+        const roles = context.roles;
         this._name = context.name;
         this._errorUrl = context.errorUrl;
-        let urlPatternBuilder = new UrlPatternBuilder_1.UrlPatternBuilder();
         this._urlPattern = urlPatternBuilder.build(context.urlPattern);
-        let roles = context.roles;
         let len = roles.length;
         this._roles = new Map();
         while (len--) {

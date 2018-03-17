@@ -58,7 +58,7 @@ export abstract class AbstractRealmConnector implements RealmConnector {
    */
   protected extractRoles(roles:string[]):SecurityRole[] {
     //TODO: add a RoleExtractor object for delegating this method
-    let result:SecurityRole[] = new Array<SecurityRole>();
+    const result:SecurityRole[] = new Array<SecurityRole>();
     let len:number = roles.length;
     let role:SecurityRole = null;
     let roleName:string = null;

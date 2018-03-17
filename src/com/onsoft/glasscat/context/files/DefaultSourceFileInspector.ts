@@ -106,9 +106,9 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
    */
   private inspectSourcePath(sourcePath:string, inspectMode:InspectMode):void {
     let file:string = null;
-    let targetPath:string = this._target + sourcePath;
+    const targetPath:string = this._target + sourcePath;
     let cacheableFile:CacheableFile = null;
-    let fillCacheMode:boolean = inspectMode === InspectMode.FILL_CACHE;
+    const fillCacheMode:boolean = inspectMode === InspectMode.FILL_CACHE;
     let cachedFiles:Array<CacheableFile> = null;
     if(fillCacheMode) {
       cachedFiles = new Array<CacheableFile>();
@@ -211,8 +211,8 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
    * @inheritDoc
    */
   public setWatcher(connector:DomainConnector):void {
-    let logManager:Logger = LoggerManager.getInstance();
-    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
+    const logManager:Logger = LoggerManager.getInstance();
+    const i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     if(this._connector) {
       logManager.error(i18n.get("srcInspector.initError"));
     } else {
@@ -247,7 +247,7 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
    */
   public removeProcessor(processor:FilePreProcessor):boolean {
     let result:boolean = false;
-    let id:number = this._processors.indexOf(processor);
+    const id:number = this._processors.indexOf(processor);
     if(id !== -1) {
       this._processors.splice(id, 1);
       LoggerManager.getInstance().debug(
@@ -276,8 +276,8 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
    */
   public inspect(inspectMode:number):void {
     let len:number = this._processors.length;
-    let logManager:Logger = LoggerManager.getInstance();
-    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
+    const logManager:Logger = LoggerManager.getInstance();
+    const i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     if(len > 0) {
       logManager.debug(i18n.get("srcInspector.lookupStart"));
       logManager.debug(

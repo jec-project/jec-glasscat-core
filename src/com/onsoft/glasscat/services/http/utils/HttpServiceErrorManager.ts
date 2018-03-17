@@ -90,7 +90,7 @@ export class HttpServiceErrorManager {
                                    httpResponse:HttpResponse,
                                    errorTemplatePath:string):void {
     properties.transactionFails = true;
-    let statusCode:HttpStatusCode = error.statusCode;
+    const statusCode:HttpStatusCode = error.statusCode;
     if(statusCode === HttpStatusCode.INTERNAL_SERVER_ERROR) {
       LoggerManager.getInstance().error(
         GlassCatLocaleManager.getInstance().get(
@@ -125,7 +125,7 @@ export class HttpServiceErrorManager {
                              httpResponse:HttpResponse,
                              errorTemplatePath:string):void {
     properties.transactionFails = true;
-    let errorType:SessionErrorType = error.getErrorType();
+    const errorType:SessionErrorType = error.getErrorType();
     switch(errorType) {
       // Session expired => we have to redirect the user:
       case SessionErrorType.SESSION_EXPIRED:

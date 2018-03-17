@@ -6,11 +6,11 @@ class DomainConfigSerializer {
     constructor() { }
     serialize(config, success, error) {
         try {
-            let data = JSON.stringify(config);
+            const data = JSON.stringify(config);
             success(data);
         }
         catch (e) {
-            let err = new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.CONFIG_SERIALIZATION_ERROR, e);
+            const err = new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.CONFIG_SERIALIZATION_ERROR, e);
             error(err);
         }
     }

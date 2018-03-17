@@ -47,7 +47,7 @@ export class StaticResourcesBuilder {
    * @return {StaticResources} a new <code>StaticResources</code> instance.
    */
   public build(context:EjpStaticResourcesConfig):StaticResources {
-    let resources:StaticResources = new BasicStaticResources(context);
+    const resources:StaticResources = new BasicStaticResources(context);
     return resources;
   }
 }

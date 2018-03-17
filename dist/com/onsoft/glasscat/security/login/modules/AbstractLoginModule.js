@@ -9,8 +9,8 @@ class AbstractLoginModule {
         this.__loginStrategyConfig = null;
     }
     setLoginStrategy(strategy) {
-        let builder = new DefaultRealmBuilder_1.DefaultRealmBuilder();
-        let jsletContext = strategy.getJsletContext();
+        const builder = new DefaultRealmBuilder_1.DefaultRealmBuilder();
+        const jsletContext = strategy.getJsletContext();
         this.__realm = builder.buildRealm(strategy.getLoginStrategyConfig(), jsletContext.getSecurityContext());
         this.__strategy = strategy;
         this.__loginStrategyConfig = strategy.getLoginStrategyConfig();

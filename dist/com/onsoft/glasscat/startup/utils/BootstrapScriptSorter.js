@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 class BootstrapScriptSorter {
     constructor() { }
     sortFunction(obj1, obj2) {
-        let a = obj1.__priority;
-        let b = obj2.__priority;
+        const a = obj1.__priority;
+        const b = obj2.__priority;
         if (a === null || a === undefined && b === null || b === undefined)
             return 0;
         else if (a === null || a === undefined)

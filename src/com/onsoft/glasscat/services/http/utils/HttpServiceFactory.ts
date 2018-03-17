@@ -48,9 +48,9 @@ export class HttpServiceFactory {
    *                       the specified config.
    */
   build(config:HttpListenerConfig):HttpService {
-    let factory:HttpListenerFactory = new HttpListenerFactory();
-    let listener:HttpListener = factory.build(config);
-    let service:HttpService = new DefaultHttpService(listener);
+    const factory:HttpListenerFactory = new HttpListenerFactory();
+    const listener:HttpListener = factory.build(config);
+    const service:HttpService = new DefaultHttpService(listener);
     return service;
   }
 }

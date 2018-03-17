@@ -16,7 +16,6 @@
 
 import {Session, SessionError, SessionId} from "jec-exchange";
 import {SessionStorage} from "../connectors/SessionStorage";
-import {HttpService} from "../../../services/http/HttpService";
 
 /**
  * The <code>SessionManager</code> interface provides the API for managing 

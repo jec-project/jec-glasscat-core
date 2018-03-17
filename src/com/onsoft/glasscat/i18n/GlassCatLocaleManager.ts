@@ -32,8 +32,8 @@ export class GlassCatLocaleManager {
    * Creates a new <code>GlassCatLocaleManager</code> instance.
    */
   constructor() {
+    const isInstanciated:boolean = GlassCatLocaleManager.INSTANCE !== null;
     let msg:string = null;
-    let isInstanciated:boolean = GlassCatLocaleManager.INSTANCE !== null;
     if(GlassCatLocaleManager._locked || isInstanciated) {
       if(isInstanciated && GlassCatLocaleManager.INSTANCE.isInitialized()) {
         msg = GlassCatLocaleManager.getInstance().get(

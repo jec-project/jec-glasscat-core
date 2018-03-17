@@ -5,13 +5,13 @@ const DomainConnectorConfig_1 = require("../DomainConnectorConfig");
 class DomainBuilder {
     constructor() { }
     buildDomainConnector(connector) {
-        let cfg = new DomainConnectorConfig_1.DomainConnectorConfig();
+        const cfg = new DomainConnectorConfig_1.DomainConnectorConfig();
         cfg.type = connector.type;
         cfg.server = connector.server;
         return cfg;
     }
     buildDomain(config) {
-        let domain = new Domain_1.Domain();
+        const domain = new Domain_1.Domain();
         domain.name = config.name;
         domain.host = config.host;
         domain.target = config.target;

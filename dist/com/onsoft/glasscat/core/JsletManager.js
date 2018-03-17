@@ -15,8 +15,8 @@ class JsletManager {
         return this._jsletContextMap.get(ref);
     }
     getJslet(ref, url) {
+        const ctx = this.getContext(ref);
         let jslet = undefined;
-        let ctx = this.getContext(ref);
         if (ctx)
             jslet = ctx.getJslet(url);
         return jslet;

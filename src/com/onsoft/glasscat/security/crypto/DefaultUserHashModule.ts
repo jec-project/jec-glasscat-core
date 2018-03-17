@@ -113,7 +113,7 @@ export class DefaultUserHashModule implements UserHashModule {
    * @return {string} the result of the encryption for the specified text.
    */
   private encryptString(text:string):string {
-    let cipher:crypto.Cipher = this.getCipher();
+    const cipher:crypto.Cipher = this.getCipher();
     let result:string =
                  cipher.update(text, EncodingFormat.UTF8, EncodingFormat.HEX);
     result += cipher.final(EncodingFormat.HEX);
@@ -127,7 +127,7 @@ export class DefaultUserHashModule implements UserHashModule {
    * @return {string} the result of the decryption for the specified text.
    */
   private decryptString(text:string):string {
-    let decipher:crypto.Decipher = this.getDecipher();
+    const decipher:crypto.Decipher = this.getDecipher();
     let result:string =
                decipher.update(text, EncodingFormat.HEX, EncodingFormat.UTF8);
     result += decipher.final(EncodingFormat.UTF8);
@@ -149,7 +149,7 @@ export class DefaultUserHashModule implements UserHashModule {
    * @inheritDoc
    */
   public encryptUser(alias:string, password:string, roles:string[]):string {
-    let result:string =
+    const result:string =
       this.encryptAlias(alias) + this.SPACER +
       this.encryptPassword(password) + this.SPACER +
       this.encryptRoles(roles);
@@ -167,7 +167,7 @@ export class DefaultUserHashModule implements UserHashModule {
    * @inheritDoc
    */
   public encryptPassword(password:string):string {
-    let hash = crypto.createHash(this.HASH_ALGORITHM);
+    const hash = crypto.createHash(this.HASH_ALGORITHM);
     return hash.update(password).digest(EncodingFormat.HEX).toString();
   }
 
@@ -175,7 +175,7 @@ export class DefaultUserHashModule implements UserHashModule {
    * @inheritDoc
    */
   public encryptRoles(roles:string[]):string {
-    let data:string = roles.join(this.ROLES_SEPARATOR);
+    const data:string = roles.join(this.ROLES_SEPARATOR);
     return this.encryptString(data);
   }
 
@@ -190,7 +190,7 @@ export class DefaultUserHashModule implements UserHashModule {
    * @inheritDoc
    */
   public decryptRoles(roles:string):string[] {
-    let decrypted:string = this.decryptString(roles);
+    const decrypted:string = this.decryptString(roles);
     return decrypted.split(this.ROLES_SEPARATOR);
   }
 }

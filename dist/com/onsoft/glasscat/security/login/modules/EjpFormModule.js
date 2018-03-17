@@ -8,14 +8,14 @@ class EjpFormModule extends AbstractLoginModule_1.AbstractLoginModule {
         super();
     }
     applyLoginStrategy(req, res, result) {
-        let properties = res.getLocalProperties();
-        let url = properties.contextRootRef +
+        const properties = res.getLocalProperties();
+        const url = properties.contextRootRef +
             this.__loginStrategyConfig.getFormProperties().getLoginUrl();
         res.redirect(url);
         result();
     }
     applyAuthenticationStrategy(req, res, error, result) {
-        let properties = res.getLocalProperties();
+        const properties = res.getLocalProperties();
         if (error) {
             res.status(jec_commons_1.HttpStatusCode.OK);
         }
@@ -28,9 +28,9 @@ class EjpFormModule extends AbstractLoginModule_1.AbstractLoginModule {
         super.applyLogoutStrategy(req, res, result);
     }
     getCredentials(req) {
-        let body = req.getBody();
-        let builder = new CredentialsBuilder_1.CredentialsBuilder();
-        let credentials = builder.build(body.js_username, body.js_password);
+        const body = req.getBody();
+        const builder = new CredentialsBuilder_1.CredentialsBuilder();
+        const credentials = builder.build(body.js_username, body.js_password);
         return credentials;
     }
 }

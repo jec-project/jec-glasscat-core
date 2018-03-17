@@ -39,7 +39,7 @@ export class ErrorStatusBuilder {
    */
   constructor() {
     if(ErrorStatusBuilder._locked || ErrorStatusBuilder.INSTANCE) {
-      let msg:string = GlassCatLocaleManager.getInstance().get(
+      const msg:string = GlassCatLocaleManager.getInstance().get(
         "errors.singleton", "ErrorStatusBuilder"
       );
       throw new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, msg);
@@ -98,9 +98,9 @@ export class ErrorStatusBuilder {
   public build(req:HttpRequest, res:HttpResponse, templatePath:string,
                statusCode:HttpStatusCode = HttpStatusCode.NOT_FOUND,
                detailsCode:string = "httpErrors.error.description"):void {
-    let url:string = req.getOriginalUrl();
-    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
-    let statusReport:HttpStatusReport = 
+    const url:string = req.getOriginalUrl();
+    const i18n:LocaleManager = GlassCatLocaleManager.getInstance();
+    const statusReport:HttpStatusReport = 
       HttpStatusReportBuilder.getInstance().build(
         statusCode,
         i18n.get("httpErrors.error.title"),

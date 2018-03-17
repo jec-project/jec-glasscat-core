@@ -49,7 +49,7 @@ export class LoggerContextBuilder {
    */
   public buildContext(name:string, factory:LoggerFactory,
                                             logLevel:LogLevel):LoggerContext {
-    let ctx:LoggerContext = new LoggerContext();
+    const ctx:LoggerContext = new LoggerContext();
     ctx.name = name;
     ctx.factory = factory;
     ctx.logLevel = logLevel;

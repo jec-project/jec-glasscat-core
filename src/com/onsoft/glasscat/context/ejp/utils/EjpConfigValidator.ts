@@ -50,7 +50,7 @@ export class EjpConfigValidator {
    * @param {LogLevel} logLevel a value of the <code>LogLevel</code> enum.
    */
   private printLog(message:string, logLevel:LogLevel):void {
-    let logger:LoggerManager = (LoggerManager.getInstance() as LoggerManager);
+    const logger:LoggerManager = (LoggerManager.getInstance() as LoggerManager);
     if(logger.isInitialized()) {
       switch(logLevel) {
         case LogLevel.INFO :
@@ -75,7 +75,7 @@ export class EjpConfigValidator {
    *               validation process.
    */
   private buildErrorObj(errorCode:number, message:string):any {
-    let errObj:any = {
+    const errObj:any = {
       message: message,
       errorCode: errorCode
     };
@@ -90,8 +90,8 @@ export class EjpConfigValidator {
    *               error encountered during the validation process.
    */
   private doValidation(config:EjpConfig):any {
-    let prop:any;
-    let stringVal:string;
+    let prop:any = null;
+    let stringVal:string = null;
     if(!config) {
       return this.buildErrorObj(
         GlassCatErrorCode.NULL_EJP_CONFIG, 
@@ -222,7 +222,7 @@ export class EjpConfigValidator {
   public validate(config:EjpConfig, result:(err:GlassCatError)=>void):void {
     this.printLog("EJP configuration validation start", LogLevel.INFO);
     let glassCatErr:GlassCatError = null;
-    let err:any = this.doValidation(config);
+    const err:any = this.doValidation(config);
     if(!err) {
       this.printLog("EJP configuration validation complete", LogLevel.INFO);
     } else {

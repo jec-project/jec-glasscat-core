@@ -5,8 +5,8 @@ const GlassCatError_1 = require("../exceptions/GlassCatError");
 const GlassCatErrorCode_1 = require("../exceptions/GlassCatErrorCode");
 class GlassCatLocaleManager {
     constructor() {
+        const isInstanciated = GlassCatLocaleManager.INSTANCE !== null;
         let msg = null;
-        let isInstanciated = GlassCatLocaleManager.INSTANCE !== null;
         if (GlassCatLocaleManager._locked || isInstanciated) {
             if (isInstanciated && GlassCatLocaleManager.INSTANCE.isInitialized()) {
                 msg = GlassCatLocaleManager.getInstance().get("errors.singleton", "GlassCatLocaleManager");

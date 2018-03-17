@@ -43,7 +43,7 @@ export class EnvironmentValidator implements KernelValidator {
    * @inheritDoc
    */
   public validate(kernel:Kernel):void {
-    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
+    const i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     let env:string = i18n.get("environment.start");
     env += "\n   * "
         + i18n.get("environment.host", os.type(), os.platform(), os.release());
@@ -53,10 +53,10 @@ export class EnvironmentValidator implements KernelValidator {
     env += "\n   * " + i18n.get("environment.freeMemory", String(os.freemem()));
     LoggerManager.getInstance().debug(env);
     env = i18n.get("cpus.start");
-    let cpuList:os.CpuInfo[] = os.cpus();
+    const cpuList:os.CpuInfo[] = os.cpus();
     let len:number = cpuList.length;
     let cpuNum:number = 1;
-    let cpuInf:os.CpuInfo;
+    let cpuInf:os.CpuInfo = null;
     while(len--) {
       cpuInf = cpuList[len];
       env += "\n   => " + i18n.get("cpus.num", String(cpuNum));

@@ -42,9 +42,9 @@ export function Routes(metadata:any):Function {
     // Validation process
     ////////////////////////////////////////////////////////////////////////////
 
-    let routes:string[] = metadata;
+    const routes:string[] = metadata;
     if(!routes) return target;
-    var oldInit:Function = target.prototype.init;
+    const oldInit:Function = target.prototype.init;
     
     target.__routesMetadata = metadata;
 

@@ -83,10 +83,10 @@ export class HttpMonitoring {
         "Config must not be null."
       )
     }
+    const factory:string = config.factory;
     let Contructor:any = null;
     let classPath:string = null;
     let builder:TransactionMonitorFactory = null;
-    let factory:string = config.factory;
     this._config = config;
     this._enableMonitoring = config.enabled;
     if(this._enableMonitoring) {

@@ -137,10 +137,11 @@ export class EjpJsletContext extends AbstractContainerContext
    * @inheritDoc
    */
   public addJslet(jslet:Jslet):void {
-    let httpJslet:HttpJslet = jslet as HttpJslet;
+    const httpJslet:HttpJslet = jslet as HttpJslet;
+    const i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     httpJslet.setContext(this);
     let urlPattern:UrlPattern = null;
-    let patterns:string[] = httpJslet.getUrlPatterns();
+    const patterns:string[] = httpJslet.getUrlPatterns();
     let len:number = patterns.length;
     let pattern:string = null;
     while(len--) {
@@ -150,8 +151,7 @@ export class EjpJsletContext extends AbstractContainerContext
       this._jsletMap.set(urlPattern.baseUrl, jslet);
     }
     jslet.init();
-    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
-    var msg:string = i18n.get(
+    const msg:string = i18n.get(
       "jslet.added",
       httpJslet.getName(),
       patterns.toString(),
@@ -166,11 +166,11 @@ export class EjpJsletContext extends AbstractContainerContext
    * @inheritDoc
    */
   public getJslet(url:string):Jslet {
+    const baseUrl:string =
+              url === UrlStringsEnum.EMPTY_STRING ? ContextRootUtil.INDEX : url;
     let jslet:Jslet = undefined;
     let len:number = this._urlPatternColl.length;
     let urlPattern:UrlPattern = null;
-    let baseUrl:string =
-              url === UrlStringsEnum.EMPTY_STRING ? ContextRootUtil.INDEX : url; 
     while(len--) {
       urlPattern = this._urlPatternColl[len];
       if(this._urlPatternUtils.match(baseUrl, urlPattern)) {

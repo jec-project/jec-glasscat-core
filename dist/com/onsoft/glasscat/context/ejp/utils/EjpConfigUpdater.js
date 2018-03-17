@@ -17,7 +17,7 @@ class EjpConfigUpdater {
         this._serializer = new EjpConfigSerializer_1.EjpConfigSerializer();
     }
     update(projectPath, config, result, optimize = false) {
-        let path = MappedPathUtil_1.MappedPathUtil.getInstance().resolve(projectPath + EjpConfigLoader_1.EjpConfigLoader.MANIFEST_PATH);
+        const path = MappedPathUtil_1.MappedPathUtil.getInstance().resolve(projectPath + EjpConfigLoader_1.EjpConfigLoader.MANIFEST_PATH);
         let glassCatError = null;
         let stringErr = null;
         LoggerManager_1.LoggerManager.getInstance().info(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("ejp.updateStart", path));

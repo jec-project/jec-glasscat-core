@@ -4,7 +4,7 @@ const LoggerContext_1 = require("../LoggerContext");
 class LoggerContextBuilder {
     constructor() { }
     buildContext(name, factory, logLevel) {
-        let ctx = new LoggerContext_1.LoggerContext();
+        const ctx = new LoggerContext_1.LoggerContext();
         ctx.name = name;
         ctx.factory = factory;
         ctx.logLevel = logLevel;

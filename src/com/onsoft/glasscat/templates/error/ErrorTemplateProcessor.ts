@@ -37,7 +37,7 @@ export class ErrorTemplateProcessor implements TemplateProcessor {
    */
   constructor() {
     if(ErrorTemplateProcessor._locked || ErrorTemplateProcessor.INSTANCE) {
-      let msg:string = GlassCatLocaleManager.getInstance().get(
+      const msg:string = GlassCatLocaleManager.getInstance().get(
         "errors.singleton", "ErrorTemplateProcessor"
       );
       throw new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, msg);
@@ -92,7 +92,7 @@ export class ErrorTemplateProcessor implements TemplateProcessor {
           if (!error) {
             res.end(result);
           } else {
-            let logger:LoggerManager =
+            const logger:LoggerManager =
                                  (LoggerManager.getInstance() as LoggerManager);
             if(logger.isInitialized()) {
               LoggerManager.getInstance().error(error);

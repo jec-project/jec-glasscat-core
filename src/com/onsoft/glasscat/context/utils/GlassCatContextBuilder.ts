@@ -43,11 +43,11 @@ export class GlassCatContextBuilder {
    * @return {GlassCatContext} a new <code>GlassCatContext</code> instance.
    */
   public buildContext():GlassCatContext {
-    let loader:GlassCatConfigLoader = new GlassCatConfigLoader();
-    let parser:BootstrapConfigParser = new BootstrapConfigParser();
-    let config:any = loader.loadSync();
-    let bootstrap:BootstrapConfig = parser.parse(config);
-    let ctx:GlassCatContext = new GlassCatContext(bootstrap);
+    const loader:GlassCatConfigLoader = new GlassCatConfigLoader();
+    const parser:BootstrapConfigParser = new BootstrapConfigParser();
+    const config:any = loader.loadSync();
+    const bootstrap:BootstrapConfig = parser.parse(config);
+    const ctx:GlassCatContext = new GlassCatContext(bootstrap);
     return ctx;
   }
 };

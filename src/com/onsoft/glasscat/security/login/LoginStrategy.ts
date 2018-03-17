@@ -84,7 +84,7 @@ export class LoginStrategy {
    */
   private init(strategyConfig:LoginStrategyConfig):void {
     this._strategyConfig = strategyConfig;
-    let authMethod:AuthMethod = this._strategyConfig.getAuthMethod();
+    const authMethod:AuthMethod = this._strategyConfig.getAuthMethod();
     
     /*if(!authMethod) {
       LoggerManager.getInstance().error(
@@ -210,8 +210,8 @@ export class LoginStrategy {
    */
   public invalidateSession(req:HttpRequest, res:HttpResponse,
                                        result:(error?:SessionError)=>any):void {
-    let cookies:any = req.getCookies();
-    let sessionId:SessionId = SessionIdUtil.parseSessionIdCookie(cookies);
+    const cookies:any = req.getCookies();
+    const sessionId:SessionId = SessionIdUtil.parseSessionIdCookie(cookies);
     this._sessionContext.unloadSession(
       sessionId,
       (err:SessionError) => {

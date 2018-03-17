@@ -104,7 +104,7 @@ export class Kernel {
    * constructor function.
    */
   private init():void {
-    let splashScreen:SplashScreen = new SplashScreen();
+    const splashScreen:SplashScreen = new SplashScreen();
     splashScreen.displayMessage(Kernel.VERSION);
     this.initJcadContext();
   }
@@ -113,7 +113,7 @@ export class Kernel {
    * Creates the <code>JcadContext</code> instance for this GlassCat container.
    */
   private initJcadContext():void {
-    let ctxFactory:JcadContextFactory = new JcadContextFactory();
+    const ctxFactory:JcadContextFactory = new JcadContextFactory();
     this._jcadContext = ctxFactory.create();
   }
 
@@ -122,7 +122,7 @@ export class Kernel {
    */
   private createHttpListeners():void {
     this._httpServiceManager = new HttpServiceManager();
-    let builder:HttpServiceBuilder = new HttpServiceBuilder();
+    const builder:HttpServiceBuilder = new HttpServiceBuilder();
     builder.buildServices(
       this._httpServiceManager,
       this._context.getHttpListenerConfigList()
@@ -141,7 +141,7 @@ export class Kernel {
    * container.
    */
   private initDomainConnectors():void {
-    let dcmb:DomainConnectorManagerBuilder =
+    const dcmb:DomainConnectorManagerBuilder =
                                             new DomainConnectorManagerBuilder();
     this._domainConnectorManager = dcmb.build(
                                       Kernel.VERSION,
@@ -198,9 +198,9 @@ export class Kernel {
    */
   public initContext():void {
     this._startTime = Date.now();
-    let root:string = process.cwd();
+    const root:string = process.cwd();
     this.initRootPath(root);
-    let ctxBuilder:GlassCatContextBuilder = new GlassCatContextBuilder();
+    const ctxBuilder:GlassCatContextBuilder = new GlassCatContextBuilder();
     this._context = ctxBuilder.buildContext();
     this.initLocales();
   }

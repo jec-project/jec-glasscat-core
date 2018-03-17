@@ -5,8 +5,8 @@ const DomainBuilder_1 = require("./DomainBuilder");
 class DomainContextBuilder {
     constructor() { }
     buildContext(config) {
-        let ctx = new DomainContext_1.DomainContext();
-        let domains = config.domains;
+        const ctx = new DomainContext_1.DomainContext();
+        const domains = config.domains;
         let len = -1;
         let rawDomain = null;
         let domain = null;

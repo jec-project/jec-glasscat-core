@@ -45,7 +45,7 @@ export class NotFoundErrorBuilder {
    *                              instance.
    */
   public build(message?:string):DomainRequestError {
-    let error:DomainRequestError = new DomainRequestError();
+    const error:DomainRequestError = new DomainRequestError();
     error.statusCode = HttpStatusCode.NOT_FOUND;
     error.detailsCode = "httpErrors.notFound";
     error.message = message;

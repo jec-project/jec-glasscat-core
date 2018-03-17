@@ -46,11 +46,11 @@ export class UrlPatternBuilder {
    *                      specified pattern.
    */
   public build(pattern:string):UrlPattern {
-    let urlMapper:UrlPattern = new BasicUrlPattern();
-    let len:number = pattern.length - 2;
+    const urlMapper:UrlPattern = new BasicUrlPattern();
+    const len:number = pattern.length - 2;
+    const permMarkId:number = pattern.lastIndexOf(UrlStringsEnum.PERM_MARK);
     let baseUrl:string = pattern.indexOf(UrlStringsEnum.SLASH) === 0 ?
                          pattern.substr(1) : pattern;
-    let permMarkId:number = pattern.lastIndexOf(UrlStringsEnum.PERM_MARK);
     if(permMarkId === len) {
       urlMapper.strict = false;
       baseUrl = baseUrl.substr(0, len);

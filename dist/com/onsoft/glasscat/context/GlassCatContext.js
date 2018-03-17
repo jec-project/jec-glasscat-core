@@ -24,19 +24,19 @@ class GlassCatContext {
             .resolve(this._bootstrap.config.errorPage);
     }
     initLogLevel() {
-        let llu = new jec_commons_1.LogLevelUtil();
+        const llu = new jec_commons_1.LogLevelUtil();
         this._logLevel = llu.stringTogLevel(this._bootstrap.config.loggers.logLevel);
     }
     initLoggerFactories() {
-        let config = this._bootstrap.config.loggers;
-        let factoryRefs = config.factories;
+        const config = this._bootstrap.config.loggers;
+        const factoryRefs = config.factories;
+        const ctxBuiler = new LoggerContextBuilder_1.LoggerContextBuilder();
+        const loader = jec_commons_1.GlobalClassLoader.getInstance();
+        const llu = new jec_commons_1.LogLevelUtil();
         let factoryData = null;
         let len = factoryRefs.length;
         let loggerFactory = null;
-        let ctxBuiler = new LoggerContextBuilder_1.LoggerContextBuilder();
         let loggerContext = null;
-        let llu = new jec_commons_1.LogLevelUtil();
-        let loader = jec_commons_1.GlobalClassLoader.getInstance();
         let Contructor = null;
         let classPath = null;
         let logLevel = null;

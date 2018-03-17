@@ -22,8 +22,8 @@ class AdminFileRealmConnector extends AbstractRealmConnector_1.AbstractRealmConn
         this.init();
     }
     init() {
-        let pathUtil = MappedPathUtil_1.MappedPathUtil.getInstance();
-        let gkpPath = pathUtil.resolve("${root}/public/cfg/keyfiles/admin.gkp");
+        const pathUtil = MappedPathUtil_1.MappedPathUtil.getInstance();
+        const gkpPath = pathUtil.resolve("${root}/public/cfg/keyfiles/admin.gkp");
         this._gksPath = pathUtil.resolve("${root}/public/cfg/keyfiles/admin.gks");
         try {
             fs.accessSync(this._gksPath, fs.constants.F_OK | fs.constants.W_OK | fs.constants.R_OK);
@@ -55,19 +55,19 @@ class AdminFileRealmConnector extends AbstractRealmConnector_1.AbstractRealmConn
         return fs.createReadStream(this._gksPath);
     }
     getReadLine(stream) {
-        let line = readline.createInterface({ input: stream, output: null, terminal: false });
+        const line = readline.createInterface({ input: stream, output: null, terminal: false });
         return line;
     }
     authenticate(credentials, success, error) {
+        const login = credentials.login;
+        const alias = this.__userHashModule.encryptAlias(login);
+        const password = this.__userHashModule.encryptPassword(credentials.password);
+        const stream = this.getStream();
+        const rl = this.getReadLine(stream);
         let sessionOwner = null;
-        let login = credentials.login;
-        let alias = this.__userHashModule.encryptAlias(login);
-        let password = this.__userHashModule.encryptPassword(credentials.password);
         let userData = null;
         let roles = null;
         let lineId = 0;
-        let stream = this.getStream();
-        let rl = this.getReadLine(stream);
         let builder = null;
         rl.on(this.LINE_EVENT, (line) => {
             if (line.indexOf(alias) === 0) {

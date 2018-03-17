@@ -45,11 +45,11 @@ class EjpContainer {
         this._jdiProcessor = null;
     }
     initConfig(config) {
+        const webapp = config.webapp;
+        const jsletsConfig = webapp.jslets;
+        const jsletContextBuilder = JsletContextBuilder_1.JsletContextBuilder.getInstance();
         let securityContext = null;
         let sessionContext = null;
-        let webapp = config.webapp;
-        let jsletsConfig = webapp.jslets;
-        let jsletContextBuilder = JsletContextBuilder_1.JsletContextBuilder.getInstance();
         this.initState(config);
         this.initResourceMap(config);
         if (this._state === DomainState_1.DomainState.STATEFUL) {
@@ -75,12 +75,12 @@ class EjpContainer {
         this._sourceFileInspector.clearCache();
     }
     createLoginStrategy(config) {
-        let loginStrategyConfig = new EjpLoginStrategyConfig_1.EjpLoginStrategyConfig(config.webapp.login);
+        const loginStrategyConfig = new EjpLoginStrategyConfig_1.EjpLoginStrategyConfig(config.webapp.login);
         this._loginStrategy = new LoginStrategy_1.LoginStrategy(loginStrategyConfig);
     }
     ;
     initResourceMap(config) {
-        let resourceMap = config.webapp.resourceMap;
+        const resourceMap = config.webapp.resourceMap;
         let len = -1;
         let resourceMapper = null;
         this._resourceMap = new Map();
@@ -97,7 +97,7 @@ class EjpContainer {
     }
     ;
     initState(config) {
-        let state = config.webapp.state;
+        const state = config.webapp.state;
         let msg = null;
         if (state) {
             if (state === DomainState_1.DomainState.STATEFUL || state === DomainState_1.DomainState.STATELESS) {
@@ -113,12 +113,12 @@ class EjpContainer {
             this._state = DomainState_1.DomainState.STATELESS;
     }
     initBootstrapScripts(config) {
-        let scripts = config.webapp.bootstrap;
+        const scripts = config.webapp.bootstrap;
+        const builder = new BootstrapScriptBuilder_1.BootstrapScriptBuilder();
+        const autoWireProcessor = new BootstrapAutowireProcessor_1.BootstrapAutowireProcessor();
         let scriptConfig = null;
         let script = null;
         let len = -1;
-        let builder = new BootstrapScriptBuilder_1.BootstrapScriptBuilder();
-        let autoWireProcessor = new BootstrapAutowireProcessor_1.BootstrapAutowireProcessor();
         this._bootstrapContext =
             BootstrapContextBuilder_1.BootstrapContextBuilder.getInstance().buildContext(this._connector);
         if (scripts) {
@@ -144,18 +144,19 @@ class EjpContainer {
         this._sourceFileInspector.addProcessor(this._jdiProcessor);
     }
     initSessionContext(config) {
-        let sessionContext = new EjpSessionContext_1.EjpSessionContext(this._contextRoot, config);
-        let msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("security.context.sessionAdded", this._contextRoot);
+        const sessionContext = new EjpSessionContext_1.EjpSessionContext(this._contextRoot, config);
+        const msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("security.context.sessionAdded", this._contextRoot);
         LoggerManager_1.LoggerManager.getInstance().info(msg);
         return sessionContext;
     }
     initSecurityContext(config) {
-        let security = config.webapp.security;
-        let securityContext = new EjpSecurityContext_1.EjpSecurityContext(this._contextRoot);
+        const security = config.webapp.security;
+        const securityContext = new EjpSecurityContext_1.EjpSecurityContext(this._contextRoot);
+        const msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("security.context.securityAdded", this._contextRoot);
+        const loader = jec_commons_1.GlobalClassLoader.getInstance();
         let constraint = null;
         let staticRes = null;
         let Contructor = null;
-        let loader = jec_commons_1.GlobalClassLoader.getInstance();
         let constraints = null;
         let resources = null;
         let resourcesBuilder = null;
@@ -163,7 +164,6 @@ class EjpContainer {
         let roles = null;
         let role = null;
         let len = -1;
-        let msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("security.context.securityAdded", this._contextRoot);
         LoggerManager_1.LoggerManager.getInstance().info(msg);
         if (security) {
             resourcesBuilder = new StaticResourcesBuilder_1.StaticResourcesBuilder();
@@ -195,7 +195,7 @@ class EjpContainer {
         this._sourceFileInspector.setWatcher(this._connector);
     }
     initJecContextManagers() {
-        let containerContext = this._connector.getJcadContext();
+        const containerContext = this._connector.getJcadContext();
         this._jdiContextManager = new jec_sokoke_1.JdiContextManager();
         this._jdiContextManager.createContext(containerContext);
         this._jsletContextManager = new JsletContextManager_1.JsletContextManager();
@@ -213,14 +213,14 @@ class EjpContainer {
         this._bootstrapContextManager.deleteContext();
     }
     init(connector, jsletManager) {
-        let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
+        const i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
+        const target = connector.getTarget();
         let msg = i18n.get("domains.start", connector.getName());
         LoggerManager_1.LoggerManager.getInstance().info(msg);
         this._locale = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().getLocale();
         this._connector = connector;
         this._jsletManager = jsletManager;
         this._contextRoot = connector.getContextRoot();
-        let target = connector.getTarget();
         this._webapp = target + jec_commons_1.JecStringsEnum.WEB_APP;
         this._src = target + jec_commons_1.JecStringsEnum.SRC;
         this._templateProcessor = new DefaultTemplateProcessor_1.DefaultTemplateProcessor();
@@ -251,20 +251,20 @@ class EjpContainer {
         return LoggerManager_1.LoggerManager.getInstance();
     }
     process(properties, req, res, result) {
+        const sessionId = properties.sessionId;
+        const isStateful = this._state === DomainState_1.DomainState.STATEFUL;
+        const sessionContext = this._jsletContext.getSessionContext();
+        const self = this;
+        let url = properties.trimmedUrl;
         let urlMarkIndex = -1;
-        let self = this;
-        let sessionId = properties.sessionId;
         let domainRequestError = null;
         let jslet = null;
-        let url = properties.trimmedUrl;
-        let isStateful = this._state === DomainState_1.DomainState.STATEFUL;
-        let sessionContext = this._jsletContext.getSessionContext();
         jslet = this._jsletManager.getJslet(this._contextRoot, url);
         if (jslet) {
             jslet.before();
             jslet.service(req, res, function (request, response, data) {
-                let renderTemplate = function () {
-                    let ejsPath = jslet.getTemplate();
+                const renderTemplate = function () {
+                    const ejsPath = jslet.getTemplate();
                     if (ejsPath) {
                         self._templateProcessor.renderFile((self._webapp + ejsPath), data, request, response);
                     }

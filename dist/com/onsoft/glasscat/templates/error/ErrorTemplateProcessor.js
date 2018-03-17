@@ -8,7 +8,7 @@ const GlassCatErrorCode_1 = require("../../exceptions/GlassCatErrorCode");
 class ErrorTemplateProcessor {
     constructor() {
         if (ErrorTemplateProcessor._locked || ErrorTemplateProcessor.INSTANCE) {
-            let msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.singleton", "ErrorTemplateProcessor");
+            const msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.singleton", "ErrorTemplateProcessor");
             throw new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.SINGLETON_ERROR, msg);
         }
         ErrorTemplateProcessor._locked = true;
@@ -27,7 +27,7 @@ class ErrorTemplateProcessor {
                 res.end(result);
             }
             else {
-                let logger = LoggerManager_1.LoggerManager.getInstance();
+                const logger = LoggerManager_1.LoggerManager.getInstance();
                 if (logger.isInitialized()) {
                     LoggerManager_1.LoggerManager.getInstance().error(error);
                 }

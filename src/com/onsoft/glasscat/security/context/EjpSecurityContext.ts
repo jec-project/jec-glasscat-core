@@ -112,9 +112,9 @@ export class EjpSecurityContext implements SecurityContext {
    * @inheritDoc
    */
   public addSecurityRole(role:SecurityRole):void {
-    let name:string = role.getName();
+    const name:string = role.getName();
     this._securityRoleMap.set(name, role);
-    let msg:string = GlassCatLocaleManager.getInstance().get(
+    const msg:string = GlassCatLocaleManager.getInstance().get(
       "security.roles.added", name
     );
     LoggerManager.getInstance().info(msg);
@@ -131,12 +131,12 @@ export class EjpSecurityContext implements SecurityContext {
    * @inheritDoc
    */
   public addSecurityConstraint(constraint:SecurityConstraint):void {
-    let name:string = constraint.getName();
-    let urlPattern:UrlPattern = constraint.getUrlPattern();
-    let url:string = urlPattern.baseUrl;
+    const name:string = constraint.getName();
+    const urlPattern:UrlPattern = constraint.getUrlPattern();
+    const url:string = urlPattern.baseUrl;
     this._constraintsMap.set(url, constraint);
     this._urlPatternColl.push(urlPattern);
-    let msg:string = GlassCatLocaleManager.getInstance().get(
+    const msg:string = GlassCatLocaleManager.getInstance().get(
       "security.constraint.added", this._contextRoot, name
     );
     LoggerManager.getInstance().info(msg);
@@ -149,8 +149,8 @@ export class EjpSecurityContext implements SecurityContext {
     let constraint:SecurityConstraint = undefined;
     let len:number = this._urlPatternColl.length;
     let urlPattern:UrlPattern = null;
-    let baseUrl:string =
-                 url === UrlStringsEnum.EMPTY_STRING ? ContextRootUtil.INDEX : url;
+    const baseUrl:string =
+              url === UrlStringsEnum.EMPTY_STRING ? ContextRootUtil.INDEX : url;
     while(len--) {
       urlPattern = this._urlPatternColl[len];
       if(this._urlPatternUtils.match(baseUrl, urlPattern)) {
@@ -165,11 +165,11 @@ export class EjpSecurityContext implements SecurityContext {
    * @inheritDoc
    */
   public addStaticResources(resources:StaticResources):void {
-    let urlPattern:UrlPattern = resources.getUrlPattern();
-    let url:string = urlPattern.baseUrl;
+    const urlPattern:UrlPattern = resources.getUrlPattern();
+    const url:string = urlPattern.baseUrl;
     this._staticResourcesMap.set(url, resources);
     this._urlPatternColl.push(urlPattern);
-    /*let msg:string =
+    /*const msg:string =
         GlassCatLocaleManager.getInstance()
                      .get("security.constraint.added", this._contextRoot, name);
     LoggerManager.getInstance().info(msg);*/
@@ -182,8 +182,8 @@ export class EjpSecurityContext implements SecurityContext {
     let resources:StaticResources = undefined;
     let len:number = this._urlPatternColl.length;
     let urlPattern:UrlPattern = null;
-    let baseUrl:string =
-                 url === UrlStringsEnum.EMPTY_STRING ? ContextRootUtil.INDEX : url;
+    const baseUrl:string =
+              url === UrlStringsEnum.EMPTY_STRING ? ContextRootUtil.INDEX : url;
     while(len--) {
       urlPattern = this._urlPatternColl[len];
       if(this._urlPatternUtils.match(baseUrl, urlPattern)) {

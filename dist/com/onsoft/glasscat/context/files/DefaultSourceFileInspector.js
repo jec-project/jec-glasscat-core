@@ -27,9 +27,9 @@ class DefaultSourceFileInspector {
     }
     inspectSourcePath(sourcePath, inspectMode) {
         let file = null;
-        let targetPath = this._target + sourcePath;
+        const targetPath = this._target + sourcePath;
         let cacheableFile = null;
-        let fillCacheMode = inspectMode === jec_commons_1.InspectMode.FILL_CACHE;
+        const fillCacheMode = inspectMode === jec_commons_1.InspectMode.FILL_CACHE;
         let cachedFiles = null;
         if (fillCacheMode) {
             cachedFiles = new Array();
@@ -89,8 +89,8 @@ class DefaultSourceFileInspector {
         });
     }
     setWatcher(connector) {
-        let logManager = LoggerManager_1.LoggerManager.getInstance();
-        let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
+        const logManager = LoggerManager_1.LoggerManager.getInstance();
+        const i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
         if (this._connector) {
             logManager.error(i18n.get("srcInspector.initError"));
         }
@@ -110,7 +110,7 @@ class DefaultSourceFileInspector {
     }
     removeProcessor(processor) {
         let result = false;
-        let id = this._processors.indexOf(processor);
+        const id = this._processors.indexOf(processor);
         if (id !== -1) {
             this._processors.splice(id, 1);
             LoggerManager_1.LoggerManager.getInstance().debug(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("srcInspector.processorRemoved", processor.constructor.name));
@@ -123,8 +123,8 @@ class DefaultSourceFileInspector {
     }
     inspect(inspectMode) {
         let len = this._processors.length;
-        let logManager = LoggerManager_1.LoggerManager.getInstance();
-        let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
+        const logManager = LoggerManager_1.LoggerManager.getInstance();
+        const i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
         if (len > 0) {
             logManager.debug(i18n.get("srcInspector.lookupStart"));
             logManager.debug(i18n.get("srcInspector.inspectMode", this._inspectModeUtil.inspectModeToString(inspectMode)));

@@ -35,7 +35,7 @@ export class LoggerManager extends AbstractLogger {
   constructor() {
     super();
     if(LoggerManager._locked || LoggerManager.INSTANCE) {
-      let msg:string = GlassCatLocaleManager.getInstance().get(
+      const msg:string = GlassCatLocaleManager.getInstance().get(
         "errors.singleton", "LoggerManager"
       );
       throw new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, msg);
@@ -80,7 +80,7 @@ export class LoggerManager extends AbstractLogger {
    * @param {LogLevel} logLevel the log level for the GlassCat container.
    */
   public init(loggers:Logger[], logLevel:LogLevel) {
-    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
+    const i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     let llu:LogLevelUtil = null;
     let msg:string = null;
     let loggerNum:number = 1;

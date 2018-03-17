@@ -64,9 +64,9 @@ export class SessionIdUtil {
    *                     HTTP transaction.
    */
   public static parseSessionIdCookie(cookies:any):SessionId {
+    const rawSessionId:string = cookies[SessionIdUtil.SESSION_ID_NAME];
     let sessionId:SessionId = null;
     let buffer:string[] = null;
-    let rawSessionId:string = cookies[SessionIdUtil.SESSION_ID_NAME];
     let len:number = -1;
     let sessionIdParams:string = null;
     let sessionIdParamsSepId:number = -1;
@@ -103,8 +103,8 @@ export class SessionIdUtil {
    *                  specified <code>SessionId</code> instance.
    */
   public static stringifySessionId(sessionId:SessionId):string {
+    const authurl:string = sessionId.authurl;
     let result:string = sessionId.getId();
-    let authurl:string = sessionId.authurl;
     if(authurl) result += ":authurl=" + authurl;
     return result;
   }

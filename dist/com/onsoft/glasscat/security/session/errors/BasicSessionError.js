@@ -22,7 +22,7 @@ class BasicSessionError {
         return this._message;
     }
     toString() {
-        let result = "[Object::SessionError: sessionId=" +
+        const result = "[Object::SessionError: sessionId=" +
             this._sessionId.getId() + " errorType=" +
             this._errorType + " message=" + this._message + "]";
         return result;

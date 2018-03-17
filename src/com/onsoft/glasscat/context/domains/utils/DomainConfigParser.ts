@@ -46,8 +46,8 @@ export class DomainConfigParser {
    *                         from the specified data.
    */
   private parseDomains(domains:any):Domain[] {
-    let builder:DomainBuilder = new DomainBuilder();
-    let cfg:Domain[] = new Array<Domain>();
+    const builder:DomainBuilder = new DomainBuilder();
+    const cfg:Domain[] = new Array<Domain>();
     let domain:Domain = null;
     let len:number = -1;
     if(domains) {
@@ -74,7 +74,7 @@ export class DomainConfigParser {
    */
   public parse(manifest:any):DomainConfig {
     //TODO: Log errors and create GlasscatErrorCode for this method
-    let cfg:DomainConfig = new DomainConfig();
+    const cfg:DomainConfig = new DomainConfig();
     cfg.domains = this.parseDomains(manifest.domains);
     return cfg;
   }

@@ -85,8 +85,8 @@ export class DomainConnectorManager {
    *                                specified connector.
    */
   public addConnector(connector:DomainConnector, listener:HttpListener):void {
-    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
-    let contextRootRef:string = 
+    const i18n:LocaleManager = GlassCatLocaleManager.getInstance();
+    const contextRootRef:string = 
                     this._contextRootUtil.buildContextRoot(connector, listener);
     this._connectorMap.set(contextRootRef, connector);
     let msg:string = i18n.get("domains.connectors.added");

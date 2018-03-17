@@ -47,9 +47,9 @@ export class EjpFormModule extends AbstractLoginModule {
    */
   public applyLoginStrategy(req:HttpRequest, res:HttpResponse,
                                                result:(error?:any)=>void):void {
-    let properties:HttpLocalProperties = 
+    const properties:HttpLocalProperties = 
                              (res as GlassCatHttpResponse).getLocalProperties();
-    let url:string = properties.contextRootRef +
+    const url:string = properties.contextRootRef +
                    this.__loginStrategyConfig.getFormProperties().getLoginUrl();
     res.redirect(url);
     result();
@@ -60,7 +60,7 @@ export class EjpFormModule extends AbstractLoginModule {
    */
   public applyAuthenticationStrategy(req:HttpRequest, res:HttpResponse,
                                     error:any, result:(error?:any)=>void):void {
-    let properties:HttpLocalProperties = 
+    const properties:HttpLocalProperties = 
                              (res as GlassCatHttpResponse).getLocalProperties();
     if(error) {
         res.status(HttpStatusCode.OK);
@@ -82,9 +82,9 @@ export class EjpFormModule extends AbstractLoginModule {
    * @inheritDoc
    */
   public getCredentials(req:HttpRequest):Credentials {
-    let body:any = req.getBody();
-    let builder:CredentialsBuilder = new CredentialsBuilder();
-    let credentials:Credentials =
+    const body:any = req.getBody();
+    const builder:CredentialsBuilder = new CredentialsBuilder();
+    const credentials:Credentials =
                               builder.build(body.js_username, body.js_password);
     return credentials;
   }

@@ -9,7 +9,7 @@ const GlassCatErrorCode_1 = require("../../../exceptions/GlassCatErrorCode");
 class EjpConfigValidator {
     constructor() { }
     printLog(message, logLevel) {
-        let logger = LoggerManager_1.LoggerManager.getInstance();
+        const logger = LoggerManager_1.LoggerManager.getInstance();
         if (logger.isInitialized()) {
             switch (logLevel) {
                 case jec_commons_1.LogLevel.INFO:
@@ -22,15 +22,15 @@ class EjpConfigValidator {
         }
     }
     buildErrorObj(errorCode, message) {
-        let errObj = {
+        const errObj = {
             message: message,
             errorCode: errorCode
         };
         return errObj;
     }
     doValidation(config) {
-        let prop;
-        let stringVal;
+        let prop = null;
+        let stringVal = null;
         if (!config) {
             return this.buildErrorObj(GlassCatErrorCode_1.GlassCatErrorCode.NULL_EJP_CONFIG, "EJP configuration cannot be null");
         }
@@ -115,7 +115,7 @@ class EjpConfigValidator {
     validate(config, result) {
         this.printLog("EJP configuration validation start", jec_commons_1.LogLevel.INFO);
         let glassCatErr = null;
-        let err = this.doValidation(config);
+        const err = this.doValidation(config);
         if (!err) {
             this.printLog("EJP configuration validation complete", jec_commons_1.LogLevel.INFO);
         }

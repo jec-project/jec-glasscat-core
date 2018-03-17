@@ -44,10 +44,10 @@ export class BootstrapScriptSorter {
    *                  objects.
    */
   private sortFunction(obj1:any, obj2:any):number {
-    //let a:number = obj1.getPriority();
-    //let b:number = obj2.getPriority();
-    let a:number = obj1.__priority;
-    let b:number = obj2.__priority;
+    //const a:number = obj1.getPriority();
+    //const b:number = obj2.getPriority();
+    const a:number = obj1.__priority;
+    const b:number = obj2.__priority;
     if(a === null || a === undefined && b === null || b === undefined) return 0;
     else if(a === null || a === undefined) return -1;
     else if(b === null || b === undefined) return 1;

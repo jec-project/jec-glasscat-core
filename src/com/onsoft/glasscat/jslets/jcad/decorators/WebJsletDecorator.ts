@@ -45,7 +45,7 @@ export class WebJsletDecorator implements Decorator {
     // Validation process
     ////////////////////////////////////////////////////////////////////////////
 
-    let patterns:string[] = params.urlPatterns;
+    const patterns:string[] = params.urlPatterns;
     if(!patterns) {
       throw new JsletError("errors.jslet.patternsMissing");
     } else if(patterns.length === 0) {

@@ -16,7 +16,7 @@ class EjpLoginStrategyConfig {
         if (!context) {
             throw new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.NULL_EJP_CONFIG, "context must not be null");
         }
-        let authMethod = context.authMethod;
+        const authMethod = context.authMethod;
         let realm = null;
         if (authMethod) {
             this._context = context;

@@ -10,7 +10,7 @@ class LoggerManager extends jec_commons_1.AbstractLogger {
         this._initialized = false;
         this._loggers = null;
         if (LoggerManager._locked || LoggerManager.INSTANCE) {
-            let msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.singleton", "LoggerManager");
+            const msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.singleton", "LoggerManager");
             throw new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.SINGLETON_ERROR, msg);
         }
         LoggerManager._locked = true;
@@ -23,7 +23,7 @@ class LoggerManager extends jec_commons_1.AbstractLogger {
         return LoggerManager.INSTANCE;
     }
     init(loggers, logLevel) {
-        let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
+        const i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
         let llu = null;
         let msg = null;
         let loggerNum = 1;

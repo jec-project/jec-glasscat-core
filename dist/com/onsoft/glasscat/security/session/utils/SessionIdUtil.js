@@ -3,9 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const SessionIdBuilder_1 = require("./SessionIdBuilder");
 class SessionIdUtil {
     static parseSessionIdCookie(cookies) {
+        const rawSessionId = cookies[SessionIdUtil.SESSION_ID_NAME];
         let sessionId = null;
         let buffer = null;
-        let rawSessionId = cookies[SessionIdUtil.SESSION_ID_NAME];
         let len = -1;
         let sessionIdParams = null;
         let sessionIdParamsSepId = -1;
@@ -33,8 +33,8 @@ class SessionIdUtil {
         return sessionId;
     }
     static stringifySessionId(sessionId) {
+        const authurl = sessionId.authurl;
         let result = sessionId.getId();
-        let authurl = sessionId.authurl;
         if (authurl)
             result += ":authurl=" + authurl;
         return result;

@@ -53,8 +53,8 @@ export class BootstrapConfigParser {
    *                          the specified data.
    */
   private parseGlasscatConfig(bootstrap:any):GlasscatConfig {
-    let cfg:GlasscatConfig = new GlasscatConfig();
-    let glasscat:any = bootstrap.glasscat;
+    const cfg:GlasscatConfig = new GlasscatConfig();
+    const glasscat:any = bootstrap.glasscat;
     cfg.version = glasscat.version;
     cfg.locale = glasscat.locale;
     return cfg;
@@ -69,8 +69,8 @@ export class BootstrapConfigParser {
    *                       specified data.
    */
   private parseToolsConfig(bootstrap:any):ToolsConfig {
-    let cfg:ToolsConfig = new ToolsConfig();
-    let config:any = bootstrap.config;
+    const cfg:ToolsConfig = new ToolsConfig();
+    const config:any = bootstrap.config;
     cfg.loggers = this.parseLoggersConfig(config.loggers);
     cfg.http = this.parseHttpConfig(config.http);
     cfg.security = this.parseSecurityConfig(config.security);
@@ -88,7 +88,7 @@ export class BootstrapConfigParser {
    *                              built from the specified data.
    */
   private parserHttpListener(httpListener:any):HttpListenerConfig {
-    let listener:HttpListenerConfig = new HttpListenerConfig();
+    const listener:HttpListenerConfig = new HttpListenerConfig();
     listener.id = httpListener.id;
     listener.address = httpListener.address;
     listener.domain = httpListener.domain;
@@ -110,7 +110,7 @@ export class BootstrapConfigParser {
    *                                built from the specified data.
    */
   private parseHttpMonitoring(monitoring:any):HttpMonitoringConfig {
-    let cfg:HttpMonitoringConfig = new HttpMonitoringConfig();
+    const cfg:HttpMonitoringConfig = new HttpMonitoringConfig();
     if(monitoring) {
       cfg.enabled = monitoring.enabled;
       cfg.factory = monitoring.factory;
@@ -127,9 +127,9 @@ export class BootstrapConfigParser {
    *                      specified data.
    */
   private parseHttpConfig(httpData:any):HttpConfig {
-    let cfg:HttpConfig = new HttpConfig();
-    let listeners:HttpListenerConfig[] = new Array<HttpListenerConfig>();
-    let httpListeners:any[] = httpData.listeners;
+    const cfg:HttpConfig = new HttpConfig();
+    const listeners:HttpListenerConfig[] = new Array<HttpListenerConfig>();
+    const httpListeners:any[] = httpData.listeners;
     let listener:HttpListenerConfig = null;
     let len:number = -1;
     if(httpListeners) {
@@ -152,8 +152,8 @@ export class BootstrapConfigParser {
    *                         the specified data.
    */
   private parseLoggersConfig(loggers:any):LoggersConfig {
-    let cfg:LoggersConfig = new LoggersConfig();
-    let factories:any[] = loggers.factories;
+    const cfg:LoggersConfig = new LoggersConfig();
+    const factories:any[] = loggers.factories;
     let rawFactory:any = null;
     let factory:LoggerFactoryConfig = null;
     let len:number = -1;
@@ -182,7 +182,7 @@ export class BootstrapConfigParser {
    *                          the specified data.
    */
   private parseSecurityConfig(security:any):SecurityConfig {
-    let cfg:SecurityConfig = new SecurityConfig();
+    const cfg:SecurityConfig = new SecurityConfig();
     return cfg;
   }
 
@@ -199,7 +199,7 @@ export class BootstrapConfigParser {
    *                           from the specified data.
    */
   public parse(bootstrap:any):BootstrapConfig {
-    let cfg:BootstrapConfig = new BootstrapConfig();
+    const cfg:BootstrapConfig = new BootstrapConfig();
     cfg.glasscat = this.parseGlasscatConfig(bootstrap);
     cfg.config = this.parseToolsConfig(bootstrap);
     return cfg;

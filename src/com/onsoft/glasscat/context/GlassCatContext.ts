@@ -103,7 +103,7 @@ export class GlassCatContext {
    * Initializes the log level for the current GlassCat container.
    */
   private initLogLevel():void {
-    let llu:LogLevelUtil = new LogLevelUtil();
+    const llu:LogLevelUtil = new LogLevelUtil();
     this._logLevel = llu.stringTogLevel(this._bootstrap.config.loggers.logLevel);
   }
 
@@ -111,15 +111,15 @@ export class GlassCatContext {
    * Initializes the <code>LoggerFactory</code> instances.
    */
   private initLoggerFactories():void {
-    let config:LoggersConfig = this._bootstrap.config.loggers;
-    let factoryRefs:LoggerFactoryConfig[] = config.factories;
+    const config:LoggersConfig = this._bootstrap.config.loggers;
+    const factoryRefs:LoggerFactoryConfig[] = config.factories;
+    const ctxBuiler:LoggerContextBuilder = new LoggerContextBuilder();
+    const loader:ClassLoader = GlobalClassLoader.getInstance();
+    const llu:LogLevelUtil = new LogLevelUtil();
     let factoryData:LoggerFactoryConfig = null;
     let len:number = factoryRefs.length;
     let loggerFactory:LoggerFactory = null;
-    let ctxBuiler:LoggerContextBuilder = new LoggerContextBuilder();
     let loggerContext:LoggerContext = null;
-    let llu:LogLevelUtil = new LogLevelUtil();
-    let loader:ClassLoader = GlobalClassLoader.getInstance();
     let Contructor:any = null;
     let classPath:string = null;
     let logLevel:LogLevelString = null;

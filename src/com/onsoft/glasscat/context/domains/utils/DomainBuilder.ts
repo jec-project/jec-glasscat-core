@@ -46,7 +46,7 @@ export class DomainBuilder {
    *                                 config.
    */
   private buildDomainConnector(connector:any):DomainConnectorConfig {
-    let cfg:DomainConnectorConfig = new DomainConnectorConfig();
+    const cfg:DomainConnectorConfig = new DomainConnectorConfig();
     cfg.type = connector.type;
     cfg.server = connector.server;
     return cfg;
@@ -65,7 +65,7 @@ export class DomainBuilder {
    *                  specified config.
    */
   public buildDomain(config:any):Domain {
-    let domain:Domain = new Domain();
+    const domain:Domain = new Domain();
     domain.name = config.name;
     domain.host = config.host;
     domain.target = config.target;

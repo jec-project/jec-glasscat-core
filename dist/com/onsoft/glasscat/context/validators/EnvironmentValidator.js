@@ -6,7 +6,7 @@ const GlassCatLocaleManager_1 = require("../../i18n/GlassCatLocaleManager");
 class EnvironmentValidator {
     constructor() { }
     validate(kernel) {
-        let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
+        const i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
         let env = i18n.get("environment.start");
         env += "\n   * "
             + i18n.get("environment.host", os.type(), os.platform(), os.release());
@@ -16,10 +16,10 @@ class EnvironmentValidator {
         env += "\n   * " + i18n.get("environment.freeMemory", String(os.freemem()));
         LoggerManager_1.LoggerManager.getInstance().debug(env);
         env = i18n.get("cpus.start");
-        let cpuList = os.cpus();
+        const cpuList = os.cpus();
         let len = cpuList.length;
         let cpuNum = 1;
-        let cpuInf;
+        let cpuInf = null;
         while (len--) {
             cpuInf = cpuList[len];
             env += "\n   => " + i18n.get("cpus.num", String(cpuNum));

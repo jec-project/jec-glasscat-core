@@ -8,7 +8,7 @@ const GlassCatErrorCode_1 = require("../../exceptions/GlassCatErrorCode");
 class BootstrapContextBuilder {
     constructor() {
         if (BootstrapContextBuilder._locked || BootstrapContextBuilder.INSTANCE) {
-            let msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.singleton", "BootstrapContextBuilder");
+            const msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.singleton", "BootstrapContextBuilder");
             throw new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.SINGLETON_ERROR, msg);
         }
         BootstrapContextBuilder._locked = true;
@@ -21,8 +21,8 @@ class BootstrapContextBuilder {
         return BootstrapContextBuilder.INSTANCE;
     }
     buildContext(connector) {
-        let context = new EjpBootstrapContext_1.EjpBootstrapContext(connector);
-        let msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("bootstrap.newContext", connector.getContextRoot());
+        const context = new EjpBootstrapContext_1.EjpBootstrapContext(connector);
+        const msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("bootstrap.newContext", connector.getContextRoot());
         LoggerManager_1.LoggerManager.getInstance().debug(msg);
         return context;
     }

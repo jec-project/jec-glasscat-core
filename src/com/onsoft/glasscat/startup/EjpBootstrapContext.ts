@@ -70,7 +70,7 @@ export class EjpBootstrapContext extends AbstractContainerContext
    * @inheritDoc
    */
   public addScript(script:BootstrapScript):void {
-    let msg:string = GlassCatLocaleManager.getInstance().get(
+    const msg:string = GlassCatLocaleManager.getInstance().get(
       "bootstrap.added", script.constructor.name
     );
     this._scriptList.push(script);

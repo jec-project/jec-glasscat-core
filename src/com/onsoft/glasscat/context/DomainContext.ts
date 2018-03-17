@@ -74,7 +74,7 @@ export class DomainContext {
    *                         <code>DomainContext</code> instance.
    */
   public getDomainList():Domain[] {
-    let list:Domain[] = new Array<Domain>();
+    const list:Domain[] = new Array<Domain>();
     this._map.forEach( (value:Domain)=> { list.push(value); } );
     return list;
   }

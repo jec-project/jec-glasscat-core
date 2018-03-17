@@ -4,7 +4,7 @@ const BasicStaticResources_1 = require("../core/BasicStaticResources");
 class StaticResourcesBuilder {
     constructor() { }
     build(context) {
-        let resources = new BasicStaticResources_1.BasicStaticResources(context);
+        const resources = new BasicStaticResources_1.BasicStaticResources(context);
         return resources;
     }
 }

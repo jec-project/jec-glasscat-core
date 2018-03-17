@@ -74,7 +74,7 @@ class AbstractHttpService {
         ;
     }
     checkSession(req, res, next) {
-        let properties = new HttpLocalProperties_1.HttpLocalProperties();
+        const properties = new HttpLocalProperties_1.HttpLocalProperties();
         res.setHeader(jec_commons_1.HttpHeader.X_POWERED_BY, this.GLASSCAT);
         res.locals.properties = properties;
         this.__securityManager.processSession(this, req, res, (err) => {
@@ -87,7 +87,7 @@ class AbstractHttpService {
         });
     }
     validateRequest(req, res, next) {
-        let properties = res.locals.properties;
+        const properties = res.locals.properties;
         let httpRequest = null;
         let httpResponse = null;
         if (properties.isStatic)
@@ -116,11 +116,11 @@ class AbstractHttpService {
         }
     }
     processRequest(req, res, next) {
-        let httpRequest = new GlassCatHttpRequest_1.GlassCatHttpRequest(req);
-        let httpResponse = new GlassCatHttpResponse_1.GlassCatHttpResponse(res);
-        let properties = res.locals.properties;
-        let crd = properties.contextRootData;
-        let connector = properties.connector;
+        const httpRequest = new GlassCatHttpRequest_1.GlassCatHttpRequest(req);
+        const httpResponse = new GlassCatHttpResponse_1.GlassCatHttpResponse(res);
+        const properties = res.locals.properties;
+        const crd = properties.contextRootData;
+        const connector = properties.connector;
         if (crd.containsNestedResource) {
             ResourceProxy_1.ResourceProxy.getInstance().loadFile(crd.newPath, function (err, content) {
                 if (err) {
@@ -151,7 +151,7 @@ class AbstractHttpService {
         }
     }
     initHeadersSecurity() {
-        let headerParams = this.__securityManager.getHeaderSecurityParams(this);
+        const headerParams = this.__securityManager.getHeaderSecurityParams(this);
     }
     initTransactionInterceptor() {
         if (this.__enableMonitoring) {
@@ -173,7 +173,7 @@ class AbstractHttpService {
     }
     initErrorFilter() {
         this.__app.use((err, req, res, next) => {
-            let status = err.status || jec_commons_1.HttpStatusCode.INTERNAL_SERVER_ERROR;
+            const status = err.status || jec_commons_1.HttpStatusCode.INTERNAL_SERVER_ERROR;
             res.sendStatus(status);
         });
     }
@@ -199,7 +199,7 @@ class AbstractHttpService {
         this.initErrorFilter();
     }
     start() {
-        let port = this.__listener.getPort();
+        const port = this.__listener.getPort();
         this.__server = this.__app.listen(port);
         this._isActive = true;
         LoggerManager_1.LoggerManager.getInstance().info(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("http.servers.start", this._server, String(port)));

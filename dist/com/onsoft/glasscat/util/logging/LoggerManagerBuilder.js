@@ -15,16 +15,16 @@ class LoggerManagerBuilder {
         if (!this._ctx) {
             throw new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.INVALID_CONTEXT, "GlassCatContext must not be null");
         }
-        let loggerContexts = this._ctx.getLoggerContexts();
-        let loggers = new Array();
+        const loggerContexts = this._ctx.getLoggerContexts();
+        const loggers = new Array();
+        const logLevel = this._ctx.getLogLevel();
+        const manager = LoggerManager_1.LoggerManager.getInstance();
         let len = loggerContexts.length;
         let loggerContext = null;
         while (len--) {
             loggerContext = loggerContexts[len];
             loggers.push(loggerContext.factory.build(loggerContext));
         }
-        let logLevel = this._ctx.getLogLevel();
-        let manager = LoggerManager_1.LoggerManager.getInstance();
         manager.init(loggers, logLevel);
         return manager;
     }

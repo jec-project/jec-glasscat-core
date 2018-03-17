@@ -5,7 +5,7 @@ const DomainRequestError_1 = require("./DomainRequestError");
 class NotFoundErrorBuilder {
     constructor() { }
     build(message) {
-        let error = new DomainRequestError_1.DomainRequestError();
+        const error = new DomainRequestError_1.DomainRequestError();
         error.statusCode = jec_commons_1.HttpStatusCode.NOT_FOUND;
         error.detailsCode = "httpErrors.notFound";
         error.message = message;

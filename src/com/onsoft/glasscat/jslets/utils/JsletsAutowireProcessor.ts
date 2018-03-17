@@ -81,7 +81,7 @@ export class JsletsAutowireProcessor implements FilePreProcessor {
    * @inheritDoc
    */
   public process(file:FileProperties, watcher:any):void {
-    let decorators:DecoratorProperties[] = file.decorators;
+    const decorators:DecoratorProperties[] = file.decorators;
     let len:number = decorators.length;
     let decorator:DecoratorProperties = null;
     while(len--) {
@@ -98,11 +98,11 @@ export class JsletsAutowireProcessor implements FilePreProcessor {
    */
   public processComplete(watcher:any, sourcePath:string) {
     //TODO check whether the watcher is a DomainConnector instance or not:
-    let context:JsletContext = watcher.getContainer().getJsletContext();
+    const context:JsletContext = watcher.getContainer().getJsletContext();
+    const jslets:string[] = new Array<string>();
+    const pathLength:number = sourcePath.length + 1;
     let len:number = this._jsletFiles.length;
     let file:FileProperties = null;
-    let jslets:string[] = new Array<string>();
-    let pathLength:number = sourcePath.length + 1;
     let jsletPath:string = null;
     while(len--) {
       file = this._jsletFiles[len];

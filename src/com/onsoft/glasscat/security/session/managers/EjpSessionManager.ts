@@ -19,7 +19,6 @@ import {GlobalGuidGenerator} from "jec-commons";
 import * as crypto from "crypto";
 import {SecurityManager} from "../../../core/SecurityManager";
 import {Session, SessionError, SessionId} from "jec-exchange";
-import {HttpService} from "../../../services/http/HttpService";
 import {SessionStorage} from "../connectors/SessionStorage";
 import {SessionIdUtil} from "../utils/SessionIdUtil";
 import {SessionIdBuilder} from "../utils/SessionIdBuilder";
@@ -108,9 +107,9 @@ export class EjpSessionManager implements SessionManager {
    * @inheritDoc
    */
   public initSessionId():SessionId {
-    let sha:crypto.Hash = crypto.createHash(this.HASH_ALGORITHM)
-                                .update(Date.now() + this._guid);
-    let sessionId:SessionId = this._sessionIdBuilder.buildSessionId(
+    const sha:crypto.Hash = crypto.createHash(this.HASH_ALGORITHM)
+                                  .update(Date.now() + this._guid);
+    const sessionId:SessionId = this._sessionIdBuilder.buildSessionId(
       sha.digest(this.OUTPUT_ENCODING)
     );
     return sessionId;

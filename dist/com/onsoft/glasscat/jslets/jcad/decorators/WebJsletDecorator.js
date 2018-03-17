@@ -4,7 +4,7 @@ const jec_exchange_1 = require("jec-exchange");
 class WebJsletDecorator {
     constructor() { }
     decorate(target, params) {
-        let patterns = params.urlPatterns;
+        const patterns = params.urlPatterns;
         if (!patterns) {
             throw new jec_exchange_1.JsletError("errors.jslet.patternsMissing");
         }

@@ -56,7 +56,7 @@ export class HttpListenerFactory {
         "Config must not be null."
       )
     }
-    let listener:HttpListener = new DefaultHttpListener(config);
+    const listener:HttpListener = new DefaultHttpListener(config);
     return listener;
   }
 };

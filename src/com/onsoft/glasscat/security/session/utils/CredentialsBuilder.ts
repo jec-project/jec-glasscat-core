@@ -47,7 +47,7 @@ export class CredentialsBuilder {
    * @return {Credentials} a new <code>Credentials</code> object.
    */
   public build(login:string, password:string):Credentials {
-    let crd:Credentials = new BasicCredentials();
+    const crd:Credentials = new BasicCredentials();
     crd.login = login;
     crd.password = password;
     return crd;

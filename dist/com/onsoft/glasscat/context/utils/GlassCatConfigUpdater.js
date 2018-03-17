@@ -7,9 +7,9 @@ const GlassCatErrorCode_1 = require("../../exceptions/GlassCatErrorCode");
 class GlassCatConfigUpdater {
     constructor() { }
     update(config, result) {
-        let path = MappedPathUtil_1.MappedPathUtil.getInstance()
+        const path = MappedPathUtil_1.MappedPathUtil.getInstance()
             .resolve(GlassCatConfigUpdater.BOOTSTRAP_FILE_PATH);
-        let data = JSON.stringify(config);
+        const data = JSON.stringify(config);
         let glassCatError = null;
         fs.writeFile(path, data, (error) => {
             if (error) {

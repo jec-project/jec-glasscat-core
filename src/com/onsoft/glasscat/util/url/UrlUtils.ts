@@ -32,7 +32,7 @@ export class UrlUtils {
    */
   constructor() {
     if(UrlUtils._locked || UrlUtils.INSTANCE) {
-      let msg:string = GlassCatLocaleManager.getInstance().get(
+      const msg:string = GlassCatLocaleManager.getInstance().get(
         "errors.singleton", "UrlUtils"
       );
       throw new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, msg);

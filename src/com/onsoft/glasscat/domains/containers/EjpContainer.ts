@@ -199,12 +199,12 @@ export class EjpContainer implements DomainContainer {
    *                           with this <code>EjpContainer</code> instance.
    */
   private initConfig(config:EjpConfig):void {
+    const webapp:EjpWebAppConfig = config.webapp;
+    const jsletsConfig:EjpJsletsConfig = webapp.jslets;
+    const jsletContextBuilder:JsletContextBuilder =
+                                              JsletContextBuilder.getInstance();
     let securityContext:SecurityContext = null;
     let sessionContext:SessionContext = null;
-    let webapp:EjpWebAppConfig = config.webapp;
-    let jsletsConfig:EjpJsletsConfig = webapp.jslets;
-    let jsletContextBuilder:JsletContextBuilder =
-                                              JsletContextBuilder.getInstance();
     this.initState(config);
     this.initResourceMap(config);
     if(this._state === DomainState.STATEFUL) {
@@ -241,7 +241,7 @@ export class EjpContainer implements DomainContainer {
    *                           with this <code>EjpContainer</code> instance.
    */
   private createLoginStrategy(config:EjpConfig):void {
-    let loginStrategyConfig:LoginStrategyConfig =
+    const loginStrategyConfig:LoginStrategyConfig =
                                 new EjpLoginStrategyConfig(config.webapp.login);
     this._loginStrategy = new LoginStrategy(loginStrategyConfig);
   };
@@ -253,7 +253,7 @@ export class EjpContainer implements DomainContainer {
    *                           with this <code>EjpContainer</code> instance.
    */
   private initResourceMap(config:EjpConfig):void {
-    let resourceMap:EjpResourceMapperConfig[] = config.webapp.resourceMap;
+    const resourceMap:EjpResourceMapperConfig[] = config.webapp.resourceMap;
     let len:number = -1;
     let resourceMapper:EjpResourceMapperConfig = null;
     this._resourceMap = new Map<string, string>();
@@ -280,7 +280,7 @@ export class EjpContainer implements DomainContainer {
    *                           with this <code>EjpContainer</code> instance.
    */
   private initState(config:EjpConfig):void {
-    let state:string = config.webapp.state;
+    const state:string = config.webapp.state;
     let msg:string = null;
     if(state) {
       if(state === DomainState.STATEFUL || state === DomainState.STATELESS) {
@@ -302,13 +302,13 @@ export class EjpContainer implements DomainContainer {
    *                           with this <code>EjpContainer</code> instance.
    */
   private initBootstrapScripts(config:EjpConfig):void {
-    let scripts:EjpBootstrapConfig[] = config.webapp.bootstrap;
+    const scripts:EjpBootstrapConfig[] = config.webapp.bootstrap;
+    const builder:BootstrapScriptBuilder = new BootstrapScriptBuilder();
+    const autoWireProcessor:BootstrapAutowireProcessor =
+                                               new BootstrapAutowireProcessor();
     let scriptConfig:EjpBootstrapConfig = null;
     let script:BootstrapScript = null;
     let len:number = -1;
-    let builder:BootstrapScriptBuilder = new BootstrapScriptBuilder();
-    let autoWireProcessor:BootstrapAutowireProcessor =
-                                               new BootstrapAutowireProcessor();
     this._bootstrapContext = 
             BootstrapContextBuilder.getInstance().buildContext(this._connector);
     if(scripts) {
@@ -354,9 +354,9 @@ export class EjpContainer implements DomainContainer {
    *                           with this <code>EjpContainer</code> instance.
    */
   private initSessionContext(config:EjpConfig):SessionContext {
-    let sessionContext:SessionContext =
+    const sessionContext:SessionContext =
                                new EjpSessionContext(this._contextRoot, config);
-    let msg:string = GlassCatLocaleManager.getInstance().get(
+    const msg:string = GlassCatLocaleManager.getInstance().get(
       "security.context.sessionAdded", this._contextRoot
     );
     LoggerManager.getInstance().info(msg);
@@ -370,13 +370,16 @@ export class EjpContainer implements DomainContainer {
    *                           with this <code>EjpContainer</code> instance.
    */
   private initSecurityContext(config:EjpConfig):SecurityContext {
-    let security:EjpSecurityConfig = config.webapp.security;
-    let securityContext:SecurityContext = 
+    const security:EjpSecurityConfig = config.webapp.security;
+    const securityContext:SecurityContext = 
                                       new EjpSecurityContext(this._contextRoot);
+    const msg:string = GlassCatLocaleManager.getInstance().get(
+      "security.context.securityAdded", this._contextRoot
+    );
+    const loader:ClassLoader = GlobalClassLoader.getInstance();
     let constraint:SecurityConstraint = null;
     let staticRes:StaticResources = null;
     let Contructor:any = null;
-    let loader:ClassLoader = GlobalClassLoader.getInstance();
     let constraints:EjpConstraintConfig[] = null;
     let resources:EjpStaticResourcesConfig[] = null;
     let resourcesBuilder:StaticResourcesBuilder = null;
@@ -384,9 +387,6 @@ export class EjpContainer implements DomainContainer {
     let roles:EjpRoleConfig[] = null;
     let role:EjpRoleConfig = null;
     let len:number = -1;
-    let msg:string = GlassCatLocaleManager.getInstance().get(
-      "security.context.securityAdded", this._contextRoot
-    );
     LoggerManager.getInstance().info(msg);
     if(security) {
       resourcesBuilder = new StaticResourcesBuilder();
@@ -428,7 +428,7 @@ export class EjpContainer implements DomainContainer {
    * <code>EjpContainer</code> instance.
    */
   private initJecContextManagers():void {
-    let containerContext:JcadContext = this._connector.getJcadContext();
+    const containerContext:JcadContext = this._connector.getJcadContext();
     this._jdiContextManager = new JdiContextManager();
     this._jdiContextManager.createContext(containerContext);
     this._jsletContextManager = new JsletContextManager();
@@ -471,14 +471,14 @@ export class EjpContainer implements DomainContainer {
    * @inheritDoc
    */
   public init(connector:DomainConnector, jsletManager:JsletManager):void {
-    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
+    const i18n:LocaleManager = GlassCatLocaleManager.getInstance();
+    const target:string = connector.getTarget();
     let msg:string = i18n.get("domains.start", connector.getName());
     LoggerManager.getInstance().info(msg);
     this._locale = GlassCatLocaleManager.getInstance().getLocale();
     this._connector = connector as EjpConnector;
     this._jsletManager = jsletManager;
     this._contextRoot = connector.getContextRoot();
-    let target:string = connector.getTarget();
     this._webapp = target + JecStringsEnum.WEB_APP;
     this._src = target + JecStringsEnum.SRC;
     this._templateProcessor = new DefaultTemplateProcessor();
@@ -535,14 +535,15 @@ export class EjpContainer implements DomainContainer {
   public process(properties:HttpLocalProperties,
                  req:HttpRequest, res:HttpResponse,
                  result:(error?:DomainRequestError)=>any):void {
+    const sessionId:SessionId = properties.sessionId;
+    const isStateful:boolean = this._state === DomainState.STATEFUL;
+    const sessionContext:SessionContext =
+                                         this._jsletContext.getSessionContext();
+    const self:EjpContainer = this;
+    let url:string = properties.trimmedUrl;
     let urlMarkIndex:number = -1;
-    let self:EjpContainer = this;
-    let sessionId:SessionId = properties.sessionId;
     let domainRequestError:DomainRequestError = null;
     let jslet:Jslet = null;
-    let url:string = properties.trimmedUrl;
-    let isStateful:boolean = this._state === DomainState.STATEFUL;
-    let sessionContext:SessionContext = this._jsletContext.getSessionContext();
     //LoggerManager.getInstance().debug("resource access: " + url);
     jslet = this._jsletManager.getJslet(this._contextRoot, url);
     if(jslet) {
@@ -551,8 +552,8 @@ export class EjpContainer implements DomainContainer {
         req,
         res,
         function(request:HttpRequest, response:HttpResponse, data:any):void {
-          let renderTemplate:Function = function():void {
-            let ejsPath:string = (jslet as HttpJslet).getTemplate();
+          const renderTemplate:Function = function():void {
+            const ejsPath:string = (jslet as HttpJslet).getTemplate();
             if(ejsPath) {
               self._templateProcessor.renderFile(
                 (self._webapp + ejsPath), data, request, response

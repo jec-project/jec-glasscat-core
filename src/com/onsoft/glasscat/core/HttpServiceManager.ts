@@ -88,10 +88,10 @@ export class HttpServiceManager {
    * @param {HttpService} service the service to add.
    */
   public addService(service:HttpService):void {
-    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
+    const i18n:LocaleManager = GlassCatLocaleManager.getInstance();
+    const listener:HttpListener = service.getHttpListener();
     this._httpServiceMap.set(service.getHttpListener().getServer(), service);
     let msg:string = i18n.get("http.services.service.added");
-    let listener:HttpListener = service.getHttpListener();
     msg += "\n   => " + i18n.get("http.services.service.id", listener.getId());
     msg += "\n   * " + i18n.get(
                           "http.services.service.server",
@@ -127,7 +127,7 @@ export class HttpServiceManager {
     LoggerManager.getInstance().info(
       GlassCatLocaleManager.getInstance().get("http.services.start")
     );
-    let logMapElements = function (svc:HttpService, key:String) {
+    const logMapElements = function (svc:HttpService, key:String) {
       if(!svc.isActive()) svc.start();
     }
     this._httpServiceMap.forEach(logMapElements);
@@ -140,7 +140,7 @@ export class HttpServiceManager {
     LoggerManager.getInstance().info(
       GlassCatLocaleManager.getInstance().get("http.services.stop")
     );
-    let logMapElements = function (svc:HttpService, key:String) {
+    const logMapElements = function (svc:HttpService, key:String) {
       if(svc.isActive()) svc.stop();
     }
     this._httpServiceMap.forEach(logMapElements);

@@ -6,7 +6,7 @@ class AbstractRealmConnector {
         this.__userHashModule = null;
     }
     extractRoles(roles) {
-        let result = new Array();
+        const result = new Array();
         let len = roles.length;
         let role = null;
         let roleName = null;

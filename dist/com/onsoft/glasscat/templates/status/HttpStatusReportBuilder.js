@@ -9,7 +9,7 @@ class HttpStatusReportBuilder {
         this._version = null;
         this._codeName = null;
         if (HttpStatusReportBuilder._locked || HttpStatusReportBuilder.INSTANCE) {
-            let msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.singleton", "HttpStatusReportBuilder");
+            const msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.singleton", "HttpStatusReportBuilder");
             throw new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.SINGLETON_ERROR, msg);
         }
         HttpStatusReportBuilder._locked = true;
@@ -26,7 +26,7 @@ class HttpStatusReportBuilder {
         this._codeName = codeName;
     }
     build(status, title, message, description) {
-        let report = new HttpStatusReport_1.HttpStatusReport();
+        const report = new HttpStatusReport_1.HttpStatusReport();
         report.status = status;
         report.title = title;
         report.message = message;

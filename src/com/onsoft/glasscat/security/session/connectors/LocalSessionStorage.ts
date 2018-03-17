@@ -121,7 +121,7 @@ export class LocalSessionStorage implements SessionStorage {
    */
   public get(sessionId:SessionId, success:(session:Session)=>any,
                                   error:(error:SessionError)=>any):void {
-   let session:Session = this._sessionMap.get(sessionId.getId());
+   const session:Session = this._sessionMap.get(sessionId.getId());
    if(session) success(session);
    else {
      error(
@@ -136,8 +136,8 @@ export class LocalSessionStorage implements SessionStorage {
    * @inheritDoc
    */
   public remove(sessionId:SessionId, result:(error?:SessionError)=>any):void {
-    let id:string = sessionId.getId();
-    let exists:boolean = this._sessionMap.has(id);
+    const id:string = sessionId.getId();
+    const exists:boolean = this._sessionMap.has(id);
     if(exists) {
       this._sessionMap.delete(id);
       result();

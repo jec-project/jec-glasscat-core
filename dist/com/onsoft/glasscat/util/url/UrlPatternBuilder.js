@@ -6,11 +6,11 @@ const BasicUrlPattern_1 = require("./BasicUrlPattern");
 class UrlPatternBuilder {
     constructor() { }
     build(pattern) {
-        let urlMapper = new BasicUrlPattern_1.BasicUrlPattern();
-        let len = pattern.length - 2;
+        const urlMapper = new BasicUrlPattern_1.BasicUrlPattern();
+        const len = pattern.length - 2;
+        const permMarkId = pattern.lastIndexOf(jec_commons_1.UrlStringsEnum.PERM_MARK);
         let baseUrl = pattern.indexOf(jec_commons_1.UrlStringsEnum.SLASH) === 0 ?
             pattern.substr(1) : pattern;
-        let permMarkId = pattern.lastIndexOf(jec_commons_1.UrlStringsEnum.PERM_MARK);
         if (permMarkId === len) {
             urlMapper.strict = false;
             baseUrl = baseUrl.substr(0, len);

@@ -24,24 +24,24 @@ class Kernel {
         this.init();
     }
     init() {
-        let splashScreen = new SplashScreen_1.SplashScreen();
+        const splashScreen = new SplashScreen_1.SplashScreen();
         splashScreen.displayMessage(Kernel.VERSION);
         this.initJcadContext();
     }
     initJcadContext() {
-        let ctxFactory = new jec_commons_1.JcadContextFactory();
+        const ctxFactory = new jec_commons_1.JcadContextFactory();
         this._jcadContext = ctxFactory.create();
     }
     createHttpListeners() {
         this._httpServiceManager = new HttpServiceManager_1.HttpServiceManager();
-        let builder = new HttpServiceBuilder_1.HttpServiceBuilder();
+        const builder = new HttpServiceBuilder_1.HttpServiceBuilder();
         builder.buildServices(this._httpServiceManager, this._context.getHttpListenerConfigList());
     }
     initLocales() {
         GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().init(this._context.getLocale());
     }
     initDomainConnectors() {
-        let dcmb = new DomainConnectorManagerBuilder_1.DomainConnectorManagerBuilder();
+        const dcmb = new DomainConnectorManagerBuilder_1.DomainConnectorManagerBuilder();
         this._domainConnectorManager = dcmb.build(Kernel.VERSION, this._context, this._httpServiceManager, this._jsletManager, this._securityManager, this._jcadContext);
         this._securityManager.setDomainConnectorManager(this._domainConnectorManager);
     }
@@ -61,9 +61,9 @@ class Kernel {
     }
     initContext() {
         this._startTime = Date.now();
-        let root = process.cwd();
+        const root = process.cwd();
         this.initRootPath(root);
-        let ctxBuilder = new GlassCatContextBuilder_1.GlassCatContextBuilder();
+        const ctxBuilder = new GlassCatContextBuilder_1.GlassCatContextBuilder();
         this._context = ctxBuilder.buildContext();
         this.initLocales();
     }

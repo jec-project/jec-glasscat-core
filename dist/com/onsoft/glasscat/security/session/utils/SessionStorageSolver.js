@@ -5,8 +5,8 @@ const jec_exchange_1 = require("jec-exchange");
 class SessionStorageSolver {
     constructor() { }
     getSessionStorage(config) {
+        const storage = config.storage;
         let sessionStorage = null;
-        let storage = config.storage;
         if (storage) {
             switch (storage) {
                 case jec_exchange_1.SessionStorageType.DISTANT:

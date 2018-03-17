@@ -19,7 +19,6 @@ import {EjpConfigLoader} from "../../context/ejp/utils/EjpConfigLoader";
 import {EjpConfigParser} from "../../context/ejp/utils/EjpConfigParser";
 import {EjpConfig} from "../../context/ejp/EjpConfig";
 import {DomainContainer} from "../containers/DomainContainer";
-import {HttpService} from "../../services/http//HttpService";
 import {JsletManager} from "../../core/JsletManager";
 import * as moment from "moment";
 import {JcadContext} from "jec-commons";
@@ -28,7 +27,7 @@ import {JcadContext} from "jec-commons";
  * <code>AbstractDomainConnector</code> is the abstract class for
  * <code>DomainConnector</code> instances.
  */
-export class AbstractDomainConnector implements DomainConnector {
+export abstract class AbstractDomainConnector implements DomainConnector {
 
   //////////////////////////////////////////////////////////////////////////////
   // Constructor function
@@ -124,9 +123,9 @@ export class AbstractDomainConnector implements DomainConnector {
     this.__server = data.connector.server;
     this.__host = data.host;
     this._jcadContext = jcadContext;
-    let loader:EjpConfigLoader = new EjpConfigLoader();
-    let parser:EjpConfigParser = new EjpConfigParser();
-    let configFile:any = loader.loadSync(this.__target);
+    const loader:EjpConfigLoader = new EjpConfigLoader();
+    const parser:EjpConfigParser = new EjpConfigParser();
+    const configFile:any = loader.loadSync(this.__target);
     this.__config = parser.parse(configFile);
     this.__contextRoot = this.__config.webapp.contextRoot;
   }
@@ -191,9 +190,9 @@ export class AbstractDomainConnector implements DomainConnector {
    * @inheritDoc
    */
   public getStatusInfo():any {
-    let msg:string = "application started at " + this._startDate + 
+    const msg:string = "application started at " + this._startDate + 
                      ", on server '" + this.__server + "'.";
-    let status:Object = {
+    const status:Object = {
         title: this.__name,
         type: "Project status",
         message: "test",

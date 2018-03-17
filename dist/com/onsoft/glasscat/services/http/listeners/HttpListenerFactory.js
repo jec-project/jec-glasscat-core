@@ -9,7 +9,7 @@ class HttpListenerFactory {
         if (!config) {
             throw new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.INVALID_CONTEXT, "Config must not be null.");
         }
-        let listener = new DefaultHttpListener_1.DefaultHttpListener(config);
+        const listener = new DefaultHttpListener_1.DefaultHttpListener(config);
         return listener;
     }
 }

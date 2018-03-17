@@ -4,7 +4,7 @@ const GlassCatSessionOwner_1 = require("../GlassCatSessionOwner");
 class SessionOwnerBuilder {
     constructor() { }
     build(id, alias, roles) {
-        let owner = new GlassCatSessionOwner_1.GlassCatSessionOwner(id, alias, roles);
+        const owner = new GlassCatSessionOwner_1.GlassCatSessionOwner(id, alias, roles);
         return owner;
     }
 }

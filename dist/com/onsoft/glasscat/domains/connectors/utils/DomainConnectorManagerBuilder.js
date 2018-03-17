@@ -7,11 +7,11 @@ const DomainConfigLoader_1 = require("../../../context/domains/utils/DomainConfi
 class DomainConnectorManagerBuilder {
     constructor() { }
     build(version, context, httpManager, jsletManager, securityManager, jcadContext) {
-        let manager = new DomainConnectorManager_1.DomainConnectorManager();
-        let domainConfigLoader = new DomainConfigLoader_1.DomainConfigLoader();
-        let json = domainConfigLoader.loadSync();
-        let dcBuilder = new DomainConnectorBuilder_1.DomainConnectorBuilder();
-        let domains = json.domains;
+        const manager = new DomainConnectorManager_1.DomainConnectorManager();
+        const domainConfigLoader = new DomainConfigLoader_1.DomainConfigLoader();
+        const json = domainConfigLoader.loadSync();
+        const dcBuilder = new DomainConnectorBuilder_1.DomainConnectorBuilder();
+        const domains = json.domains;
         let len = domains.length;
         let connector = null;
         let httpService = null;

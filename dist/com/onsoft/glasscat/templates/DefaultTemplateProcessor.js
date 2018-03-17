@@ -10,7 +10,7 @@ class DefaultTemplateProcessor {
                 res.end(result);
             }
             else {
-                let logger = LoggerManager_1.LoggerManager.getInstance();
+                const logger = LoggerManager_1.LoggerManager.getInstance();
                 if (logger.isInitialized()) {
                     LoggerManager_1.LoggerManager.getInstance().error(error);
                 }

@@ -4,7 +4,7 @@ const BasicSecurityConstraint_1 = require("../core/BasicSecurityConstraint");
 class SecurityConstraintBuilder {
     constructor() { }
     build(context) {
-        let constraint = new BasicSecurityConstraint_1.BasicSecurityConstraint(context);
+        const constraint = new BasicSecurityConstraint_1.BasicSecurityConstraint(context);
         return constraint;
     }
 }

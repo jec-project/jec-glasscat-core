@@ -98,7 +98,7 @@ export class TemplatePathsSolver {
    *                  template file.
    */
   private resolveProjectPath(project:string):string {
-    let projectPath:string = TemplatePathsSolver.WORKSPACE_PATH + project;
+    const projectPath:string = TemplatePathsSolver.WORKSPACE_PATH + project;
     return MappedPathUtil.getInstance().resolve(projectPath);
   }
 
@@ -112,7 +112,7 @@ export class TemplatePathsSolver {
    * @return {string} the directory path where to create the template file.
    */
   private resolveDirPath(projectPath:string, path:string):string {
-    let dirPath:string = projectPath + JecStringsEnum.SRC + path;
+    const dirPath:string = projectPath + JecStringsEnum.SRC + path;
     return dirPath;
   }
 
@@ -127,7 +127,7 @@ export class TemplatePathsSolver {
    */
   private resolveFilePath(dirPath:string, fileName:string,
                                                       extention:string):string {
-    let filePath:string = dirPath + fileName + UrlStringsEnum.DOT + extention;
+    const filePath:string = dirPath + fileName + UrlStringsEnum.DOT + extention;
     return filePath;
   }
 
@@ -151,7 +151,7 @@ export class TemplatePathsSolver {
     if (subString.length <= 0) return (string.length + 1);
     let n:number = 0;
     let pos:number = 0;
-    let step:number = allowOverlapping ? 1 : subString.length;
+    const step:number = allowOverlapping ? 1 : subString.length;
     while(true) {
       pos = string.indexOf(subString, pos);
       if(pos >= 0) {
@@ -181,9 +181,9 @@ export class TemplatePathsSolver {
    */
   public resolve(fileName:string, fileExtension:string, projectPath:string,
                                                 filePath:string):TemplatePaths {
+    const fixedPath:string = this.fixFilePath(filePath);
+    const fixedProjectPath:string = this.resolveProjectPath(projectPath);
     let resolved:TemplatePaths = new TemplatePaths();
-    let fixedPath:string = this.fixFilePath(filePath);
-    let fixedProjectPath:string = this.resolveProjectPath(projectPath);
     let dirPath:string = null;
     resolved.projectPath = fixedProjectPath;
     resolved.relativePathPattern = this.resolveRelativePath(fixedPath);

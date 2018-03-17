@@ -11,7 +11,7 @@ class MappedPathUtil {
         this._glasscatPath = null;
         this._modulesPath = null;
         if (MappedPathUtil._locked || MappedPathUtil.INSTANCE) {
-            let msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.singleton", "MappedPathUtil");
+            const msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.singleton", "MappedPathUtil");
             throw new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.SINGLETON_ERROR, msg);
         }
         MappedPathUtil._locked = true;

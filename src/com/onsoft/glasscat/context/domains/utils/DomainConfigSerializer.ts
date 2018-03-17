@@ -51,10 +51,10 @@ export class DomainConfigSerializer {
   public serialize(config:DomainConfig, success:(data:string)=>void,
                                         error:(err:GlassCatError)=>void):void {
     try {
-      let data:string = JSON.stringify(config);
+      const data:string = JSON.stringify(config);
       success(data);
     } catch(e) {
-      let err:GlassCatError =
+      const err:GlassCatError =
              new GlassCatError(GlassCatErrorCode.CONFIG_SERIALIZATION_ERROR, e);
       error(err);
     }

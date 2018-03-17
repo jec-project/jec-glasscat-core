@@ -6,13 +6,13 @@ const GlassCatLocaleManager_1 = require("../../i18n/GlassCatLocaleManager");
 class BootstrapScriptRunner {
     constructor() { }
     runAll(container) {
+        const logManager = LoggerManager_1.LoggerManager.getInstance();
+        const i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
+        const context = container.getBootstrapContext();
+        const scripts = context.getScriptList();
         let sorter = null;
-        let context = container.getBootstrapContext();
-        let scripts = context.getScriptList();
         let script = null;
         let len = scripts.length;
-        let logManager = LoggerManager_1.LoggerManager.getInstance();
-        let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
         if (len > 0) {
             sorter = new BootstrapScriptSorter_1.BootstrapScriptSorter();
             sorter.sortCollection(scripts);

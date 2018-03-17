@@ -8,7 +8,7 @@ const GlassCatErrorCode_1 = require("../../../exceptions/GlassCatErrorCode");
 class ResourceProxy {
     constructor() {
         if (ResourceProxy._locked || ResourceProxy.INSTANCE) {
-            let msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.singleton", "ResourceProxy");
+            const msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("errors.singleton", "ResourceProxy");
             throw new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.SINGLETON_ERROR, msg);
         }
         ResourceProxy._locked = true;
@@ -21,7 +21,7 @@ class ResourceProxy {
         return ResourceProxy.INSTANCE;
     }
     getConectorRef(listener, contextRoot) {
-        let connectorRef = listener.getProtocol() + listener.getDomain() +
+        const connectorRef = listener.getProtocol() + listener.getDomain() +
             jec_commons_1.UrlStringsEnum.COLON + listener.getPort() +
             contextRoot;
         return connectorRef;
@@ -30,15 +30,15 @@ class ResourceProxy {
         return ResourceProxy.RESOURCE_PROXY_PATTERN.test(url);
     }
     getProxyPath(baseUrl, listener, domainConnectorManager) {
-        let found = baseUrl.match(ResourceProxy.RESOURCE_PROXY_PATTERN);
-        let pathMap = found[0];
-        let pathLength = pathMap.length;
-        let lastColonId = pathMap.lastIndexOf(jec_commons_1.UrlStringsEnum.COLON);
-        let contextRoot = pathMap.substring(pathMap.indexOf(jec_commons_1.UrlStringsEnum.COLON) + 1, lastColonId);
-        let connector = domainConnectorManager.getDomainConnector(this.getConectorRef(listener, contextRoot));
-        let resourceRef = pathMap.substring(lastColonId + 1, pathLength - 1);
-        let resourceValue = connector.getContainer().getMappedResource(resourceRef);
-        let path = connector.getTarget() + jec_commons_1.JecStringsEnum.WEB_APP +
+        const found = baseUrl.match(ResourceProxy.RESOURCE_PROXY_PATTERN);
+        const pathMap = found[0];
+        const pathLength = pathMap.length;
+        const lastColonId = pathMap.lastIndexOf(jec_commons_1.UrlStringsEnum.COLON);
+        const contextRoot = pathMap.substring(pathMap.indexOf(jec_commons_1.UrlStringsEnum.COLON) + 1, lastColonId);
+        const connector = domainConnectorManager.getDomainConnector(this.getConectorRef(listener, contextRoot));
+        const resourceRef = pathMap.substring(lastColonId + 1, pathLength - 1);
+        const resourceValue = connector.getContainer().getMappedResource(resourceRef);
+        const path = connector.getTarget() + jec_commons_1.JecStringsEnum.WEB_APP +
             resourceValue + jec_commons_1.UrlStringsEnum.SLASH +
             baseUrl.substr(found[ResourceProxy.INDEX] + pathLength);
         return path;

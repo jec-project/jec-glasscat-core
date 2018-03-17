@@ -55,7 +55,7 @@ export class GlassCatLogFormatter implements LogFormatter {
    */
   public format(level:LogLevelString, marker:any, useAppender:boolean = false,
                                           context:string = ""):string {
-    let time:string =  moment().format(this.timeFormat);
+    const time:string =  moment().format(this.timeFormat);
     let msg:string = `[${time}][GlassCat]${context} ${level}: ${marker}`;
     if(useAppender) msg += this.appender;
     return msg;

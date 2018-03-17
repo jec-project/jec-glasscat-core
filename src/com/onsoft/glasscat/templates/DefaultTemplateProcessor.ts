@@ -51,7 +51,7 @@ export class DefaultTemplateProcessor implements TemplateProcessor {
           if (!error) {
             res.end(result);
           } else {
-            let logger:LoggerManager =
+            const logger:LoggerManager =
                                  (LoggerManager.getInstance() as LoggerManager);
             if(logger.isInitialized()) {
               LoggerManager.getInstance().error(error);

@@ -47,7 +47,7 @@ export class SessionOwnerBuilder {
    *                        parameters.
    */
   public build(id:string, alias:string, roles:SecurityRole[]):SessionOwner {
-    let owner:SessionOwner = new GlassCatSessionOwner(id, alias, roles);
+    const owner:SessionOwner = new GlassCatSessionOwner(id, alias, roles);
     return owner;
   }
 }

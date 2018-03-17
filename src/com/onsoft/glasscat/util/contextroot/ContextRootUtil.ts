@@ -91,7 +91,7 @@ export class ContextRootUtil {
    */
   public buildContextRoot(connector:DomainConnector,
                                                 listener:HttpListener):string {
-    let ctx:string =
+    const ctx:string =
       listener.getProtocol() + connector.getHost() + UrlStringsEnum.COLON + 
       listener.getPort() + connector.getContextRoot();
     return ctx;
@@ -107,12 +107,11 @@ export class ContextRootUtil {
    *                                    match a registered context root.
    */
   public extractContextRoot(reqest:express.Request):ContextRootData {
+    const host:string = reqest.header(ContextRootUtil.HOST);
     let path:string = reqest.path;
-    let ctx:string = UrlStringsEnum.EMPTY_STRING;
     let referer:string = UrlStringsEnum.EMPTY_STRING;
     let index:number = -1;
     let buffer:string[] = null;
-    let host:string = reqest.header(ContextRootUtil.HOST);
     this._contextRootData.reset();
     if(ResourceProxy.getInstance().testUrl(path)) {
       this._contextRootData.containsNestedResource = true;

@@ -109,7 +109,7 @@ export class DefaultHttpListener implements HttpListener {
    *                                    <code>HttpListener</code> instance.
    */
   private init(config:HttpListenerConfig):void {
-    let monitoring:HttpMonitoring = new HttpMonitoring(config.monitoring);
+    const monitoring:HttpMonitoring = new HttpMonitoring(config.monitoring);
     this._id = config.id;
     this._port = config.port;
     this._address = config.address;

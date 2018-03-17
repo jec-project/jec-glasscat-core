@@ -27,9 +27,9 @@ class AbstractDomainConnector {
         this.__server = data.connector.server;
         this.__host = data.host;
         this._jcadContext = jcadContext;
-        let loader = new EjpConfigLoader_1.EjpConfigLoader();
-        let parser = new EjpConfigParser_1.EjpConfigParser();
-        let configFile = loader.loadSync(this.__target);
+        const loader = new EjpConfigLoader_1.EjpConfigLoader();
+        const parser = new EjpConfigParser_1.EjpConfigParser();
+        const configFile = loader.loadSync(this.__target);
         this.__config = parser.parse(configFile);
         this.__contextRoot = this.__config.webapp.contextRoot;
     }
@@ -58,9 +58,9 @@ class AbstractDomainConnector {
         return this._jcadContext;
     }
     getStatusInfo() {
-        let msg = "application started at " + this._startDate +
+        const msg = "application started at " + this._startDate +
             ", on server '" + this.__server + "'.";
-        let status = {
+        const status = {
             title: this.__name,
             type: "Project status",
             message: "test",

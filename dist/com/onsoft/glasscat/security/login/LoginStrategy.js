@@ -14,7 +14,7 @@ class LoginStrategy {
     }
     init(strategyConfig) {
         this._strategyConfig = strategyConfig;
-        let authMethod = this._strategyConfig.getAuthMethod();
+        const authMethod = this._strategyConfig.getAuthMethod();
         switch (authMethod) {
             case jec_exchange_1.AuthMethod.EJP_FORM:
                 this._loginModule = new EjpFormModule_1.EjpFormModule();
@@ -54,8 +54,8 @@ class LoginStrategy {
         });
     }
     invalidateSession(req, res, result) {
-        let cookies = req.getCookies();
-        let sessionId = SessionIdUtil_1.SessionIdUtil.parseSessionIdCookie(cookies);
+        const cookies = req.getCookies();
+        const sessionId = SessionIdUtil_1.SessionIdUtil.parseSessionIdCookie(cookies);
         this._sessionContext.unloadSession(sessionId, (err) => {
             this._loginModule.applyLogoutStrategy(req, res, result);
         });

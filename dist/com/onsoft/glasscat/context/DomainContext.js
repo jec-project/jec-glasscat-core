@@ -12,7 +12,7 @@ class DomainContext {
         this._map.set(domain.name, domain);
     }
     getDomainList() {
-        let list = new Array();
+        const list = new Array();
         this._map.forEach((value) => { list.push(value); });
         return list;
     }

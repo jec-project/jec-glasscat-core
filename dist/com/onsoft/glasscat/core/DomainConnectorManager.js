@@ -15,8 +15,8 @@ class DomainConnectorManager {
         this._contextRootUtil = new ContextRootUtil_1.ContextRootUtil();
     }
     addConnector(connector, listener) {
-        let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
-        let contextRootRef = this._contextRootUtil.buildContextRoot(connector, listener);
+        const i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
+        const contextRootRef = this._contextRootUtil.buildContextRoot(connector, listener);
         this._connectorMap.set(contextRootRef, connector);
         let msg = i18n.get("domains.connectors.added");
         msg += "\n   => " + i18n.get("domains.connectors.name", connector.getName());

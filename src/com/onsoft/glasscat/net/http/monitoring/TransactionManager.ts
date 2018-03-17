@@ -94,8 +94,8 @@ export class TransactionManager {
    *                               transaction.
    */
   public openTransaction(req:express.Request, res:express.Response):void {
-    let transaction:HttpTransaction = new HttpTransaction(req.originalUrl);
-    let id:string = transaction.getId();
+    const transaction:HttpTransaction = new HttpTransaction(req.originalUrl);
+    const id:string = transaction.getId();
     res.locals.transactionId = id;
     this._transactionMap.set(id, transaction);
   }
@@ -109,9 +109,9 @@ export class TransactionManager {
    *                              transaction.
    */
   public closeTransaction(req:express.Request, res:express.Response):void {
-    let locals:any = res.locals;
-    let id:string = locals.transactionId;
-    let transaction:HttpTransaction = this._transactionMap.get(id);
+    const locals:any = res.locals;
+    const id:string = locals.transactionId;
+    const transaction:HttpTransaction = this._transactionMap.get(id);
     transaction.close(!locals.transactionFails);
     this._transactionMonitor.send(transaction);
     this._transactionMap.delete(id);

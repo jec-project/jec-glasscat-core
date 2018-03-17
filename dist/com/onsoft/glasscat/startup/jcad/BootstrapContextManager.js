@@ -10,16 +10,16 @@ class BootstrapContextManager {
         this._jcadContext = null;
     }
     initContext(jcadReference, decoratorClass) {
-        let ctxManager = jec_commons_1.JcadContextManager.getInstance();
-        let connManager = jec_commons_1.DecoratorConnectorManager.getInstance();
-        let decorator = new decoratorClass();
-        let connector = new BootstrapConnector_1.BootstrapConnector(jcadReference, decorator);
+        const ctxManager = jec_commons_1.JcadContextManager.getInstance();
+        const connManager = jec_commons_1.DecoratorConnectorManager.getInstance();
+        const decorator = new decoratorClass();
+        const connector = new BootstrapConnector_1.BootstrapConnector(jcadReference, decorator);
         ctxManager.addContext(jcadReference, this._jcadContext);
         connManager.addConnector(connector, this._jcadContext);
     }
     removeContext(jcadReference) {
-        let ctxManager = jec_commons_1.JcadContextManager.getInstance();
-        let connManager = jec_commons_1.DecoratorConnectorManager.getInstance();
+        const ctxManager = jec_commons_1.JcadContextManager.getInstance();
+        const connManager = jec_commons_1.DecoratorConnectorManager.getInstance();
         connManager.removeConnector(jcadReference, this._jcadContext);
         ctxManager.removeContext(jcadReference);
     }

@@ -59,10 +59,10 @@ export class GlassCatConfigUpdater {
    *                         reference as parameter.
    */
   public update(config:BootstrapConfig, result:(err:any)=>void):void {
-    let path:string =
+    const path:string =
       MappedPathUtil.getInstance()
                     .resolve(GlassCatConfigUpdater.BOOTSTRAP_FILE_PATH);
-    let data:string = JSON.stringify(config);
+    const data:string = JSON.stringify(config);
     let glassCatError:GlassCatError = null;
     //console.log(data);
     fs.writeFile(

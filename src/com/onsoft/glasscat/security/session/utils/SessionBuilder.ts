@@ -43,7 +43,7 @@ export class SessionBuilder {
    * @return {Session} a new session initialized with the specified parameters.
    */
   public buildSession(sessionId:SessionId, sessionOwner:SessionOwner):Session {
-    let session:Session = new GlassCatSession();
+    const session:Session = new GlassCatSession();
     session.sessionId = sessionId;
     session.sessionOwner = sessionOwner;
     return session;

@@ -127,11 +127,12 @@ export class EjpSessionContext implements SessionContext {
    *                                         <code>SessionContext</code>
    */
   private initSessionManager(sessionConfig:EjpSessionConfig):void {
+    const sessionStorageSolver:SessionStorageSolver =
+                                                     new SessionStorageSolver();
+    const sessionStorage:SessionStorage = 
+                          sessionStorageSolver.getSessionStorage(sessionConfig);
     this._sessionBuilder = new SessionBuilder();
     this._sessionManager = new EjpSessionManager();
-    let sessionStorageSolver:SessionStorageSolver = new SessionStorageSolver();
-    let sessionStorage:SessionStorage = 
-                          sessionStorageSolver.getSessionStorage(sessionConfig);
     this._sessionManager.setSessionStorage(sessionStorage);
     if(sessionConfig.errorUrl) this._errorUrl = sessionConfig.errorUrl;
     if(sessionConfig.maxAge) {
@@ -195,8 +196,8 @@ export class EjpSessionContext implements SessionContext {
    */
   public invalidateSession(req:HttpRequest,
                            result:(error?:SessionError)=>any):void {
-    let cookies:any = req.getCookies();
-    let sessionId:SessionId = SessionIdUtil.parseSessionIdCookie(cookies);
+    const cookies:any = req.getCookies();
+    const sessionId:SessionId = SessionIdUtil.parseSessionIdCookie(cookies);
     this.unloadSession(sessionId, result);
   }
 
@@ -212,9 +213,9 @@ export class EjpSessionContext implements SessionContext {
    */
   public initSession(req:HttpRequest, sessionOwner:SessionOwner,
                                       result:(error?:SessionError)=>any):void {
-    let cookies:any = req.getCookies();
-    let sessionId:SessionId = SessionIdUtil.parseSessionIdCookie(cookies);
-    let session:Session =
+    const cookies:any = req.getCookies();
+    const sessionId:SessionId = SessionIdUtil.parseSessionIdCookie(cookies);
+    const session:Session =
                      this._sessionBuilder.buildSession(sessionId, sessionOwner);
     session.expires = SessionUtil.getExirationTime(this._maxAge);
     this._sessionManager.addSession(
@@ -230,10 +231,10 @@ export class EjpSessionContext implements SessionContext {
    * @inheritDoc
    */
   public loadSession(sessionId:SessionId, result:(error?:SessionError)=>any):void {
-    let maxAge:number = Date.now();
-    let id:string = sessionId.getId();
+    const maxAge:number = Date.now();
+    const id:string = sessionId.getId();
     if(this._sessionMap.has(id)) {
-      let cached:Session = this._sessionMap.get(id);
+      const cached:Session = this._sessionMap.get(id);
       //console.log("check cached session:", sessionId);
       if(cached.expires <= maxAge) {
         this.processExpiredSession(sessionId, result);
@@ -260,7 +261,7 @@ export class EjpSessionContext implements SessionContext {
    */
   public refreshSession(sessionId:SessionId, data:any,
                                        result:(error?:SessionError)=>any):void {
-    let session:Session = this._sessionMap.get(sessionId.getId());
+    const session:Session = this._sessionMap.get(sessionId.getId());
     if(session) {
       session.data = data;
       session.expires = SessionUtil.getExirationTime(this._maxAge);

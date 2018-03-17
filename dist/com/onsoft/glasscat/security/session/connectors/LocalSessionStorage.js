@@ -38,7 +38,7 @@ class LocalSessionStorage {
         result();
     }
     get(sessionId, success, error) {
-        let session = this._sessionMap.get(sessionId.getId());
+        const session = this._sessionMap.get(sessionId.getId());
         if (session)
             success(session);
         else {
@@ -46,8 +46,8 @@ class LocalSessionStorage {
         }
     }
     remove(sessionId, result) {
-        let id = sessionId.getId();
-        let exists = this._sessionMap.has(id);
+        const id = sessionId.getId();
+        const exists = this._sessionMap.has(id);
         if (exists) {
             this._sessionMap.delete(id);
             result();

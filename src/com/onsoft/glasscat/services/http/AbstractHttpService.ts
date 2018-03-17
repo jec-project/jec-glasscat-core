@@ -46,7 +46,7 @@ import {NotFoundErrorBuilder} from "../../domains/errors/NotFoundErrorBuilder";
  * The <code>AbstractHttpService</code> class represents the abstract class for  
  * all GlassCat HTTP services.
  */
-export class AbstractHttpService implements HttpService {
+export abstract class AbstractHttpService implements HttpService {
 
   //////////////////////////////////////////////////////////////////////////////
   // Constructor function
@@ -227,7 +227,7 @@ export class AbstractHttpService implements HttpService {
    */
   private checkSession(req:express.Request, res:express.Response,
                                             next:Function):void {
-    let properties:HttpLocalProperties = new HttpLocalProperties();
+    const properties:HttpLocalProperties = new HttpLocalProperties();
     res.setHeader(HttpHeader.X_POWERED_BY, this.GLASSCAT);
     res.locals.properties = properties;
     this.__securityManager.processSession(
@@ -257,7 +257,7 @@ export class AbstractHttpService implements HttpService {
    */
   private validateRequest(req:express.Request, res:express.Response,
                                                            next:Function):void {
-    let properties:HttpLocalProperties = res.locals.properties;
+    const properties:HttpLocalProperties = res.locals.properties;
     let httpRequest:HttpRequest = null;
     let httpResponse:HttpResponse = null;
     if(properties.isStatic) next();
@@ -307,11 +307,11 @@ export class AbstractHttpService implements HttpService {
    */
   private processRequest(req:express.Request, res:express.Response,
                                                            next:Function):void {
-    let httpRequest:HttpRequest = new GlassCatHttpRequest(req);
-    let httpResponse:HttpResponse = new GlassCatHttpResponse(res);
-    let properties:HttpLocalProperties = res.locals.properties;
-    let crd:ContextRootData = properties.contextRootData;
-    let connector:DomainConnector = properties.connector;
+    const httpRequest:HttpRequest = new GlassCatHttpRequest(req);
+    const httpResponse:HttpResponse = new GlassCatHttpResponse(res);
+    const properties:HttpLocalProperties = res.locals.properties;
+    const crd:ContextRootData = properties.contextRootData;
+    const connector:DomainConnector = properties.connector;
     if(crd.containsNestedResource) {
       ResourceProxy.getInstance().loadFile(
         crd.newPath,
@@ -361,7 +361,7 @@ export class AbstractHttpService implements HttpService {
    * @private
    */
   private initHeadersSecurity():void {
-    let headerParams:string[] =
+    const headerParams:string[] =
                   this.__securityManager.getHeaderSecurityParams(this);
   }
 
@@ -405,7 +405,7 @@ export class AbstractHttpService implements HttpService {
   private initErrorFilter():void {
     this.__app.use((err:any, req:express.Request, res:express.Response,
                                                               next:Function)=> {
-      let status:number = err.status || HttpStatusCode.INTERNAL_SERVER_ERROR;
+      const status:number = err.status || HttpStatusCode.INTERNAL_SERVER_ERROR;
       //console.error("------------->", err);
       //TODO: implement custom 404 error processor
       res.sendStatus(status);
@@ -453,7 +453,7 @@ export class AbstractHttpService implements HttpService {
   * @inheritDoc
   */
   public start():void {
-    let port:number = this.__listener.getPort();
+    const port:number = this.__listener.getPort();
     this.__server = this.__app.listen(port);
     this._isActive = true;
     LoggerManager.getInstance().info(

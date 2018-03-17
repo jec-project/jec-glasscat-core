@@ -12,7 +12,7 @@ class DomainConfigUpdater {
         this._serializer = new DomainConfigSerializer_1.DomainConfigSerializer();
     }
     update(config, result) {
-        let path = MappedPathUtil_1.MappedPathUtil.getInstance().resolve(DomainConfigUpdater.DOMAIN_FILE_PATH);
+        const path = MappedPathUtil_1.MappedPathUtil.getInstance().resolve(DomainConfigUpdater.DOMAIN_FILE_PATH);
         this._serializer.serialize(config, (data) => {
             fs.writeFile(path, data, result);
         }, (err) => {

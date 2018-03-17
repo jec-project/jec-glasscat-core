@@ -47,13 +47,13 @@ export class BootstrapScriptRunner {
    *
    */
   public runAll(container:DomainContainer):void {
+    const logManager:Logger = LoggerManager.getInstance();
+    const i18n:LocaleManager = GlassCatLocaleManager.getInstance();
+    const context:BootstrapContext = container.getBootstrapContext();
+    const scripts:BootstrapScript[] = context.getScriptList();
     let sorter:BootstrapScriptSorter = null;
-    let context:BootstrapContext = container.getBootstrapContext();
-    let scripts:BootstrapScript[] = context.getScriptList();
     let script:BootstrapScript = null;
     let len:number = scripts.length;
-    let logManager:Logger = LoggerManager.getInstance();
-    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     if(len > 0) {
       sorter = new BootstrapScriptSorter();
       sorter.sortCollection(scripts);

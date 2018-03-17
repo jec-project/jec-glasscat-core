@@ -23,9 +23,9 @@ class EjpSessionManager {
         this._connector = sessionStorage;
     }
     initSessionId() {
-        let sha = crypto.createHash(this.HASH_ALGORITHM)
+        const sha = crypto.createHash(this.HASH_ALGORITHM)
             .update(Date.now() + this._guid);
-        let sessionId = this._sessionIdBuilder.buildSessionId(sha.digest(this.OUTPUT_ENCODING));
+        const sessionId = this._sessionIdBuilder.buildSessionId(sha.digest(this.OUTPUT_ENCODING));
         return sessionId;
     }
     addSession(session, result) {

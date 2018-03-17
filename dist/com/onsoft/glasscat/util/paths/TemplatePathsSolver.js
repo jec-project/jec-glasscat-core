@@ -31,15 +31,15 @@ class TemplatePathsSolver {
         return result;
     }
     resolveProjectPath(project) {
-        let projectPath = TemplatePathsSolver.WORKSPACE_PATH + project;
+        const projectPath = TemplatePathsSolver.WORKSPACE_PATH + project;
         return MappedPathUtil_1.MappedPathUtil.getInstance().resolve(projectPath);
     }
     resolveDirPath(projectPath, path) {
-        let dirPath = projectPath + jec_commons_1.JecStringsEnum.SRC + path;
+        const dirPath = projectPath + jec_commons_1.JecStringsEnum.SRC + path;
         return dirPath;
     }
     resolveFilePath(dirPath, fileName, extention) {
-        let filePath = dirPath + fileName + jec_commons_1.UrlStringsEnum.DOT + extention;
+        const filePath = dirPath + fileName + jec_commons_1.UrlStringsEnum.DOT + extention;
         return filePath;
     }
     countOccurrences(string, subString, allowOverlapping = false) {
@@ -47,7 +47,7 @@ class TemplatePathsSolver {
             return (string.length + 1);
         let n = 0;
         let pos = 0;
-        let step = allowOverlapping ? 1 : subString.length;
+        const step = allowOverlapping ? 1 : subString.length;
         while (true) {
             pos = string.indexOf(subString, pos);
             if (pos >= 0) {
@@ -60,9 +60,9 @@ class TemplatePathsSolver {
         return n;
     }
     resolve(fileName, fileExtension, projectPath, filePath) {
+        const fixedPath = this.fixFilePath(filePath);
+        const fixedProjectPath = this.resolveProjectPath(projectPath);
         let resolved = new TemplatePaths_1.TemplatePaths();
-        let fixedPath = this.fixFilePath(filePath);
-        let fixedProjectPath = this.resolveProjectPath(projectPath);
         let dirPath = null;
         resolved.projectPath = fixedProjectPath;
         resolved.relativePathPattern = this.resolveRelativePath(fixedPath);

@@ -26,7 +26,7 @@ import {SessionIdUtil} from "../../session/utils/SessionIdUtil";
 /**
  * The abstract class for all <code>LoginModule</code> implementation.
  */
-export class AbstractLoginModule implements LoginModule {
+export abstract class AbstractLoginModule implements LoginModule {
 
   //////////////////////////////////////////////////////////////////////////////
   // Constructor function
@@ -66,8 +66,8 @@ export class AbstractLoginModule implements LoginModule {
    * @inheritDoc
    */
   public setLoginStrategy(strategy:LoginStrategy):void {
-    let builder:RealmBuilder = new DefaultRealmBuilder();
-    let jsletContext:JsletContext = strategy.getJsletContext();
+    const builder:RealmBuilder = new DefaultRealmBuilder();
+    const jsletContext:JsletContext = strategy.getJsletContext();
     this.__realm = builder.buildRealm(
       strategy.getLoginStrategyConfig(), jsletContext.getSecurityContext()
     );

@@ -29,10 +29,11 @@ class EjpJsletContext extends AbstractContainerContext_1.AbstractContainerContex
         this._loginStrategy = loginStrategy;
     }
     addJslet(jslet) {
-        let httpJslet = jslet;
+        const httpJslet = jslet;
+        const i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
         httpJslet.setContext(this);
         let urlPattern = null;
-        let patterns = httpJslet.getUrlPatterns();
+        const patterns = httpJslet.getUrlPatterns();
         let len = patterns.length;
         let pattern = null;
         while (len--) {
@@ -42,15 +43,14 @@ class EjpJsletContext extends AbstractContainerContext_1.AbstractContainerContex
             this._jsletMap.set(urlPattern.baseUrl, jslet);
         }
         jslet.init();
-        let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
-        var msg = i18n.get("jslet.added", httpJslet.getName(), patterns.toString(), httpJslet.getTemplate());
+        const msg = i18n.get("jslet.added", httpJslet.getName(), patterns.toString(), httpJslet.getTemplate());
         LoggerManager_1.LoggerManager.getInstance().info(msg);
     }
     getJslet(url) {
+        const baseUrl = url === jec_commons_1.UrlStringsEnum.EMPTY_STRING ? ContextRootUtil_1.ContextRootUtil.INDEX : url;
         let jslet = undefined;
         let len = this._urlPatternColl.length;
         let urlPattern = null;
-        let baseUrl = url === jec_commons_1.UrlStringsEnum.EMPTY_STRING ? ContextRootUtil_1.ContextRootUtil.INDEX : url;
         while (len--) {
             urlPattern = this._urlPatternColl[len];
             if (this._urlPatternUtils.match(baseUrl, urlPattern)) {

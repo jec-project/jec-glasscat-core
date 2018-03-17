@@ -49,9 +49,9 @@ export class UrlPatternUtils {
    *                   otherwise.
    */
   public match(url:string, pattern:UrlPattern):boolean {
+    const notStrict:boolean = !pattern.strict;
+    const baseUrl:string = pattern.baseUrl;
     let result:boolean = false;
-    let notStrict:boolean = !pattern.strict;
-    let baseUrl:string = pattern.baseUrl;
     let testUrl:string = url;
     // Check for short path in URL pattern mode: my/url === my/url/ 
     if(notStrict) {

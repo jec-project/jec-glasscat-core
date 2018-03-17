@@ -100,7 +100,7 @@ export class RoutePattern {
    *                        specified URL does not matche this route.
    */
   public match(url:string, success:(result:any)=>void, fail:()=>void):void {
-    let result:any = this._pattern.match(url);
+    const result:any = this._pattern.match(url);
     if(result) success(result);
     else fail();
   }

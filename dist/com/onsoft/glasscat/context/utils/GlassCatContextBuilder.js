@@ -6,11 +6,11 @@ const BootstrapConfigParser_1 = require("../core/utils/BootstrapConfigParser");
 class GlassCatContextBuilder {
     constructor() { }
     buildContext() {
-        let loader = new GlassCatConfigLoader_1.GlassCatConfigLoader();
-        let parser = new BootstrapConfigParser_1.BootstrapConfigParser();
-        let config = loader.loadSync();
-        let bootstrap = parser.parse(config);
-        let ctx = new GlassCatContext_1.GlassCatContext(bootstrap);
+        const loader = new GlassCatConfigLoader_1.GlassCatConfigLoader();
+        const parser = new BootstrapConfigParser_1.BootstrapConfigParser();
+        const config = loader.loadSync();
+        const bootstrap = parser.parse(config);
+        const ctx = new GlassCatContext_1.GlassCatContext(bootstrap);
         return ctx;
     }
 }

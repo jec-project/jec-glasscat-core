@@ -81,8 +81,8 @@ export class AdminFileRealmConnector extends AbstractRealmConnector
    * Initializes this object.
    */
   private init():void {
-    let pathUtil:MappedPathUtil = MappedPathUtil.getInstance();
-    let gkpPath:string =
+    const pathUtil:MappedPathUtil = MappedPathUtil.getInstance();
+    const gkpPath:string =
                       pathUtil.resolve("${root}/public/cfg/keyfiles/admin.gkp");
     this._gksPath = pathUtil.resolve("${root}/public/cfg/keyfiles/admin.gks");
     try {
@@ -140,7 +140,7 @@ export class AdminFileRealmConnector extends AbstractRealmConnector
    *                             realm.
    */
   private getReadLine(stream:fs.ReadStream):readline.ReadLine {
-    let line:readline.ReadLine = readline.createInterface(
+    const line:readline.ReadLine = readline.createInterface(
       { input:stream, output:null, terminal:false }
     );
     return line;
@@ -156,16 +156,16 @@ export class AdminFileRealmConnector extends AbstractRealmConnector
   public authenticate(credentials:Credentials,
                                    success:(sessionOwner:SessionOwner)=>void,
                                    error:(err:AuthenticationError)=>void):void {
-    let sessionOwner:SessionOwner = null;
-    let login:string = credentials.login;
-    let alias:string = this.__userHashModule.encryptAlias(login);
-    let password:string =
+    const login:string = credentials.login;
+    const alias:string = this.__userHashModule.encryptAlias(login);
+    const password:string =
                     this.__userHashModule.encryptPassword(credentials.password);
+    const stream:fs.ReadStream = this.getStream();
+    const rl:readline.ReadLine = this.getReadLine(stream);
+    let sessionOwner:SessionOwner = null;
     let userData:string[] = null;
     let roles:string[] = null;
     let lineId:number = 0;
-    let stream:fs.ReadStream = this.getStream();
-    let rl:readline.ReadLine = this.getReadLine(stream);
     let builder:SessionOwnerBuilder = null;
     rl.on(this.LINE_EVENT, (line:string)=> {
       if(line.indexOf(alias) === 0) {

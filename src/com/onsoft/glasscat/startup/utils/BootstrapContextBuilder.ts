@@ -37,7 +37,7 @@ export class BootstrapContextBuilder {
    */
   constructor() {
     if(BootstrapContextBuilder._locked || BootstrapContextBuilder.INSTANCE) {
-      let msg:string = GlassCatLocaleManager.getInstance().get(
+      const msg:string = GlassCatLocaleManager.getInstance().get(
         "errors.singleton", "BootstrapContextBuilder"
       );
       throw new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, msg);
@@ -86,8 +86,8 @@ export class BootstrapContextBuilder {
    * @return {BootstrapContext} a new <code>BootstrapContext</code> instance.
    */
   public buildContext(connector:DomainConnector):BootstrapContext {
-    let context:BootstrapContext = new EjpBootstrapContext(connector);
-    let msg:string = GlassCatLocaleManager.getInstance().get(
+    const context:BootstrapContext = new EjpBootstrapContext(connector);
+    const msg:string = GlassCatLocaleManager.getInstance().get(
       "bootstrap.newContext", connector.getContextRoot()
     );
     LoggerManager.getInstance().debug(msg);

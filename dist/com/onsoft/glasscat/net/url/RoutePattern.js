@@ -17,7 +17,7 @@ class RoutePattern {
         this._name = name;
     }
     match(url, success, fail) {
-        let result = this._pattern.match(url);
+        const result = this._pattern.match(url);
         if (result)
             success(result);
         else

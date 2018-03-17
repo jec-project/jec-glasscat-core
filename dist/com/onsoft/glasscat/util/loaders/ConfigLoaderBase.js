@@ -9,13 +9,12 @@ const GlassCatErrorCode_1 = require("../../exceptions/GlassCatErrorCode");
 class ConfigLoaderBase {
     constructor() { }
     loadConfigSync(filePath) {
-        let loader = new jec_commons_node_1.DefaultJsonLoader();
-        let path = MappedPathUtil_1.MappedPathUtil.getInstance().resolve(filePath);
+        const path = MappedPathUtil_1.MappedPathUtil.getInstance().resolve(filePath);
         let json = null;
         let logManager = null;
         let i18n = null;
         try {
-            json = loader.loadSync(path);
+            json = jec_commons_node_1.GlobalJsonLoader.getInstance().loadSync(path);
         }
         catch (e) {
             logManager = LoggerManager_1.LoggerManager.getInstance();
@@ -28,19 +27,19 @@ class ConfigLoaderBase {
         return json;
     }
     loadConfig(filePath, success, error) {
-        let loader = new jec_commons_node_1.DefaultJsonLoader();
-        let path = MappedPathUtil_1.MappedPathUtil.getInstance().resolve(filePath);
+        const path = MappedPathUtil_1.MappedPathUtil.getInstance().resolve(filePath);
         let logManager = null;
         let i18n = null;
-        loader.load(path, success, (e) => {
+        let gcError = null;
+        jec_commons_node_1.GlobalJsonLoader.getInstance().load(path, success, (e) => {
             logManager = LoggerManager_1.LoggerManager.getInstance();
             i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
             if (logManager.isInitialized() && i18n.isInitialized()) {
                 logManager.error(i18n.get("errors.loadingFile", e));
             }
             ;
-            let glassCatError = new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.CONFIG_LOADING_FAILURE, e);
-            error(glassCatError);
+            gcError = new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.CONFIG_LOADING_FAILURE, e);
+            error(gcError);
         });
     }
 }

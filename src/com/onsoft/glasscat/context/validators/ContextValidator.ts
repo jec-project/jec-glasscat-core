@@ -43,12 +43,12 @@ export class ContextValidator implements KernelValidator {
    * @inheritDoc
    */
   public validate(kernel:Kernel):void {
-    let i18n:LocaleManager = GlassCatLocaleManager.getInstance();
+    const i18n:LocaleManager = GlassCatLocaleManager.getInstance();
     LoggerManager.getInstance().debug(i18n.get("context.start"));
     let isValid:boolean = true;
-    let context:GlassCatContext = kernel.getContext();
-    let ctxVer:string = context.getVersion();
-    let kerVer:string = kernel.getVersion();
+    const context:GlassCatContext = kernel.getContext();
+    const ctxVer:string = context.getVersion();
+    const kerVer:string = kernel.getVersion();
     if(ctxVer !== kerVer) {
       LoggerManager.getInstance().warn(
         i18n.get("warnings.invalidContext", ctxVer, kerVer)

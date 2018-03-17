@@ -4,7 +4,7 @@ const BasicSessionError_1 = require("../errors/BasicSessionError");
 class SessionErrorBuilder {
     constructor() { }
     build(sessionId, type, message) {
-        let error = new BasicSessionError_1.BasicSessionError(sessionId, type, message);
+        const error = new BasicSessionError_1.BasicSessionError(sessionId, type, message);
         return error;
     }
 }

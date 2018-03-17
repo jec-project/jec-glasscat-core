@@ -17,7 +17,7 @@ class DefaultHttpListener {
         this.init(config);
     }
     init(config) {
-        let monitoring = new HttpMonitoring_1.HttpMonitoring(config.monitoring);
+        const monitoring = new HttpMonitoring_1.HttpMonitoring(config.monitoring);
         this._id = config.id;
         this._port = config.port;
         this._address = config.address;

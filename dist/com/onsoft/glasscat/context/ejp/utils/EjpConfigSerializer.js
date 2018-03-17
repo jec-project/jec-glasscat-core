@@ -15,7 +15,7 @@ class EjpConfigSerializer {
         this._validator = new EjpConfigValidator_1.EjpConfigValidator();
     }
     stringify(config, optimize) {
-        let webapp = config.webapp;
+        const webapp = config.webapp;
         let optimized = null;
         let result = null;
         if (optimize) {
@@ -246,10 +246,10 @@ class EjpConfigSerializer {
                     success(data);
                 }
                 catch (e) {
-                    let logManager = LoggerManager_1.LoggerManager.getInstance();
+                    const logManager = LoggerManager_1.LoggerManager.getInstance();
                     if (logManager.isInitialized())
                         logManager.error(e);
-                    let glassCatErr = new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.CONFIG_SERIALIZATION_ERROR, e);
+                    const glassCatErr = new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.CONFIG_SERIALIZATION_ERROR, e);
                     error(glassCatErr);
                 }
             }

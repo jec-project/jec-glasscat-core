@@ -47,7 +47,7 @@ export class SessionErrorBuilder {
    */
   public build(sessionId:SessionId, type:SessionErrorType,
                                     message?:string):SessionError {
-    let error:SessionError = new BasicSessionError(sessionId, type, message);
+    const error:SessionError = new BasicSessionError(sessionId, type, message);
     return error;
   }
 }

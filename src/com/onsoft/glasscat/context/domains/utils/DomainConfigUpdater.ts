@@ -75,7 +75,7 @@ export class DomainConfigUpdater {
    *                         reference as parameter.
    */
   public update(config:DomainConfig, result:(err:any)=>void):void {
-    let path:string =
+    const path:string =
      MappedPathUtil.getInstance().resolve(DomainConfigUpdater.DOMAIN_FILE_PATH);
     this._serializer.serialize(
       config,

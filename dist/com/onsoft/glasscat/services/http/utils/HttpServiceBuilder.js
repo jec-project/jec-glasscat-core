@@ -4,10 +4,11 @@ const HttpServiceFactory_1 = require("./HttpServiceFactory");
 class HttpServiceBuilder {
     constructor() { }
     buildServices(httpServiceManager, httpListenerConfigList) {
+        const factory = new HttpServiceFactory_1.HttpServiceFactory();
         let len = httpListenerConfigList.length;
-        let factory = new HttpServiceFactory_1.HttpServiceFactory();
+        let service = null;
         while (len--) {
-            let service = factory.build(httpListenerConfigList[len]);
+            service = factory.build(httpListenerConfigList[len]);
             httpServiceManager.addService(service);
         }
     }

@@ -51,10 +51,11 @@ export class HttpServiceBuilder {
    */
   public buildServices(httpServiceManager:HttpServiceManager,
                        httpListenerConfigList:Array<HttpListenerConfig>):void {
+    const factory:HttpServiceFactory = new HttpServiceFactory();
     let len:number = httpListenerConfigList.length;
-    let factory:HttpServiceFactory = new HttpServiceFactory();
+    let service:HttpService = null;
     while(len--) {
-      let service:HttpService = factory.build(httpListenerConfigList[len]);
+      service = factory.build(httpListenerConfigList[len]);
       httpServiceManager.addService(service);
     }
   }

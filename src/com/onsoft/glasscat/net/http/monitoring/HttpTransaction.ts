@@ -161,7 +161,7 @@ export class HttpTransaction {
    * @override
    */
   public toString():string {
-    let s:string = "[Object::HttpTransaction: guid=" + this._id +
+    const s:string = "[Object::HttpTransaction: guid=" + this._id +
        ", url=" + this._url + ", initialTimestamp=" + this._initialTimestamp +
        ", finalTimestamp=" + this._finalTimestamp + ", closed=" + this._closed +
        ", success=" + this._success + "]";

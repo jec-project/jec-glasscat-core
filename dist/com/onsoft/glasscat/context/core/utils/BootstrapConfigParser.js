@@ -12,15 +12,15 @@ const SecurityConfig_1 = require("../SecurityConfig");
 class BootstrapConfigParser {
     constructor() { }
     parseGlasscatConfig(bootstrap) {
-        let cfg = new GlasscatConfig_1.GlasscatConfig();
-        let glasscat = bootstrap.glasscat;
+        const cfg = new GlasscatConfig_1.GlasscatConfig();
+        const glasscat = bootstrap.glasscat;
         cfg.version = glasscat.version;
         cfg.locale = glasscat.locale;
         return cfg;
     }
     parseToolsConfig(bootstrap) {
-        let cfg = new ToolsConfig_1.ToolsConfig();
-        let config = bootstrap.config;
+        const cfg = new ToolsConfig_1.ToolsConfig();
+        const config = bootstrap.config;
         cfg.loggers = this.parseLoggersConfig(config.loggers);
         cfg.http = this.parseHttpConfig(config.http);
         cfg.security = this.parseSecurityConfig(config.security);
@@ -28,7 +28,7 @@ class BootstrapConfigParser {
         return cfg;
     }
     parserHttpListener(httpListener) {
-        let listener = new HttpListenerConfig_1.HttpListenerConfig();
+        const listener = new HttpListenerConfig_1.HttpListenerConfig();
         listener.id = httpListener.id;
         listener.address = httpListener.address;
         listener.domain = httpListener.domain;
@@ -40,7 +40,7 @@ class BootstrapConfigParser {
         return listener;
     }
     parseHttpMonitoring(monitoring) {
-        let cfg = new HttpMonitoringConfig_1.HttpMonitoringConfig();
+        const cfg = new HttpMonitoringConfig_1.HttpMonitoringConfig();
         if (monitoring) {
             cfg.enabled = monitoring.enabled;
             cfg.factory = monitoring.factory;
@@ -48,9 +48,9 @@ class BootstrapConfigParser {
         return cfg;
     }
     parseHttpConfig(httpData) {
-        let cfg = new HttpConfig_1.HttpConfig();
-        let listeners = new Array();
-        let httpListeners = httpData.listeners;
+        const cfg = new HttpConfig_1.HttpConfig();
+        const listeners = new Array();
+        const httpListeners = httpData.listeners;
         let listener = null;
         let len = -1;
         if (httpListeners) {
@@ -64,8 +64,8 @@ class BootstrapConfigParser {
         return cfg;
     }
     parseLoggersConfig(loggers) {
-        let cfg = new LoggersConfig_1.LoggersConfig();
-        let factories = loggers.factories;
+        const cfg = new LoggersConfig_1.LoggersConfig();
+        const factories = loggers.factories;
         let rawFactory = null;
         let factory = null;
         let len = -1;
@@ -85,11 +85,11 @@ class BootstrapConfigParser {
         return cfg;
     }
     parseSecurityConfig(security) {
-        let cfg = new SecurityConfig_1.SecurityConfig();
+        const cfg = new SecurityConfig_1.SecurityConfig();
         return cfg;
     }
     parse(bootstrap) {
-        let cfg = new BootstrapConfig_1.BootstrapConfig();
+        const cfg = new BootstrapConfig_1.BootstrapConfig();
         cfg.glasscat = this.parseGlasscatConfig(bootstrap);
         cfg.config = this.parseToolsConfig(bootstrap);
         return cfg;

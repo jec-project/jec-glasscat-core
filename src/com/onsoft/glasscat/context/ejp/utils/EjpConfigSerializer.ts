@@ -82,7 +82,7 @@ export class EjpConfigSerializer {
    *                  configuration object.
    */
   private stringify(config:EjpConfig, optimize:boolean):string {
-    let webapp:EjpWebAppConfig = config.webapp;
+    const webapp:EjpWebAppConfig = config.webapp;
     let optimized:any = null;
     let result:string = null;
     if(optimize) {
@@ -422,10 +422,10 @@ export class EjpConfigSerializer {
           data = this.stringify(config, optimize);
           success(data);
         } catch(e) {
-          let logManager:LoggerManager =
+          const logManager:LoggerManager =
                                  (LoggerManager.getInstance() as LoggerManager);
           if(logManager.isInitialized()) logManager.error(e);
-          let glassCatErr:GlassCatError = new GlassCatError(
+          const glassCatErr:GlassCatError = new GlassCatError(
             GlassCatErrorCode.CONFIG_SERIALIZATION_ERROR, e
           );
           error(glassCatErr);

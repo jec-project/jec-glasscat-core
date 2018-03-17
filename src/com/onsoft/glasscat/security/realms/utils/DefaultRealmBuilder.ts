@@ -42,7 +42,7 @@ export class DefaultRealmBuilder implements RealmBuilder {
    */
   public buildRealm(strategyConfig:LoginStrategyConfig,
                                         securityContext:SecurityContext):Realm {
-    let realm:Realm = new DefaultRealm(strategyConfig);
+    const realm:Realm = new DefaultRealm(strategyConfig);
     realm.getRealmConnector().setSecurityContext(securityContext);
     return realm;
   }

@@ -13,7 +13,7 @@ class EjpBootstrapContext extends AbstractContainerContext_1.AbstractContainerCo
         this._scriptList = new Array();
     }
     addScript(script) {
-        let msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("bootstrap.added", script.constructor.name);
+        const msg = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("bootstrap.added", script.constructor.name);
         this._scriptList.push(script);
         LoggerManager_1.LoggerManager.getInstance().debug(msg);
     }

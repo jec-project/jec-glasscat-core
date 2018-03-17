@@ -84,7 +84,7 @@ export class BootstrapAutowireProcessor implements FilePreProcessor {
    * @inheritDoc
    */
   public process(file:FileProperties, watcher:any):void {
-    let decorators:DecoratorProperties[] = file.decorators;
+    const decorators:DecoratorProperties[] = file.decorators;
     let len:number = decorators.length;
     let decorator:DecoratorProperties = null;
     while(len--) {
@@ -101,16 +101,16 @@ export class BootstrapAutowireProcessor implements FilePreProcessor {
    */
   public processComplete(watcher:any, sourcePath:string) {
     //TODO check whether the watcher is a DomainConnector instance or not:
-    let container:DomainContainer = watcher.getContainer();
-    let context:BootstrapContext = container.getBootstrapContext();
+    const container:DomainContainer = watcher.getContainer();
+    const context:BootstrapContext = container.getBootstrapContext();
+    const src:string = watcher.getTarget() + JecStringsEnum.SRC;
+    const builder:BootstrapScriptBuilder = new BootstrapScriptBuilder();
+    const runner:BootstrapScriptRunner = new BootstrapScriptRunner();
+    const pathLength:number = sourcePath.length + 1;
     let len:number = this._bootstrapFiles.length;
     let file:FileProperties = null;
     let script:BootstrapScript = null;
-    let pathLength:number = sourcePath.length + 1;
     let bootstrapPath:string = null;
-    let src:string = watcher.getTarget() + JecStringsEnum.SRC;
-    let builder:BootstrapScriptBuilder = new BootstrapScriptBuilder();
-    let runner:BootstrapScriptRunner = new BootstrapScriptRunner();
     while(len--) {
       file = this._bootstrapFiles[len];
       bootstrapPath = file.path.substring(pathLength) + file.name;

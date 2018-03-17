@@ -34,7 +34,7 @@ export class MappedPathUtil {
    */
   constructor() {
     if(MappedPathUtil._locked || MappedPathUtil.INSTANCE) {
-      let msg:string = GlassCatLocaleManager.getInstance().get(
+      const msg:string = GlassCatLocaleManager.getInstance().get(
         "errors.singleton", "MappedPathUtil"
       );
       throw new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, msg);

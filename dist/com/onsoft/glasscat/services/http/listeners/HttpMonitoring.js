@@ -16,10 +16,10 @@ class HttpMonitoring {
         if (!config) {
             throw new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.INVALID_CONTEXT, "Config must not be null.");
         }
+        const factory = config.factory;
         let Contructor = null;
         let classPath = null;
         let builder = null;
-        let factory = config.factory;
         this._config = config;
         this._enableMonitoring = config.enabled;
         if (this._enableMonitoring) {

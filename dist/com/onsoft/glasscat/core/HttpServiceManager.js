@@ -17,10 +17,10 @@ class HttpServiceManager {
         });
     }
     addService(service) {
-        let i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
+        const i18n = GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance();
+        const listener = service.getHttpListener();
         this._httpServiceMap.set(service.getHttpListener().getServer(), service);
         let msg = i18n.get("http.services.service.added");
-        let listener = service.getHttpListener();
         msg += "\n   => " + i18n.get("http.services.service.id", listener.getId());
         msg += "\n   * " + i18n.get("http.services.service.server", listener.getServer());
         msg += "\n   * " + i18n.get("http.services.service.config", listener.getAdress(), String(listener.getPort()));
@@ -32,7 +32,7 @@ class HttpServiceManager {
     }
     startServices() {
         LoggerManager_1.LoggerManager.getInstance().info(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("http.services.start"));
-        let logMapElements = function (svc, key) {
+        const logMapElements = function (svc, key) {
             if (!svc.isActive())
                 svc.start();
         };
@@ -40,7 +40,7 @@ class HttpServiceManager {
     }
     stopServices() {
         LoggerManager_1.LoggerManager.getInstance().info(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("http.services.stop"));
-        let logMapElements = function (svc, key) {
+        const logMapElements = function (svc, key) {
             if (svc.isActive())
                 svc.stop();
         };

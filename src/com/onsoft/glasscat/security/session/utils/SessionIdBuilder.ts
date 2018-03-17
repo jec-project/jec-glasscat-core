@@ -43,7 +43,7 @@ export class SessionIdBuilder {
    * @return {SessionId} a new <code>SessionId</code> object.
    */
   public buildSessionId(guid:string):SessionId {
-    let sessionId:SessionId = new GlassCatSessionId(guid);
+    const sessionId:SessionId = new GlassCatSessionId(guid);
     return sessionId;
   }
 }

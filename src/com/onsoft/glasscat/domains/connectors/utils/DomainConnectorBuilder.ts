@@ -67,9 +67,9 @@ export class DomainConnectorBuilder {
                data:any,
                jsletManager:JsletManager,
                jcadContext:JcadContext):DomainConnector {
+    const connectorRef:any = data.connector;
+    const type:string = connectorRef.type;
     let connector:DomainConnector = null;
-    let connectorRef:any = data.connector;
-    let type:string = connectorRef.type;
     if(type === DomainConnectorBuilder.EJP) {
       connector = new EjpConnector();
     } else {

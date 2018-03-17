@@ -13,7 +13,7 @@ class JsletsAutowireProcessor {
     }
     processStart(watcher, sourcePath) { }
     process(file, watcher) {
-        let decorators = file.decorators;
+        const decorators = file.decorators;
         let len = decorators.length;
         let decorator = null;
         while (len--) {
@@ -25,11 +25,11 @@ class JsletsAutowireProcessor {
         }
     }
     processComplete(watcher, sourcePath) {
-        let context = watcher.getContainer().getJsletContext();
+        const context = watcher.getContainer().getJsletContext();
+        const jslets = new Array();
+        const pathLength = sourcePath.length + 1;
         let len = this._jsletFiles.length;
         let file = null;
-        let jslets = new Array();
-        let pathLength = sourcePath.length + 1;
         let jsletPath = null;
         while (len--) {
             file = this._jsletFiles[len];

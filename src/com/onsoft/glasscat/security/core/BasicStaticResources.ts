@@ -69,7 +69,7 @@ export class BasicStaticResources implements StaticResources {
     if(!context) {
       throw new GlassCatError(GlassCatErrorCode.INVALID_SECURITY_CONTEXT);
     }
-    let builder:UrlPatternBuilder = new UrlPatternBuilder();
+    const builder:UrlPatternBuilder = new UrlPatternBuilder();
     this._urlPattern = builder.build(context.urlPattern);
   }
 

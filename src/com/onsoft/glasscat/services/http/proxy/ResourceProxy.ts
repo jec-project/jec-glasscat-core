@@ -38,7 +38,7 @@ export class ResourceProxy {
    */
   constructor() {
     if(ResourceProxy._locked || ResourceProxy.INSTANCE) {
-      let msg:string = GlassCatLocaleManager.getInstance().get(
+      const msg:string = GlassCatLocaleManager.getInstance().get(
         "errors.singleton", "ResourceProxy"
       );
       throw new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, msg);
@@ -109,9 +109,9 @@ export class ResourceProxy {
    * @return {string} the domain connector reference.
    */
   public getConectorRef(listener:HttpListener, contextRoot:string):string {
-    let connectorRef:string = listener.getProtocol() + listener.getDomain() + 
-                              UrlStringsEnum.COLON + listener.getPort() +
-                              contextRoot;
+    const connectorRef:string = listener.getProtocol() + listener.getDomain() + 
+                                UrlStringsEnum.COLON + listener.getPort() +
+                                contextRoot;
     return connectorRef;
   }
 
@@ -146,21 +146,22 @@ export class ResourceProxy {
    */
   public getProxyPath(baseUrl:string, listener:HttpListener,
                          domainConnectorManager:DomainConnectorManager):string {
-    let found:any[] = baseUrl.match(ResourceProxy.RESOURCE_PROXY_PATTERN);
-    let pathMap:string = found[0];
-    let pathLength:number = pathMap.length;
-    let lastColonId:number = pathMap.lastIndexOf(UrlStringsEnum.COLON);
-    let contextRoot:string =
-         pathMap.substring(pathMap.indexOf(UrlStringsEnum.COLON) + 1, lastColonId);
-    let connector:DomainConnector = domainConnectorManager.getDomainConnector(
+    const found:any[] = baseUrl.match(ResourceProxy.RESOURCE_PROXY_PATTERN);
+    const pathMap:string = found[0];
+    const pathLength:number = pathMap.length;
+    const lastColonId:number = pathMap.lastIndexOf(UrlStringsEnum.COLON);
+    const contextRoot:string =
+      pathMap.substring(pathMap.indexOf(UrlStringsEnum.COLON) + 1, lastColonId);
+    const connector:DomainConnector = domainConnectorManager.getDomainConnector(
       this.getConectorRef(listener, contextRoot)
     );
-    let resourceRef:string = pathMap.substring(lastColonId + 1, pathLength - 1);
-    let resourceValue:string =
+    const resourceRef:string =
+                             pathMap.substring(lastColonId + 1, pathLength - 1);
+    const resourceValue:string =
                         connector.getContainer().getMappedResource(resourceRef);
-    let path:string = connector.getTarget() + JecStringsEnum.WEB_APP +
-                      resourceValue + UrlStringsEnum.SLASH + 
-                      baseUrl.substr(found[ResourceProxy.INDEX] + pathLength);
+    const path:string = connector.getTarget() + JecStringsEnum.WEB_APP +
+                        resourceValue + UrlStringsEnum.SLASH + 
+                        baseUrl.substr(found[ResourceProxy.INDEX] + pathLength);
     return path;
   }
 

@@ -94,8 +94,8 @@ export class JsletManager {
    *                 <code>undefined</code> whether the jslet does not exists.
    */
   public getJslet(ref:string, url:string):Jslet {
+    const ctx:JsletContext = this.getContext(ref);
     let jslet:Jslet = undefined;
-    let ctx:JsletContext = this.getContext(ref);
     if(ctx) jslet = ctx.getJslet(url);
     return jslet;
   }
