@@ -99,11 +99,10 @@ export interface DomainConnector {
   /**
    * Returns the <code>EjpConfig</code> object associated with this 
    * <code>DomainConnector</code> object. The configuration file is the
-   * <code>web.json</code> file located in the <code>webapp/WEB-INF</code>
-   * directory.
+   * <code>web.json</code> file located in the <code>JEC-INF</code> directory.
    *
    * @return {EjpConfig} the <code>EjpConfig</code> object associated with this
-   *                    <code>DomainConnector</code> object.
+   *                     <code>DomainConnector</code> object.
    */
   getConfig():EjpConfig;
 

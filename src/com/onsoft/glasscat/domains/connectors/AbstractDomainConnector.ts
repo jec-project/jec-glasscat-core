@@ -68,7 +68,7 @@ export abstract class AbstractDomainConnector implements DomainConnector {
   protected __host:string = null;
 
   /**
-   * The configuration properties loaded from the WEB-INF directory.
+   * The configuration properties loaded from the JEC-INF directory.
    */
   protected __config:EjpConfig = null;
 

@@ -40,7 +40,7 @@ export class EjpConfigLoader extends ConfigLoaderBase {
   /**
    * The path to the EJP manifest file.
    */
-  public static readonly MANIFEST_PATH:string = "/webapp/WEB-INF/web.json";
+  public static readonly MANIFEST_PATH:string = "/JEC-INF/web.json";
 
   //////////////////////////////////////////////////////////////////////////////
   // Public methods

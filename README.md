@@ -43,7 +43,7 @@ The documentation generator is [TypeDoc](http://typedoc.org/)
 
 ## Update Release Notes
 
-**Current stable release:** [0.1.5](CHANGELOG.md#jec-glasscat-core-0.1.5)
+**Current stable release:** [0.1.6](CHANGELOG.md#jec-glasscat-core-0.1.6)
  
 For a complete listing of release notes for all JEC GlassCat Core update releases, see the [CHANGELOG](CHANGELOG.md) file. 
 

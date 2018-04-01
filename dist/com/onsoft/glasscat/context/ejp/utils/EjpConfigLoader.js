@@ -12,5 +12,5 @@ class EjpConfigLoader extends ConfigLoaderBase_1.ConfigLoaderBase {
         super.loadConfig(projectPath + EjpConfigLoader.MANIFEST_PATH, success, error);
     }
 }
-EjpConfigLoader.MANIFEST_PATH = "/webapp/WEB-INF/web.json";
+EjpConfigLoader.MANIFEST_PATH = "/JEC-INF/web.json";
 exports.EjpConfigLoader = EjpConfigLoader;
