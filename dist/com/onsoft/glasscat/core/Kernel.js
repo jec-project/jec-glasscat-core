@@ -21,6 +21,7 @@ class Kernel {
         this._jsletManager = null;
         this._securityManager = null;
         this._jcadContext = null;
+        this._glasscatConfig = null;
         this.init();
     }
     init() {
@@ -59,9 +60,10 @@ class Kernel {
     initRootPath(root) {
         MappedPathUtil_1.MappedPathUtil.getInstance().init(root);
     }
-    initContext() {
+    initContext(config) {
         this._startTime = Date.now();
         const root = process.cwd();
+        this._glasscatConfig = config;
         this.initRootPath(root);
         const ctxBuilder = new GlassCatContextBuilder_1.GlassCatContextBuilder();
         this._context = ctxBuilder.buildContext();

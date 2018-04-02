@@ -29,6 +29,7 @@ import {SecurityManager} from "./SecurityManager";
 import {UrlUtils} from "../util/url/UrlUtils";
 import {MappedPathUtil} from "../util/paths/MappedPathUtil";
 import {JcadContext, JcadContextFactory} from "jec-commons";
+import {GlassCatConfig} from "./GlassCatConfig";
 
 /**
  * Represents the kernel for a GlassCat container instance.
@@ -94,6 +95,11 @@ export class Kernel {
    * The reference to the JCAD context for this server.
    */
   private _jcadContext:JcadContext = null;
+
+  /**
+   * The reference to the GlassCat config for this server.
+   */
+  private _glasscatConfig:GlassCatConfig = null;
 
   ////////////////////////////////////////////////////////////////////////////
   // Private methods
@@ -195,10 +201,13 @@ export class Kernel {
 
   /**
    * Initializes the GlassCat container context.
+   * 
+   * @param {GlassCatConfig} config the GlassCat config for this container.
    */
-  public initContext():void {
+  public initContext(config:GlassCatConfig):void {
     this._startTime = Date.now();
     const root:string = process.cwd();
+    this._glasscatConfig = config;
     this.initRootPath(root);
     const ctxBuilder:GlassCatContextBuilder = new GlassCatContextBuilder();
     this._context = ctxBuilder.buildContext();

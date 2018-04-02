@@ -81,6 +81,8 @@ export {DomainContext} from "./glasscat/context/DomainContext";
 export {LoggerContext} from "./glasscat/context/LoggerContext";
 //--> com/onsoft/glasscat/core
 export {DomainConnectorManager} from "./glasscat/core/DomainConnectorManager";
+export {GlassCat} from "./glasscat/core/GlassCat";
+export {GlassCatConfig} from "./glasscat/core/GlassCatConfig";
 export {HttpServiceManager} from "./glasscat/core/HttpServiceManager";
 export {JsletManager} from "./glasscat/core/JsletManager";
 export {Kernel} from "./glasscat/core/Kernel";
@@ -231,6 +233,9 @@ export {TemplateProcessor} from "./glasscat/templates/TemplateProcessor";
 //--> com/onsoft/glasscat/util/contextroot
 export {ContextRootData} from "./glasscat/util/contextroot/ContextRootData";
 export {ContextRootUtil} from "./glasscat/util/contextroot/ContextRootUtil";
+//--> com/onsoft/glasscat/util/contextroot
+export {KernelBuilder} from "./glasscat/util/core/KernelBuilder";
+export {GlassCatBuilder} from "./glasscat/util/core/GlassCatBuilder";
 //--> com/onsoft/glasscat/util/loaders
 export {ConfigLoader} from "./glasscat/util/loaders/ConfigLoader";
 export {ConfigLoaderBase} from "./glasscat/util/loaders/ConfigLoaderBase";
