@@ -89,7 +89,7 @@ class Kernel {
         return Kernel.VERSION;
     }
 }
-Kernel.VERSION = "0.0.1";
+Kernel.VERSION = "0.1.6";
 Kernel.CODE_NAME = "Korat";
 exports.Kernel = Kernel;
 ;

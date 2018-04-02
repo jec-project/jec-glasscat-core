@@ -54,7 +54,7 @@ export class Kernel {
   /**
    * The current version of the web container.
    */
-  private static readonly VERSION:string = "0.0.1";
+  private static readonly VERSION:string = "0.1.6";
 
   /**
    * The code name for the current version of the web container.
