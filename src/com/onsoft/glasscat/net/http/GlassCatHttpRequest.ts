@@ -171,7 +171,7 @@ export class GlassCatHttpRequest implements HttpRequest {
    * @inheritDoc
    */
   public acceptsLanguages(lang:string | string[]):string | boolean {
-    return this.__expReq.acceptsEncodings(lang);
+    return this.__expReq.acceptsLanguages(lang);
   }
   
   /**

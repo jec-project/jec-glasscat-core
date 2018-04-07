@@ -5,6 +5,8 @@
 
 ### Bug Fixes
 
+- **GlassCatHttpRequest**: fixing a bug on the `acceptsLanguages` method
+
 ### Features
 
 - JEC refactoring the `web.json` file has been removed from the `webapp/WEB-INF` directory and added to the new `JEC-INF` directory
