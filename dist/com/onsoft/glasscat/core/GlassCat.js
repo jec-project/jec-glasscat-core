@@ -24,7 +24,7 @@ class GlassCat {
         this.initServices();
         this.startServices();
         LoggerManager_1.LoggerManager.getInstance().info(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("server.ready"));
-        LoggerManager_1.LoggerManager.getInstance().info(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("server.startDuration", String(Date.now() - initDate)));
+        LoggerManager_1.LoggerManager.getInstance().always(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("server.startDuration", String(Date.now() - initDate)));
     }
     killProcesses() {
         this._kernel.stopServices();

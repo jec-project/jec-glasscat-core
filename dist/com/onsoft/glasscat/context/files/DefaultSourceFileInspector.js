@@ -117,6 +117,11 @@ class DefaultSourceFileInspector {
         }
         return result;
     }
+    removeProcessors() {
+        const processorList = this._processors.join(", ");
+        this._processors.splice(0);
+        LoggerManager_1.LoggerManager.getInstance().debug(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("srcInspector.allProcessorRemoved", processorList));
+    }
     addSourcePath(path) {
         this._sourcePaths.push(path);
         LoggerManager_1.LoggerManager.getInstance().debug(GlassCatLocaleManager_1.GlassCatLocaleManager.getInstance().get("srcInspector.sourcePathAdded", path));

@@ -41,17 +41,17 @@ class GlassCatHttpRequest {
     isSecured() {
         return this.__expReq.secure;
     }
-    accepts(types) {
-        return this.__expReq.accepts(types);
+    accepts(type) {
+        return this.__expReq.accepts(type) === type;
     }
-    acceptsCharsets(charset) {
-        return this.__expReq.acceptsCharsets(charset);
+    acceptsCharset(charset) {
+        return this.__expReq.acceptsCharsets(charset) === charset;
     }
-    acceptsEncodings(encoding) {
+    acceptsEncoding(encoding) {
         return this.__expReq.acceptsEncodings(encoding);
     }
-    acceptsLanguages(lang) {
-        return this.__expReq.acceptsEncodings(lang);
+    acceptsLanguage(lang) {
+        return this.__expReq.acceptsLanguages(lang) === lang;
     }
     getHeader(field) {
         return this.__expReq.get(field);

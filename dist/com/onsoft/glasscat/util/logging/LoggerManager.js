@@ -97,6 +97,11 @@ class LoggerManager extends jec_commons_1.AbstractLogger {
                 this._loggers[len].warn(marker);
         }
     }
+    always(marker) {
+        let len = this._loggers.length;
+        while (len--)
+            this._loggers[len].always(marker);
+    }
 }
 LoggerManager._locked = true;
 LoggerManager.INSTANCE = null;

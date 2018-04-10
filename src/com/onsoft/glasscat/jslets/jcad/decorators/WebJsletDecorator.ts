@@ -33,7 +33,16 @@ export class WebJsletDecorator implements Decorator {
   constructor() {}
 
   ////////////////////////////////////////////////////////////////////////////
-  // public methods
+  // Private properties
+  ////////////////////////////////////////////////////////////////////////////
+
+  /**
+   * The string used to defined the internal metadata peroperty.
+   */
+  private static readonly METADATA_REF:string = "__webJsletMetadata";
+
+  ////////////////////////////////////////////////////////////////////////////
+  // Public methods
   ////////////////////////////////////////////////////////////////////////////
 
   /**
@@ -55,7 +64,12 @@ export class WebJsletDecorator implements Decorator {
     /*
      * The reference to the metadata passed to the WebJslet.
      */
-    target.__webJsletMetadata = params;
+    Reflect.defineProperty(target, WebJsletDecorator.METADATA_REF, {
+      value: params,
+      configurable: false,
+      enumerable: false,
+      writable: false
+    });
     
     /*
      * @override

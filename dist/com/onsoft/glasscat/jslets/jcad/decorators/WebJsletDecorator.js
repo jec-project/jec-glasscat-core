@@ -11,7 +11,12 @@ class WebJsletDecorator {
         else if (patterns.length === 0) {
             throw new jec_exchange_1.JsletError("errors.jslet.patternsEmpty");
         }
-        target.__webJsletMetadata = params;
+        Reflect.defineProperty(target, WebJsletDecorator.METADATA_REF, {
+            value: params,
+            configurable: false,
+            enumerable: false,
+            writable: false
+        });
         target.prototype.getName = function () {
             return target.__webJsletMetadata.name;
         };
@@ -26,4 +31,5 @@ class WebJsletDecorator {
         return target;
     }
 }
+WebJsletDecorator.METADATA_REF = "__webJsletMetadata";
 exports.WebJsletDecorator = WebJsletDecorator;

@@ -219,6 +219,7 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
       this._connector = connector;
       this._target = connector.getTarget() + UrlStringsEnum.SLASH;
       logManager.debug(i18n.get("srcInspector.init"));
+      // TODO: use a global commons constant for the default 'src' path
       this.addSourcePath("src");
     }
   }
@@ -257,6 +258,19 @@ export class DefaultSourceFileInspector implements SourceFileInspector {
       );
     }
     return result;
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public removeProcessors():void {
+    const processorList:string = this._processors.join(", ");
+    this._processors.splice(0);
+    LoggerManager.getInstance().debug(
+      GlassCatLocaleManager.getInstance().get(
+        "srcInspector.allProcessorRemoved", processorList
+      )
+    );
   }
 
   /**

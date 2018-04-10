@@ -63,8 +63,8 @@ class EjpContainer {
             this._jsletContext = jsletContextBuilder.buildContext(this._connector, null, null, null);
         }
         this.initBootstrapScripts(config);
-        this.initJdiEngine();
         this.initJsletAutowireProcessor(jsletsConfig);
+        this.initJdiEngine();
         this._sourceFileInspector.inspect(jec_commons_1.InspectMode.READ_CACHE);
         if (webapp.jslets) {
             jsletContextBuilder.initJslets(this._jsletContext, jsletsConfig.config);

@@ -222,8 +222,8 @@ export class EjpContainer implements DomainContainer {
       );
     }
     this.initBootstrapScripts(config);
-    this.initJdiEngine();
     this.initJsletAutowireProcessor(jsletsConfig);
+    this.initJdiEngine();
     this._sourceFileInspector.inspect(InspectMode.READ_CACHE);
     if(webapp.jslets) {
       jsletContextBuilder.initJslets(this._jsletContext, jsletsConfig.config);

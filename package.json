@@ -37,6 +37,7 @@
     "jec-commons": "^1.1.8",
     "jec-commons-node": "^1.0.7",
     "jec-exchange": "^1.1.6",
+    "jec-jdi": "^0.0.1",
     "jec-sokoke": "^0.0.1",
     "moment": "^2.18.1",
     "print-message": "^2.1.0",

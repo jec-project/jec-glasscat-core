@@ -149,29 +149,29 @@ export class GlassCatHttpRequest implements HttpRequest {
   /**
    * @inheritDoc
    */
-  public accepts(types:string | string[]):string | void {
-    return this.__expReq.accepts(types);
+  public accepts(type:string):boolean {
+    return this.__expReq.accepts(type) === type;
   }
   
   /**
    * @inheritDoc
    */
-  public acceptsCharsets(charset:string | string[]):string | boolean {
-    return this.__expReq.acceptsCharsets(charset);
+  public acceptsCharset(charset:string):boolean {
+    return this.__expReq.acceptsCharsets(charset) === charset;
   }
   
   /**
    * @inheritDoc
    */
-  public acceptsEncodings(encoding:string | string[]):string | boolean {
+  public acceptsEncoding(encoding:string):boolean {
     return this.__expReq.acceptsEncodings(encoding);
   }
   
   /**
    * @inheritDoc
    */
-  public acceptsLanguages(lang:string | string[]):string | boolean {
-    return this.__expReq.acceptsLanguages(lang);
+  public acceptsLanguage(lang:string):boolean {
+    return this.__expReq.acceptsLanguages(lang) === lang;
   }
   
   /**

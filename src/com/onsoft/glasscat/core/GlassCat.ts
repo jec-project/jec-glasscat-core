@@ -85,7 +85,7 @@ export class GlassCat {
     LoggerManager.getInstance().info(
       GlassCatLocaleManager.getInstance().get("server.ready")
     );
-    LoggerManager.getInstance().info(
+    LoggerManager.getInstance().always(
       GlassCatLocaleManager.getInstance().get(
         "server.startDuration", String(Date.now() - initDate)
       )

@@ -204,6 +204,14 @@ export class LoggerManager extends AbstractLogger {
     if(this.__logLevel <= LogLevel.WARN && this.__logLevel !== LogLevel.OFF) {
       let len:number = this._loggers.length;
       while(len--) this._loggers[len].warn(marker);
-   }
+    }
+  }
+  
+  /**
+   * @inheritDoc
+   */
+  public always(marker:any):void {
+    let len:number = this._loggers.length;
+    while(len--) this._loggers[len].always(marker);
   }
 };

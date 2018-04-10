@@ -6,10 +6,12 @@
 ### Bug Fixes
 
 - **GlassCatHttpRequest**: fixing a bug on the `acceptsLanguages` method
+- Adding support for jslets dependency injection
 
 ### Features
 
 - JEC refactoring the `web.json` file has been removed from the `webapp/WEB-INF` directory and added to the new `JEC-INF` directory
+- Adding implementation for the new `jec-exchange` 1.1.7 API
 
 <a name="jec-glasscat-core-0.1.5"></a>
 ## **0.1.5** (2017-12-26)
