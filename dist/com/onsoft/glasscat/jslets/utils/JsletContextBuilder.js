@@ -7,7 +7,6 @@ const LoggerManager_1 = require("../../util/logging/LoggerManager");
 const GlassCatError_1 = require("../../exceptions/GlassCatError");
 const GlassCatErrorCode_1 = require("../../exceptions/GlassCatErrorCode");
 const jec_sokoke_1 = require("jec-sokoke");
-const jec_jdi_1 = require("jec-jdi");
 class JsletContextBuilder {
     constructor() {
         if (JsletContextBuilder._locked || JsletContextBuilder.INSTANCE) {
@@ -23,32 +22,6 @@ class JsletContextBuilder {
         }
         return JsletContextBuilder.INSTANCE;
     }
-    performDI(jslet) {
-        const sokoke = jec_sokoke_1.Sokoke.getInstance();
-        const injectionPoints = jslet[jec_sokoke_1.SokokeMetadataRefs.SOKOKE_INJECTION_POINT_METADATA];
-        let len = -1;
-        let injectionPoint = null;
-        let value = null;
-        let bean = null;
-        let scopeType = null;
-        let scope = null;
-        if (injectionPoints) {
-            len = injectionPoints.length;
-            while (len--) {
-                injectionPoint = injectionPoints[len];
-                bean = injectionPoint.getBean();
-                if (bean) {
-                    scope = bean.getScope();
-                    scopeType = scope ? scope.getType() : jec_jdi_1.ScopeType.DEPENDENT;
-                    if (scopeType === jec_jdi_1.ScopeType.APPLICATION ||
-                        scopeType === jec_jdi_1.ScopeType.DEPENDENT) {
-                        value = sokoke.getInjectableReference(bean);
-                        Reflect.defineProperty(jslet, injectionPoint.getElement().getName(), { value: value });
-                    }
-                }
-            }
-        }
-    }
     buildJslet(path, target) {
         const filePath = jec_commons_1.PathUtils.getInstance().buildFilePath(target, path);
         let jslet = null;
@@ -56,7 +29,8 @@ class JsletContextBuilder {
         try {
             Contructor = jec_commons_1.GlobalClassLoader.getInstance().loadClass(filePath);
             jslet = new Contructor();
-            this.performDI(jslet);
+            jec_sokoke_1.SokokeInjector.getInstance()
+                .inject(jslet, jec_sokoke_1.SokokeInjector.DEFAULT_SCOPE_TYPES);
         }
         catch (e) {
             throw new GlassCatError_1.GlassCatError(GlassCatErrorCode_1.GlassCatErrorCode.INVALID_JSLET_CONFIG, e);

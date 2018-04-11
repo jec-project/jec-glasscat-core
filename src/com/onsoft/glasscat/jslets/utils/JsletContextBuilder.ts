@@ -24,8 +24,7 @@ import {DomainConnector} from "../../domains/connectors/DomainConnector";
 import {LoginStrategy} from "../../security/login/LoginStrategy";
 import {GlassCatError} from "../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../exceptions/GlassCatErrorCode";
-import {SokokeMetadataRefs, Sokoke} from "jec-sokoke";
-import {InjectionPoint, Bean, ScopeType, Scope} from "jec-jdi";
+import {SokokeInjector} from "jec-sokoke";
 
 /**
  * The singleton helper for creating <code>JsletContext</code> objects, from 
@@ -49,6 +48,7 @@ export class JsletContextBuilder {
     }
     JsletContextBuilder._locked = true;
   }
+
   //////////////////////////////////////////////////////////////////////////////
   // Singleton managment
   //////////////////////////////////////////////////////////////////////////////
@@ -77,44 +77,10 @@ export class JsletContextBuilder {
     }
     return JsletContextBuilder.INSTANCE;
   }
+
   //////////////////////////////////////////////////////////////////////////////
   // Private methods
   //////////////////////////////////////////////////////////////////////////////
-
-  /**
-   * HACK! Performs dependency injection for the jslet fields.
-   * 
-   * @param {any} jslet the jslet for which to perform dependency injection.
-   */
-  private performDI(jslet:any):void {
-    const sokoke:Sokoke = (Sokoke.getInstance() as Sokoke);
-    const injectionPoints:Array<InjectionPoint> =
-                      jslet[SokokeMetadataRefs.SOKOKE_INJECTION_POINT_METADATA];
-    let len:number = -1;
-    let injectionPoint:InjectionPoint = null;
-    let value:any = null;
-    let bean:Bean = null;
-    let scopeType:ScopeType = null;
-    let scope:Scope = null;
-    if(injectionPoints) {
-      len = injectionPoints.length;
-      while(len--) {
-        injectionPoint = injectionPoints[len];
-        bean = injectionPoint.getBean();
-        if(bean) {
-          scope = bean.getScope();
-          scopeType = scope ? scope.getType() : ScopeType.DEPENDENT;
-          if(scopeType === ScopeType.APPLICATION ||
-             scopeType === ScopeType.DEPENDENT) {
-              value = sokoke.getInjectableReference(bean);
-              Reflect.defineProperty(
-                jslet, injectionPoint.getElement().getName(), { value: value }
-              );
-          }
-        }
-      }
-    }
-  }
 
   /**
    * Creates and returns a new <code>Jslet</code> instance.
@@ -130,7 +96,8 @@ export class JsletContextBuilder {
     try {
       Contructor = GlobalClassLoader.getInstance().loadClass(filePath);
       jslet = new Contructor();
-      this.performDI(jslet);
+      SokokeInjector.getInstance()
+                    .inject(jslet, SokokeInjector.DEFAULT_SCOPE_TYPES);
     } catch(e){
       // TODO: correctly log error message
       throw new GlassCatError(GlassCatErrorCode.INVALID_JSLET_CONFIG, e);
