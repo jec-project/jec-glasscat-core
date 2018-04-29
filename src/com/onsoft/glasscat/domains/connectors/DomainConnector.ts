@@ -21,7 +21,7 @@ import {JcadContext} from "jec-commons";
 
 /**
  * The <code>DomainConnector</code> interface provides the API for enabling 
- * connections between 'Entreprise JavaScript Projects' (EJP) and GlassCat
+ * connections between 'Enterprise JavaScript Projects' (EJP) and GlassCat
  * containers.
  */
 export interface DomainConnector {
