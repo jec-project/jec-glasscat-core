@@ -18,10 +18,10 @@ import { TestSuite, Test } from "jec-juta";
 import { expect } from "chai";
 import { HttpMonitoring } from "../../../../../../../src/com/onsoft/glasscat/services/http/listeners/HttpMonitoring";
 import { TransactionMonitorDerivation } from "../../../../../../../src/com/onsoft/glasscat/net/http/monitoring/TransactionMonitorDerivation";
-import { HttpMonitoringConfig } from "../../../../../../../src/com/onsoft/glasscat/context/core/HttpMonitoringConfig";
 import { GlassCatError } from "../../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatError";
 import { GlassCatErrorCode } from "../../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatErrorCode";
 import { ConsoleTransactionMonitor } from "../../../../../../../src/com/onsoft/glasscat/net/http/monitoring/ConsoleTransactionMonitor";
+import { HttpMonitoringConfig } from "jec-glasscat-config";
 
 import * as utils from "../../../../../../../utils/test-utils/utilities/HttpMonitoringTestUtils";
 

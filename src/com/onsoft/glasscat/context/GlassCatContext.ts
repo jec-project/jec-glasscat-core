@@ -20,10 +20,8 @@ import {LogLevel, LogLevelUtil, ClassLoader, GlobalClassLoader,
         LogLevelString} from "jec-commons";
 import {LoggerContextBuilder} from "./utils/LoggerContextBuilder";
 import {MappedPathUtil} from "../util/paths/MappedPathUtil";
-import {HttpListenerConfig} from "./core/HttpListenerConfig";
-import {BootstrapConfig} from "./core/BootstrapConfig";
-import {LoggersConfig} from "./core/LoggersConfig";
-import {LoggerFactoryConfig} from "./core/LoggerFactoryConfig";
+import {LoggerFactoryConfig, BootstrapConfig, LoggersConfig, HttpListenerConfig
+        } from "jec-glasscat-config";
 
 /**
  * A data object which contains the current GlassCat container context.

@@ -45,15 +45,9 @@ import {Logger, JecStringsEnum, UrlStringsEnum, HttpStatusCode, ClassLoader,
         SourceFileInspector, JcadContext, BootstrapContext, BootstrapScript,
         InspectMode, GlobalClassLoader, Locale} from "jec-commons";
 import {JsletsAutowireProcessor} from "../../jslets/utils/JsletsAutowireProcessor";
-import {EjpConfig} from "../../context/ejp/EjpConfig";
-import {EjpWebAppConfig} from "../../context/ejp/EjpWebAppConfig";
-import {EjpJsletsConfig} from "../../context/ejp/EjpJsletsConfig";
-import {EjpBootstrapConfig} from "../../context/ejp/EjpBootstrapConfig";
-import {EjpSecurityConfig} from "../../context/ejp/EjpSecurityConfig";
-import {EjpConstraintConfig} from "../../context/ejp/EjpConstraintConfig";
-import {EjpStaticResourcesConfig} from "../../context/ejp/EjpStaticResourcesConfig";
-import {EjpRoleConfig} from "../../context/ejp/EjpRoleConfig";
-import {EjpResourceMapperConfig} from "../../context/ejp/EjpResourceMapperConfig";
+import {EjpConfig, EjpWebAppConfig, EjpJsletsConfig, EjpBootstrapConfig,
+        EjpSecurityConfig, EjpConstraintConfig, EjpStaticResourcesConfig,
+        EjpRoleConfig, EjpResourceMapperConfig} from "jec-glasscat-config";
 import {JsletContextManager} from "../../jslets/jcad/JsletContextManager";
 import {NotFoundErrorBuilder} from "../errors/NotFoundErrorBuilder";
 import {BootstrapAutowireProcessor} from "../../startup/utils/BootstrapAutowireProcessor";

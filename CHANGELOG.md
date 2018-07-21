@@ -1,5 +1,14 @@
 # JEC GlassCat Core Project: Update Release Notes
 
+<a name="jec-glasscat-core-0.1.7"></a>
+## **0.1.7** (2018-07-14)
+
+### Bug Fixes
+
+### Features
+
+- Adding new implementation of the `context` package, depending on the `jec-glasscat-config` module.
+
 <a name="jec-glasscat-core-0.1.6"></a>
 ## **0.1.6** (2018-04-01)
 

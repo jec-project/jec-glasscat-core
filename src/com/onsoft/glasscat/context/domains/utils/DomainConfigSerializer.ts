@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {DomainConfig} from "../DomainConfig";
+import {DomainConfig} from "jec-glasscat-config";
 import {GlassCatError} from "../../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../../exceptions/GlassCatErrorCode";
 

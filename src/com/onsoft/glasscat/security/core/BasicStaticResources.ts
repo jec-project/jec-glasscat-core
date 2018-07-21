@@ -17,7 +17,7 @@
 import {UrlPattern} from "jec-commons";
 import {StaticResources} from "jec-exchange";
 import {UrlPatternBuilder} from "../../util/url/UrlPatternBuilder";
-import {EjpStaticResourcesConfig} from "../../context/ejp/EjpStaticResourcesConfig";
+import {EjpStaticResourcesConfig} from "jec-glasscat-config";
 import {GlassCatError} from "../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../exceptions/GlassCatErrorCode";
 

@@ -14,10 +14,11 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {DomainConfig} from "../../../src/com/onsoft/glasscat/context/domains/DomainConfig";
-import {Domain} from "../../../src/com/onsoft/glasscat/context/domains/Domain";
-import {DomainConnectorConfig} from "../../../src/com/onsoft/glasscat/context/domains/DomainConnectorConfig";
+import {DomainConfigImpl} from "../../../src/com/onsoft/glasscat/context/domains/DomainConfigImpl";
+import {DomainImpl} from "../../../src/com/onsoft/glasscat/context/domains/DomainImpl";
+import {DomainConnectorConfigImpl} from "../../../src/com/onsoft/glasscat/context/domains/DomainConnectorConfigImpl";
 import * as configUtils from "./DomainConfigurationUtils";
+import { DomainConfig, Domain, DomainConnectorConfig } from "jec-glasscat-config";
 
 /*!
  * This module constains utilities used by the DomainConfigSerializer test
@@ -26,10 +27,10 @@ import * as configUtils from "./DomainConfigurationUtils";
 
 // Utilities:
 export const INVALID_DATA:any = ["foo", "bar"];
-export const buildDomainConfig:Function = function():DomainConfig {
-  let cfg:DomainConfig = new DomainConfig();
-  let domain:Domain = new Domain();
-  let connector:DomainConnectorConfig = new DomainConnectorConfig();
+export const buildDomainConfig:Function = function():DomainConfigImpl {
+  let cfg:DomainConfig = new DomainConfigImpl();
+  let domain:Domain = new DomainImpl();
+  let connector:DomainConnectorConfig = new DomainConnectorConfigImpl();
   connector.server = configUtils.CONFIG_SERVER;
   connector.type = configUtils.CONFIG_TYPE;
   domain.name = configUtils.CONFIG_NAME;

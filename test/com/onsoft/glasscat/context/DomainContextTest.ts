@@ -17,7 +17,8 @@
 import { TestSuite, Test, Before, After } from "jec-juta";
 import { expect } from "chai";
 import { DomainContext } from "../../../../../src/com/onsoft/glasscat/context/DomainContext";
-import { Domain } from "../../../../../src/com/onsoft/glasscat/context/domains/Domain";
+import { DomainImpl } from "../../../../../src/com/onsoft/glasscat/context/domains/DomainImpl";
+import { Domain } from "jec-glasscat-config";
 
 @TestSuite({
   description: "Test the DomainContext class methods"
@@ -47,7 +48,7 @@ export class DomainContextTest {
     description: "should add the specified domain  to the context"
   })
   public addDomainTest():void {
-    let domain:Domain = new Domain();
+    let domain:Domain = new DomainImpl();
     this.context.addDomain(domain);
     expect(this.context.getDomainList()[0]).to.equal(domain);
   }

@@ -23,15 +23,15 @@ export {JecConfigContextManager} from "./glasscat/cfg/jcad/JecConfigContextManag
 export {BootstrapConfigParser} from "./glasscat/context/core/utils/BootstrapConfigParser";
 //--> com/onsoft/glasscat/context/core
 export {AbstractContainerContext} from "./glasscat/context/core/AbstractContainerContext";
-export {BootstrapConfig} from "./glasscat/context/core/BootstrapConfig";
-export {GlasscatConfig} from "./glasscat/context/core/GlasscatConfig";
-export {HttpConfig} from "./glasscat/context/core/HttpConfig";
-export {HttpListenerConfig} from "./glasscat/context/core/HttpListenerConfig";
-export {HttpMonitoringConfig} from "./glasscat/context/core/HttpMonitoringConfig";
-export {LoggerFactoryConfig} from "./glasscat/context/core/LoggerFactoryConfig";
-export {LoggersConfig} from "./glasscat/context/core/LoggersConfig";
-export {SecurityConfig} from "./glasscat/context/core/SecurityConfig";
-export {ToolsConfig} from "./glasscat/context/core/ToolsConfig";
+export {BootstrapConfigImpl} from "./glasscat/context/core/BootstrapConfigImpl";
+export {GlasscatConfigImpl} from "./glasscat/context/core/GlasscatConfigImpl";
+export {HttpConfigImpl} from "./glasscat/context/core/HttpConfigImpl";
+export {HttpListenerConfigImpl} from "./glasscat/context/core/HttpListenerConfigImpl";
+export {HttpMonitoringConfigImpl} from "./glasscat/context/core/HttpMonitoringConfigImpl";
+export {LoggerFactoryConfigImpl} from "./glasscat/context/core/LoggerFactoryConfigImpl";
+export {LoggersConfigImpl} from "./glasscat/context/core/LoggersConfigImpl";
+export {SecurityConfigImpl} from "./glasscat/context/core/SecurityConfigImpl";
+export {ToolsConfigImpl} from "./glasscat/context/core/ToolsConfigImpl";
 //--> com/onsoft/glasscat/context/domains/utils
 export {DomainBuilder} from "./glasscat/context/domains/utils/DomainBuilder";
 export {DomainConfigLoader} from "./glasscat/context/domains/utils/DomainConfigLoader";
@@ -40,9 +40,9 @@ export {DomainConfigSerializer} from "./glasscat/context/domains/utils/DomainCon
 export {DomainConfigUpdater} from "./glasscat/context/domains/utils/DomainConfigUpdater";
 export {DomainContextBuilder} from "./glasscat/context/domains/utils/DomainContextBuilder";
 //--> com/onsoft/glasscat/context/domains
-export {Domain} from "./glasscat/context/domains/Domain";
-export {DomainConfig} from "./glasscat/context/domains/DomainConfig";
-export {DomainConnectorConfig} from "./glasscat/context/domains/DomainConnectorConfig";
+export {DomainImpl} from "./glasscat/context/domains/DomainImpl";
+export {DomainConfigImpl} from "./glasscat/context/domains/DomainConfigImpl";
+export {DomainConnectorConfigImpl} from "./glasscat/context/domains/DomainConnectorConfigImpl";
 //--> com/onsoft/glasscat/context/ejp/utils
 export {EjpConfigLoader} from "./glasscat/context/ejp/utils/EjpConfigLoader";
 export {EjpConfigParser} from "./glasscat/context/ejp/utils/EjpConfigParser";
@@ -50,19 +50,19 @@ export {EjpConfigSerializer} from "./glasscat/context/ejp/utils/EjpConfigSeriali
 export {EjpConfigUpdater} from "./glasscat/context/ejp/utils/EjpConfigUpdater";
 export {EjpConfigValidator} from "./glasscat/context/ejp/utils/EjpConfigValidator";
 //--> com/onsoft/glasscat/context/ejp
-export {EjpBootstrapConfig} from "./glasscat/context/ejp/EjpBootstrapConfig";
-export {EjpConfig} from "./glasscat/context/ejp/EjpConfig";
-export {EjpConstraintConfig} from "./glasscat/context/ejp/EjpConstraintConfig";
-export {EjpFormConfig} from "./glasscat/context/ejp/EjpFormConfig";
-export {EjpJsletsConfig} from "./glasscat/context/ejp/EjpJsletsConfig";
-export {EjpLoginConfig} from "./glasscat/context/ejp/EjpLoginConfig";
-export {EjpRealmConfig} from "./glasscat/context/ejp/EjpRealmConfig";
-export {EjpResourceMapperConfig} from "./glasscat/context/ejp/EjpResourceMapperConfig";
-export {EjpRoleConfig} from "./glasscat/context/ejp/EjpRoleConfig";
-export {EjpSecurityConfig} from "./glasscat/context/ejp/EjpSecurityConfig";
-export {EjpSessionConfig} from "./glasscat/context/ejp/EjpSessionConfig";
-export {EjpStaticResourcesConfig} from "./glasscat/context/ejp/EjpStaticResourcesConfig";
-export {EjpWebAppConfig} from "./glasscat/context/ejp/EjpWebAppConfig";
+export {EjpBootstrapConfigImpl} from "./glasscat/context/ejp/EjpBootstrapConfigImpl";
+export {EjpConfigImpl} from "./glasscat/context/ejp/EjpConfigImpl";
+export {EjpConstraintConfigImpl} from "./glasscat/context/ejp/EjpConstraintConfigImpl";
+export {EjpFormConfigImpl} from "./glasscat/context/ejp/EjpFormConfigImpl";
+export {EjpJsletsConfigImpl} from "./glasscat/context/ejp/EjpJsletsConfigImpl";
+export {EjpLoginConfigImpl} from "./glasscat/context/ejp/EjpLoginConfigImpl";
+export {EjpRealmConfigImpl} from "./glasscat/context/ejp/EjpRealmConfigImpl";
+export {EjpResourceMapperConfigImpl} from "./glasscat/context/ejp/EjpResourceMapperConfigImpl";
+export {EjpRoleConfigImpl} from "./glasscat/context/ejp/EjpRoleConfigImpl";
+export {EjpSecurityConfigImpl} from "./glasscat/context/ejp/EjpSecurityConfigImpl";
+export {EjpSessionConfigImpl} from "./glasscat/context/ejp/EjpSessionConfigImpl";
+export {EjpStaticResourcesConfigImpl} from "./glasscat/context/ejp/EjpStaticResourcesConfigImpl";
+export {EjpWebAppConfigImpl} from "./glasscat/context/ejp/EjpWebAppConfigImpl";
 //--> com/onsoft/glasscat/context/files
 export {CacheableFile} from "./glasscat/context/files/CacheableFile";
 export {DefaultSourceFileInspector} from "./glasscat/context/files/DefaultSourceFileInspector";

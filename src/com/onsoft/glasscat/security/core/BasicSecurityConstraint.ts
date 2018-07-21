@@ -17,7 +17,7 @@
 import {UrlPattern} from "jec-commons";
 import {SecurityConstraint} from "jec-exchange";
 import {UrlPatternBuilder} from "../../util/url/UrlPatternBuilder";
-import {EjpConstraintConfig} from "../../context/ejp/EjpConstraintConfig";
+import {EjpConstraintConfig} from "jec-glasscat-config";
 import {GlassCatError} from "../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../exceptions/GlassCatErrorCode";
 

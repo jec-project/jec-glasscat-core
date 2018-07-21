@@ -20,6 +20,14 @@ import { JsletContext, Jslet, SessionError, HttpResponse, HttpRequest,
          SessionId, SessionOwner, Session, Credentials, UserHashModule,
          Realm, RealmConnector, AuthenticationError, SessionErrorType,
          AuthMethod, RealmType, SessionStorageType } from "jec-exchange";
+import { BootstrapConfig, GlasscatConfig, HttpConfig, HttpListenerConfig,
+         HttpMonitoringConfig, LoggerFactoryConfig,  LoggersConfig, EjpConfig,
+         SecurityConfig, ToolsConfig, Domain, DomainConfig, EjpFormConfig,
+         DomainConnectorConfig, EjpBootstrapConfig, EjpConstraintConfig,
+         EjpJsletsConfig, EjpLoginConfig, EjpRealmConfig, EjpRoleConfig,
+         EjpResourceMapperConfig, EjpSecurityConfig, EjpSessionConfig,
+         EjpStaticResourcesConfig, EjpWebAppConfig} from "jec-glasscat-config";
+
 import * as express from "express";
 import * as http from "http";
 

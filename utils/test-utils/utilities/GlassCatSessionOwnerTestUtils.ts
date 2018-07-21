@@ -17,7 +17,8 @@
 import { SecurityRole, SecurityConstraint } from "jec-exchange";
 import { BasicSecurityRole } from "../../../src/com/onsoft/glasscat/security/roles/BasicSecurityRole";
 import { BasicSecurityConstraint } from "../../../src/com/onsoft/glasscat/security/core/BasicSecurityConstraint";
-import { EjpConstraintConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpConstraintConfig";
+import { EjpConstraintConfigImpl } from "../../../src/com/onsoft/glasscat/context/ejp/EjpConstraintConfigImpl";
+import { EjpConstraintConfig } from "jec-glasscat-config";
 
 /*!
  * This module constains utilities used by the GlassCatSessionOwnerTest test
@@ -36,7 +37,7 @@ export const ID: string = "5375a08a-7cb4-421b-b782-8a562cea3d36";
 export const ALIAS:string = "alias";
 export const ROLES:SecurityRole[] = buildRoles();
 const buildEjpConstraintConfig:Function = function(role:string):EjpConstraintConfig {
-  let cfg:EjpConstraintConfig = new EjpConstraintConfig();
+  let cfg:EjpConstraintConfig = new EjpConstraintConfigImpl();
   cfg.roles = [role];
   cfg.errorUrl = "error/url";
   cfg.name = role;

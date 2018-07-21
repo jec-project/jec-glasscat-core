@@ -14,8 +14,9 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { EjpFormConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpFormConfig";
+import { EjpFormConfigImpl } from "../../../src/com/onsoft/glasscat/context/ejp/EjpFormConfigImpl";
 import * as configUtils from "../../../utils/test-utils/utilities/EjpConfigUtils";
+import { EjpFormConfig } from "jec-glasscat-config";
 
 /*!
  * This module constains utilities used by the EjpFormConfigTest test uite.
@@ -23,7 +24,7 @@ import * as configUtils from "../../../utils/test-utils/utilities/EjpConfigUtils
 
 // Utilities:
 export const buildConfig:Function = function():EjpFormConfig {
-  let formConfig:EjpFormConfig = new EjpFormConfig();
+  let formConfig:EjpFormConfig = new EjpFormConfigImpl();
   formConfig.errorUrl = configUtils.FORM_CONFIG_ERROR_URL;
   formConfig.loginUrl = configUtils.FORM_CONFIG_LOGIN_URL;
   return formConfig;

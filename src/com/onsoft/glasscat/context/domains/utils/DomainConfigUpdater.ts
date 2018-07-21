@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {DomainConfig} from "../DomainConfig";
+import {DomainConfig} from "jec-glasscat-config";
 import {DomainConfigSerializer} from "./DomainConfigSerializer";
 import {MappedPathUtil} from "../../../util/paths/MappedPathUtil";
 import * as fs from "fs";

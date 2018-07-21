@@ -17,9 +17,9 @@
 import { TestSuite, Test, BeforeAll } from "jec-juta";
 import { expect } from "chai";
 import { SessionStorageSolver } from "../../../../../../../src/com/onsoft/glasscat/security/session/utils/SessionStorageSolver";
-import { EjpSessionConfig } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpSessionConfig";
-import {LocalSessionStorage} from "../../../../../../../src/com/onsoft/glasscat/security/session/connectors/LocalSessionStorage";
+import { LocalSessionStorage } from "../../../../../../../src/com/onsoft/glasscat/security/session/connectors/LocalSessionStorage";
 import { SessionStorageType } from "jec-exchange";
+import { EjpSessionConfig } from "jec-glasscat-config";
 
 @TestSuite({
   description: "Test the SessionStorageSolver class methods"

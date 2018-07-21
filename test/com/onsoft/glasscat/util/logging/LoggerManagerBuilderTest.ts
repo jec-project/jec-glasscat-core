@@ -21,12 +21,9 @@ import { LoggerManager } from "../../../../../../src/com/onsoft/glasscat/util/lo
 import { GlassCatError } from "../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatError";
 import { GlassCatErrorCode } from "../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatErrorCode";
 import { GlassCatContext } from "../../../../../../src/com/onsoft/glasscat/context/GlassCatContext";
-import { BootstrapConfig } from "../../../../../../src/com/onsoft/glasscat/context/core/BootstrapConfig";
 import { BootstrapConfigParser } from "../../../../../../src/com/onsoft/glasscat/context/core/utils/BootstrapConfigParser";
 import { JsonLoader, JsonLoaderError, Logger } from "jec-commons";
 import { DefaultJsonLoader } from "jec-commons-node";
-
-import * as utils from "../../../../../../utils/test-utils/utilities/GlassCatLogFormatterTestUtils"; 
 
 @TestSuite({
   description: "Test the LoggerManagerBuilder class methods"

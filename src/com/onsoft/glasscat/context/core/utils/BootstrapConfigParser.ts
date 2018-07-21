@@ -14,16 +14,19 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {BootstrapConfig} from "../BootstrapConfig";
-import {GlasscatConfig} from "../GlasscatConfig";
-import {ToolsConfig} from "../ToolsConfig";
-import {LoggersConfig} from "../LoggersConfig";
-import {LoggerFactoryConfig} from "../LoggerFactoryConfig";
-import {HttpConfig} from "../HttpConfig";
-import {HttpListenerConfig} from "../HttpListenerConfig";
-import {HttpMonitoringConfig} from "../HttpMonitoringConfig";
-import {SecurityConfig} from "../SecurityConfig";
-import { LogLevelString } from "jec-commons";
+import {BootstrapConfig, GlasscatConfig, ToolsConfig, LoggersConfig,
+        LoggerFactoryConfig, HttpConfig, HttpListenerConfig, SecurityConfig,
+        HttpMonitoringConfig} from "jec-glasscat-config";
+import {LogLevelString} from "jec-commons";
+import {ToolsConfigImpl} from "../ToolsConfigImpl";
+import {GlasscatConfigImpl} from "../GlasscatConfigImpl";
+import {HttpListenerConfigImpl} from "../HttpListenerConfigImpl";
+import {HttpMonitoringConfigImpl} from "../HttpMonitoringConfigImpl";
+import {HttpConfigImpl} from "../HttpConfigImpl";
+import {LoggersConfigImpl} from "../LoggersConfigImpl";
+import {SecurityConfigImpl} from "../SecurityConfigImpl";
+import {BootstrapConfigImpl} from "../BootstrapConfigImpl";
+import {LoggerFactoryConfigImpl} from "../LoggerFactoryConfigImpl";
 
 /**
  * A parser utility for creating GlassCat <code>BootstrapConfig</code> instances
@@ -53,7 +56,7 @@ export class BootstrapConfigParser {
    *                          the specified data.
    */
   private parseGlasscatConfig(bootstrap:any):GlasscatConfig {
-    const cfg:GlasscatConfig = new GlasscatConfig();
+    const cfg:GlasscatConfig = new GlasscatConfigImpl();
     const glasscat:any = bootstrap.glasscat;
     cfg.version = glasscat.version;
     cfg.locale = glasscat.locale;
@@ -69,7 +72,7 @@ export class BootstrapConfigParser {
    *                       specified data.
    */
   private parseToolsConfig(bootstrap:any):ToolsConfig {
-    const cfg:ToolsConfig = new ToolsConfig();
+    const cfg:ToolsConfig = new ToolsConfigImpl();
     const config:any = bootstrap.config;
     cfg.loggers = this.parseLoggersConfig(config.loggers);
     cfg.http = this.parseHttpConfig(config.http);
@@ -88,7 +91,7 @@ export class BootstrapConfigParser {
    *                              built from the specified data.
    */
   private parserHttpListener(httpListener:any):HttpListenerConfig {
-    const listener:HttpListenerConfig = new HttpListenerConfig();
+    const listener:HttpListenerConfig = new HttpListenerConfigImpl();
     listener.id = httpListener.id;
     listener.address = httpListener.address;
     listener.domain = httpListener.domain;
@@ -110,7 +113,7 @@ export class BootstrapConfigParser {
    *                                built from the specified data.
    */
   private parseHttpMonitoring(monitoring:any):HttpMonitoringConfig {
-    const cfg:HttpMonitoringConfig = new HttpMonitoringConfig();
+    const cfg:HttpMonitoringConfig = new HttpMonitoringConfigImpl();
     if(monitoring) {
       cfg.enabled = monitoring.enabled;
       cfg.factory = monitoring.factory;
@@ -127,7 +130,7 @@ export class BootstrapConfigParser {
    *                      specified data.
    */
   private parseHttpConfig(httpData:any):HttpConfig {
-    const cfg:HttpConfig = new HttpConfig();
+    const cfg:HttpConfig = new HttpConfigImpl();
     const listeners:HttpListenerConfig[] = new Array<HttpListenerConfig>();
     const httpListeners:any[] = httpData.listeners;
     let listener:HttpListenerConfig = null;
@@ -152,7 +155,7 @@ export class BootstrapConfigParser {
    *                         the specified data.
    */
   private parseLoggersConfig(loggers:any):LoggersConfig {
-    const cfg:LoggersConfig = new LoggersConfig();
+    const cfg:LoggersConfig = new LoggersConfigImpl();
     const factories:any[] = loggers.factories;
     let rawFactory:any = null;
     let factory:LoggerFactoryConfig = null;
@@ -162,7 +165,7 @@ export class BootstrapConfigParser {
       cfg.factories = new Array<LoggerFactoryConfig>();
       len = factories.length;
       while(len--){
-        factory = new LoggerFactoryConfig();
+        factory = new LoggerFactoryConfigImpl();
         rawFactory = factories[len];
         factory.name = rawFactory.name;
         factory.logLevel = (rawFactory.logLevel as LogLevelString);
@@ -182,7 +185,7 @@ export class BootstrapConfigParser {
    *                          the specified data.
    */
   private parseSecurityConfig(security:any):SecurityConfig {
-    const cfg:SecurityConfig = new SecurityConfig();
+    const cfg:SecurityConfig = new SecurityConfigImpl();
     return cfg;
   }
 
@@ -199,7 +202,7 @@ export class BootstrapConfigParser {
    *                           from the specified data.
    */
   public parse(bootstrap:any):BootstrapConfig {
-    const cfg:BootstrapConfig = new BootstrapConfig();
+    const cfg:BootstrapConfig = new BootstrapConfigImpl();
     cfg.glasscat = this.parseGlasscatConfig(bootstrap);
     cfg.config = this.parseToolsConfig(bootstrap);
     return cfg;

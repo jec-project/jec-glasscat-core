@@ -17,8 +17,8 @@
 import { TestSuite, Test, BeforeAll } from "jec-juta";
 import { expect } from "chai";
 import { DomainBuilder } from "../../../../../../../src/com/onsoft/glasscat/context/domains/utils/DomainBuilder";
-import { Domain } from "../../../../../../../src/com/onsoft/glasscat/context/domains/Domain";
-import { DomainConnectorConfig } from "../../../../../../../src/com/onsoft/glasscat/context/domains/DomainConnectorConfig";
+import { Domain } from "jec-glasscat-config";
+import { DomainConnectorConfigImpl } from "../../../../../../../src/com/onsoft/glasscat/context/domains/DomainConnectorConfigImpl";
 
 import * as utils from "../../../../../../../utils/test-utils/utilities/DomainConfigurationUtils";
 
@@ -61,7 +61,7 @@ export class DomainBuilderTest {
     description: "should define a 'connector' property of type of DomainConnectorConfig"
   })
   public buildConnectorTest():void {
-    expect(this.result.connector).to.be.an.instanceOf(DomainConnectorConfig);
+    expect(this.result.connector).to.be.an.instanceOf(DomainConnectorConfigImpl);
   }
   
   @Test({

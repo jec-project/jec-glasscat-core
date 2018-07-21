@@ -16,7 +16,7 @@
 
 import {MappedPathUtil} from "../../util/paths/MappedPathUtil";
 import * as fs from "fs";
-import {BootstrapConfig} from "../core/BootstrapConfig";
+import {BootstrapConfig} from "jec-glasscat-config";
 import {GlassCatError} from "../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../exceptions/GlassCatErrorCode";
 

@@ -14,19 +14,23 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {EjpConfig} from "../EjpConfig";
-import {EjpWebAppConfig} from "../EjpWebAppConfig";
-import {EjpJsletsConfig} from "../EjpJsletsConfig";
-import {EjpBootstrapConfig} from "../EjpBootstrapConfig";
-import {EjpSessionConfig} from "../EjpSessionConfig";
-import {EjpResourceMapperConfig} from "../EjpResourceMapperConfig";
-import {EjpLoginConfig} from "../EjpLoginConfig";
-import {EjpFormConfig} from "../EjpFormConfig";
-import {EjpRealmConfig} from "../EjpRealmConfig";
-import {EjpSecurityConfig} from "../EjpSecurityConfig";
-import {EjpConstraintConfig} from "../EjpConstraintConfig";
-import {EjpRoleConfig} from "../EjpRoleConfig";
-import {EjpStaticResourcesConfig} from "../EjpStaticResourcesConfig";
+import {EjpConfig, EjpWebAppConfig, EjpJsletsConfig, EjpBootstrapConfig,
+        EjpSessionConfig, EjpResourceMapperConfig, EjpLoginConfig, EjpFormConfig,
+        EjpRealmConfig, EjpSecurityConfig, EjpConstraintConfig, EjpRoleConfig,
+        EjpStaticResourcesConfig} from "jec-glasscat-config";
+import {EjpWebAppConfigImpl} from "../EjpWebAppConfigImpl";
+import {EjpSecurityConfigImpl} from "../EjpSecurityConfigImpl";
+import {EjpStaticResourcesConfigImpl} from "../EjpStaticResourcesConfigImpl";
+import {EjpRoleConfigImpl} from "../EjpRoleConfigImpl";
+import {EjpConstraintConfigImpl} from "../EjpConstraintConfigImpl";
+import {EjpLoginConfigImpl} from "../EjpLoginConfigImpl";
+import {EjpFormConfigImpl} from "../EjpFormConfigImpl";
+import {EjpRealmConfigImpl} from "../EjpRealmConfigImpl";
+import {EjpJsletsConfigImpl} from "../EjpJsletsConfigImpl";
+import {EjpBootstrapConfigImpl} from "../EjpBootstrapConfigImpl";
+import {EjpResourceMapperConfigImpl} from "../EjpResourceMapperConfigImpl";
+import {EjpSessionConfigImpl} from "../EjpSessionConfigImpl";
+import {EjpConfigImpl} from "../EjpConfigImpl";
 
 /**
  * A parser utility for creating GlassCat <code>EjpConfig</code> instances from 
@@ -56,7 +60,7 @@ export class EjpConfigParser {
    */
   private parseWebApp(manifest:any):EjpWebAppConfig {
     const webapp:any = manifest.webapp;
-    const cfg:EjpWebAppConfig = new EjpWebAppConfig();
+    const cfg:EjpWebAppConfig = new EjpWebAppConfigImpl();
     cfg.name = webapp.name;
     cfg.description = webapp.description;
     cfg.version = webapp.version;
@@ -82,7 +86,7 @@ export class EjpConfigParser {
    */
   private parseSecurity(manifest:any):EjpSecurityConfig {
     const security:any = manifest.webapp.security;
-    const cfg:EjpSecurityConfig = new EjpSecurityConfig();
+    const cfg:EjpSecurityConfig = new EjpSecurityConfigImpl();
     if(security) {
       cfg.constraints = this.parseConstraintsConfig(security.constraints);
       cfg.roles = this.parseRolesConfig(security.roles);
@@ -115,7 +119,7 @@ export class EjpConfigParser {
       len = staticResources.length;
       while(len--) {
         rawResourcesConfig = staticResources[len];
-        resourcesConfig = new EjpStaticResourcesConfig();
+        resourcesConfig = new EjpStaticResourcesConfigImpl();
         resourcesConfig.urlPattern = rawResourcesConfig.urlPattern;
         cfg.push(resourcesConfig);
       }
@@ -140,7 +144,7 @@ export class EjpConfigParser {
       len = roles.length;
       while(len--) {
         rawRole = roles[len];
-        roleConfig = new EjpRoleConfig();
+        roleConfig = new EjpRoleConfigImpl();
         roleConfig.name = rawRole.name;
         roleConfig.path = rawRole.path;
         cfg.push(roleConfig);
@@ -167,7 +171,7 @@ export class EjpConfigParser {
       len = constraints.length;
       while(len--) {
         rawConstraint = constraints[len];
-        constraintConfig = new EjpConstraintConfig();
+        constraintConfig = new EjpConstraintConfigImpl();
         constraintConfig.name = rawConstraint.name;
         constraintConfig.roles = rawConstraint.roles;
         constraintConfig.urlPattern = rawConstraint.urlPattern;
@@ -187,14 +191,14 @@ export class EjpConfigParser {
    */
   private parseLogin(manifest:any):EjpLoginConfig {
     const login:any = manifest.webapp.login;
-    const cfg:EjpLoginConfig = new EjpLoginConfig();
+    const cfg:EjpLoginConfig = new EjpLoginConfigImpl();
     if(login) {
       cfg.authMethod = login.authMethod;
       cfg.formConfig = this.parseFormConfig(manifest);
       cfg.realm = this.parseRealm(manifest);
     } else {
-      cfg.formConfig = new EjpFormConfig();
-      cfg.realm = new EjpRealmConfig();
+      cfg.formConfig = new EjpFormConfigImpl();
+      cfg.realm = new EjpRealmConfigImpl();
     }
     return cfg;
   }
@@ -209,7 +213,7 @@ export class EjpConfigParser {
    */
   private parseFormConfig(manifest:any):EjpFormConfig {
     const form:any = manifest.webapp.login.formConfig;
-    const cfg:EjpFormConfig = new EjpFormConfig();
+    const cfg:EjpFormConfig = new EjpFormConfigImpl();
     if(form) {
       cfg.loginUrl = form.loginUrl;
       cfg.errorUrl = form.errorUrl;
@@ -227,7 +231,7 @@ export class EjpConfigParser {
    */
   private parseRealm(manifest:any):EjpRealmConfig {
     const realm:any = manifest.webapp.login.realm;
-    const cfg:EjpRealmConfig = new EjpRealmConfig();
+    const cfg:EjpRealmConfig = new EjpRealmConfigImpl();
     if(realm) {
       cfg.type = realm.type;
       cfg.securedArea = realm.securedArea;
@@ -245,7 +249,7 @@ export class EjpConfigParser {
    */
   private parseJslets(manifest:any):EjpJsletsConfig {
     const jslets:any = manifest.webapp.jslets;
-    const cfg:EjpJsletsConfig = new EjpJsletsConfig();
+    const cfg:EjpJsletsConfig = new EjpJsletsConfigImpl();
     if(jslets) {
       if(jslets.enableAutowire !== undefined) {
         cfg.enableAutowire = jslets.enableAutowire;
@@ -277,7 +281,7 @@ export class EjpConfigParser {
       len = bootstrapFiles.length;
       while(len--) {
         file = bootstrapFiles[len];
-        configFile = new EjpBootstrapConfig();
+        configFile = new EjpBootstrapConfigImpl();
         configFile.path = file.path;
         configFile.priority = file.priority;
         cfg.push(configFile);
@@ -297,7 +301,7 @@ export class EjpConfigParser {
   private parseResourceMap(manifest:any):Array<EjpResourceMapperConfig> {
     const cfg:Array<EjpResourceMapperConfig> =
                                            new Array<EjpResourceMapperConfig>();
-                                           const resourceMapCfg:any = manifest.webapp.resourceMap;
+    const resourceMapCfg:any = manifest.webapp.resourceMap;
     let len:number = -1;
     let mapObj:any = null;
     let mapper:EjpResourceMapperConfig = null;
@@ -306,7 +310,7 @@ export class EjpConfigParser {
       len = resourceMapCfg.length;
       while(len--) {
         mapObj = resourceMapCfg[len];
-        mapper = new EjpResourceMapperConfig();
+        mapper = new EjpResourceMapperConfigImpl();
         mapper.name = mapObj.name;
         mapper.value = mapObj.value;
         cfg.push(mapper);
@@ -323,7 +327,7 @@ export class EjpConfigParser {
    *                            from the specified data.
    */
   private parseSession(manifest:any):EjpSessionConfig {
-    const cfg:EjpSessionConfig = new EjpSessionConfig();
+    const cfg:EjpSessionConfig = new EjpSessionConfigImpl();
     const session:any = manifest.webapp.session;
     if(session) {
       cfg.storage = session.storage;
@@ -346,7 +350,7 @@ export class EjpConfigParser {
    *                     specified data.
    */
   public parse(manifest:any):EjpConfig {
-    const cfg:EjpConfig = new EjpConfig();
+    const cfg:EjpConfig = new EjpConfigImpl();
     cfg.webapp = this.parseWebApp(manifest);
     return cfg;
   }

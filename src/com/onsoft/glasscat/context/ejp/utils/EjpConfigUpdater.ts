@@ -16,7 +16,7 @@
 
 import {LoggerManager} from "../../../util/logging/LoggerManager";
 import {EjpConfigLoader} from "./EjpConfigLoader";
-import {EjpConfig} from "../EjpConfig";
+import {EjpConfig} from "jec-glasscat-config";
 import {EjpConfigSerializer} from "./EjpConfigSerializer";
 import {MappedPathUtil} from "../../../util/paths/MappedPathUtil";
 import * as fs from "fs";

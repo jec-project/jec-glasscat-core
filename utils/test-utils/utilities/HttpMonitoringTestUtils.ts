@@ -14,7 +14,8 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { HttpMonitoringConfig } from "../../../src/com/onsoft/glasscat/context/core/HttpMonitoringConfig";
+import { HttpMonitoringConfig } from "jec-glasscat-config";
+import { HttpMonitoringConfigImpl } from "../../../src/com/onsoft/glasscat/context/core/HttpMonitoringConfigImpl";
 
 /*!
  * This module constains utilities used by the HttpMonitoringTest test suite.
@@ -22,7 +23,7 @@ import { HttpMonitoringConfig } from "../../../src/com/onsoft/glasscat/context/c
 
 // Utilities:
 export const buildConfig:Function = function(enabled:boolean):HttpMonitoringConfig {
-  let config:HttpMonitoringConfig = new HttpMonitoringConfig();
+  let config:HttpMonitoringConfig = new HttpMonitoringConfigImpl();
   config.enabled = enabled;
   return config;
 };

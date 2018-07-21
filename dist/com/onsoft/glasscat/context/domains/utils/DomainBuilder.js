@@ -1,17 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Domain_1 = require("../Domain");
-const DomainConnectorConfig_1 = require("../DomainConnectorConfig");
+const DomainConnectorConfigImpl_1 = require("../DomainConnectorConfigImpl");
+const DomainImpl_1 = require("../DomainImpl");
 class DomainBuilder {
     constructor() { }
     buildDomainConnector(connector) {
-        const cfg = new DomainConnectorConfig_1.DomainConnectorConfig();
+        const cfg = new DomainConnectorConfigImpl_1.DomainConnectorConfigImpl();
         cfg.type = connector.type;
         cfg.server = connector.server;
         return cfg;
     }
     buildDomain(config) {
-        const domain = new Domain_1.Domain();
+        const domain = new DomainImpl_1.DomainImpl();
         domain.name = config.name;
         domain.host = config.host;
         domain.target = config.target;

@@ -14,8 +14,9 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {Domain} from "../Domain";
-import {DomainConnectorConfig} from "../DomainConnectorConfig";
+import {Domain, DomainConnectorConfig} from "jec-glasscat-config";
+import {DomainConnectorConfigImpl} from "../DomainConnectorConfigImpl";
+import {DomainImpl} from "../DomainImpl";
 
 /**
  * A Builder utility for creating GlassCat <code>Domain</code> instances.
@@ -46,7 +47,7 @@ export class DomainBuilder {
    *                                 config.
    */
   private buildDomainConnector(connector:any):DomainConnectorConfig {
-    const cfg:DomainConnectorConfig = new DomainConnectorConfig();
+    const cfg:DomainConnectorConfig = new DomainConnectorConfigImpl();
     cfg.type = connector.type;
     cfg.server = connector.server;
     return cfg;
@@ -65,7 +66,7 @@ export class DomainBuilder {
    *                  specified config.
    */
   public buildDomain(config:any):Domain {
-    const domain:Domain = new Domain();
+    const domain:Domain = new DomainImpl();
     domain.name = config.name;
     domain.host = config.host;
     domain.target = config.target;

@@ -16,8 +16,7 @@
 
 import {HttpListener} from "./HttpListener";
 import {DefaultHttpListener} from "./DefaultHttpListener";
-import {HttpMonitoring} from "./HttpMonitoring";
-import {HttpListenerConfig} from "../../../context/core/HttpListenerConfig";
+import {HttpListenerConfig} from "jec-glasscat-config";
 import {GlassCatError} from "../../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../../exceptions/GlassCatErrorCode";
 

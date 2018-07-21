@@ -16,7 +16,7 @@
 
 import {SecurityConstraint} from "jec-exchange";
 import {BasicSecurityConstraint} from "../core/BasicSecurityConstraint";
-import {EjpConstraintConfig} from "../../context/ejp/EjpConstraintConfig";
+import {EjpConstraintConfig} from "jec-glasscat-config";
 
 /**
  * A helper class that builds and returns object that implement the

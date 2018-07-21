@@ -14,22 +14,24 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test, BeforeAll, Async } from "jec-juta";
-import { expect, assert } from "chai";
+import { TestSuite, Test, BeforeAll } from "jec-juta";
+import { expect } from "chai";
 import { EjpConfigParser } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/utils/EjpConfigParser";
 import { EjpConfigLoader } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/utils/EjpConfigLoader";
-import { EjpConfig } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpConfig";
-import { EjpWebAppConfig } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpWebAppConfig";
-import { EjpBootstrapConfig } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpBootstrapConfig";
-import { EjpSessionConfig } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpSessionConfig";
-import { EjpResourceMapperConfig } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpResourceMapperConfig";
-import { EjpLoginConfig } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpLoginConfig";
-import { EjpFormConfig } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpFormConfig";
-import { EjpRealmConfig } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpRealmConfig";
-import { EjpSecurityConfig } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpSecurityConfig";
-import { EjpRoleConfig } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpRoleConfig";
-import { EjpStaticResourcesConfig } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpStaticResourcesConfig";
-import { EjpConstraintConfig } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpConstraintConfig";
+import { EjpConfig, EjpBootstrapConfig, EjpResourceMapperConfig, EjpLoginConfig,
+         EjpSecurityConfig, EjpRoleConfig, EjpConstraintConfig } from "jec-glasscat-config";
+import { EjpConfigImpl } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpConfigImpl";
+import { EjpWebAppConfigImpl } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpWebAppConfigImpl";
+import { EjpBootstrapConfigImpl } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpBootstrapConfigImpl";
+import { EjpSessionConfigImpl } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpSessionConfigImpl";
+import { EjpResourceMapperConfigImpl } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpResourceMapperConfigImpl";
+import { EjpLoginConfigImpl } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpLoginConfigImpl";
+import { EjpFormConfigImpl } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpFormConfigImpl";
+import { EjpRealmConfigImpl } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpRealmConfigImpl";
+import { EjpSecurityConfigImpl } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpSecurityConfigImpl";
+import { EjpRoleConfigImpl } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpRoleConfigImpl";
+import { EjpStaticResourcesConfigImpl } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpStaticResourcesConfigImpl";
+import {  EjpConstraintConfigImpl } from "../../../../../../../src/com/onsoft/glasscat/context/ejp/EjpConstraintConfigImpl";
 
 import * as utils from "../../../../../../../utils/test-utils/utilities/EjpConfigUtils";
 
@@ -52,14 +54,14 @@ export class EjpConfigParserTest {
     description: "should return an instance of the 'EjpConfig' class"
   })
   public parseTest():void {
-    expect(this.parsedFile).to.be.an.instanceOf(EjpConfig);
+    expect(this.parsedFile).to.be.an.instanceOf(EjpConfigImpl);
   }
   
   @Test({
     description: "should define an 'EjpWebAppConfig' instance"
   })
   public webappTest():void {
-    expect(this.parsedFile.webapp).to.be.an.instanceOf(EjpWebAppConfig);
+    expect(this.parsedFile.webapp).to.be.an.instanceOf(EjpWebAppConfigImpl);
   }
   
   @Test({
@@ -125,8 +127,9 @@ export class EjpConfigParserTest {
     description: "should define an 'EjpBootstrapConfig' instance"
   })
   public EjpBootstrapConfigTest():void {
-    expect(this.parsedFile.webapp.bootstrap[0]).to.be.an
-                                               .instanceOf(EjpBootstrapConfig);
+    expect(
+      this.parsedFile.webapp.bootstrap[0]
+    ).to.be.an.instanceOf(EjpBootstrapConfigImpl);
   }
   
   @Test({
@@ -150,7 +153,7 @@ export class EjpConfigParserTest {
   })
   public sessionTest():void {
     expect(this.parsedFile.webapp.session).to.be.an
-                                          .instanceOf(EjpSessionConfig);
+                                          .instanceOf(EjpSessionConfigImpl);
   }
   
   @Test({
@@ -188,8 +191,9 @@ export class EjpConfigParserTest {
     description: "should define an 'EjpResourceMapperConfig' instance"
   })
   public EjpResourceMapperConfigTest():void {
-    expect(this.parsedFile.webapp.resourceMap[0]).to.be.an
-                                           .instanceOf(EjpResourceMapperConfig);
+    expect(
+      this.parsedFile.webapp.resourceMap[0]
+    ).to.be.an.instanceOf(EjpResourceMapperConfigImpl);
   }
   
   @Test({
@@ -214,7 +218,9 @@ export class EjpConfigParserTest {
     description: "should define an 'EjpLoginConfig' instance"
   })
   public loginTest():void {
-    expect(this.parsedFile.webapp.login).to.be.an.instanceOf(EjpLoginConfig);
+    expect(
+      this.parsedFile.webapp.login
+    ).to.be.an.instanceOf(EjpLoginConfigImpl);
   }
   
   @Test({
@@ -230,7 +236,7 @@ export class EjpConfigParserTest {
   })
   public formConfigTest():void {
     let login:EjpLoginConfig = this.parsedFile.webapp.login;
-    expect(login.formConfig).to.be.an.instanceOf(EjpFormConfig);
+    expect(login.formConfig).to.be.an.instanceOf(EjpFormConfigImpl);
   }
 
   @Test({
@@ -254,7 +260,7 @@ export class EjpConfigParserTest {
   })
   public realmTest():void {
     let login:EjpLoginConfig = this.parsedFile.webapp.login;
-    expect(login.realm).to.be.an.instanceOf(EjpRealmConfig);
+    expect(login.realm).to.be.an.instanceOf(EjpRealmConfigImpl);
   }
   
   @Test({
@@ -286,8 +292,9 @@ export class EjpConfigParserTest {
     description: "should define an 'EjpSecurityConfig' instance"
   })
   public securityTest():void {
-    expect(this.parsedFile.webapp.security).to.be
-                                              .an.instanceOf(EjpSecurityConfig);
+    expect(
+      this.parsedFile.webapp.security
+    ).to.be.an.instanceOf(EjpSecurityConfigImpl);
   }
   
   @Test({
@@ -302,7 +309,7 @@ export class EjpConfigParserTest {
   })
   public EjpRoleConfigTest():void {
     let security:EjpSecurityConfig = this.parsedFile.webapp.security;
-    expect(security.roles[0]).to.be.an.instanceOf(EjpRoleConfig);
+    expect(security.roles[0]).to.be.an.instanceOf(EjpRoleConfigImpl);
   }
   
   @Test({
@@ -335,7 +342,7 @@ export class EjpConfigParserTest {
   })
   public EjpStaticResourcesConfigTest():void {
     this.parsedFile.webapp.security.staticResources.forEach(element => {
-      expect(element).to.be.an.instanceOf(EjpStaticResourcesConfig);
+      expect(element).to.be.an.instanceOf(EjpStaticResourcesConfigImpl);
     });
   }
   
@@ -360,7 +367,9 @@ export class EjpConfigParserTest {
   })
   public EjpSecurityConfigTest():void {
     let security:EjpSecurityConfig = this.parsedFile.webapp.security;
-    expect(security.constraints[0]).to.be.an.instanceOf(EjpConstraintConfig);
+    expect(
+      security.constraints[0]
+    ).to.be.an.instanceOf(EjpConstraintConfigImpl);
   }
   
   @Test({

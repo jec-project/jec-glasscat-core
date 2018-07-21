@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {EjpFormConfig} from "../../../context/ejp/EjpFormConfig";
+import {EjpFormConfig} from "jec-glasscat-config";
 import {GlassCatError} from "../../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../../exceptions/GlassCatErrorCode";
 

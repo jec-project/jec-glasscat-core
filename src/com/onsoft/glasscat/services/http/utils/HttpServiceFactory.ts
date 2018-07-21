@@ -18,7 +18,7 @@ import {HttpListenerFactory} from '../listeners/HttpListenerFactory';
 import {HttpListener} from '../listeners/HttpListener';
 import {HttpService} from '../HttpService';
 import {DefaultHttpService} from '../DefaultHttpService';
-import {HttpListenerConfig} from "../../../context/core/HttpListenerConfig";
+import {HttpListenerConfig} from "jec-glasscat-config";
 
 /**
  * The <code>HttpServiceFactory</code> class creates HTTP services based upon  

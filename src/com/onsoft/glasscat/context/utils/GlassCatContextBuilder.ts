@@ -16,7 +16,7 @@
 
 import {GlassCatContext} from "../GlassCatContext";
 import {GlassCatConfigLoader} from "./GlassCatConfigLoader";
-import {BootstrapConfig} from "../core/BootstrapConfig";
+import {BootstrapConfig} from "jec-glasscat-config";
 import {BootstrapConfigParser} from "../core/utils/BootstrapConfigParser";
 
 /**

@@ -14,9 +14,9 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {DomainContext} from "../../DomainContext";
-import {Domain} from "../Domain";
+import {Domain} from "jec-glasscat-config";
 import {DomainBuilder} from "./DomainBuilder";
+import {DomainContext} from "../../DomainContext";
 
 /**
  * A builder utility for managing GlassCat domain contexts.

@@ -14,20 +14,24 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { EjpConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpConfig";
-import { EjpWebAppConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpWebAppConfig";
-import { EjpBootstrapConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpBootstrapConfig";
-import { EjpJsletsConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpJsletsConfig";
-import { EjpSessionConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpSessionConfig";
-import { EjpResourceMapperConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpResourceMapperConfig";
-import { EjpLoginConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpLoginConfig";
-import { EjpFormConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpFormConfig";
-import { EjpRealmConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpRealmConfig";
-import { EjpSecurityConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpSecurityConfig";
-import { EjpStaticResourcesConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpStaticResourcesConfig";
-import { EjpRoleConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpRoleConfig";
-import { EjpConstraintConfig } from "../../../src/com/onsoft/glasscat/context/ejp/EjpConstraintConfig";
+import { EjpConfigImpl } from "../../../src/com/onsoft/glasscat/context/ejp/EjpConfigImpl";
+import { EjpWebAppConfigImpl } from "../../../src/com/onsoft/glasscat/context/ejp/EjpWebAppConfigImpl";
+import { EjpBootstrapConfigImpl } from "../../../src/com/onsoft/glasscat/context/ejp/EjpBootstrapConfigImpl";
+import { EjpJsletsConfigImpl } from "../../../src/com/onsoft/glasscat/context/ejp/EjpJsletsConfigImpl";
+import { EjpSessionConfigImpl } from "../../../src/com/onsoft/glasscat/context/ejp/EjpSessionConfigImpl";
+import { EjpResourceMapperConfigImpl } from "../../../src/com/onsoft/glasscat/context/ejp/EjpResourceMapperConfigImpl";
+import { EjpLoginConfigImpl } from "../../../src/com/onsoft/glasscat/context/ejp/EjpLoginConfigImpl";
+import { EjpFormConfigImpl } from "../../../src/com/onsoft/glasscat/context/ejp/EjpFormConfigImpl";
+import { EjpRealmConfigImpl } from "../../../src/com/onsoft/glasscat/context/ejp/EjpRealmConfigImpl";
+import { EjpSecurityConfigImpl } from "../../../src/com/onsoft/glasscat/context/ejp/EjpSecurityConfigImpl";
+import { EjpStaticResourcesConfigImpl } from "../../../src/com/onsoft/glasscat/context/ejp/EjpStaticResourcesConfigImpl";
+import { EjpRoleConfigImpl } from "../../../src/com/onsoft/glasscat/context/ejp/EjpRoleConfigImpl";
+import { EjpConstraintConfigImpl } from "../../../src/com/onsoft/glasscat/context/ejp/EjpConstraintConfigImpl";
 import * as configUtils from "../../../utils/test-utils/utilities/EjpConfigUtils";
+import { EjpConfig, EjpWebAppConfig, EjpBootstrapConfig, EjpJsletsConfig,
+         EjpSessionConfig, EjpResourceMapperConfig, EjpLoginConfig,
+         EjpFormConfig, EjpRealmConfig, EjpSecurityConfig, EjpRoleConfig,
+         EjpStaticResourcesConfig, EjpConstraintConfig } from "jec-glasscat-config";
 
 /*!
  * This module constains utilities used by the EjpConfigSerializerTest test
@@ -37,8 +41,8 @@ import * as configUtils from "../../../utils/test-utils/utilities/EjpConfigUtils
 // Utilities:
 
 export const buildMinimalConfig:Function = function():EjpConfig {
-  let config:EjpConfig = new EjpConfig();
-  let webapp:EjpWebAppConfig = new EjpWebAppConfig();
+  let config:EjpConfig = new EjpConfigImpl();
+  let webapp:EjpWebAppConfig = new EjpWebAppConfigImpl();
   webapp.name = configUtils.WEBAPP_NAME;
   webapp.contextRoot = configUtils.WEBAPP_CONTEXTROOT;
   webapp.welcomeFile = configUtils.WEBAPP_WELCOMEFILE;
@@ -47,17 +51,17 @@ export const buildMinimalConfig:Function = function():EjpConfig {
 }
 export const buildFullConfig:Function = function():EjpConfig {
   let config:EjpConfig = buildMinimalConfig();
-  let bootstrap:EjpBootstrapConfig = new EjpBootstrapConfig();
-  let jslets:EjpJsletsConfig = new EjpJsletsConfig();
-  let session:EjpSessionConfig = new EjpSessionConfig();
-  let resourceMap:EjpResourceMapperConfig = new EjpResourceMapperConfig();
-  let login:EjpLoginConfig = new EjpLoginConfig();
-  let formConfig:EjpFormConfig = new EjpFormConfig();
-  let realm:EjpRealmConfig = new EjpRealmConfig();
-  let security:EjpSecurityConfig = new EjpSecurityConfig();
-  let staticResource:EjpStaticResourcesConfig = new EjpStaticResourcesConfig();
-  let role:EjpRoleConfig = new EjpRoleConfig();
-  let constraint:EjpConstraintConfig = new EjpConstraintConfig();
+  let bootstrap:EjpBootstrapConfig = new EjpBootstrapConfigImpl();
+  let jslets:EjpJsletsConfig = new EjpJsletsConfigImpl();
+  let session:EjpSessionConfig = new EjpSessionConfigImpl();
+  let resourceMap:EjpResourceMapperConfig = new EjpResourceMapperConfigImpl();
+  let login:EjpLoginConfig = new EjpLoginConfigImpl();
+  let formConfig:EjpFormConfig = new EjpFormConfigImpl();
+  let realm:EjpRealmConfig = new EjpRealmConfigImpl();
+  let security:EjpSecurityConfig = new EjpSecurityConfigImpl();
+  let staticResource:EjpStaticResourcesConfig = new EjpStaticResourcesConfigImpl();
+  let role:EjpRoleConfig = new EjpRoleConfigImpl();
+  let constraint:EjpConstraintConfig = new EjpConstraintConfigImpl();
   config.webapp.author = configUtils.WEBAPP_AUTHOR;
   config.webapp.state = configUtils.WEBAPP_STATE;
   config.webapp.description = configUtils.WEBAPP_DESCRIPTION;

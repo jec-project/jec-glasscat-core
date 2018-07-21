@@ -14,7 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {Domain} from "./domains/Domain";
+import {Domain} from "jec-glasscat-config";
 
 /**
  * Stores the GlassCat context for all <code>Domain</code> instances.

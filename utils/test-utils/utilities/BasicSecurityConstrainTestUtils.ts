@@ -14,7 +14,8 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {EjpConstraintConfig} from "../../../src/com/onsoft/glasscat/context/ejp/EjpConstraintConfig";
+import {EjpConstraintConfigImpl} from "../../../src/com/onsoft/glasscat/context/ejp/EjpConstraintConfigImpl";
+import { EjpConstraintConfig } from "jec-glasscat-config";
 
 /*!
  * This module constains utilities used by the BasicSecurityConstrainTest test
@@ -23,7 +24,7 @@ import {EjpConstraintConfig} from "../../../src/com/onsoft/glasscat/context/ejp/
 
 // Utilities:
 export const buildConfig:Function = function():EjpConstraintConfig {
-  let config:EjpConstraintConfig = new EjpConstraintConfig();
+  let config:EjpConstraintConfig = new EjpConstraintConfigImpl();
   config.name = CONFIG_NANE;
   config.errorUrl = CONFIG_ERROR_URL;
   config.roles = [CONFIG_ROLE];

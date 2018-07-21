@@ -14,9 +14,9 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {DomainConfig} from "../DomainConfig";
-import {Domain} from "../Domain";
+import {DomainConfig, Domain} from "jec-glasscat-config";
 import {DomainBuilder} from "./DomainBuilder";
+import {DomainConfigImpl} from "../DomainConfigImpl";
 
 /**
  * A parser utility for creating GlassCat <code>DomainConfig</code> instances 
@@ -74,7 +74,7 @@ export class DomainConfigParser {
    */
   public parse(manifest:any):DomainConfig {
     //TODO: Log errors and create GlasscatErrorCode for this method
-    const cfg:DomainConfig = new DomainConfig();
+    const cfg:DomainConfig = new DomainConfigImpl();
     cfg.domains = this.parseDomains(manifest.domains);
     return cfg;
   }

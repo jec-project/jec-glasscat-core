@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const DomainContext_1 = require("../../DomainContext");
 const DomainBuilder_1 = require("./DomainBuilder");
+const DomainContext_1 = require("../../DomainContext");
 class DomainContextBuilder {
     constructor() { }
     buildContext(config) {

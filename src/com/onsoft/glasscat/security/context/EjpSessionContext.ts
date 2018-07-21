@@ -25,8 +25,7 @@ import {SessionUtil} from "../session/utils/SessionUtil";
 import {SessionIdUtil} from "../session/utils/SessionIdUtil";
 import {SessionStorage} from "../session/connectors/SessionStorage";
 import {SessionStorageSolver} from "../session/utils/SessionStorageSolver";
-import {EjpConfig} from "../../context/ejp/EjpConfig";
-import {EjpSessionConfig} from "../../context/ejp/EjpSessionConfig";
+import {EjpConfig, EjpSessionConfig} from "jec-glasscat-config";
 import {SessionErrorBuilder} from "../session/utils/SessionErrorBuilder";
 
 /**

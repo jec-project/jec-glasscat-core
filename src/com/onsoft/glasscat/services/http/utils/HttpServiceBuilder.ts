@@ -15,10 +15,9 @@
 //   limitations under the License.
 
 import {HttpServiceManager} from "../../../core/HttpServiceManager";
-import {DomainConnectorManager} from "../../../core/DomainConnectorManager";
 import {HttpService} from "../HttpService";
 import {HttpServiceFactory} from "./HttpServiceFactory";
-import {HttpListenerConfig} from "../../../context/core/HttpListenerConfig";
+import {HttpListenerConfig} from "jec-glasscat-config";
 
 /**
  * A mediation utility for creating all HTTP services for the current

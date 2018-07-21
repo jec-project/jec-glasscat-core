@@ -17,7 +17,7 @@
 import {DomainConnector} from "./DomainConnector";
 import {EjpConfigLoader} from "../../context/ejp/utils/EjpConfigLoader";
 import {EjpConfigParser} from "../../context/ejp/utils/EjpConfigParser";
-import {EjpConfig} from "../../context/ejp/EjpConfig";
+import {EjpConfig} from "jec-glasscat-config";
 import {DomainContainer} from "../containers/DomainContainer";
 import {JsletManager} from "../../core/JsletManager";
 import * as moment from "moment";

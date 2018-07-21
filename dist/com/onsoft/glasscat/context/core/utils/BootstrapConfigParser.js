@@ -1,25 +1,25 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const BootstrapConfig_1 = require("../BootstrapConfig");
-const GlasscatConfig_1 = require("../GlasscatConfig");
-const ToolsConfig_1 = require("../ToolsConfig");
-const LoggersConfig_1 = require("../LoggersConfig");
-const LoggerFactoryConfig_1 = require("../LoggerFactoryConfig");
-const HttpConfig_1 = require("../HttpConfig");
-const HttpListenerConfig_1 = require("../HttpListenerConfig");
-const HttpMonitoringConfig_1 = require("../HttpMonitoringConfig");
-const SecurityConfig_1 = require("../SecurityConfig");
+const ToolsConfigImpl_1 = require("../ToolsConfigImpl");
+const GlasscatConfigImpl_1 = require("../GlasscatConfigImpl");
+const HttpListenerConfigImpl_1 = require("../HttpListenerConfigImpl");
+const HttpMonitoringConfigImpl_1 = require("../HttpMonitoringConfigImpl");
+const HttpConfigImpl_1 = require("../HttpConfigImpl");
+const LoggersConfigImpl_1 = require("../LoggersConfigImpl");
+const SecurityConfigImpl_1 = require("../SecurityConfigImpl");
+const BootstrapConfigImpl_1 = require("../BootstrapConfigImpl");
+const LoggerFactoryConfigImpl_1 = require("../LoggerFactoryConfigImpl");
 class BootstrapConfigParser {
     constructor() { }
     parseGlasscatConfig(bootstrap) {
-        const cfg = new GlasscatConfig_1.GlasscatConfig();
+        const cfg = new GlasscatConfigImpl_1.GlasscatConfigImpl();
         const glasscat = bootstrap.glasscat;
         cfg.version = glasscat.version;
         cfg.locale = glasscat.locale;
         return cfg;
     }
     parseToolsConfig(bootstrap) {
-        const cfg = new ToolsConfig_1.ToolsConfig();
+        const cfg = new ToolsConfigImpl_1.ToolsConfigImpl();
         const config = bootstrap.config;
         cfg.loggers = this.parseLoggersConfig(config.loggers);
         cfg.http = this.parseHttpConfig(config.http);
@@ -28,7 +28,7 @@ class BootstrapConfigParser {
         return cfg;
     }
     parserHttpListener(httpListener) {
-        const listener = new HttpListenerConfig_1.HttpListenerConfig();
+        const listener = new HttpListenerConfigImpl_1.HttpListenerConfigImpl();
         listener.id = httpListener.id;
         listener.address = httpListener.address;
         listener.domain = httpListener.domain;
@@ -40,7 +40,7 @@ class BootstrapConfigParser {
         return listener;
     }
     parseHttpMonitoring(monitoring) {
-        const cfg = new HttpMonitoringConfig_1.HttpMonitoringConfig();
+        const cfg = new HttpMonitoringConfigImpl_1.HttpMonitoringConfigImpl();
         if (monitoring) {
             cfg.enabled = monitoring.enabled;
             cfg.factory = monitoring.factory;
@@ -48,7 +48,7 @@ class BootstrapConfigParser {
         return cfg;
     }
     parseHttpConfig(httpData) {
-        const cfg = new HttpConfig_1.HttpConfig();
+        const cfg = new HttpConfigImpl_1.HttpConfigImpl();
         const listeners = new Array();
         const httpListeners = httpData.listeners;
         let listener = null;
@@ -64,7 +64,7 @@ class BootstrapConfigParser {
         return cfg;
     }
     parseLoggersConfig(loggers) {
-        const cfg = new LoggersConfig_1.LoggersConfig();
+        const cfg = new LoggersConfigImpl_1.LoggersConfigImpl();
         const factories = loggers.factories;
         let rawFactory = null;
         let factory = null;
@@ -74,7 +74,7 @@ class BootstrapConfigParser {
             cfg.factories = new Array();
             len = factories.length;
             while (len--) {
-                factory = new LoggerFactoryConfig_1.LoggerFactoryConfig();
+                factory = new LoggerFactoryConfigImpl_1.LoggerFactoryConfigImpl();
                 rawFactory = factories[len];
                 factory.name = rawFactory.name;
                 factory.logLevel = rawFactory.logLevel;
@@ -85,11 +85,11 @@ class BootstrapConfigParser {
         return cfg;
     }
     parseSecurityConfig(security) {
-        const cfg = new SecurityConfig_1.SecurityConfig();
+        const cfg = new SecurityConfigImpl_1.SecurityConfigImpl();
         return cfg;
     }
     parse(bootstrap) {
-        const cfg = new BootstrapConfig_1.BootstrapConfig();
+        const cfg = new BootstrapConfigImpl_1.BootstrapConfigImpl();
         cfg.glasscat = this.parseGlasscatConfig(bootstrap);
         cfg.config = this.parseToolsConfig(bootstrap);
         return cfg;

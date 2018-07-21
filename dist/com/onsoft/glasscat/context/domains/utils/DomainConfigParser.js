@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const DomainConfig_1 = require("../DomainConfig");
 const DomainBuilder_1 = require("./DomainBuilder");
+const DomainConfigImpl_1 = require("../DomainConfigImpl");
 class DomainConfigParser {
     constructor() { }
     parseDomains(domains) {
@@ -19,7 +19,7 @@ class DomainConfigParser {
         return cfg;
     }
     parse(manifest) {
-        const cfg = new DomainConfig_1.DomainConfig();
+        const cfg = new DomainConfigImpl_1.DomainConfigImpl();
         cfg.domains = this.parseDomains(manifest.domains);
         return cfg;
     }

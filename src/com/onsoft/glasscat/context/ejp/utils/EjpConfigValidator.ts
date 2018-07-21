@@ -15,10 +15,9 @@
 //   limitations under the License.
 
 import {LoggerManager} from "../../../util/logging/LoggerManager";
-import {EjpConfig} from "../EjpConfig";
+import {EjpConfig} from "jec-glasscat-config";
 import {DomainState} from "../../../domains/containers/DomainState";
 import {AuthMethod, RealmType, SessionStorageType} from "jec-exchange";
-import {GlassCatLocaleManager} from "../../../i18n/GlassCatLocaleManager";
 import {UrlStringsEnum, LogLevel} from "jec-commons";
 import {GlassCatError} from "../../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../../exceptions/GlassCatErrorCode";

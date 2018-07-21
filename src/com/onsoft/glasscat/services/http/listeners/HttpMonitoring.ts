@@ -19,7 +19,7 @@ import {TransactionMonitorDerivation} from "../../../net/http/monitoring/Transac
 import {TransactionMonitorFactory} from "../../../net/http/monitoring/TransactionMonitorFactory";
 import {MappedPathUtil} from "../../../util/paths/MappedPathUtil";
 import {GlobalClassLoader} from "jec-commons";
-import {HttpMonitoringConfig} from "../../../context/core/HttpMonitoringConfig";
+import {HttpMonitoringConfig} from "jec-glasscat-config";
 import {GlassCatError} from "../../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../../exceptions/GlassCatErrorCode";
 

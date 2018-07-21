@@ -14,22 +14,13 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
+import {EjpConfig, EjpWebAppConfig, EjpBootstrapConfig, EjpJsletsConfig,
+        EjpLoginConfig, EjpFormConfig, EjpRealmConfig, EjpSessionConfig,
+        EjpResourceMapperConfig, EjpSecurityConfig, EjpRoleConfig,
+        EjpConstraintConfig, EjpStaticResourcesConfig} from "jec-glasscat-config";
 import {LoggerManager} from "../../../util/logging/LoggerManager";
-import {EjpConfig} from "../EjpConfig";
-import {EjpWebAppConfig} from "../EjpWebAppConfig";
-import {EjpBootstrapConfig} from "../EjpBootstrapConfig";
-import {EjpJsletsConfig} from "../EjpJsletsConfig";
 import {EjpConfigValidator} from "./EjpConfigValidator";
-import {EjpLoginConfig} from "../EjpLoginConfig";
-import {EjpFormConfig} from "../EjpFormConfig";
-import {EjpRealmConfig} from "../EjpRealmConfig";
 import {AuthMethod} from "jec-exchange";
-import {EjpSessionConfig} from "../EjpSessionConfig";
-import {EjpResourceMapperConfig} from "../EjpResourceMapperConfig";
-import {EjpSecurityConfig} from "../EjpSecurityConfig";
-import {EjpRoleConfig} from "../EjpRoleConfig";
-import {EjpConstraintConfig} from "../EjpConstraintConfig";
-import {EjpStaticResourcesConfig} from "../EjpStaticResourcesConfig";
 import {UrlStringsEnum} from "jec-commons";
 import {GlassCatError} from "../../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../../exceptions/GlassCatErrorCode";

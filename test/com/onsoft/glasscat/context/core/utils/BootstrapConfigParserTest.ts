@@ -16,15 +16,14 @@
 
 import { TestSuite, Test, BeforeAll, AfterAll } from "jec-juta";
 import { expect } from "chai";
-import { BootstrapConfig } from "../../../../../../../src/com/onsoft/glasscat/context/core/BootstrapConfig";
-import { GlasscatConfig } from "../../../../../../../src/com/onsoft/glasscat/context/core/GlasscatConfig";
-import { ToolsConfig } from "../../../../../../../src/com/onsoft/glasscat/context/core/ToolsConfig";
-import { LoggersConfig } from "../../../../../../../src/com/onsoft/glasscat/context/core/LoggersConfig";
-import { LoggerFactoryConfig } from "../../../../../../../src/com/onsoft/glasscat/context/core/LoggerFactoryConfig";
-import { HttpConfig } from "../../../../../../../src/com/onsoft/glasscat/context/core/HttpConfig";
-import { HttpListenerConfig } from "../../../../../../../src/com/onsoft/glasscat/context/core/HttpListenerConfig";
-import { HttpMonitoringConfig } from "../../../../../../../src/com/onsoft/glasscat/context/core/HttpMonitoringConfig";
-import { SecurityConfig } from "../../../../../../../src/com/onsoft/glasscat/context/core/SecurityConfig";
+import { BootstrapConfigImpl } from "../../../../../../../src/com/onsoft/glasscat/context/core/BootstrapConfigImpl";
+import { GlasscatConfigImpl } from "../../../../../../../src/com/onsoft/glasscat/context/core/GlasscatConfigImpl";
+import { ToolsConfigImpl } from "../../../../../../../src/com/onsoft/glasscat/context/core/ToolsConfigImpl";
+import { LoggersConfigImpl } from "../../../../../../../src/com/onsoft/glasscat/context/core/LoggersConfigImpl";
+import { HttpConfigImpl } from "../../../../../../../src/com/onsoft/glasscat/context/core/HttpConfigImpl";
+import { SecurityConfigImpl } from "../../../../../../../src/com/onsoft/glasscat/context/core/SecurityConfigImpl";
+import { HttpMonitoringConfigImpl } from "../../../../../../../src/com/onsoft/glasscat/context/core/HttpMonitoringConfigImpl";
+import { BootstrapConfig, LoggerFactoryConfig, HttpListenerConfig } from "jec-glasscat-config";
 
 // Class to test:
 import { BootstrapConfigParser } from "../../../../../../../src/com/onsoft/glasscat/context/core/utils/BootstrapConfigParser";
@@ -57,14 +56,14 @@ export class BootstrapConfigParserTest {
     description: "should return a valid BootstrapConfig object"
   })
   public parseBootstrapConfigTest():void {
-    expect(this.config).to.be.an.instanceof(BootstrapConfig);
+    expect(this.config).to.be.an.instanceof(BootstrapConfigImpl);
   }
 
   @Test({
     description: "should return a valid GlasscatConfig object"
   })
   public parseGlasscatConfigTest():void {
-    expect(this.config.glasscat).to.be.an.instanceof(GlasscatConfig);
+    expect(this.config.glasscat).to.be.an.instanceof(GlasscatConfigImpl);
   }
 
   @Test({
@@ -85,14 +84,14 @@ export class BootstrapConfigParserTest {
     description: "should return a valid ToolsConfig object"
   })
   public parseToolsConfigTest():void {
-    expect(this.config.config).to.be.an.instanceof(ToolsConfig);
+    expect(this.config.config).to.be.an.instanceof(ToolsConfigImpl);
   }
   
   @Test({
     description: "should return a valid LoggersConfig object"
   })
   public parseLoggersConfigTest():void {
-    expect(this.config.config.loggers).to.be.an.instanceof(LoggersConfig);
+    expect(this.config.config.loggers).to.be.an.instanceof(LoggersConfigImpl);
   }
   
   @Test({
@@ -148,7 +147,7 @@ export class BootstrapConfigParserTest {
     description: "should return a valid HttpConfig object"
   })
   public parseHttpConfigTest():void {
-    expect(this.config.config.http).to.be.an.instanceof(HttpConfig);
+    expect(this.config.config.http).to.be.an.instanceof(HttpConfigImpl);
   }
 
   @Test({
@@ -235,9 +234,9 @@ export class BootstrapConfigParserTest {
   })
   public parseHttpMonitoringConfigTest():void {
     let listener:HttpListenerConfig = this.config.config.http.listeners[0];
-    expect(listener.monitoring).to.be.an.instanceOf(HttpMonitoringConfig);
+    expect(listener.monitoring).to.be.an.instanceOf(HttpMonitoringConfigImpl);
     listener = this.config.config.http.listeners[1];
-    expect(listener.monitoring).to.be.an.instanceOf(HttpMonitoringConfig);
+    expect(listener.monitoring).to.be.an.instanceOf(HttpMonitoringConfigImpl);
   }
 
   @Test({
@@ -264,6 +263,6 @@ export class BootstrapConfigParserTest {
     description: "should return a valid SecurityConfig object"
   })
   public parseSecurityConfigTest():void {
-    expect(this.config.config.security).to.be.an.instanceof(SecurityConfig);
+    expect(this.config.config.security).to.be.an.instanceof(SecurityConfigImpl);
   }
 }

@@ -14,7 +14,8 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import {EjpStaticResourcesConfig} from "../../../src/com/onsoft/glasscat/context/ejp/EjpStaticResourcesConfig";
+import {EjpStaticResourcesConfigImpl} from "../../../src/com/onsoft/glasscat/context/ejp/EjpStaticResourcesConfigImpl";
+import { EjpStaticResourcesConfig } from "jec-glasscat-config";
 
 /*!
  * This module constains utilities used by the BasicStaticResourcesTest test
@@ -23,7 +24,7 @@ import {EjpStaticResourcesConfig} from "../../../src/com/onsoft/glasscat/context
 
 // Utilities:
 export const buildConfig:Function = function():EjpStaticResourcesConfig {
-  let config:EjpStaticResourcesConfig = new EjpStaticResourcesConfig();
+  let config:EjpStaticResourcesConfig = new EjpStaticResourcesConfigImpl();
   config.urlPattern = CONFIG_URL_PATTERN;
   return config;
 };

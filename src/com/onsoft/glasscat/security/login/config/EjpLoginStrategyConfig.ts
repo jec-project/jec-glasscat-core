@@ -17,7 +17,7 @@
 import {LoginStrategyConfig} from "./LoginStrategyConfig";
 import {AuthMethod} from "jec-exchange";
 import {FormProperties} from "./FormProperties";
-import {EjpLoginConfig} from "../../../context/ejp/EjpLoginConfig";
+import {EjpLoginConfig} from "jec-glasscat-config";
 import {GlassCatError} from "../../../exceptions/GlassCatError";
 import {GlassCatErrorCode} from "../../../exceptions/GlassCatErrorCode";
 

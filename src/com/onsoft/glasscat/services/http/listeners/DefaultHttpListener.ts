@@ -18,7 +18,7 @@ import {HttpListener} from "./HttpListener";
 import {TransactionMonitor} from "../../../net/http/monitoring/TransactionMonitor";
 import {HttpConnectionType} from "jec-commons";
 import {HttpMonitoring} from "./HttpMonitoring";
-import {HttpListenerConfig} from "../../../context/core/HttpListenerConfig";
+import {HttpListenerConfig} from "jec-glasscat-config";
 
 /**
  * The DefaultHttpListener class represents the GlassCat default implementation

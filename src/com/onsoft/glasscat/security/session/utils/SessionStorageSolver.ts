@@ -17,7 +17,7 @@
 import {SessionStorage} from "../connectors/SessionStorage";
 import {LocalSessionStorage} from "../connectors/LocalSessionStorage";
 import {SessionStorageType} from "jec-exchange";
-import {EjpSessionConfig} from "../../../context/ejp/EjpSessionConfig";
+import {EjpSessionConfig} from "jec-glasscat-config";
 
 /**
  * A utility class that resolves the session storage connector to use with a

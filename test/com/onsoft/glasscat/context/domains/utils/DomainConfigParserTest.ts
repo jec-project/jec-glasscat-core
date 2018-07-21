@@ -15,11 +15,12 @@
 //   limitations under the License.
 
 import { TestSuite, Test, BeforeAll } from "jec-juta";
-import { expect, assert } from "chai";
+import { expect } from "chai";
 import { DomainConfigParser } from "../../../../../../../src/com/onsoft/glasscat/context/domains/utils/DomainConfigParser";
-import { DomainConfig } from "../../../../../../../src/com/onsoft/glasscat/context/domains/DomainConfig";
-import { Domain } from "../../../../../../../src/com/onsoft/glasscat/context/domains/Domain";
-import { DomainConnectorConfig } from "../../../../../../../src/com/onsoft/glasscat/context/domains/DomainConnectorConfig";
+import { Domain } from "jec-glasscat-config";
+import { DomainConfigImpl } from "../../../../../../../src/com/onsoft/glasscat/context/domains/DomainConfigImpl";
+import { DomainImpl } from "../../../../../../../src/com/onsoft/glasscat/context/domains/DomainImpl";
+import { DomainConnectorConfigImpl } from "../../../../../../../src/com/onsoft/glasscat/context/domains/DomainConnectorConfigImpl";
 
 import * as configUtils from "../../../../../../../utils/test-utils/utilities/DomainConfigurationUtils";
 import * as utils from "../../../../../../../utils/test-utils/utilities/DomainConfigParserTestUtils";
@@ -61,7 +62,7 @@ export class DomainConfigParserTest {
   })
   public parseDomainConfigTest():void {
     let result:any = this.parser.parse(utils.DOMAINS_CONFIG);
-    expect(result).to.be.an.instanceOf(DomainConfig);
+    expect(result).to.be.an.instanceOf(DomainConfigImpl);
   }
   
   @Test({
@@ -77,7 +78,7 @@ export class DomainConfigParserTest {
   })
   public parseDomainTest():void {
     let result:any = this.parser.parse(utils.DOMAINS_CONFIG);
-    expect(result.domains[0]).to.be.an.instanceOf(Domain);
+    expect(result.domains[0]).to.be.an.instanceOf(DomainImpl);
   }
     
   @Test({
@@ -113,7 +114,7 @@ export class DomainConfigParserTest {
   public parseDomainConnectorConfigTest():void {
     let result:any = this.parser.parse(utils.DOMAINS_CONFIG);
     let config:Domain = result.domains[0];
-    expect(config.connector).to.be.an.instanceOf(DomainConnectorConfig);
+    expect(config.connector).to.be.an.instanceOf(DomainConnectorConfigImpl);
   }
   
   @Test({

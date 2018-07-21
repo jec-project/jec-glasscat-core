@@ -16,7 +16,7 @@
 
 import {StaticResources} from "jec-exchange";
 import {BasicStaticResources} from "../core/BasicStaticResources";
-import {EjpStaticResourcesConfig} from "../../context/ejp/EjpStaticResourcesConfig";
+import {EjpStaticResourcesConfig} from "jec-glasscat-config";
 
 /**
  * A helper class that builds and returns object that implements the

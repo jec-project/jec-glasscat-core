@@ -16,7 +16,7 @@
 
 import {DomainContainer} from "../containers/DomainContainer";
 import {JsletManager} from "../../core/JsletManager";
-import {EjpConfig} from "../../context/ejp/EjpConfig";
+import {EjpConfig} from "jec-glasscat-config";
 import {JcadContext} from "jec-commons";
 
 /**

@@ -17,10 +17,8 @@
 import { TestSuite, Test, BeforeAll } from "jec-juta";
 import { expect } from "chai";
 import { DomainContextBuilder } from "../../../../../../../src/com/onsoft/glasscat/context/domains/utils/DomainContextBuilder";
-import { Domain } from "../../../../../../../src/com/onsoft/glasscat/context/domains/Domain";
 import { DomainContext } from "../../../../../../../src/com/onsoft/glasscat/context/DomainContext";
 
-import * as configUtils from "../../../../../../../utils/test-utils/utilities/DomainConfigurationUtils";
 import * as utils from "../../../../../../../utils/test-utils/utilities/DomainContextBuilderTestUtils";
 
 @TestSuite({

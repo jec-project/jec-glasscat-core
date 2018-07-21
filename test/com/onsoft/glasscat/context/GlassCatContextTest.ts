@@ -17,11 +17,11 @@
 import { TestSuite, Test, BeforeAll, Async } from "jec-juta";
 import { expect, assert } from "chai";
 import { GlassCatContext } from "../../../../../src/com/onsoft/glasscat/context/GlassCatContext";
-import { BootstrapConfig } from "../../../../../src/com/onsoft/glasscat/context/core/BootstrapConfig";
 import { BootstrapConfigParser } from "../../../../../src/com/onsoft/glasscat/context/core/utils/BootstrapConfigParser";
 import { JsonLoader, JsonLoaderError, LogLevelUtil } from "jec-commons";
 import { DefaultJsonLoader } from "jec-commons-node";
 import * as path from "path";
+import { BootstrapConfig } from "jec-glasscat-config";
 
 @TestSuite({
   description: "Test the GlassCatContext class methods"
