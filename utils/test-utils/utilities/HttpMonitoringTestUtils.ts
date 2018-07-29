@@ -23,7 +23,7 @@ import { HttpMonitoringConfigImpl } from "../../../src/com/onsoft/glasscat/conte
 
 // Utilities:
 export const buildConfig:Function = function(enabled:boolean):HttpMonitoringConfig {
-  let config:HttpMonitoringConfig = new HttpMonitoringConfigImpl();
+  const config:HttpMonitoringConfig = new HttpMonitoringConfigImpl();
   config.enabled = enabled;
   return config;
 };

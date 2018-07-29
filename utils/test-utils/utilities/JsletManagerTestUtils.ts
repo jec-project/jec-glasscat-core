@@ -26,11 +26,11 @@ export const UNDEFINED_CONTEXT_REF:string = "anything";
 export const CONTEXT_REF:string = "my-context-root";
 export const JSLET_URL:string = "foo";
 export const buildContext:Function = function():JsletContext {
-  let ctx:JsletContext = new JsletContextTestImpl();
+  const ctx:JsletContext = new JsletContextTestImpl();
   return ctx;
 };
 export const buildJslet:Function = function():Jslet {
-  let jslet:HttpJslet = new HttpJslet();
+  const jslet:HttpJslet = new HttpJslet();
   (jslet as any).__webJsletMetadata = { urlPatterns: [JSLET_URL] };
   return jslet;
 };

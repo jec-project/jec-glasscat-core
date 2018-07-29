@@ -24,7 +24,7 @@ import { EjpStaticResourcesConfig } from "jec-glasscat-config";
 
 // Utilities:
 export const buildConfig:Function = function():EjpStaticResourcesConfig {
-  let config:EjpStaticResourcesConfig = new EjpStaticResourcesConfigImpl();
+  const config:EjpStaticResourcesConfig = new EjpStaticResourcesConfigImpl();
   config.urlPattern = CONFIG_URL_PATTERN;
   return config;
 };

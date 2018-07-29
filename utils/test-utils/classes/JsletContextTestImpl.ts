@@ -27,7 +27,7 @@ export class JsletContextTestImpl implements JsletContext {
   }
 
   addJslet(jslet: Jslet): void {
-    let jsletImpl:any = (jslet as any);
+    const jsletImpl:any = (jslet as any);
     this._map.set(jsletImpl.__webJsletMetadata.urlPatterns[0], jslet);
   }
 

@@ -23,7 +23,7 @@ import { JcadContext, JcadContextFactory } from "jec-commons";
 
 // Utilities:
 export const builJcadContext:Function = function():JcadContext {
-  let ctxFactory:JcadContextFactory = new JcadContextFactory();
-  let context:JcadContext = ctxFactory.create();
+  const ctxFactory:JcadContextFactory = new JcadContextFactory();
+  const context:JcadContext = ctxFactory.create();
   return context;
 };

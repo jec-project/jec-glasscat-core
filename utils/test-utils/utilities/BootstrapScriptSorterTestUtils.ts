@@ -23,7 +23,7 @@ import {BootstrapScript} from "jec-commons";
 
 // Utilities:
 export const buildBootstrapScriptColl:Function = function():BootstrapScript[]{
-  let coll:BootstrapScript[] = new Array<BootstrapScript>();
+  const coll:BootstrapScript[] = new Array<BootstrapScript>();
   let cussor:number = 6;
   let script:any = null;
   while(cussor--) {

@@ -23,7 +23,7 @@ import { SessionId, SessionErrorType } from "jec-exchange";
 
 // Utilities:
 const buildSession:Function = function():SessionId {
-  let session:SessionId =
+  const session:SessionId =
                   new GlassCatSessionId("0498c7a9-b64f-412b-a033-95d5e9340ed7");
   return session;
 };

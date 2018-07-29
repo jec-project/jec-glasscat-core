@@ -27,13 +27,13 @@ import {SessionId, Session} from "jec-exchange";
 const SESSION_GUID:string = "03b7be34-9e4d-4799-89a6-81ae950cca4c";
 const VOLATILE_SESSION_GUID:string = "8ee0a6b5-462b-4053-b253-0c374cd1071e";
 const buildSessionId:Function = function(guid:string):SessionId {
-  let session:SessionId = new GlassCatSessionId(guid);
+  const session:SessionId = new GlassCatSessionId(guid);
   return session;
 };
 export const SESSION_ID:SessionId = buildSessionId(SESSION_GUID);
 export const VOLATILE_SESSION_ID:SessionId = buildSessionId(VOLATILE_SESSION_GUID);
 const buildSession:Function = function(sessionId:SessionId, expires:number):Session {
-  let session:Session = new GlassCatSession();
+  const session:Session = new GlassCatSession();
   session.sessionId = sessionId;
   session.expires = expires;
   return session;

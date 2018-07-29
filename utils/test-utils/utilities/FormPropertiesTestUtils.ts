@@ -24,7 +24,7 @@ import { EjpFormConfig } from "jec-glasscat-config";
 
 // Utilities:
 export const buildConfig:Function = function():EjpFormConfig {
-  let formConfig:EjpFormConfig = new EjpFormConfigImpl();
+  const formConfig:EjpFormConfig = new EjpFormConfigImpl();
   formConfig.errorUrl = configUtils.FORM_CONFIG_ERROR_URL;
   formConfig.loginUrl = configUtils.FORM_CONFIG_LOGIN_URL;
   return formConfig;

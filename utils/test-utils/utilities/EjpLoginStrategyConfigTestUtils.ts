@@ -28,20 +28,20 @@ import { EjpFormConfig, EjpRealmConfig, EjpLoginConfig } from "jec-glasscat-conf
 
 // Utilities:
 const buildFormConfig:Function = function():EjpFormConfig {
-  let formConfig:EjpFormConfig = new EjpFormConfigImpl();
+  const formConfig:EjpFormConfig = new EjpFormConfigImpl();
   formConfig.errorUrl = configUtils.FORM_CONFIG_ERROR_URL;
   formConfig.loginUrl = configUtils.FORM_CONFIG_LOGIN_URL;
   return formConfig;
 };
 const buildRealmConfig:Function = function():EjpRealmConfig {
-  let realmConfig:EjpRealmConfig = new EjpRealmConfigImpl();
+  const realmConfig:EjpRealmConfig = new EjpRealmConfigImpl();
   realmConfig.type = RealmType.FILE;
   return realmConfig;
 };
 export const REALM_CONFIG:EjpRealmConfig = buildRealmConfig();
 export const FORM_CONFIG:EjpFormConfig = buildFormConfig();
 export const buildConfig:Function = function():EjpLoginConfig {
-  let config:EjpLoginConfig = new EjpLoginConfigImpl();
+  const config:EjpLoginConfig = new EjpLoginConfigImpl();
   config.formConfig = FORM_CONFIG;
   config.authMethod = configUtils.LOGIN_AUTH_METHOD;
   config.realm = REALM_CONFIG;

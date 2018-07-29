@@ -41,8 +41,8 @@ import { EjpConfig, EjpWebAppConfig, EjpBootstrapConfig, EjpJsletsConfig,
 // Utilities:
 
 export const buildMinimalConfig:Function = function():EjpConfig {
-  let config:EjpConfig = new EjpConfigImpl();
-  let webapp:EjpWebAppConfig = new EjpWebAppConfigImpl();
+  const config:EjpConfig = new EjpConfigImpl();
+  const webapp:EjpWebAppConfig = new EjpWebAppConfigImpl();
   webapp.name = configUtils.WEBAPP_NAME;
   webapp.contextRoot = configUtils.WEBAPP_CONTEXTROOT;
   webapp.welcomeFile = configUtils.WEBAPP_WELCOMEFILE;
@@ -50,18 +50,18 @@ export const buildMinimalConfig:Function = function():EjpConfig {
   return config;
 }
 export const buildFullConfig:Function = function():EjpConfig {
-  let config:EjpConfig = buildMinimalConfig();
-  let bootstrap:EjpBootstrapConfig = new EjpBootstrapConfigImpl();
-  let jslets:EjpJsletsConfig = new EjpJsletsConfigImpl();
-  let session:EjpSessionConfig = new EjpSessionConfigImpl();
-  let resourceMap:EjpResourceMapperConfig = new EjpResourceMapperConfigImpl();
-  let login:EjpLoginConfig = new EjpLoginConfigImpl();
-  let formConfig:EjpFormConfig = new EjpFormConfigImpl();
-  let realm:EjpRealmConfig = new EjpRealmConfigImpl();
-  let security:EjpSecurityConfig = new EjpSecurityConfigImpl();
-  let staticResource:EjpStaticResourcesConfig = new EjpStaticResourcesConfigImpl();
-  let role:EjpRoleConfig = new EjpRoleConfigImpl();
-  let constraint:EjpConstraintConfig = new EjpConstraintConfigImpl();
+  const config:EjpConfig = buildMinimalConfig();
+  const bootstrap:EjpBootstrapConfig = new EjpBootstrapConfigImpl();
+  const jslets:EjpJsletsConfig = new EjpJsletsConfigImpl();
+  const session:EjpSessionConfig = new EjpSessionConfigImpl();
+  const resourceMap:EjpResourceMapperConfig = new EjpResourceMapperConfigImpl();
+  const login:EjpLoginConfig = new EjpLoginConfigImpl();
+  const formConfig:EjpFormConfig = new EjpFormConfigImpl();
+  const realm:EjpRealmConfig = new EjpRealmConfigImpl();
+  const security:EjpSecurityConfig = new EjpSecurityConfigImpl();
+  const staticResource:EjpStaticResourcesConfig = new EjpStaticResourcesConfigImpl();
+  const role:EjpRoleConfig = new EjpRoleConfigImpl();
+  const constraint:EjpConstraintConfig = new EjpConstraintConfigImpl();
   config.webapp.author = configUtils.WEBAPP_AUTHOR;
   config.webapp.state = configUtils.WEBAPP_STATE;
   config.webapp.description = configUtils.WEBAPP_DESCRIPTION;

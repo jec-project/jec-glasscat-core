@@ -25,7 +25,7 @@ import {DefaultJsonLoader} from "jec-commons-node";
 // Utilities:
 const BOOTSTRAP_FILE:string = "utils/test-utils/files/bootstrap.json";
 export const loadConfigFile:Function = function():any {
-  let loader:JsonLoader = new DefaultJsonLoader();
+  const loader:JsonLoader = new DefaultJsonLoader();
   return loader.loadSync(BOOTSTRAP_FILE);
 };
 export const GLASSCAT_VERSION:string = "0.0.0";

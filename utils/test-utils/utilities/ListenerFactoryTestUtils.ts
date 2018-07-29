@@ -26,7 +26,7 @@ import { HttpConnectionType } from "jec-commons";
 
 // Utilities:
 const buildMonitorConfig:Function = function():HttpMonitoringConfig {
-  let config:HttpMonitoringConfig = new HttpMonitoringConfigImpl();
+  const config:HttpMonitoringConfig = new HttpMonitoringConfigImpl();
   config.enabled = true;
   return config;
 };
@@ -39,7 +39,7 @@ export const SERVER:string = "server1";
 export const MONITORING:HttpMonitoringConfig = buildMonitorConfig();
 export const PROTOCOL:HttpConnectionType = HttpConnectionType.HTTP;
 export const buildConfig:Function = function():HttpListenerConfig {
-  let config:HttpListenerConfig = new HttpListenerConfigImpl();
+  const config:HttpListenerConfig = new HttpListenerConfigImpl();
   config.address = ADDRESS;
   config.domain = DOMAIN;
   config.id = ID;

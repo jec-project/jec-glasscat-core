@@ -37,6 +37,6 @@ export const VALID_COMPLEX_COOKIE:any = {
   JSSESSIONID: COMPLEX_COOKIE_CONTENT
 };
 export const buildSessionId:Function = function():SessionId{
-  let id:SessionId = new GlassCatSessionId(VALID_COMPLEX_GUID);
+  const id:SessionId = new GlassCatSessionId(VALID_COMPLEX_GUID);
   return id;
 };

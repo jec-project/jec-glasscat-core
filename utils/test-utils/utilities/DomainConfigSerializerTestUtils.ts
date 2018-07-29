@@ -28,9 +28,9 @@ import { DomainConfig, Domain, DomainConnectorConfig } from "jec-glasscat-config
 // Utilities:
 export const INVALID_DATA:any = ["foo", "bar"];
 export const buildDomainConfig:Function = function():DomainConfigImpl {
-  let cfg:DomainConfig = new DomainConfigImpl();
-  let domain:Domain = new DomainImpl();
-  let connector:DomainConnectorConfig = new DomainConnectorConfigImpl();
+  const cfg:DomainConfig = new DomainConfigImpl();
+  const domain:Domain = new DomainImpl();
+  const connector:DomainConnectorConfig = new DomainConnectorConfigImpl();
   connector.server = configUtils.CONFIG_SERVER;
   connector.type = configUtils.CONFIG_TYPE;
   domain.name = configUtils.CONFIG_NAME;

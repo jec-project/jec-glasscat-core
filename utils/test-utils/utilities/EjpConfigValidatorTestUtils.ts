@@ -44,51 +44,51 @@ export const buildNoWebappConfig:Function = function():EjpConfig {
   return new EjpConfigImpl();
 };
 export const buildNoNameConfig:Function = function():EjpConfig {
-  let config:EjpConfig = buildNoWebappConfig();
+  const config:EjpConfig = buildNoWebappConfig();
   config.webapp = new EjpWebAppConfigImpl();
   return config;
 };
 export const buildNoWelcomeFileConfig:Function = function():EjpConfig {
-  let config:EjpConfig = buildNoNameConfig();
+  const config:EjpConfig = buildNoNameConfig();
   config.webapp.name = configUtils.WEBAPP_NAME;
   return config;
 };
 export const buildNoContextRootConfig:Function = function():EjpConfig {
-  let config:EjpConfig = buildNoWelcomeFileConfig();
+  const config:EjpConfig = buildNoWelcomeFileConfig();
   config.webapp.welcomeFile = configUtils.WEBAPP_WELCOMEFILE;
   return config;
 };
 export const buildEmptyContextRootConfig:Function = function():EjpConfig {
-  let config:EjpConfig = buildNoContextRootConfig();
+  const config:EjpConfig = buildNoContextRootConfig();
   config.webapp.contextRoot = "";
   return config;
 };
 export const buildInvalidStateConfig:Function = function():EjpConfig {
-  let config:EjpConfig = buildNoContextRootConfig();
+  const config:EjpConfig = buildNoContextRootConfig();
   config.webapp.contextRoot = configUtils.WEBAPP_CONTEXTROOT;
   config.webapp.state = "invalid";
   return config;
 };
 export const buildLoginConfig:Function = function():EjpConfig {
-  let config:EjpConfig = buildNoContextRootConfig();
+  const config:EjpConfig = buildNoContextRootConfig();
   config.webapp.contextRoot = configUtils.WEBAPP_CONTEXTROOT;
   config.webapp.login = new EjpLoginConfigImpl();
   config.webapp.login.realm = new EjpRealmConfigImpl();
   return config;
 };
 export const buildInvalidAuthMethodConfig:Function = function():EjpConfig {
-  let config:EjpConfig = buildLoginConfig();
+  const config:EjpConfig = buildLoginConfig();
   config.webapp.login.authMethod = ("invalid" as AuthMethod);
   return config;
 };
 export const buildInvalidFormConfig:Function = function():EjpConfig {
-  let config:EjpConfig = buildLoginConfig();
+  const config:EjpConfig = buildLoginConfig();
   config.webapp.login.authMethod = AuthMethod.EJP_FORM;
   return config;
 };
 export const buildValidLoginConfig:Function = function():EjpConfig {
-  let config:EjpConfig = buildLoginConfig();
-  let formConfig:EjpFormConfig = new EjpFormConfigImpl();
+  const config:EjpConfig = buildLoginConfig();
+  const formConfig:EjpFormConfig = new EjpFormConfigImpl();
   config.webapp.login.authMethod = configUtils.LOGIN_AUTH_METHOD;
   formConfig.errorUrl = configUtils.FORM_CONFIG_ERROR_URL;
   formConfig.loginUrl = configUtils.FORM_CONFIG_LOGIN_URL;
@@ -96,26 +96,26 @@ export const buildValidLoginConfig:Function = function():EjpConfig {
   return config;
 };
 export const buildInValidRealmType:Function = function():EjpConfig {
-  let config:EjpConfig = buildValidLoginConfig();
+  const config:EjpConfig = buildValidLoginConfig();
   config.webapp.login.realm.type = ("invalid" as RealmType);
   return config;
 };
 export const buildInValidRealmFactory:Function = function():EjpConfig {
-  let config:EjpConfig = buildValidLoginConfig();
+  const config:EjpConfig = buildValidLoginConfig();
   config.webapp.login.realm.type = RealmType.CUSTOM;
   return config;
 };
 export const buildValidRealm:Function = function():EjpConfig {
-  let config:EjpConfig = buildValidLoginConfig();
-  let realm:EjpRealmConfig = config.webapp.login.realm;
+  const config:EjpConfig = buildValidLoginConfig();
+  const realm:EjpRealmConfig = config.webapp.login.realm;
   realm.connectorFactory = configUtils.REALM_CONNECTOR_FACTORY;
   realm.securedArea = configUtils.REALM_SECURED_AREA;
   realm.type = configUtils.REALM_TYPE;
   return config;
 };
 export const buildInValidSession:Function = function():EjpConfig {
-  let config:EjpConfig = buildValidRealm();
-  let session:EjpSessionConfig = new EjpSessionConfigImpl();
+  const config:EjpConfig = buildValidRealm();
+  const session:EjpSessionConfig = new EjpSessionConfigImpl();
   session.errorUrl = configUtils.SESSION_ERROR_URL;
   session.maxAge = configUtils.SESSION_MAX_AGE;
   session.storage = ("invalid" as SessionStorageType);
@@ -123,15 +123,15 @@ export const buildInValidSession:Function = function():EjpConfig {
   return config;
 };
 export const buildFullConfig:Function = function():EjpConfig {
-  let config:EjpConfig = buildInValidSession();
-  let webapp:EjpWebAppConfig = config.webapp;
-  let bootstrap:EjpBootstrapConfig = new EjpBootstrapConfigImpl();
-  let jslets:EjpJsletsConfig = new EjpJsletsConfigImpl();
-  let resourceMap:EjpResourceMapperConfig = new EjpResourceMapperConfigImpl();
-  let security:EjpSecurityConfig = new EjpSecurityConfigImpl();
-  let staticResource:EjpStaticResourcesConfig = new EjpStaticResourcesConfigImpl();
-  let role:EjpRoleConfig = new EjpRoleConfigImpl();
-  let constraint:EjpConstraintConfig = new EjpConstraintConfigImpl()
+  const config:EjpConfig = buildInValidSession();
+  const webapp:EjpWebAppConfig = config.webapp;
+  const bootstrap:EjpBootstrapConfig = new EjpBootstrapConfigImpl();
+  const jslets:EjpJsletsConfig = new EjpJsletsConfigImpl();
+  const resourceMap:EjpResourceMapperConfig = new EjpResourceMapperConfigImpl();
+  const security:EjpSecurityConfig = new EjpSecurityConfigImpl();
+  const staticResource:EjpStaticResourcesConfig = new EjpStaticResourcesConfigImpl();
+  const role:EjpRoleConfig = new EjpRoleConfigImpl();
+  const constraint:EjpConstraintConfig = new EjpConstraintConfigImpl()
   webapp.author = configUtils.WEBAPP_AUTHOR;
   webapp.state = configUtils.WEBAPP_STATE;
   webapp.description = configUtils.WEBAPP_DESCRIPTION;

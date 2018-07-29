@@ -25,11 +25,11 @@ import { BootstrapImpl } from "../classes/BootstrapImpl";
 // Utilities:
 export const PRIORITY:number = 10;
 export const buildBootstrapScript:Function = function():any {
-  let bootstrap:BootstrapImpl = new BootstrapImpl();
+  const bootstrap:BootstrapImpl = new BootstrapImpl();
   return bootstrap.constructor;
 };
 export const buildParams:Function = function():BootstrapParams {
-  let params:BootstrapParams = ({
+  const params:BootstrapParams = ({
     priority: PRIORITY
   } as BootstrapParams);
   return params;

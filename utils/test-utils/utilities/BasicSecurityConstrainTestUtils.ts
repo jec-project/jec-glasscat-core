@@ -24,7 +24,7 @@ import { EjpConstraintConfig } from "jec-glasscat-config";
 
 // Utilities:
 export const buildConfig:Function = function():EjpConstraintConfig {
-  let config:EjpConstraintConfig = new EjpConstraintConfigImpl();
+  const config:EjpConstraintConfig = new EjpConstraintConfigImpl();
   config.name = CONFIG_NANE;
   config.errorUrl = CONFIG_ERROR_URL;
   config.roles = [CONFIG_ROLE];

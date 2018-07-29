@@ -28,8 +28,8 @@ import { EjpLoginConfig, EjpRealmConfig } from "jec-glasscat-config";
 export const CONTEXTROOT:string = process.cwd();
 export const buildLoginStrategyConfig:Function = function(type:RealmType):LoginStrategyConfig {
   let cfg:LoginStrategyConfig = null;
-  let context:EjpLoginConfig = new EjpLoginConfigImpl();
-  let realm:EjpRealmConfig = new EjpRealmConfigImpl();
+  const context:EjpLoginConfig = new EjpLoginConfigImpl();
+  const realm:EjpRealmConfig = new EjpRealmConfigImpl();
   realm.type = type;
   context.realm = realm;
   context.authMethod = AuthMethod.BASIC;

@@ -29,7 +29,7 @@ import { EjpConstraintConfig } from "jec-glasscat-config";
 export const USER_ROLE_NAME:string = "USER";
 export const ADMIN_ROLE_NAME:string = "ADMIN";
 const buildRoles:Function = function():SecurityRole[] {
-  let roles:SecurityRole[] = new Array<SecurityRole>();
+  const roles:SecurityRole[] = new Array<SecurityRole>();
   roles.push(new BasicSecurityRole(ADMIN_ROLE_NAME));
   return roles;
 };
@@ -37,7 +37,7 @@ export const ID: string = "5375a08a-7cb4-421b-b782-8a562cea3d36";
 export const ALIAS:string = "alias";
 export const ROLES:SecurityRole[] = buildRoles();
 const buildEjpConstraintConfig:Function = function(role:string):EjpConstraintConfig {
-  let cfg:EjpConstraintConfig = new EjpConstraintConfigImpl();
+  const cfg:EjpConstraintConfig = new EjpConstraintConfigImpl();
   cfg.roles = [role];
   cfg.errorUrl = "error/url";
   cfg.name = role;
@@ -45,12 +45,12 @@ const buildEjpConstraintConfig:Function = function(role:string):EjpConstraintCon
   return cfg;
 };
 export const buildGrantedConstraint:Function = function():SecurityConstraint {
-  let constraint:SecurityConstraint =
+  const constraint:SecurityConstraint =
          new BasicSecurityConstraint(buildEjpConstraintConfig(ADMIN_ROLE_NAME));
   return constraint;
 };
 export const buildNotGrantedConstraint:Function = function():SecurityConstraint {
-  let constraint:SecurityConstraint =
+  const constraint:SecurityConstraint =
           new BasicSecurityConstraint(buildEjpConstraintConfig(USER_ROLE_NAME));
   return constraint;
 };

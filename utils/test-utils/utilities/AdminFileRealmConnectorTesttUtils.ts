@@ -26,7 +26,7 @@ import {BasicCredentials} from "../../../src/com/onsoft/glasscat/security/sessio
 // Utilities:
 export const CONTEXTROOT:string = process.cwd();
 export const buildBadCredentials:Function = function():Credentials {
-  let credentials:Credentials = new BasicCredentials();
+  const credentials:Credentials = new BasicCredentials();
   credentials.login = "foo";
   credentials.password = "bar";
   return credentials;
