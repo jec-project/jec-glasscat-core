@@ -14,20 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, BeforeAll } from "jec-juta";
-import { Decorator } from "jec-commons";
-import { CacheControlDecorator } from "../../../../../../../src/com/onsoft/glasscat/cfg/jcad/decorators/CacheControlDecorator";
 
-@TestSuite({
-  description: "Test the CacheControlDecorator class methods",
-  disabled: true
-})
-export class CacheControlDecoratorTest {
+import { HttpJslet } from "jec-exchange";
 
-  public decorator:Decorator = null;
-
-  @BeforeAll()
-  public initTest():void {
-    this.decorator = new CacheControlDecorator();
-  }
-}
+export class HttpJsletImpl2 extends HttpJslet {}

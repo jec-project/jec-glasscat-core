@@ -28,17 +28,17 @@ export class TransactionMonitorDerivationTest {
     description: "should do nothing"
   })
   public sendTest():void {
-    let derivation:TransactionMonitorDerivation =
+    const derivation:TransactionMonitorDerivation =
                                              new TransactionMonitorDerivation();
-    expect(derivation.send(new HttpTransaction(null))).to.be.OK;
+    expect(derivation.send(new HttpTransaction(null))).to.be.undefined;
   }
   
   @Test({
     description: "should do nothing"
   })
   public sendNullTest():void {
-    let derivation:TransactionMonitorDerivation =
+    const derivation:TransactionMonitorDerivation =
                                              new TransactionMonitorDerivation();
-    expect(derivation.send(null)).to.be.OK;
+    expect(derivation.send(null)).to.be.undefined;
   }
 }

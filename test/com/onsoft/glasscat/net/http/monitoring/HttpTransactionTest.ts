@@ -93,7 +93,7 @@ export class HttpTransactionTest {
     order: 7
   })
   public closeTest():void {
-    expect(this.transaction.close(true)).to.be.OK;
+    expect(this.transaction.close(true)).to.be.undefined;
   }
   
   @Test({

@@ -1,5 +1,17 @@
 # JEC GlassCat Core Project: Update Release Notes
 
+<a name="jec-glasscat-core-0.1.8"></a>
+## **0.1.8** (2018-08-29)
+
+### Bug Fixes
+
+- Fixing test cases issues due to dependencies upgrade
+
+### Features
+
+- Updating all dependencies
+- Test cases improvements
+
 <a name="jec-glasscat-core-0.1.7"></a>
 ## **0.1.7** (2018-07-14)
 

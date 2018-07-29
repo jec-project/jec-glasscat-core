@@ -27,26 +27,26 @@ export const JSLET_NAME:string = "JsletName;";
 export const JSLET_URL_PATTERNS:string[] = ["/my/pattern"];
 export const JSLET_TEMPLATE:string = "my/template.ejs";
 export const buildJslet:Function = function():any {
-  let jslet:HttpJslet = new HttpJsletImpl();
+  const jslet:HttpJslet = new HttpJsletImpl();
   return jslet.constructor;
 };
 export const buildInvalidParams:Function = function():WebJsletParams {
-  let params:WebJsletParams = {} as WebJsletParams;
+  const params:WebJsletParams = {} as WebJsletParams;
   return params;
 };
 export const buildEmptyPatternsParams:Function = function():WebJsletParams {
-  let params:WebJsletParams = buildInvalidParams();
+  const params:WebJsletParams = buildInvalidParams();
   params.urlPatterns = [];
   return params;
 };
 export const buildParams:Function = function():WebJsletParams {
-  let params:WebJsletParams = buildInvalidParams();
+  const params:WebJsletParams = buildInvalidParams();
   params.urlPatterns = JSLET_URL_PATTERNS;
   params.name = JSLET_NAME;
   return params;
 };
 export const buildParamsWithTemplate:Function = function():WebJsletParams {
-  let params:WebJsletParams = buildParams();
+  const params:WebJsletParams = buildParams();
   params.template = JSLET_TEMPLATE;
   return params;
 };

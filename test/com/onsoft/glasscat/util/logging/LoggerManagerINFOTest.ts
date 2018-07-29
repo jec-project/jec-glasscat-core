@@ -15,14 +15,10 @@
 //   limitations under the License.
 
 import { TestSuite, Test, BeforeAll, AfterAll } from "jec-juta";
-import * as chai from "chai";
-import * as spies from "chai-spies";
+import { expect } from "chai";
+import * as sinon from "sinon";
 import { LoggerManager } from "../../../../../../src/com/onsoft/glasscat/util/logging/LoggerManager";
 import { Logger, LogLevel, ConsoleLogger } from "jec-commons";
-
-// Chai declarations:
-const expect:any = chai.expect;
-chai.use(spies);
 
 @TestSuite({
   description: "Test the LoggerManager class log methods when log level is LogLevel.INFO"
@@ -33,60 +29,63 @@ export class LoggerManagerINFOTest {
 
   @BeforeAll()
   public initTest():void {
-    let manager:LoggerManager = (LoggerManager.getInstance() as LoggerManager);
+    const manager:LoggerManager =
+                                 (LoggerManager.getInstance() as LoggerManager);
     this.logger = new ConsoleLogger();
     manager.init([this.logger], LogLevel.INFO);
   }
   
   @AfterAll()
   public resetTest():void {
-    let manager:LoggerManager = (LoggerManager.getInstance() as LoggerManager);
+    const manager:LoggerManager =
+                                 (LoggerManager.getInstance() as LoggerManager);
     manager.init(null, LogLevel.OFF);
     this.logger = null;
+    sinon.restore();
   }
   
   @Test({
     description: "should not invoke the debug() method on the ConsoleLogger instance"
   })
   public debugTest():void {
-    let spy:any = chai.spy.on(this.logger, "debug");
+    const spy:any = sinon.spy(this.logger, "debug");
     LoggerManager.getInstance().debug("debug called");
-    expect(spy).to.not.have.been.called();
+    sinon.assert.calledOnce(spy);
   }
   
   @Test({
     description: "should not invoke the error() method on the ConsoleLogger instance"
   })
   public errorTest():void {
-    let spy:any = chai.spy.on(this.logger, "error");
+    const spy:any = sinon.spy(this.logger, "error");
     LoggerManager.getInstance().error("error called");
-    expect(spy).to.have.been.called();
+    sinon.assert.calledOnce(spy);
   }
   
   @Test({
     description: "should not invoke the info() method on the ConsoleLogger instance"
   })
   public infoTest():void {
-    let spy:any = chai.spy.on(this.logger, "info");
+    const spy:any = sinon.spy(this.logger, "info");
     LoggerManager.getInstance().info("info called");
-    expect(spy).to.have.been.called();
+    sinon.assert.calledOnce(spy);
   }
   
   @Test({
     description: "should not invoke the trace() method on the ConsoleLogger instance"
   })
   public traceTest():void {
-    let spy:any = chai.spy.on(this.logger, "trace");
+    const spy:any = sinon.spy(this.logger, "trace");
     LoggerManager.getInstance().trace("trace called");
-    expect(spy).to.not.have.been.called();
+    sinon.assert.calledOnce(spy);
   }
   
   @Test({
     description: "should not invoke the warn() method on the ConsoleLogger instance"
   })
   public warnTest():void {
-    let spy:any = chai.spy.on(this.logger, "warn");
+    const spy:any = sinon.spy(this.logger, "warn");
     LoggerManager.getInstance().warn("warn called");
-    expect(spy).to.have.been.called();
+    sinon.assert.calledOnce(spy);
   }
 }

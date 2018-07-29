@@ -15,14 +15,9 @@
 //   limitations under the License.
 
 import { TestSuite, Test } from "jec-juta";
-import * as chai from "chai";
-import * as spies from "chai-spies";
+import * as sinon from "sinon";
 import { ConsoleTransactionMonitor } from "../../../../../../../src/com/onsoft/glasscat/net/http/monitoring/ConsoleTransactionMonitor";
 import { HttpTransaction } from "../../../../../../../src/com/onsoft/glasscat/net/http/monitoring/HttpTransaction";
-
-// Chai declarations:
-const expect = chai.expect;
-chai.use(spies);
 
 @TestSuite({
   description: "Test the ConsoleTransactionMonitor class methods"
@@ -33,9 +28,10 @@ export class ConsoleTransactionMonitorTest {
     description: "should send a log message to the console"
   })
   public sendTest():void {
-    let monitor:ConsoleTransactionMonitor = new ConsoleTransactionMonitor();
-    let spy:any = chai.spy.on(console, "log");
+    const monitor:ConsoleTransactionMonitor = new ConsoleTransactionMonitor();
+    const spy:any = sinon.spy(console, "log");
     monitor.send(new HttpTransaction(null));
-    expect(spy).to.have.been.called();
+    sinon.assert.calledOnce(spy);
+    sinon.restore();
   }
 }

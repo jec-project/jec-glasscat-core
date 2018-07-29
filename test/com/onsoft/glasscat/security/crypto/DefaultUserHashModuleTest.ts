@@ -112,7 +112,7 @@ export class DefaultUserHashModuleTest {
     order: 6
   })
   public setPrivateKeyTest():void {
-    expect(this.module.setPrivateKey(utils.KEY)).to.be.OK;
+    expect(this.module.setPrivateKey(utils.KEY)).to.be.undefined;
   }
 
   @Test({

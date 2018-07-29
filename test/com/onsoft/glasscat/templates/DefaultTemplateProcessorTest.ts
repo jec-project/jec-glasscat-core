@@ -15,16 +15,12 @@
 //   limitations under the License.
 
 import { TestSuite, Test, BeforeAll } from "jec-juta";
-import * as chai from "chai";
-import * as spies from "chai-spies";
+import { expect } from "chai";
+import * as sinon from "sinon";
 import { DefaultTemplateProcessor } from "../../../../../src/com/onsoft/glasscat/templates/DefaultTemplateProcessor";
 import { HttpRequest, HttpResponse } from "jec-exchange";
 
 import * as utils from "../../../../../utils/test-utils/utilities/TemplateProcessorTesttUtils";
-
-// Chai declarations:
-const expect = chai.expect;
-chai.use(spies);
 
 @TestSuite({
   description: "Test the DefaultTemplateProcessor class methods"
@@ -53,23 +49,25 @@ export class DefaultTemplateProcessorTest {
     description: "should invoke the end() method of the HttpResponse object with 'null' as parameter"
   })
   public renderFileInvalidPathTest():void {
-    let spy:any = chai.spy.on(this.response, "end");
+    const spy:any = sinon.spy(this.response, "end");
     this.processor.renderFile(
       utils.INVALID_PATH, utils.DATA, this.request, this.response
     );
-    expect(spy).to.have.been.called.with(null);
+    sinon.assert.calledWith(spy, null);
+    sinon.restore();
   }
   
   @Test({
     description: "should invoke the end() method of the HttpResponse object with the rendered file as parameter"
   })
   public renderFileValidPathTest():void {
-    let spy:any = chai.spy.on(this.response, "end");
+    const spy:any = sinon.spy(this.response, "end");
     this.processor.renderFile(
       utils.VALID_PATH, utils.DATA, this.request, this.response
     );
-    expect(spy).to.have.been.called.with(DefaultTemplateProcessorTest.result);
+    sinon.assert.calledWith(spy, DefaultTemplateProcessorTest.result);
     expect(DefaultTemplateProcessorTest.result).to.not.be.null;
+    sinon.restore();
   }
   
   @Test({

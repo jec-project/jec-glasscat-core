@@ -22,7 +22,7 @@ import { AuthMethod, SessionStorageType, RealmType } from "jec-exchange";
 
 // Utilities:
 const CWD:string = process.cwd();
-export const MANIFEST_PATH:string = "/webapp/WEB-INF/web.json";
+export const MANIFEST_PATH:string = "/JEC-INF/web.json";
 export const INVALID_PATH:string = CWD + "/utils";
 export const VALID_PATH:string = CWD + "/utils/test-utils/files";
 export const INVALID_FILE:string = CWD + "/utils/test-utils/files/invalid-webapp";

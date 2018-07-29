@@ -35,7 +35,7 @@ export class EjpConfigLoaderTest {
   }
 
   @Test({
-    description: "should have a 'MANIFEST_PATH' static property equals to '/webapp/WEB-INF/web.json'"
+    description: "should have a 'MANIFEST_PATH' static property equals to '/JEC-INF/web.json'"
   })
   public pathTest():void {
     expect(EjpConfigLoader.MANIFEST_PATH).to.equal(utils.MANIFEST_PATH);

@@ -14,17 +14,13 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test, BeforeAll } from "jec-juta";
-import * as chai from "chai";
-import * as spies from "chai-spies";
+import { TestSuite, Test, BeforeAll, AfterAll } from "jec-juta";
+import { expect } from "chai";
+import * as sinon from "sinon";
 import { ErrorTemplateProcessor } from "../../../../../../src/com/onsoft/glasscat/templates/error/ErrorTemplateProcessor";
 import { GlassCatError } from "../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatError";
 import { GlassCatErrorCode } from "../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatErrorCode";
 import { HttpRequest, HttpResponse } from "jec-exchange";
-
-// Chai declarations:
-const expect = chai.expect;
-chai.use(spies);
 
 import * as utils from "../../../../../../utils/test-utils/utilities/TemplateProcessorTesttUtils";
 
@@ -36,6 +32,8 @@ export class ErrorTemplateProcessorTest {
   public request:HttpRequest = null;
   public response:HttpResponse = null;
   public data:any = null;
+  public statusSpy:any = null;
+  public endSpy:any = null;
 
   public static result:any = null;
 
@@ -48,13 +46,22 @@ export class ErrorTemplateProcessorTest {
         },
         status: function(statusCode:number) {} 
       } as HttpResponse );
+    this.statusSpy = sinon.spy(this.response, "status");
+    this.endSpy = sinon.spy(this.response, "end");
+  }
+
+  @AfterAll()
+  public resetTest():void {
+    sinon.restore();
+    this.statusSpy = null;
+    this.endSpy = null;
   }
 
   @Test({
     description: "should throw a GlassCatError error when calling the constructor function"
   })
   public singletonErrorTest():void {
-    let buildInstance:Function = function():void {
+    const buildInstance:Function = function():void {
       new ErrorTemplateProcessor();
     };
     expect(buildInstance).to.throw(GlassCatError);
@@ -75,7 +82,7 @@ export class ErrorTemplateProcessorTest {
     description: "should return a ErrorTemplateProcessor instance"
   })
   public getInstanceTest():void {
-    let processor:ErrorTemplateProcessor = ErrorTemplateProcessor.getInstance();
+    const processor:ErrorTemplateProcessor = ErrorTemplateProcessor.getInstance();
     expect(processor).to.be.an.instanceOf(ErrorTemplateProcessor);
   }
   
@@ -83,8 +90,8 @@ export class ErrorTemplateProcessorTest {
     description: "should return a singleton reference"
   })
   public validSingletonTest():void {
-    let proc1:ErrorTemplateProcessor = ErrorTemplateProcessor.getInstance();
-    let proc2:ErrorTemplateProcessor = ErrorTemplateProcessor.getInstance();
+    const proc1:ErrorTemplateProcessor = ErrorTemplateProcessor.getInstance();
+    const proc2:ErrorTemplateProcessor = ErrorTemplateProcessor.getInstance();
     expect(proc1).to.equal(proc2);
   }
   
@@ -92,33 +99,30 @@ export class ErrorTemplateProcessorTest {
     description: "should invoke the end() method of the HttpResponse object with 'null' as parameter"
   })
   public renderFileInvalidPathTest():void {
-    let spy:any = chai.spy.on(this.response, "end");
     ErrorTemplateProcessor.getInstance().renderFile(
       utils.INVALID_PATH, utils.DATA, this.request, this.response
     );
-    expect(spy).to.have.been.called.with(null);
+    sinon.assert.calledWith(this.endSpy, null);
   }
   
   @Test({
     description: "should invoke the status() method with the specified data status"
   })
   public statusInvalidPathTest():void {
-    let spy:any = chai.spy.on(this.response, "status");
     ErrorTemplateProcessor.getInstance().renderFile(
       utils.INVALID_PATH, utils.DATA, this.request, this.response
     );
-    expect(spy).to.have.been.called.with(utils.DATA.status);
+    sinon.assert.calledWith(this.statusSpy, utils.DATA.status);
   }
   
   @Test({
     description: "should invoke the end() method of the HttpResponse object with the rendered file as parameter"
   })
   public renderFileValidPathTest():void {
-    let spy:any = chai.spy.on(this.response, "end");
     ErrorTemplateProcessor.getInstance().renderFile(
       utils.VALID_PATH, utils.DATA, this.request, this.response
     );
-    expect(spy).to.have.been.called.with(ErrorTemplateProcessorTest.result);
+    sinon.assert.calledWith(this.endSpy, ErrorTemplateProcessorTest.result);
     expect(ErrorTemplateProcessorTest.result).to.not.be.null;
   }
   
@@ -126,11 +130,11 @@ export class ErrorTemplateProcessorTest {
     description: "should invoke the status() method with the specified data status"
   })
   public statusValidPathTest():void {
-    let spy:any = chai.spy.on(this.response, "status");
+    
     ErrorTemplateProcessor.getInstance().renderFile(
       utils.INVALID_PATH, utils.DATA, this.request, this.response
     );
-    expect(spy).to.have.been.called.with(utils.DATA.status);
+    sinon.assert.calledWith(this.statusSpy, utils.DATA.status);
   }
   
   @Test({

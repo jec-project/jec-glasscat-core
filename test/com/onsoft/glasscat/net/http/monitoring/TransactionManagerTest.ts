@@ -15,16 +15,12 @@
 //   limitations under the License.
 
 import { TestSuite, Test, TestSorters, BeforeAll } from "jec-juta";
-import * as chai from "chai";
-import * as spies from "chai-spies";
+import { expect } from "chai";
+import * as sinon from "sinon";
 import { TransactionManager } from "../../../../../../../src/com/onsoft/glasscat/net/http/monitoring/TransactionManager";
 import { TransactionMonitor } from "../../../../../../../src/com/onsoft/glasscat/net/http/monitoring/TransactionMonitor";
 import { TransactionMonitorDerivation } from "../../../../../../../src/com/onsoft/glasscat/net/http/monitoring/TransactionMonitorDerivation";
 import * as express from "express";
-
-// Chai declarations:
-const expect = chai.expect;
-chai.use(spies);
 
 @TestSuite({
   description: "Test the TransactionManager class methods",
@@ -77,8 +73,9 @@ export class TransactionManagerTest {
     order: 3
   })
   public closeTransactionTest():void {
-    let spy:any = chai.spy.on(this.monitor, "send");
+    const spy:any = sinon.spy(this.monitor, "send");
     this.manager.closeTransaction(this.request, this.response);
-    expect(spy).to.have.been.called();
+    sinon.assert.calledOnce(spy);
+    sinon.restore();
   }
 }

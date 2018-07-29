@@ -14,17 +14,9 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test, BeforeAll } from "jec-juta";
-import * as chai from "chai";
-import * as spies from "chai-spies";
+import { TestSuite, BeforeAll } from "jec-juta";
 import { Decorator } from "jec-commons";
 import { StaticResourceDecorator } from "../../../../../../../src/com/onsoft/glasscat/cfg/jcad/decorators/StaticResourceDecorator";
-
-//import * as utils from "../../../../../../../utils/test-utils/utilities/StaticResourceDecoratorTestUtils";
-
-// Chai declarations:
-const expect:any = chai.expect;
-chai.use(spies);
 
 @TestSuite({
   description: "Test the StaticResourceDecorator class methods",

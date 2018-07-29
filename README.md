@@ -1,5 +1,10 @@
 # JEC GlassCat Core Project
 
+[![JEC version](https://img.shields.io/badge/JEC-1.0-%23ba00ff.svg)](http://jecproject.org)
+[![GlassCat version](https://img.shields.io/badge/GlassCat-1.0-%230a50ff.svg)](http://jecproject.org)
+[![npm version](https://badge.fury.io/js/jec-glasscat-core.svg)](https://www.npmjs.com/package/jec-glasscat-core)
+[![Apache 2.0](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+
 The GlassCat Core Project contains the core components of the GlassCat Aplication Server.
 
 [![][jec-logo]][jec-url]
@@ -43,7 +48,7 @@ The documentation generator is [TypeDoc](http://typedoc.org/)
 
 ## Update Release Notes
 
-**Current stable release:** [0.1.6](CHANGELOG.md#jec-glasscat-core-0.1.6)
+**Current stable release:** [0.1.8](CHANGELOG.md#jec-glasscat-core-0.1.8)
  
 For a complete listing of release notes for all JEC GlassCat Core update releases, see the [CHANGELOG](CHANGELOG.md) file. 
 

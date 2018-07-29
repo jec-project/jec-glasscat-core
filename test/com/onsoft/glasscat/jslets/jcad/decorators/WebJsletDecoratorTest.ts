@@ -14,13 +14,14 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test, BeforeAll } from "jec-juta";
+import { TestSuite, Test, BeforeAll, Before, After } from "jec-juta";
 import { expect } from "chai";
 import { WebJsletDecorator } from "../../../../../../../src/com/onsoft/glasscat/jslets/jcad/decorators/WebJsletDecorator";
-import { JsletConnectorRefs, WebJsletParams, JsletError } from"jec-exchange";
+import { JsletError } from"jec-exchange";
 
 import * as utils from "../../../../../../../utils/test-utils/utilities/WebJsletDecoratorTestUtils";
 import { HttpJsletImpl } from "../../../../../../../utils/test-utils/classes/HttpJsletImpl";
+import { HttpJsletImpl2 } from "utils/test-utils/classes/HttpJsletImpl2";
 
 @TestSuite({
   description: "Test the WebJsletDecorator class methods"
@@ -34,11 +35,21 @@ export class WebJsletDecoratorTest {
     this.decorator = new WebJsletDecorator();
   }
 
+  @Before()
+  public initDecorator():void {
+    this.decorator = new WebJsletDecorator();
+  }
+
+  @After()
+  public resetDecorator():void {
+    this.decorator = new WebJsletDecorator();
+  }
+
   @Test({
     description: "should throw a JsletError exception",
   })
   public decorateNoPatternErrorTest():void {
-    let doDecorate:Function = function():void {
+    const doDecorate:Function = function():void {
       this.decorator.decorate(utils.buildJslet(), utils.buildInvalidParams());
     };
     expect(doDecorate.bind(this)).to.throw(JsletError);
@@ -59,7 +70,7 @@ export class WebJsletDecoratorTest {
     description: "should throw a JsletError exception",
   })
   public decorateEmptyPatternErrorTest():void {
-    let doDecorate:Function = function():void {
+    const doDecorate:Function = function():void {
       this.decorator.decorate(
         utils.buildJslet(), utils.buildEmptyPatternsParams()
       );
@@ -84,10 +95,10 @@ export class WebJsletDecoratorTest {
     description: "should return constructor function of the decorated class",
   })
   public decorateTest():void {
-    let target:any = this.decorator.decorate(
+    const target:any = this.decorator.decorate(
       utils.buildJslet(), utils.buildParams()
     );
-    let jslet:any = new target();
+    const jslet:any = new target();
     expect(jslet).to.be.an.instanceOf(HttpJsletImpl);
   }
 
@@ -95,10 +106,10 @@ export class WebJsletDecoratorTest {
     description: "should return a jslet with the same name as specified in the parameters context",
   })
   public getNameTest():void {
-    let target:any = this.decorator.decorate(
+    const target:any = this.decorator.decorate(
       utils.buildJslet(), utils.buildParams()
     );
-    let jslet:any = new target();
+    const jslet:any = new target();
     expect(jslet.getName()).to.equal(utils.JSLET_NAME);
   }
   
@@ -106,10 +117,10 @@ export class WebJsletDecoratorTest {
     description: "should return a jslet with the same url patterns as specified in the parameters context",
   })
   public getUrlPatternsTest():void {
-    let target:any = this.decorator.decorate(
+    const target:any = this.decorator.decorate(
       utils.buildJslet(), utils.buildParams()
     );
-    let jslet:any = new target();
+    const jslet:any = new target();
     expect(jslet.getUrlPatterns()).to.equal(utils.JSLET_URL_PATTERNS);
   }
   
@@ -117,21 +128,21 @@ export class WebJsletDecoratorTest {
     description: "should return a jslet with no template",
   })
   public noTemplateTest():void {
-    let target:any = this.decorator.decorate(
-      utils.buildJslet(), utils.buildParams()
+    const target:any = this.decorator.decorate(
+      new HttpJsletImpl2(), utils.buildParams()
     );
-    let jslet:any = new target();
-    expect(jslet.getTemplate()).to.be.undefined;
+    const jslet:any = new target();
+    expect(jslet.getTemplate()).to.be.null;
   }
-  
+
   @Test({
     description: "should return a jslet with the same template as specified in the parameters context",
   })
   public getTemplateTest():void {
-    let target:any = this.decorator.decorate(
+    const target:any = this.decorator.decorate(
       utils.buildJslet(), utils.buildParamsWithTemplate()
     );
-    let jslet:any = new target();
+    const jslet:any = new target();
     expect(jslet.getTemplate()).to.equal(utils.JSLET_TEMPLATE);
   }
 }
