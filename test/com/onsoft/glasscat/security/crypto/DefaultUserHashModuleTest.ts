@@ -17,7 +17,6 @@
 import { TestSuite, Test, TestSorters, BeforeAll } from "jec-juta";
 import { expect } from "chai";
 import { DefaultUserHashModule } from "../../../../../../src/com/onsoft/glasscat/security/crypto/DefaultUserHashModule";
-import { GlassCatError } from "../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatError";
 import { GlassCatErrorCode } from "../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatErrorCode";
 
 import * as utils from "../../../../../../utils/test-utils/utilities/DefaultUserHashModuleTestUtils";
@@ -128,7 +127,7 @@ export class DefaultUserHashModuleTest {
     order: 8
   })
   public decryptAliasTest():void {
-    let encrypted:string = this.module.encryptAlias(utils.ALIAS);
+    const encrypted:string = this.module.encryptAlias(utils.ALIAS);
     expect(this.module.decryptAlias(encrypted)).to.equal(utils.ALIAS);
   }
 
@@ -163,8 +162,8 @@ export class DefaultUserHashModuleTest {
     order: 12
   })
   public decryptRolesTest():void {
-    let encrypted:string = this.module.encryptRoles(utils.ROLES);
-    let decrypted:string[] = this.module.decryptRoles(encrypted);
+    const encrypted:string = this.module.encryptRoles(utils.ROLES);
+    const decrypted:string[] = this.module.decryptRoles(encrypted);
     expect(decrypted.join()).to.equal(utils.ROLES.join());
   }
 }

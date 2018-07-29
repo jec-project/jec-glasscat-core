@@ -31,8 +31,8 @@ export class BootstrapScriptSorterTest {
     repeat: 5
   })
   public sortCollectionTest():void {
-    let sorter:BootstrapScriptSorter = new BootstrapScriptSorter();
-    let collection:BootstrapScript[] = utils.buildBootstrapScriptColl();
+    const sorter:BootstrapScriptSorter = new BootstrapScriptSorter();
+    const collection:BootstrapScript[] = utils.buildBootstrapScriptColl();
     let len:number = collection.length;
     let priority:number = 0;
     let script:BootstrapScript = null;

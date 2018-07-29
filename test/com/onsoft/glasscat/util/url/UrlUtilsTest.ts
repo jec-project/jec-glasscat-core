@@ -31,7 +31,7 @@ export class UrlUtilsTest {
     description: "should throw a GlassCatError error when calling the constructor function"
   })
   public singletonErrorTest():void {
-    let buildInstance:Function = function():void {
+    const buildInstance:Function = function():void {
       new UrlUtils();
     };
     expect(buildInstance).to.throw(GlassCatError);
@@ -52,7 +52,7 @@ export class UrlUtilsTest {
     description: "should return a UrlUtils instance"
   })
   public getInstanceTest():void {
-    let urlUtils:UrlUtils = UrlUtils.getInstance();
+    const urlUtils:UrlUtils = UrlUtils.getInstance();
     expect(urlUtils).to.be.an.instanceOf(UrlUtils);
   }
   
@@ -60,8 +60,8 @@ export class UrlUtilsTest {
     description: "should return a singleton reference"
   })
   public validSingletonTest():void {
-    let utils1:UrlUtils = UrlUtils.getInstance();
-    let utils2:UrlUtils = UrlUtils.getInstance();
+    const utils1:UrlUtils = UrlUtils.getInstance();
+    const utils2:UrlUtils = UrlUtils.getInstance();
     expect(utils1).to.equal(utils2);
   }
   
@@ -69,7 +69,7 @@ export class UrlUtilsTest {
     description: "should remove the context root reference from the specified URL path"
   })
   public trimContextRootTest():void {
-    let urlUtils:UrlUtils = UrlUtils.getInstance();
+    const urlUtils:UrlUtils = UrlUtils.getInstance();
     expect(urlUtils.trimContextRoot(utils.VALID_PATH, utils.CONTEXTROOT))
           .to.equal(utils.TRIMMED_VALID_PATH);
   }
@@ -78,7 +78,7 @@ export class UrlUtilsTest {
     description: "should return the same URL path as specified as parameter of the 'trimContextRoot()' method"
   })
   public trimContextRootInvalidTest():void {
-    let urlUtils:UrlUtils = UrlUtils.getInstance();
+    const urlUtils:UrlUtils = UrlUtils.getInstance();
     expect(urlUtils.trimContextRoot(utils.INVALID_PATH, utils.CONTEXTROOT))
           .to.equal(utils.INVALID_PATH);
   }
@@ -87,7 +87,7 @@ export class UrlUtilsTest {
     description: "should return an empty string when the URL path is an empty string"
   })
   public trimContextRootEmptyTest():void {
-    let urlUtils:UrlUtils = UrlUtils.getInstance();
+    const urlUtils:UrlUtils = UrlUtils.getInstance();
     expect(urlUtils.trimContextRoot(utils.EMPTY_PATH, utils.CONTEXTROOT))
           .to.equal(utils.EMPTY_PATH);
   }
@@ -96,7 +96,7 @@ export class UrlUtilsTest {
     description: "should return the same URL path as specified as parameter of the 'trimContextRoot()' method when the context root is misplaced"
   })
   public trimContextRootMisplacedTest():void {
-    let urlUtils:UrlUtils = UrlUtils.getInstance();
+    const urlUtils:UrlUtils = UrlUtils.getInstance();
     expect(
       urlUtils.trimContextRoot(utils.MISPLACED_CONTEXTROOT, utils.CONTEXTROOT)
     ).to.equal(utils.MISPLACED_CONTEXTROOT);

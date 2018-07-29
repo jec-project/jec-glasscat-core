@@ -38,7 +38,7 @@ export class UrlPatternBuilderTest {
     description: "should return a UrlPattern instance with 'strict' property set to 'true'"
   })
   public strictPatternTest():void {
-    let pattern:UrlPattern = this.builder.build(utils.STRICT_URL);
+    const pattern:UrlPattern = this.builder.build(utils.STRICT_URL);
     expect(pattern.strict).to.be.true;
   }
   
@@ -46,7 +46,7 @@ export class UrlPatternBuilderTest {
     description: "should return a UrlPattern instance with 'strict' property set to 'false'"
   })
   public permisivePatternTest():void {
-    let pattern:UrlPattern = this.builder.build(utils.PERMISIVE_URL);
+    const pattern:UrlPattern = this.builder.build(utils.PERMISIVE_URL);
     expect(pattern.strict).to.be.false;
   }
   
@@ -54,7 +54,8 @@ export class UrlPatternBuilderTest {
     description: "should return a UrlPattern instance with 'baseUrl' property set to 'ContextRootUtil.INDEX' and 'strict' property set to 'false'"
   })
   public contextrootPermisivePatternTest():void {
-    let pattern:UrlPattern = this.builder.build(utils.CONTEXT_ROOT_PERMISIVE_URL);
+    const pattern:UrlPattern =
+                           this.builder.build(utils.CONTEXT_ROOT_PERMISIVE_URL);
     expect(pattern.strict).to.be.false;
     expect(pattern.baseUrl).to.equal(ContextRootUtil.INDEX);
   }
@@ -63,7 +64,8 @@ export class UrlPatternBuilderTest {
     description: "should return a UrlPattern instance with 'baseUrl' property set to 'ContextRootUtil.INDEX' and 'strict' property set to 'true'"
   })
   public contextrootStrictPatternTest():void {
-    let pattern:UrlPattern = this.builder.build(utils.CONTEXT_ROOT_STRICT_URL);
+    const pattern:UrlPattern =
+                              this.builder.build(utils.CONTEXT_ROOT_STRICT_URL);
     expect(pattern.strict).to.be.false;
     expect(pattern.baseUrl).to.equal(ContextRootUtil.INDEX);
   }
@@ -72,7 +74,7 @@ export class UrlPatternBuilderTest {
     description: "should return a UrlPattern instance with 'baseUrl' property set to 'ContextRootUtil.INDEX' and 'strict' property set to 'true'"
   })
   public emptyUrlPatternTest():void {
-    let pattern:UrlPattern = this.builder.build(utils.EMPTY_URL);
+    const pattern:UrlPattern = this.builder.build(utils.EMPTY_URL);
     expect(pattern.strict).to.be.true;
     expect(pattern.baseUrl).to.equal(ContextRootUtil.INDEX);
   }
@@ -81,7 +83,7 @@ export class UrlPatternBuilderTest {
     description: "should return the correct 'baseUrl' property even if the specified URL does not start with a '/' character"
   })
   public noSlashStartTest():void {
-    let pattern:UrlPattern = this.builder.build(utils.NO_START_SLASH_URL);
+    const pattern:UrlPattern = this.builder.build(utils.NO_START_SLASH_URL);
     expect(pattern.baseUrl).to.equal(utils.NO_START_SLASH_URL);
   }
   
@@ -89,7 +91,7 @@ export class UrlPatternBuilderTest {
     description: "should return the 'pattern' property set with the same value as passed as 'pattern' parameter"
   })
   public patternTest():void {
-    let pattern:UrlPattern = this.builder.build(utils.STRICT_URL);
+    const pattern:UrlPattern = this.builder.build(utils.STRICT_URL);
     expect(pattern.pattern).to.equal(utils.STRICT_URL);
   }
   
@@ -97,7 +99,7 @@ export class UrlPatternBuilderTest {
     description: "should return the correct computed 'baseUrl' property when 'strict' property is 'true'"
   })
   public baseUrlStrictTest():void {
-    let pattern:UrlPattern = this.builder.build(utils.STRICT_URL);
+    const pattern:UrlPattern = this.builder.build(utils.STRICT_URL);
     expect(pattern.baseUrl).to.equal(utils.BASE_URL);
   }
   
@@ -105,7 +107,7 @@ export class UrlPatternBuilderTest {
     description: "should return the correct computed 'baseUrl' property when 'strict' property is 'false'"
   })
   public baseUrlPermisiveTest():void {
-    let pattern:UrlPattern = this.builder.build(utils.PERMISIVE_URL);
+    const pattern:UrlPattern = this.builder.build(utils.PERMISIVE_URL);
     expect(pattern.baseUrl).to.equal(utils.BASE_URL);
   }
   
@@ -113,7 +115,7 @@ export class UrlPatternBuilderTest {
     description: "should the correct value to the 'baseUrlLength' property when 'strict' property is 'false'"
   })
   public baseUrlLengthPermisiveTest():void {
-    let pattern:UrlPattern = this.builder.build(utils.PERMISIVE_URL);
+    const pattern:UrlPattern = this.builder.build(utils.PERMISIVE_URL);
     expect(pattern.baseUrlLength).to.equal(pattern.baseUrl.length);
   }
   
@@ -121,7 +123,7 @@ export class UrlPatternBuilderTest {
     description: "should the correct value to the 'baseUrlLength' property when 'strict' property is 'true'"
   })
   public baseUrlLengthStrictTest():void {
-    let pattern:UrlPattern = this.builder.build(utils.STRICT_URL);
+    const pattern:UrlPattern = this.builder.build(utils.STRICT_URL);
     expect(pattern.baseUrlLength).to.equal(pattern.baseUrl.length);
   }
 }

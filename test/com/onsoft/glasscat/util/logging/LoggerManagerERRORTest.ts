@@ -15,7 +15,6 @@
 //   limitations under the License.
 
 import { TestSuite, Test, BeforeAll, AfterAll } from "jec-juta";
-import { expect } from "chai";
 import * as sinon from "sinon";
 import { LoggerManager } from "../../../../../../src/com/onsoft/glasscat/util/logging/LoggerManager";
 import { Logger, LogLevel, ConsoleLogger } from "jec-commons";

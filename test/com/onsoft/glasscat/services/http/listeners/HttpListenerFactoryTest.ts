@@ -32,8 +32,8 @@ export class HttpListenerFactoryTest {
     description: "should throw a GlassCatError exception"
   })
   public createErrorTest():void {
-    let createListener:Function = function():void {
-      let factory:HttpListenerFactory = new HttpListenerFactory();
+    const createListener:Function = function():void {
+      const factory:HttpListenerFactory = new HttpListenerFactory();
       factory.build(null);
     };
     expect(createListener).to.throw(GlassCatError);
@@ -44,7 +44,7 @@ export class HttpListenerFactoryTest {
   })
   public createErrorCodeTest():void {
     try {
-      let factory:HttpListenerFactory = new HttpListenerFactory();
+      const factory:HttpListenerFactory = new HttpListenerFactory();
       factory.build(null);
     } catch (e) {
       expect(e.getCode()).to.equal(GlassCatErrorCode.INVALID_CONTEXT);
@@ -55,7 +55,7 @@ export class HttpListenerFactoryTest {
     description: "should create a new DefaultHttpListener object"
   })
   public buildTest():void {
-    let factory:HttpListenerFactory = new HttpListenerFactory();
+    const factory:HttpListenerFactory = new HttpListenerFactory();
     expect(
       factory.build(utils.buildConfig())
     ).to.be.an.instanceOf(DefaultHttpListener);

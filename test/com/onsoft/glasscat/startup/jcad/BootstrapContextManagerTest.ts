@@ -17,7 +17,7 @@
 import { TestSuite, Test, BeforeAll, TestSorters } from "jec-juta";
 import { expect } from "chai";
 import { BootstrapContextManager } from "../../../../../../src/com/onsoft/glasscat/startup/jcad/BootstrapContextManager";
-import { JcadContext, JcadContextManager, BootstrapConnectorRefs } from "jec-commons";
+import { JcadContext, BootstrapConnectorRefs } from "jec-commons";
 import { GlassCatError } from "../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatError";
 import { GlassCatErrorCode } from "../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatErrorCode";
 
@@ -43,7 +43,7 @@ export class BootstrapContextManagerTest {
     order: 0
   })
   public createContextErrorTest():void {
-    let createContext:Function = function():void {
+    const createContext:Function = function():void {
       this.manager.createContext(null);
     };
     expect(createContext.bind(this)).to.throw(GlassCatError);

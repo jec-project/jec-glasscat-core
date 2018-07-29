@@ -54,7 +54,7 @@ export class SessionOwnerBuilderTest {
     description: "should return a SessionId object that contains to correct alias"
   })
   public getAliasTest():void {
-    let owner:SessionOwner =
+    const owner:SessionOwner =
              this.builder.build(this.ownerId, this.ownerAlias, this.ownerRoles);
     expect(owner.getAlias()).to.equal(this.ownerAlias);
   }

@@ -16,8 +16,6 @@
 
 import { TestSuite, Test, BeforeAll } from "jec-juta";
 import { expect } from "chai";
-import { GlassCatError } from "../../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatError";
-import { GlassCatErrorCode } from "../../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatErrorCode";
 import { DefaultHttpListener } from "../../../../../../../src/com/onsoft/glasscat/services/http/listeners/DefaultHttpListener";
 import { TransactionMonitorDerivation } from "../../../../../../../src/com/onsoft/glasscat/net/http/monitoring/TransactionMonitorDerivation";
 

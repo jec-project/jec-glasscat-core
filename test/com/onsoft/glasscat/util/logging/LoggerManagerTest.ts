@@ -34,7 +34,7 @@ export class LoggerManagerTest {
     order: 0
   })
   public singletonErrorTest():void {
-    let buildInstance:Function = function():void {
+    const buildInstance:Function = function():void {
       new LoggerManager();
     };
     expect(buildInstance).to.throw(GlassCatError);
@@ -57,7 +57,7 @@ export class LoggerManagerTest {
     order: 2
   })
   public getInstanceTest():void {
-    let manager:Logger = LoggerManager.getInstance();
+    const manager:Logger = LoggerManager.getInstance();
     expect(manager).to.be.an.instanceOf(LoggerManager);
   }
   
@@ -66,8 +66,8 @@ export class LoggerManagerTest {
     order: 3
   })
   public validSingletonTest():void {
-    let manager1:Logger = LoggerManager.getInstance();
-    let manager2:Logger = LoggerManager.getInstance();
+    const manager1:Logger = LoggerManager.getInstance();
+    const manager2:Logger = LoggerManager.getInstance();
     expect(manager1).to.equal(manager2);
   }
   
@@ -76,7 +76,8 @@ export class LoggerManagerTest {
     order: 4
   })
   public isInitializedFalseTest():void {
-    let manager:LoggerManager = (LoggerManager.getInstance() as LoggerManager);
+    const manager:LoggerManager = 
+                                 (LoggerManager.getInstance() as LoggerManager);
     expect(manager.isInitialized()).to.be.false;
   }
   
@@ -85,8 +86,9 @@ export class LoggerManagerTest {
     order: 5
   })
   public initTest():void {
-    let manager:LoggerManager = (LoggerManager.getInstance() as LoggerManager);
-    let loggers:Logger[] = new Array<Logger>();
+    const manager:LoggerManager = 
+                                 (LoggerManager.getInstance() as LoggerManager);
+    const loggers:Logger[] = new Array<Logger>();
     manager.init(loggers, LogLevel.INFO);
   }
 
@@ -95,7 +97,8 @@ export class LoggerManagerTest {
     order: 6
   })
   public isInitializedTrueTest():void {
-    let manager:LoggerManager = (LoggerManager.getInstance() as LoggerManager);
+    const manager:LoggerManager = 
+                                 (LoggerManager.getInstance() as LoggerManager);
     expect(manager.isInitialized()).to.be.true;
   }
   
@@ -104,7 +107,8 @@ export class LoggerManagerTest {
     order: 7
   })
   public getNameTest():void {
-    let manager:LoggerManager = (LoggerManager.getInstance() as LoggerManager);
+    const manager:LoggerManager = 
+                                 (LoggerManager.getInstance() as LoggerManager);
     expect(manager.getName()).to.equal("LoggerManager");
   }
 
@@ -113,7 +117,8 @@ export class LoggerManagerTest {
     order: 8
   })
   public getLogLevelTest():void {
-    let manager:LoggerManager = (LoggerManager.getInstance() as LoggerManager);
+    const manager:LoggerManager = 
+                                 (LoggerManager.getInstance() as LoggerManager);
     expect(manager.getLogLevel()).to.equal(LogLevel.INFO);
   }
 
@@ -122,7 +127,8 @@ export class LoggerManagerTest {
     order: 9
   })
   public resetTest():void {
-    let manager:LoggerManager = (LoggerManager.getInstance() as LoggerManager);
+    const manager:LoggerManager = 
+                                 (LoggerManager.getInstance() as LoggerManager);
     manager.init(null, LogLevel.INFO);
   }
 
@@ -131,7 +137,8 @@ export class LoggerManagerTest {
     order: 10
   })
   public isInitializedResetTest():void {
-    let manager:LoggerManager = (LoggerManager.getInstance() as LoggerManager);
+    const manager:LoggerManager = 
+                                 (LoggerManager.getInstance() as LoggerManager);
     expect(manager.isInitialized()).to.be.false;
   }
   
@@ -140,7 +147,8 @@ export class LoggerManagerTest {
     order: 11
   })
   public getNameResetTest():void {
-    let manager:LoggerManager = (LoggerManager.getInstance() as LoggerManager);
+    const manager:LoggerManager = 
+                                 (LoggerManager.getInstance() as LoggerManager);
     expect(manager.getName()).to.be.null;
   }
 
@@ -149,7 +157,8 @@ export class LoggerManagerTest {
     order: 10
   })
   public getLogLevelResetTest():void {
-    let manager:LoggerManager = (LoggerManager.getInstance() as LoggerManager);
+    const manager:LoggerManager = 
+                                 (LoggerManager.getInstance() as LoggerManager);
     expect(manager.getLogLevel()).to.be.null;
   }
   
@@ -158,7 +167,7 @@ export class LoggerManagerTest {
     order: 11
   })
   public setlogLevelTest():void {
-    let manager:Logger = LoggerManager.getInstance();
+    const manager:Logger = LoggerManager.getInstance();
     manager.setLogLevel(LogLevel.ERROR);
     expect(manager.getLogLevel()).not.to.equal(LogLevel.ERROR);
   }
@@ -168,7 +177,7 @@ export class LoggerManagerTest {
     order: 12
   })
   public setNameTest():void {
-    let manager:Logger = LoggerManager.getInstance();
+    const manager:Logger = LoggerManager.getInstance();
     manager.setName(utils.CUSTOM_NAME);
     expect(manager.getLogLevel()).not.to.equal(utils.CUSTOM_NAME);
   }

@@ -40,7 +40,7 @@ export class SecurityConstraintBuilderTest {
     description: "should throw a GlassCatError"
   })
   public nullContextErrorTest():void {
-    let buildConstraint:Function = function():void {
+    const buildConstraint:Function = function():void {
       this.builder.build(null);
     }
     expect(buildConstraint.bind(this)).to.throw(GlassCatError);
@@ -61,7 +61,8 @@ export class SecurityConstraintBuilderTest {
     description: "should return a BasicSecurityConstraint instance"
   })
   public getNameTest():void {
-    let constraint:SecurityConstraint = this.builder.build(utils.buildConfig())
+    const constraint:SecurityConstraint =
+                                        this.builder.build(utils.buildConfig());
     expect(constraint).to.be.an.instanceOf(BasicSecurityConstraint);
   }
 }

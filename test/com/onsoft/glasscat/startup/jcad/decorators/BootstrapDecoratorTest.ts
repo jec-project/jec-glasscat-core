@@ -16,7 +16,6 @@
 
 import { TestSuite, Test, BeforeAll } from "jec-juta";
 import { expect } from "chai";
-import { BootstrapScript } from "jec-commons";
 import { BootstrapDecorator } from "../../../../../../../src/com/onsoft/glasscat/startup/jcad/decorators/BootstrapDecorator";
 
 import * as utils from "../../../../../../../utils/test-utils/utilities/BootstrapDecoratorTestUtils";
@@ -38,10 +37,10 @@ export class BootstrapDecoratorTest {
     description: "should return constructor function of the decorated class",
   })
   public decorateTest():void {
-    let target:any = this.decorator.decorate(
+    const target:any = this.decorator.decorate(
       utils.buildBootstrapScript(), utils.buildParams()
     );
-    let bootstrap:any = new target();
+    const bootstrap:any = new target();
     expect(bootstrap).to.be.an.instanceOf(BootstrapImpl);
   }
 }

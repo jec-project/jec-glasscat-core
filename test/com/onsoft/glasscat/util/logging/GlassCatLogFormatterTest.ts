@@ -50,7 +50,7 @@ export class GlassCatLogFormatterTest {
     description: "should format a log message correctly"
   })
   public formatTest():void {
-    let result:string = this.formatter.format(
+    const result:string = this.formatter.format(
       utils.LOG_LEVEL,
       utils.MARKER
     );
@@ -61,7 +61,7 @@ export class GlassCatLogFormatterTest {
     description: "should format a log message with the 'appender' character at the end"
   })
   public apperderTest():void {
-    let result:string = this.formatter.format(
+    const result:string = this.formatter.format(
       utils.LOG_LEVEL,
       utils.MARKER,
       true

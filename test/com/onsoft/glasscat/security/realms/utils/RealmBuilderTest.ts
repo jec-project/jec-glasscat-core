@@ -14,9 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test } from "jec-juta";
-import { expect } from "chai";
-import { RealmBuilder } from "../../../../../../../src/com/onsoft/glasscat/security/realms/utils/RealmBuilder";
+import { TestSuite } from "jec-juta";
 
 @TestSuite({
   description: "Test the RealmBuilder class methods: TODO implement all tests for this class",

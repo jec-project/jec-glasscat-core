@@ -46,7 +46,7 @@ export class ConfigLoaderBaseTest {
     description: "should load and return a valid JavaScript Object that contains domains information"
   })
   public loadConfigSyncTest():void {
-    let result:any = this.loader.loadConfigSyncImpl(utils.VALID_CONFIG_PATH);
+    const result:any = this.loader.loadConfigSyncImpl(utils.VALID_CONFIG_PATH);
     expect(result.domains).to.have.lengthOf(1);
   }
 
@@ -54,7 +54,7 @@ export class ConfigLoaderBaseTest {
     description: "should throw an error when the path to the congiguration file is not valid"
   })
   public loadConfigSyncInvalidPathTest():void {
-    let loadInvalidDomain:Function = function():void {
+    const loadInvalidDomain:Function = function():void {
       this.loader.loadConfigSyncImpl(utils.INVALID_PATH);
     };
     expect(loadInvalidDomain.bind(this)).to.throw(GlassCatError);
@@ -75,7 +75,7 @@ export class ConfigLoaderBaseTest {
     description: "should throw an error when the congiguration file does not contain a valid object"
   })
   public loadConfigSyncInvalidFileTest():void {
-    let loadInvalidDomain:Function = function():void {
+    const loadInvalidDomain:Function = function():void {
       this.loader.loadConfigSyncImpl(utils.INVALID_CONFIG_PATH);
     };
     expect(loadInvalidDomain.bind(this)).to.throw(GlassCatError);

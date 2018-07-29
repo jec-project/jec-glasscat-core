@@ -34,8 +34,8 @@ export class LoggerManagerBuilderTest {
     description: "should throw a GlassCatError when no context is specified"
   })
   public buildErrorTest():void {
-    let doBuild:Function = function():void {
-      let builder:LoggerManagerBuilder = new LoggerManagerBuilder();
+    const doBuild:Function = function():void {
+      const builder:LoggerManagerBuilder = new LoggerManagerBuilder();
       builder.build();
     };
     expect(doBuild).to.throw(GlassCatError);
@@ -46,7 +46,7 @@ export class LoggerManagerBuilderTest {
   })
   public singletonErrorCodeTest():void {
     try {
-      let builder:LoggerManagerBuilder = new LoggerManagerBuilder();
+      const builder:LoggerManagerBuilder = new LoggerManagerBuilder();
       builder.build();
     } catch(e) {
       expect(e.getCode()).to.equal(GlassCatErrorCode.INVALID_CONTEXT);
@@ -58,7 +58,7 @@ export class LoggerManagerBuilderTest {
   })
   public contextTest(@Async done:Function):void {
     this.initContext((ctx:GlassCatContext)=>{
-      let builder:LoggerManagerBuilder = new LoggerManagerBuilder();
+      const builder:LoggerManagerBuilder = new LoggerManagerBuilder();
       builder.context(ctx);
       expect((builder as any)._ctx).to.equal(ctx);
       done();
@@ -70,7 +70,7 @@ export class LoggerManagerBuilderTest {
   })
   public buildTest(@Async done:Function):void {
     this.initContext((ctx:GlassCatContext)=>{
-      let builder:LoggerManagerBuilder = new LoggerManagerBuilder();
+      const builder:LoggerManagerBuilder = new LoggerManagerBuilder();
       builder.context(ctx);
       expect(builder.build()).to.be.an.instanceOf(LoggerManager);
       done();
@@ -82,16 +82,16 @@ export class LoggerManagerBuilderTest {
   })
   public loggerManagerInitTest(@Async done:Function):void {
     this.initContext((ctx:GlassCatContext)=>{
-      let builder:LoggerManagerBuilder = new LoggerManagerBuilder();
+      const builder:LoggerManagerBuilder = new LoggerManagerBuilder();
       builder.context(ctx);
-      let logger:Logger = builder.build();
+      const logger:Logger = builder.build();
       expect(logger.getLogLevel()).to.equal(ctx.getLogLevel());
       done();
     });
   }
 
   public initContext(done:(ctx:GlassCatContext)=>void):void {
-    let loader:JsonLoader = new DefaultJsonLoader();
+    const loader:JsonLoader = new DefaultJsonLoader();
     let configParser:BootstrapConfigParser = null;
     let context:GlassCatContext = null;
     let config:any = null;

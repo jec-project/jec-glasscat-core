@@ -61,7 +61,7 @@ export class SessionIdUtilTest {
     description: "should return a SessionId object with a valid GUID"
   })
   public parseSessionIdCookieBasicTest():void {
-    let result:SessionId =
+    const result:SessionId =
                    SessionIdUtil.parseSessionIdCookie(utils.VALID_BASIC_COOKIE);
     expect(result.getId()).to.equal(utils.VALID_BASIC_COOKIE.JSSESSIONID);
   }
@@ -70,7 +70,7 @@ export class SessionIdUtilTest {
     description: "should return a SessionId object with a valid GUID"
   })
   public parseSessionIdCookieComplexTest():void {
-    let result:SessionId =
+    const result:SessionId =
                  SessionIdUtil.parseSessionIdCookie(utils.VALID_COMPLEX_COOKIE);
     expect(result.getId()).to.equal(utils.VALID_COMPLEX_GUID);
   }
@@ -79,7 +79,7 @@ export class SessionIdUtilTest {
     description: "should return a SessionId object with a valid authentication URL"
   })
   public parseSessionIdCookieAuthUrlTest():void {
-    let result:SessionId =
+    const result:SessionId =
                  SessionIdUtil.parseSessionIdCookie(utils.VALID_COMPLEX_COOKIE);
     expect(result.authurl).to.equal(utils.AUTH_URI_PATH);
   }
@@ -88,7 +88,7 @@ export class SessionIdUtilTest {
     description: "should return a string that represents a basic SessionId object"
   })
   public stringifySessionIdBasicTest():void {
-    let result:string = 
+    const result:string = 
                      SessionIdUtil.stringifySessionId(utils.buildSessionId());
     expect(result).to.equal(utils.VALID_COMPLEX_GUID);
   }
@@ -97,9 +97,9 @@ export class SessionIdUtilTest {
     description: "should return a string that represents a complex SessionId object"
   })
   public stringifySessionIdComplexTest():void {
-    let sessionId:SessionId = utils.buildSessionId();
+    const sessionId:SessionId = utils.buildSessionId();
     sessionId.authurl = utils.AUTH_URI_PATH;
-    let result:string = SessionIdUtil.stringifySessionId(sessionId);
+    const result:string = SessionIdUtil.stringifySessionId(sessionId);
     expect(result).to.equal(utils.COMPLEX_COOKIE_CONTENT);
   }
 }

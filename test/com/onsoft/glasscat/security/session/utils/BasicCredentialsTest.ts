@@ -47,7 +47,8 @@ export class CredentialsBuilderTest {
     description: "should return the same login as passed to the constructor function"
   })
   public loginTest():void {
-    let credentials:Credentials = this.builder.build(this.login, this.password);
+    const credentials:Credentials = 
+                                  this.builder.build(this.login, this.password);
     expect(credentials.login).to.equal(this.login);
   }
   
@@ -55,7 +56,8 @@ export class CredentialsBuilderTest {
     description: "should return the same password as passed to the constructor function"
   })
   public passwordTest():void {
-    let credentials:Credentials = this.builder.build(this.login, this.password);
+    const credentials:Credentials =
+                                  this.builder.build(this.login, this.password);
     expect(credentials.password).to.equal(this.password);
   }
 }

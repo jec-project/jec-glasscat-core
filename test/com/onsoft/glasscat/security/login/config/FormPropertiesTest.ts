@@ -49,13 +49,17 @@ export class FormPropertiesTest {
     description: "should return the same error URL as specified in the form context"
   })
   public getErrorUrlTest():void {
-    expect(this.props.getErrorUrl()).to.equal(configUtils.FORM_CONFIG_ERROR_URL);
+    expect(
+      this.props.getErrorUrl()
+    ).to.equal(configUtils.FORM_CONFIG_ERROR_URL);
   }
   
   @Test({
     description: "should return the same login URL as specified in the form context"
   })
   public getLoginUrlTest():void {
-    expect(this.props.getLoginUrl()).to.equal(configUtils.FORM_CONFIG_LOGIN_URL);
+    expect(
+      this.props.getLoginUrl()
+    ).to.equal(configUtils.FORM_CONFIG_LOGIN_URL);
   }
 }

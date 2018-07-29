@@ -38,7 +38,7 @@ export class SessionErrorBuilderTest {
     description: "should return an implementation of the SessionError interface"
   })
   public buildTest():void {
-    let result:SessionError = this.builder.build(
+    const result:SessionError = this.builder.build(
       utils.SESSION_ID, utils.ERROR_TYPE, utils.ERROR_MESSAGE
     );
     expect(result).to.be.an.instanceOf(BasicSessionError);
@@ -48,7 +48,7 @@ export class SessionErrorBuilderTest {
     description: "should return the same error message as passed to the function"
   })
   public getMessageTest():void {
-    let result:SessionError = this.builder.build(
+    const result:SessionError = this.builder.build(
       utils.SESSION_ID, utils.ERROR_TYPE, utils.ERROR_MESSAGE
     );
     expect(result.getMessage()).to.equal(utils.ERROR_MESSAGE);
@@ -58,7 +58,7 @@ export class SessionErrorBuilderTest {
     description: "should return the same SessionId instance as passed to the function"
   })
   public getSessionIdTest():void {
-    let result:SessionError = this.builder.build(
+    const result:SessionError = this.builder.build(
       utils.SESSION_ID, utils.ERROR_TYPE, utils.ERROR_MESSAGE
     );
     expect(result.getSessionId()).to.equal(utils.SESSION_ID);
@@ -68,7 +68,7 @@ export class SessionErrorBuilderTest {
     description: "should return the same error type as passed to the function"
   })
   public getErrorTypeTest():void {
-    let result:SessionError = this.builder.build(
+    const result:SessionError = this.builder.build(
       utils.SESSION_ID, utils.ERROR_TYPE, utils.ERROR_MESSAGE
     );
     expect(result.getErrorType()).to.equal(utils.ERROR_TYPE);

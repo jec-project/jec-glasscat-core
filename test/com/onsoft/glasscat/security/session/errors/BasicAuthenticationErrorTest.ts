@@ -28,7 +28,7 @@ export class BasicAuthenticationErrorTest {
     description: "should return the same status code as passed to the constructor function"
   })
   public getStatusCodeTest():void {
-    let error:BasicAuthenticationError =
+    const error:BasicAuthenticationError =
                        new BasicAuthenticationError(HttpStatusCode.BAD_GATEWAY);
     expect(error.getStatusCode()).to.equal(HttpStatusCode.BAD_GATEWAY);
   }

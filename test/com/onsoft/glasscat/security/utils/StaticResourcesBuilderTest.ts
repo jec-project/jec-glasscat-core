@@ -40,7 +40,7 @@ export class StaticResourcesBuilderTest {
     description: "should throw a GlassCatError"
   })
   public nullContextErrorTest():void {
-    let buildConfig:Function = function():void {
+    const buildConfig:Function = function():void {
       this.builder.build(null);
     }
     expect(buildConfig.bind(this)).to.throw(GlassCatError);
@@ -61,7 +61,7 @@ export class StaticResourcesBuilderTest {
     description: "should return an instance of the BasicStaticResources class"
   })
   public getNameTest():void {
-    let config:StaticResources = this.builder.build(utils.buildConfig());
+    const config:StaticResources = this.builder.build(utils.buildConfig());
     expect(config).to.be.an.instanceOf(BasicStaticResources);
   }B
 }

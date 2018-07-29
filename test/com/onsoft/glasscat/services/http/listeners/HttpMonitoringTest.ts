@@ -34,7 +34,7 @@ export class HttpMonitoringTest {
     description: "should throw a GlassCatError exception"
   })
   public createErrorTest():void {
-    let createMonitor:Function = function():void {
+    const createMonitor:Function = function():void {
       new HttpMonitoring(null);
     };
     expect(createMonitor.bind(this)).to.throw(GlassCatError);
@@ -55,7 +55,7 @@ export class HttpMonitoringTest {
     description: "should return 'false' when the configuration 'enabled' property is 'false'"
   })
   public enableMonitoringFalseTest():void {
-    let monitor:HttpMonitoring = new HttpMonitoring(utils.buildConfig(false));
+    const monitor:HttpMonitoring = new HttpMonitoring(utils.buildConfig(false));
     expect(monitor.enableMonitoring()).to.be.false;
   }
   
@@ -63,7 +63,7 @@ export class HttpMonitoringTest {
     description: "should return 'null' when the configuration 'enabled' property is 'false'"
   })
   public getTransactionMonitorNullTest():void {
-    let monitor:HttpMonitoring = new HttpMonitoring(utils.buildConfig(false));
+    const monitor:HttpMonitoring = new HttpMonitoring(utils.buildConfig(false));
     expect(monitor.getTransactionMonitor()).to.be.null;
   }
   
@@ -71,7 +71,7 @@ export class HttpMonitoringTest {
     description: "should return 'true' when the configuration 'enabled' property is 'true'"
   })
   public enableMonitoringTrueTest():void {
-    let monitor:HttpMonitoring = new HttpMonitoring(utils.buildConfig(true));
+    const monitor:HttpMonitoring = new HttpMonitoring(utils.buildConfig(true));
     expect(monitor.enableMonitoring()).to.be.true;
   }
   
@@ -79,7 +79,7 @@ export class HttpMonitoringTest {
     description: "should return an instance of the TransactionMonitorDerivation class"
   })
   public getTransactionMonitorDefaultTest():void {
-    let monitor:HttpMonitoring = new HttpMonitoring(utils.buildConfig(true));
+    const monitor:HttpMonitoring = new HttpMonitoring(utils.buildConfig(true));
     expect(
       monitor.getTransactionMonitor()
     ).to.be.an.instanceOf(TransactionMonitorDerivation);
@@ -89,9 +89,9 @@ export class HttpMonitoringTest {
     description: "should return an instance of the specified monitoring class class"
   })
   public getTransactionMonitorTest():void {
-    let config:HttpMonitoringConfig = utils.buildConfig(true);
+    const config:HttpMonitoringConfig = utils.buildConfig(true);
     config.factory = utils.FACTORY;
-    let monitor:HttpMonitoring = new HttpMonitoring(config);
+    const monitor:HttpMonitoring = new HttpMonitoring(config);
     expect(
       monitor.getTransactionMonitor()
     ).to.be.an.instanceOf(ConsoleTransactionMonitor);

@@ -47,7 +47,7 @@ export class SessionBuilderTest {
     description: "should return the same SessionId object as passed to the constructor function"
   })
   public sessionIdTest():void {
-    let session:Session =
+    const session:Session =
                    this.builder.buildSession(this.sessionId, this.sessionOwner);
     expect(session.sessionId).to.equal(this.sessionId);
   }
@@ -56,7 +56,7 @@ export class SessionBuilderTest {
     description: "should return the same SessionOwner object as passed to the constructor function"
   })
   public sessionOwnerTest():void {
-    let session:Session =
+    const session:Session =
                    this.builder.buildSession(this.sessionId, this.sessionOwner);
     expect(session.sessionOwner).to.equal(this.sessionOwner);
   }

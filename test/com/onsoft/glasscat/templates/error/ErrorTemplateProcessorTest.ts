@@ -82,7 +82,8 @@ export class ErrorTemplateProcessorTest {
     description: "should return a ErrorTemplateProcessor instance"
   })
   public getInstanceTest():void {
-    const processor:ErrorTemplateProcessor = ErrorTemplateProcessor.getInstance();
+    const processor:ErrorTemplateProcessor =
+                                           ErrorTemplateProcessor.getInstance();
     expect(processor).to.be.an.instanceOf(ErrorTemplateProcessor);
   }
   

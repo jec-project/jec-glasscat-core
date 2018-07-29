@@ -14,9 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test } from "jec-juta";
-import { expect } from "chai";
-import { LoginStrategy } from "../../../../../../src/com/onsoft/glasscat/security/login/LoginStrategy";
+import { TestSuite } from "jec-juta";
 
 @TestSuite({
   description: "Test the LoginStrategy class methods: TODO implement all tests for this class",

@@ -14,9 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test } from "jec-juta";
-import { expect } from "chai";
-import { HttpLocalProperties } from "../../../../../../../src/com/onsoft/glasscat/services/http/utils/HttpLocalProperties";
+import { TestSuite } from "jec-juta";
 
 @TestSuite({
   description: "Test the HttpLocalProperties class methods: TODO implement all tests for this class",

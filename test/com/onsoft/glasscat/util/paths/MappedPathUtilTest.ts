@@ -36,7 +36,7 @@ export class MappedPathUtilTest {
     description: "should throw a GlassCatError error when calling the constructor function"
   })
   public singletonErrorTest():void {
-    let buildInstance:Function = function():void {
+    const buildInstance:Function = function():void {
       new MappedPathUtil();
     };
     expect(buildInstance).to.throw(GlassCatError);
@@ -57,7 +57,7 @@ export class MappedPathUtilTest {
     description: "should return a MappedPathUtil instance"
   })
   public getInstanceTest():void {
-    let urlUtils:MappedPathUtil = MappedPathUtil.getInstance();
+    const urlUtils:MappedPathUtil = MappedPathUtil.getInstance();
     expect(urlUtils).to.be.an.instanceOf(MappedPathUtil);
   }
   
@@ -65,8 +65,8 @@ export class MappedPathUtilTest {
     description: "should return a singleton reference"
   })
   public validSingletonTest():void {
-    let utils1:MappedPathUtil = MappedPathUtil.getInstance();
-    let utils2:MappedPathUtil = MappedPathUtil.getInstance();
+    const utils1:MappedPathUtil = MappedPathUtil.getInstance();
+    const utils2:MappedPathUtil = MappedPathUtil.getInstance();
     expect(utils1).to.equal(utils2);
   }
   

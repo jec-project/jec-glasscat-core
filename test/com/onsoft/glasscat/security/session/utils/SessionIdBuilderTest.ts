@@ -46,8 +46,8 @@ export class SessionIdBuilderTest {
     description: "should return the same GUID as  defied by the SessionId object as passed to the constructor function"
   })
   public getIdTest():void {
-    let guid:string = GlobalGuidGenerator.getInstance().generate();
-    let session:SessionId = this.builder.buildSessionId(guid);
+    const guid:string = GlobalGuidGenerator.getInstance().generate();
+    const session:SessionId = this.builder.buildSessionId(guid);
     expect(session.getId()).to.equal(guid);
   }
 }

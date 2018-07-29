@@ -15,8 +15,8 @@
 //   limitations under the License.
 
 import { TestSuite, Test, BeforeAll, Async, AfterAll } from "jec-juta";
-import { expect, assert } from "chai";
-import { Credentials, AuthenticationError } from "jec-exchange";
+import { assert } from "chai";
+import { AuthenticationError } from "jec-exchange";
 import { AdminFileRealmConnector } from "../../../../../../../src/com/onsoft/glasscat/security/realms/connectors/AdminFileRealmConnector";
 import { MappedPathUtil } from "../../../../../../../src/com/onsoft/glasscat/util/paths/MappedPathUtil";
 

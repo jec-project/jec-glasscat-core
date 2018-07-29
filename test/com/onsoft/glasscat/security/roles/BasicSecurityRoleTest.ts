@@ -29,7 +29,7 @@ export class BasicSecurityRoleTest {
     description: "should return the same name as passed to the constructor function"
   })
   public getNameTest():void {
-    let role:BasicSecurityRole =
+    const role:BasicSecurityRole =
                               new BasicSecurityRole(BasicSecurityRoleTest.NAME);
     expect(role.getName()).to.equal(BasicSecurityRoleTest.NAME);
   }

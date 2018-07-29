@@ -15,10 +15,8 @@
 //   limitations under the License.
 
 import { TestSuite, Test, BeforeAll, AfterAll } from "jec-juta";
-import { expect } from "chai";
 import { Realm, RealmType } from "jec-exchange";
 import { DefaultRealm } from "../../../../../../src/com/onsoft/glasscat/security/realms/DefaultRealm";
-import { AdminFileRealmConnector } from "../../../../../../src/com/onsoft/glasscat/security/realms/connectors/AdminFileRealmConnector";
 import { MappedPathUtil } from "../../../../../../src/com/onsoft/glasscat/util/paths/MappedPathUtil";
 
 import * as utils from "../../../../../../utils/test-utils/utilities/DefaultRealmTestUtils";
@@ -43,7 +41,7 @@ export class DefaultRealmTest {
     description: "should return the same realm type as defined in the context"
   })
   public getRealmTypeADMIN_FILETest():void {
-    let realm:Realm = new DefaultRealm(
+    const realm:Realm = new DefaultRealm(
       utils.buildLoginStrategyConfig(RealmType.ADMIN_FILE)
     );
     console.log(realm)
@@ -54,7 +52,7 @@ export class DefaultRealmTest {
     description: "should return an instance of the AdminFileRealmConnector class"
   })
   public getRealmConnectorADMIN_FILETest():void {
-    /*let realm:Realm = new DefaultRealm(
+    /*const realm:Realm = new DefaultRealm(
       utils.buildLoginStrategyConfig(RealmType.ADMIN_FILE)
     );
     expect(

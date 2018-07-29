@@ -16,8 +16,7 @@
 
 import { TestSuite, Test, BeforeAll, TestSorters, Async } from "jec-juta";
 import { expect, assert } from "chai";
-import { RealmConnector, SecurityContext, Credentials, UserHashModule } from "jec-exchange";
-import { AbstractRealmConnector } from "../../../../../../../src/com/onsoft/glasscat/security/realms/connectors/AbstractRealmConnector";
+import { RealmConnector, Credentials, UserHashModule } from "jec-exchange";
 import { DefaultUserHashModule } from "../../../../../../../src/com/onsoft/glasscat/security/crypto/DefaultUserHashModule";
 
 import { RealmConnectorImpl } from "../../../../../../../utils/test-utils/classes/RealmConnectorImpl";
@@ -75,7 +74,7 @@ export class AbstractRealmConnectorTest {
     order: 3
   })
   public setUserHashModuleTest():void {
-    let module:UserHashModule = new DefaultUserHashModule();
+    const module:UserHashModule = new DefaultUserHashModule();
     this.connector.setUserHashModule(module);
     expect(this.connector.getUserHashModule()).to.equal(module);
   }
