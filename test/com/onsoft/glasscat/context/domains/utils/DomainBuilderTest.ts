@@ -61,15 +61,18 @@ export class DomainBuilderTest {
     description: "should define a 'connector' property of type of DomainConnectorConfig"
   })
   public buildConnectorTest():void {
-    expect(this.result.connector).to.be.an.instanceOf(DomainConnectorConfigImpl);
+    expect(
+      this.result.connector
+    ).to.be.an.instanceOf(DomainConnectorConfigImpl);
   }
   
   @Test({
     description: "should define a 'connector.server' property correctly set"
   })
   public buildConnectorServerTest():void {
-    expect(this.result.connector).to
-                                 .have.property("server", utils.CONFIG_SERVER);
+    expect(
+      this.result.connector
+    ).to.have.property("server", utils.CONFIG_SERVER);
   }
   
   @Test({

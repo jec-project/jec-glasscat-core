@@ -14,9 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test } from "jec-juta";
-import { expect } from "chai";
-import { GlassCatHttpResponse } from "../../../../../../src/com/onsoft/glasscat/net/http/GlassCatHttpResponse";
+import { TestSuite } from "jec-juta";
 
 @TestSuite({
   description: "Test the GlassCatHttpResponse class methods: TODO implement all tests for this class",

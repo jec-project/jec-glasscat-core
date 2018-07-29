@@ -29,7 +29,7 @@ export class GlassCatLocaleManagerTest {
     description: "should throw a SingletonError error when calling the constructor function"
   })
   public singletonErrorTest():void {
-    let buildInstance:Function = function():void {
+    const buildInstance:Function = function():void {
       new GlassCatLocaleManager();
     };
     expect(buildInstance).to.throw(GlassCatError);
@@ -39,7 +39,7 @@ export class GlassCatLocaleManagerTest {
     description: "should return a DefaultLocaleManager instance"
   })
   public getInstanceTest():void {
-    let manager:LocaleManager = GlassCatLocaleManager.getInstance();
+    const manager:LocaleManager = GlassCatLocaleManager.getInstance();
     expect(manager).to.be.an.instanceOf(LocaleManagerBase);
   }
   
@@ -47,8 +47,8 @@ export class GlassCatLocaleManagerTest {
     description: "should return a singleton reference"
   })
   public validSingletonTest():void {
-    let manager1:LocaleManager = GlassCatLocaleManager.getInstance();
-    let manager2:LocaleManager = GlassCatLocaleManager.getInstance();
+    const manager1:LocaleManager = GlassCatLocaleManager.getInstance();
+    const manager2:LocaleManager = GlassCatLocaleManager.getInstance();
     expect(manager1).to.equal(manager2);
   }
 }

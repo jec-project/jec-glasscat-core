@@ -51,7 +51,7 @@ export class JsletManagerTest {
     description: "should return same JsletContext instance as added with the addContext() method"
   })
   public getContextTest():void {
-    let ctx:JsletContext = utils.buildContext();
+    const ctx:JsletContext = utils.buildContext();
     this.jsletManager.addContext(utils.CONTEXT_REF, ctx);
     expect(
       this.jsletManager.getContext(utils.CONTEXT_REF)
@@ -71,7 +71,7 @@ export class JsletManagerTest {
     description: "should return 'undefined' when the context does not have a Jslet instance registered for the specified URL"
   })
   public getJsletUnregisteredTest():void {
-    let ctx:JsletContext = utils.buildContext();
+    const ctx:JsletContext = utils.buildContext();
     this.jsletManager.addContext(utils.CONTEXT_REF, ctx);
     expect(
       this.jsletManager.getJslet(utils.CONTEXT_REF, utils.JSLET_URL)
@@ -82,8 +82,8 @@ export class JsletManagerTest {
     description: "should return the Jslet instance registered for the specified URL"
   })
   public getJsletTest():void {
-    let ctx:JsletContext = utils.buildContext();
-    let jslet:Jslet = utils.buildJslet();
+    const ctx:JsletContext = utils.buildContext();
+    const jslet:Jslet = utils.buildJslet();
     ctx.addJslet(jslet);
     this.jsletManager.addContext(utils.CONTEXT_REF, ctx);
     expect(

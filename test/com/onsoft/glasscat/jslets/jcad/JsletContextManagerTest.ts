@@ -17,7 +17,7 @@
 import { TestSuite, Test, BeforeAll, TestSorters } from "jec-juta";
 import { expect } from "chai";
 import { JsletContextManager } from "../../../../../../src/com/onsoft/glasscat/jslets/jcad/JsletContextManager";
-import { JcadContext, JcadContextManager } from "jec-commons";
+import { JcadContext } from "jec-commons";
 import { GlassCatError } from "../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatError";
 import { GlassCatErrorCode } from "../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatErrorCode";
 import { JsletConnectorRefs } from "jec-exchange";
@@ -44,7 +44,7 @@ export class JsletContextManagerTest {
     order: 0
   })
   public createContextErrorTest():void {
-    let createContext:Function = function():void {
+    const createContext:Function = function():void {
       this.manager.createContext(null);
     };
     expect(createContext.bind(this)).to.throw(GlassCatError);

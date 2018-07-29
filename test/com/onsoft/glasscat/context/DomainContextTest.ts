@@ -48,7 +48,7 @@ export class DomainContextTest {
     description: "should add the specified domain  to the context"
   })
   public addDomainTest():void {
-    let domain:Domain = new DomainImpl();
+    const domain:Domain = new DomainImpl();
     this.context.addDomain(domain);
     expect(this.context.getDomainList()[0]).to.equal(domain);
   }

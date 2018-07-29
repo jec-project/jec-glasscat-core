@@ -43,7 +43,7 @@ export class JecConfigContextManagerTest {
     order: 0
   })
   public createContextErrorTest():void {
-    let createContext:Function = function():void {
+    const createContext:Function = function():void {
       this.manager.createContext(null);
     };
     expect(createContext.bind(this)).to.throw(GlassCatError);

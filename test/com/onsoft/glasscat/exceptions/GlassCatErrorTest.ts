@@ -30,7 +30,7 @@ export class GlassCatErrorTest {
     description: "GlassCatError should extend Error"
   })
   public extendsTest():void {
-    let error:GlassCatError = new GlassCatError(null);
+    const error:GlassCatError = new GlassCatError(null);
     expect(error).to.be.instanceOf(Error);
   }
   
@@ -38,7 +38,7 @@ export class GlassCatErrorTest {
     description: "should return the same 'code' number as passed in the class constructor"
   })
   public getCodeTest():void {
-    let error:GlassCatError =
+    const error:GlassCatError =
           new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, utils.ERROR_MSG);
     expect(error.getCode()).to.equal(GlassCatErrorCode.SINGLETON_ERROR);
   }
@@ -47,7 +47,7 @@ export class GlassCatErrorTest {
     description: "should return the same 'message' string as passed in the class constructor"
   })
   public messageTest():void {
-    let error:GlassCatError =
+    const error:GlassCatError =
           new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR, utils.ERROR_MSG);
     expect(error.message).to.equal(utils.ERROR_MSG);
   }
@@ -56,7 +56,7 @@ export class GlassCatErrorTest {
     description: "should return an empty string when no message is passed in the class constructor"
   })
   public nullMessageTest():void {
-    let error:GlassCatError =
+    const error:GlassCatError =
                            new GlassCatError(GlassCatErrorCode.SINGLETON_ERROR);
     expect(error.message).to.equal(utils.EMPTY_STRING);
   }

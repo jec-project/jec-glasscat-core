@@ -14,9 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test } from "jec-juta";
-import { expect } from "chai";
-import { Routes } from "../../../../../../../src/com/onsoft/glasscat/net/url/Routes";
+import { TestSuite } from "jec-juta";
 
 @TestSuite({
   description: "Test the Routes class methods: TODO implement all tests for this class",

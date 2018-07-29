@@ -45,7 +45,7 @@ export class EjpConfigLoaderTest {
     description: "should return a valid object"
   })
   public loadSyncTest():void {
-    let result:any = this.loader.loadSync(utils.VALID_PATH);
+    const result:any = this.loader.loadSync(utils.VALID_PATH);
     expect(result).not.to.be.null;
   }
 
@@ -53,7 +53,7 @@ export class EjpConfigLoaderTest {
     description: "should throw a GlassCatError exception when config file does not exist"
   })
   public loadSyncInvalidPathErrorTest():void {
-    let loadFile:Function = function():void {
+    const loadFile:Function = function():void {
       this.loader.loadSync(utils.INVALID_PATH);
     };
     expect(loadFile.bind(this)).to.throw(GlassCatError);
@@ -74,7 +74,7 @@ export class EjpConfigLoaderTest {
     description: "should throw a GlassCatError exception when config file is not valid"
   })
   public loadSyncInvalidFileErrorTest():void {
-    let loadFile:Function = function():void {
+    const loadFile:Function = function():void {
       this.loader.loadSync(utils.INVALID_FILE);
     };
     expect(loadFile.bind(this)).to.throw(GlassCatError);

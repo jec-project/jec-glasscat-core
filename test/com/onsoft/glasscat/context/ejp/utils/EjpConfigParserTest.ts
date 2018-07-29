@@ -75,24 +75,27 @@ export class EjpConfigParserTest {
     description: "should define a 'contextRoot' property correctly set"
   })
   public webappContextrootTest():void {
-    expect(this.parsedFile.webapp.contextRoot).to
-                                              .equal(utils.WEBAPP_CONTEXTROOT);
+    expect(
+      this.parsedFile.webapp.contextRoot
+    ).to.equal(utils.WEBAPP_CONTEXTROOT);
   }
 
   @Test({
     description: "should define a 'welcomeFile' property correctly set"
   })
   public webappWelcomeFileTest():void {
-    expect(this.parsedFile.webapp.welcomeFile).to
-                                              .equal(utils.WEBAPP_WELCOMEFILE);
+    expect(
+      this.parsedFile.webapp.welcomeFile
+    ).to.equal(utils.WEBAPP_WELCOMEFILE);
   }
   
   @Test({
     description: "should define a 'description' property correctly set"
   })
   public webappDescriptionTest():void {
-    expect(this.parsedFile.webapp.description).to
-                                              .equal(utils.WEBAPP_DESCRIPTION);
+    expect(
+      this.parsedFile.webapp.description
+    ).to.equal(utils.WEBAPP_DESCRIPTION);
   }
   
   @Test({
@@ -136,7 +139,7 @@ export class EjpConfigParserTest {
     description: "should define a 'path' property correctly set"
   })
   public bootstrapPathTest():void {
-    let bootstrapCfg:EjpBootstrapConfig = this.parsedFile.webapp.bootstrap[0];
+    const bootstrapCfg:EjpBootstrapConfig = this.parsedFile.webapp.bootstrap[0];
     expect(bootstrapCfg.path).to.equal(utils.BOOTSTRAP_PATH);
   }
   
@@ -144,7 +147,7 @@ export class EjpConfigParserTest {
     description: "should define a 'priority' property correctly set"
   })
   public bootstrapPriorityTest():void {
-    let bootstrapCfg:EjpBootstrapConfig = this.parsedFile.webapp.bootstrap[0];
+    const bootstrapCfg:EjpBootstrapConfig = this.parsedFile.webapp.bootstrap[0];
     expect(bootstrapCfg.priority).to.equal(utils.BOOTSTRAP_PRIORITY);
   }
   
@@ -200,7 +203,7 @@ export class EjpConfigParserTest {
     description: "should define a 'name' property correctly set"
   })
   public resourceMapNameTest():void {
-    let resourceMap:EjpResourceMapperConfig =
+    const resourceMap:EjpResourceMapperConfig =
                                           this.parsedFile.webapp.resourceMap[0];
     expect(resourceMap.name).to.equal(utils.RESOURCEMAP_NAME);
   }
@@ -209,7 +212,7 @@ export class EjpConfigParserTest {
     description: "should define a 'value' property correctly set"
   })
   public resourceMapValueTest():void {
-    let resourceMap:EjpResourceMapperConfig =
+    const resourceMap:EjpResourceMapperConfig =
                                           this.parsedFile.webapp.resourceMap[0];
     expect(resourceMap.value).to.equal(utils.RESOURCEMAP_VALUE);
   }
@@ -235,7 +238,7 @@ export class EjpConfigParserTest {
     description: "should define an 'EjpFormConfig' instance"
   })
   public formConfigTest():void {
-    let login:EjpLoginConfig = this.parsedFile.webapp.login;
+    const login:EjpLoginConfig = this.parsedFile.webapp.login;
     expect(login.formConfig).to.be.an.instanceOf(EjpFormConfigImpl);
   }
 
@@ -243,7 +246,7 @@ export class EjpConfigParserTest {
     description: "should define a 'errorUrl' property correctly set"
   })
   public formConfigErrorUrlTest():void {
-    let login:EjpLoginConfig = this.parsedFile.webapp.login;
+    const login:EjpLoginConfig = this.parsedFile.webapp.login;
     expect(login.formConfig.errorUrl).to.equal(utils.FORM_CONFIG_ERROR_URL);
   }
 
@@ -251,7 +254,7 @@ export class EjpConfigParserTest {
     description: "should define a 'loginUrl' property correctly set"
   })
   public formConfigLoginUrlTest():void {
-    let login:EjpLoginConfig = this.parsedFile.webapp.login;
+    const login:EjpLoginConfig = this.parsedFile.webapp.login;
     expect(login.formConfig.loginUrl).to.equal(utils.FORM_CONFIG_LOGIN_URL);
   }
   
@@ -259,7 +262,7 @@ export class EjpConfigParserTest {
     description: "should define an 'EjpRealmConfig' instance"
   })
   public realmTest():void {
-    let login:EjpLoginConfig = this.parsedFile.webapp.login;
+    const login:EjpLoginConfig = this.parsedFile.webapp.login;
     expect(login.realm).to.be.an.instanceOf(EjpRealmConfigImpl);
   }
   
@@ -267,7 +270,7 @@ export class EjpConfigParserTest {
     description: "should define a 'type' property correctly set"
   })
   public realmTypeTest():void {
-    let login:EjpLoginConfig = this.parsedFile.webapp.login;
+    const login:EjpLoginConfig = this.parsedFile.webapp.login;
     expect(login.realm.type).to.equal(utils.REALM_TYPE);
   }
 
@@ -275,7 +278,7 @@ export class EjpConfigParserTest {
     description: "should define a 'securedArea' property correctly set"
   })
   public realmSecuredAreaTest():void {
-    let login:EjpLoginConfig = this.parsedFile.webapp.login;
+    const login:EjpLoginConfig = this.parsedFile.webapp.login;
     expect(login.realm.securedArea).to.equal(utils.REALM_SECURED_AREA);
   }
   
@@ -283,7 +286,7 @@ export class EjpConfigParserTest {
     description: "should define a 'connectorFactory' property correctly set"
   })
   public realmConnectorFactoryTest():void {
-    let login:EjpLoginConfig = this.parsedFile.webapp.login;
+    const login:EjpLoginConfig = this.parsedFile.webapp.login;
     expect(login.realm.connectorFactory).to
                                         .equal(utils.REALM_CONNECTOR_FACTORY);
   }
@@ -308,7 +311,7 @@ export class EjpConfigParserTest {
     description: "should define an 'EjpRoleConfig' instance"
   })
   public EjpRoleConfigTest():void {
-    let security:EjpSecurityConfig = this.parsedFile.webapp.security;
+    const security:EjpSecurityConfig = this.parsedFile.webapp.security;
     expect(security.roles[0]).to.be.an.instanceOf(EjpRoleConfigImpl);
   }
   
@@ -316,7 +319,7 @@ export class EjpConfigParserTest {
     description: "should define a 'name' property correctly set"
   })
   public roleNameTest():void {
-    let role:EjpRoleConfig = this.parsedFile.webapp.security.roles[0];
+    const role:EjpRoleConfig = this.parsedFile.webapp.security.roles[0];
     expect(role.name).to.equal(utils.ROLE_NAME);
   }
   
@@ -324,7 +327,7 @@ export class EjpConfigParserTest {
     description: "should define a 'path' property correctly set"
   })
   public rolePathTest():void {
-    let role:EjpRoleConfig = this.parsedFile.webapp.security.roles[0];
+    const role:EjpRoleConfig = this.parsedFile.webapp.security.roles[0];
     expect(role.path).to.equal(utils.ROLE_PATH);
   }
   
@@ -366,7 +369,7 @@ export class EjpConfigParserTest {
     description: "should define an 'EjpConstraintConfig' instance"
   })
   public EjpSecurityConfigTest():void {
-    let security:EjpSecurityConfig = this.parsedFile.webapp.security;
+    const security:EjpSecurityConfig = this.parsedFile.webapp.security;
     expect(
       security.constraints[0]
     ).to.be.an.instanceOf(EjpConstraintConfigImpl);
@@ -376,7 +379,7 @@ export class EjpConfigParserTest {
     description: "should define a 'name' property correctly set"
   })
   public constraintNameTest():void {
-    let constraint:EjpConstraintConfig =
+    const constraint:EjpConstraintConfig =
                                  this.parsedFile.webapp.security.constraints[0];
     expect(constraint.name).to.equal(utils.CONSTRAINT_NAME);
   }
@@ -385,7 +388,7 @@ export class EjpConfigParserTest {
     description: "should define a 'role' property of type of array"
   })
   public constraintRoleTest():void {
-    let constraint:EjpConstraintConfig =
+    const constraint:EjpConstraintConfig =
                                  this.parsedFile.webapp.security.constraints[0];
     expect(constraint.roles).to.have.a.lengthOf(1);
   }
@@ -394,7 +397,7 @@ export class EjpConfigParserTest {
     description: "should define a 'role' value correctly set"
   })
   public constraintRoleValueTest():void {
-    let constraint:EjpConstraintConfig =
+    const constraint:EjpConstraintConfig =
                                  this.parsedFile.webapp.security.constraints[0];
     expect(constraint.roles[0]).to.equal(utils.CONSTRAINT_ROLE);
   }
@@ -403,7 +406,7 @@ export class EjpConfigParserTest {
     description: "should define a 'errorUrl' property correctly set"
   })
   public constraintErrorUrlTest():void {
-    let constraint:EjpConstraintConfig =
+    const constraint:EjpConstraintConfig =
                                  this.parsedFile.webapp.security.constraints[0];
     expect(constraint.errorUrl).to.equal(utils.CONSTRAINT_ERROR_URL);
   }
@@ -412,7 +415,7 @@ export class EjpConfigParserTest {
     description: "should define a 'urlPattern' property correctly set"
   })
   public constraintUrlPatternTest():void {
-    let constraint:EjpConstraintConfig =
+    const constraint:EjpConstraintConfig =
                                  this.parsedFile.webapp.security.constraints[0];
     expect(constraint.urlPattern).to.equal(utils.CONSTRAINT_URL_PATTERN);
   }

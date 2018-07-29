@@ -14,9 +14,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test } from "jec-juta";
-import { expect } from "chai";
-import { DomainConnectorManagerBuilder } from "../../../../../../../src/com/onsoft/glasscat/domains/connectors/utils/DomainConnectorManagerBuilder";
+import { TestSuite } from "jec-juta";
 
 @TestSuite({
   description: "Test the DomainConnectorManagerBuilder class methods: TODO implement all tests for this class",

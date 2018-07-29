@@ -41,7 +41,7 @@ export class BootstrapConfigParserTest {
   
   @BeforeAll()
   public initConfig():void {
-    let  configFile:any = utils.loadConfigFile();
+    const configFile:any = utils.loadConfigFile();
     this.parser = new BootstrapConfigParser();
     this.config = this.parser.parse(configFile);
   }
@@ -99,7 +99,8 @@ export class BootstrapConfigParserTest {
   })
   public parseLoggersConfigLogLevelTest():void {
     expect(this.config.config.loggers.logLevel).to.equal(utils.LOG_LEVEL);
-    let factories:LoggerFactoryConfig[] = this.config.config.loggers.factories;
+    const factories:LoggerFactoryConfig[] =
+                                           this.config.config.loggers.factories;
     expect(factories).to.be.an("array");
     expect(factories).to.have.a.lengthOf(2);
   }
@@ -108,7 +109,8 @@ export class BootstrapConfigParserTest {
     description: "should return valid array of LoggerFactoryConfig objects"
   })
   public parseLoggerFactoryConfigTest():void {
-    let factories:LoggerFactoryConfig[] = this.config.config.loggers.factories;
+    const factories:LoggerFactoryConfig[] =
+                                           this.config.config.loggers.factories;
     expect(factories).to.be.an("array");
     expect(factories).to.have.a.lengthOf(2);
   }

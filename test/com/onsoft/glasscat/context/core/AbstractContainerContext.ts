@@ -14,10 +14,8 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { TestSuite, Test, TestSorters, BeforeAll } from "jec-juta";
-import { expect } from "chai";
+import { TestSuite, BeforeAll } from "jec-juta";
 import { AbstractContainerContext } from "../../../../../../src/com/onsoft/glasscat/context/core/AbstractContainerContext";
-import { ContainerContext } from "jec-commons";
 import { DomainConnector } from "../../../../../../src/com/onsoft/glasscat/domains/connectors/DomainConnector";
 
 import { ContainerContextImpl } from "../../../../../../utils/test-utils/classes/ContainerContextImpl";

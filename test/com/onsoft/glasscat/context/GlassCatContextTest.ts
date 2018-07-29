@@ -34,7 +34,7 @@ export class GlassCatContextTest {
 
   @BeforeAll()
   public initTest(@Async done:Function):void {
-    let loader:JsonLoader = new DefaultJsonLoader();
+    const loader:JsonLoader = new DefaultJsonLoader();
     let configParser:BootstrapConfigParser = null;
     loader.load(
       process.cwd() + "/public/cfg/bootstrap.json",
@@ -118,7 +118,7 @@ export class GlassCatContextTest {
     description: "should return the same log level as defined in the config context"
   })
   public getLogLevelTest():void {
-    let util:LogLevelUtil = new LogLevelUtil();
+    const util:LogLevelUtil = new LogLevelUtil();
     expect(
       this.context.getLogLevel()
     ).to.equal(

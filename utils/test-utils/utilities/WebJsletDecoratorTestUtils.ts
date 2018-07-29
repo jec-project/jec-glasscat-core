@@ -16,6 +16,7 @@
 
 import { HttpJslet, WebJsletParams } from "jec-exchange";
 import { HttpJsletImpl } from "../classes/HttpJsletImpl";
+import { HttpJsletImpl2 } from "../classes/HttpJsletImpl2";
 //import { WebJsletDecorator } from "../../../src/com/onsoft/glasscat/jslets/jcad/decorators/WebJsletDecorator";
 
 /*!
@@ -28,6 +29,10 @@ export const JSLET_URL_PATTERNS:string[] = ["/my/pattern"];
 export const JSLET_TEMPLATE:string = "my/template.ejs";
 export const buildJslet:Function = function():any {
   const jslet:HttpJslet = new HttpJsletImpl();
+  return jslet.constructor;
+};
+export const buildJslet2:Function = function():any {
+  const jslet:HttpJslet = new HttpJsletImpl2();
   return jslet.constructor;
 };
 export const buildInvalidParams:Function = function():WebJsletParams {

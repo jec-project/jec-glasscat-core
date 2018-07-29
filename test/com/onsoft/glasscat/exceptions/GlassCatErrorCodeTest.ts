@@ -36,28 +36,36 @@ export class GlassCatErrorCodeTest {
     description: "GlassCatErrorCode.CONFIG_LOADING_FAILURE should be equal to '1'"
   })
   public CONFIG_LOADING_FAILURETest():void {
-    expect(GlassCatErrorCode.CONFIG_LOADING_FAILURE).to.equal(utils.CONFIG_LOADING_FAILURE);
+    expect(
+      GlassCatErrorCode.CONFIG_LOADING_FAILURE
+    ).to.equal(utils.CONFIG_LOADING_FAILURE);
   }
   
   @Test({
     description: "GlassCatErrorCode.CONFIG_SERIALIZATION_ERROR should be equal to '2'"
   })
   public CONFIG_SERIALIZATION_ERRORTest():void {
-    expect(GlassCatErrorCode.CONFIG_SERIALIZATION_ERROR).to.equal(utils.CONFIG_SERIALIZATION_ERROR);
+    expect(
+      GlassCatErrorCode.CONFIG_SERIALIZATION_ERROR
+    ).to.equal(utils.CONFIG_SERIALIZATION_ERROR);
   }
   
   @Test({
     description: "GlassCatErrorCode.CONFIG_UPDATE_ERROR should be equal to '3'"
   })
   public CONFIG_UPDATE_ERRORTest():void {
-    expect(GlassCatErrorCode.CONFIG_UPDATE_ERROR).to.equal(utils.CONFIG_UPDATE_ERROR);
+    expect(
+      GlassCatErrorCode.CONFIG_UPDATE_ERROR
+    ).to.equal(utils.CONFIG_UPDATE_ERROR);
   }
   
   @Test({
     description: "GlassCatErrorCode.NULL_EJP_CONFIG should be equal to '4'"
   })
   public NULL_EJP_CONFIGTest():void {
-    expect(GlassCatErrorCode.NULL_EJP_CONFIG).to.equal(utils.NULL_EJP_CONFIG);
+    expect(
+      GlassCatErrorCode.NULL_EJP_CONFIG
+    ).to.equal(utils.NULL_EJP_CONFIG);
   }
 
   @Test({
@@ -149,5 +157,4 @@ export class GlassCatErrorCodeTest {
       GlassCatErrorCode.INVALID_BOOTSTRAP_CONFIG
     ).to.equal(utils.INVALID_BOOTSTRAP_CONFIG);
   }
-  
 }

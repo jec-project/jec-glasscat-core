@@ -37,7 +37,7 @@ export class DomainContextBuilderTest {
     description: "should return a DomainContext instance when no domain is specified"
   })
   public buildContextEmptyTest():void {
-    let context:any = this.builder.buildContext(utils.EMPTY_CONFIG);
+    const context:any = this.builder.buildContext(utils.EMPTY_CONFIG);
     expect(context).to.be.an.instanceOf(DomainContext);
   }
   
@@ -45,7 +45,7 @@ export class DomainContextBuilderTest {
     description: "should throw an error when the 'config' parameter is 'null'"
   })
   public buildContextNullTest():void {
-    let buildContext:Function = function():void {
+    const buildContext:Function = function():void {
       this.builder.buildContext(null);
     };
     expect(buildContext).to.throw(Error);
@@ -55,7 +55,7 @@ export class DomainContextBuilderTest {
     description: "should throw an error when the 'config' parameter contains an illegal 'domains' parameter"
   })
   public buildContextInvalidDomainTest():void {
-    let buildContext:Function = function():void {
+    const buildContext:Function = function():void {
       this.builder.buildContext(utils.INVALID_CONFIG);
     };
     expect(buildContext).to.throw(Error);
@@ -65,7 +65,7 @@ export class DomainContextBuilderTest {
     description: "should return a valid DomainContext instance"
   })
   public buildContextTest():void {
-    let context:any = this.builder.buildContext(utils.VALID_CONFIG);
+    const context:any = this.builder.buildContext(utils.VALID_CONFIG);
     expect(context).to.be.an.instanceOf(DomainContext);
   }
   
@@ -73,7 +73,7 @@ export class DomainContextBuilderTest {
     description: "should return a valid Domain collection"
   })
   public buildContextDomainTest():void {
-    let context:DomainContext = this.builder.buildContext(utils.VALID_CONFIG);
+    const context:DomainContext = this.builder.buildContext(utils.VALID_CONFIG);
     expect(context.getDomainList()).to.have.a.lengthOf(1);
   }
 }

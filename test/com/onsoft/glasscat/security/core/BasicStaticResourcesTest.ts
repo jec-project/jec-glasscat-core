@@ -16,7 +16,6 @@
 
 import { TestSuite, Test } from "jec-juta";
 import { expect } from "chai";
-import { UrlPattern } from "jec-commons";
 import { BasicStaticResources } from "../../../../../../src/com/onsoft/glasscat/security/core/BasicStaticResources";
 import { GlassCatError } from "../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatError";
 import { GlassCatErrorCode } from "../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatErrorCode";
@@ -32,7 +31,7 @@ export class BasicStaticResourcesTest {
     description: "should throw a GlassCatError"
   })
   public nullContextErrorTest():void {
-    let buildConstraint:Function = function():void {
+    const buildConstraint:Function = function():void {
       new BasicStaticResources(null);
     }
     expect(buildConstraint).to.throw(GlassCatError);
@@ -53,7 +52,7 @@ export class BasicStaticResourcesTest {
     description: "should return an instance of the UrlPattern class"
   })
   public getNameTest():void {
-    let config:BasicStaticResources =
+    const config:BasicStaticResources =
                                   new BasicStaticResources(utils.buildConfig());
     expect(
       config.getUrlPattern().baseUrl

@@ -41,7 +41,7 @@ export class DomainConfigParserTest {
     description: "should throw an error when the object to parse is 'null'"
   })
   public parseFailNullTest():void {
-    let doParse:Function = function():void {
+    const doParse:Function = function():void {
       this.parser.parse(null);
     }
     expect(doParse).to.throw(Error);
@@ -51,7 +51,7 @@ export class DomainConfigParserTest {
     description: "should throw an error when the object to parse is not valid"
   })
   public parseFailInvalidTest():void {
-    let doParse:Function = function():void {
+    const doParse:Function = function():void {
       this.parser.parse(utils.INVALID_DOMAINS_CONFIG);
     }
     expect(doParse).to.throw(Error);
@@ -61,7 +61,7 @@ export class DomainConfigParserTest {
     description: "should return a DomainConfig instance"
   })
   public parseDomainConfigTest():void {
-    let result:any = this.parser.parse(utils.DOMAINS_CONFIG);
+    const result:any = this.parser.parse(utils.DOMAINS_CONFIG);
     expect(result).to.be.an.instanceOf(DomainConfigImpl);
   }
   
@@ -69,7 +69,7 @@ export class DomainConfigParserTest {
     description: "should return an object with a valid 'domains' property"
   })
   public parseValidTest():void {
-    let result:any = this.parser.parse(utils.DOMAINS_CONFIG);
+    const result:any = this.parser.parse(utils.DOMAINS_CONFIG);
     expect(result.domains).to.have.lengthOf(1);
   }
 
@@ -77,7 +77,7 @@ export class DomainConfigParserTest {
     description: "should return an object with a Domain instance"
   })
   public parseDomainTest():void {
-    let result:any = this.parser.parse(utils.DOMAINS_CONFIG);
+    const result:any = this.parser.parse(utils.DOMAINS_CONFIG);
     expect(result.domains[0]).to.be.an.instanceOf(DomainImpl);
   }
     
@@ -85,8 +85,8 @@ export class DomainConfigParserTest {
     description: "should return an object with a valid 'name' property"
   })
   public parseNameTest():void {
-    let result:any = this.parser.parse(utils.DOMAINS_CONFIG);
-    let config:Domain = result.domains[0];
+    const result:any = this.parser.parse(utils.DOMAINS_CONFIG);
+    const config:Domain = result.domains[0];
     expect(config.name).to.equal(configUtils.CONFIG_NAME);
   }
   
@@ -94,8 +94,8 @@ export class DomainConfigParserTest {
     description: "should return an object with a valid 'host' property"
   })
   public parseHostTest():void {
-    let result:any = this.parser.parse(utils.DOMAINS_CONFIG);
-    let config:Domain = result.domains[0];
+    const result:any = this.parser.parse(utils.DOMAINS_CONFIG);
+    const config:Domain = result.domains[0];
     expect(config.host).to.equal(configUtils.CONFIG_HOST);
   }
   
@@ -103,8 +103,8 @@ export class DomainConfigParserTest {
     description: "should return an object with a valid 'target' property"
   })
   public parseTargetTest():void {
-    let result:any = this.parser.parse(utils.DOMAINS_CONFIG);
-    let config:Domain = result.domains[0];
+    const result:any = this.parser.parse(utils.DOMAINS_CONFIG);
+    const config:Domain = result.domains[0];
     expect(config.target).to.equal(configUtils.CONFIG_TARGET);
   }
   
@@ -112,8 +112,8 @@ export class DomainConfigParserTest {
     description: "should return an object with a valid 'connector' property"
   })
   public parseDomainConnectorConfigTest():void {
-    let result:any = this.parser.parse(utils.DOMAINS_CONFIG);
-    let config:Domain = result.domains[0];
+    const result:any = this.parser.parse(utils.DOMAINS_CONFIG);
+    const config:Domain = result.domains[0];
     expect(config.connector).to.be.an.instanceOf(DomainConnectorConfigImpl);
   }
   
@@ -121,8 +121,8 @@ export class DomainConfigParserTest {
     description: "should return an object with a valid 'type' property"
   })
   public parseTypeTest():void {
-    let result:any = this.parser.parse(utils.DOMAINS_CONFIG);
-    let config:Domain = result.domains[0];
+    const result:any = this.parser.parse(utils.DOMAINS_CONFIG);
+    const config:Domain = result.domains[0];
     expect(config.connector.type).to.equal(configUtils.CONFIG_TYPE);
   }
   
@@ -130,8 +130,8 @@ export class DomainConfigParserTest {
     description: "should return an object with a valid 'server' property"
   })
   public parseServerest():void {
-    let result:any = this.parser.parse(utils.DOMAINS_CONFIG);
-    let config:Domain = result.domains[0];
+    const result:any = this.parser.parse(utils.DOMAINS_CONFIG);
+    const config:Domain = result.domains[0];
     expect(config.connector.server).to.equal(configUtils.CONFIG_SERVER);
   }
 }

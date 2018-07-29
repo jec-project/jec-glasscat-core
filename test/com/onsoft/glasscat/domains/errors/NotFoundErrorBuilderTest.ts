@@ -71,7 +71,7 @@ export class NotFoundErrorBuilderTest {
     description: "should create a object DomainRequestError with the same message as passed to the build() function"
   })
   public messageTest():void {
-    let message:string = "Hello World!";
+    const message:string = "Hello World!";
     expect(this.builder.build(message).message).to.equal(message);
   }
 }

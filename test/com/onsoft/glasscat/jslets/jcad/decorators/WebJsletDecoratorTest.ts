@@ -21,7 +21,6 @@ import { JsletError } from"jec-exchange";
 
 import * as utils from "../../../../../../../utils/test-utils/utilities/WebJsletDecoratorTestUtils";
 import { HttpJsletImpl } from "../../../../../../../utils/test-utils/classes/HttpJsletImpl";
-import { HttpJsletImpl2 } from "utils/test-utils/classes/HttpJsletImpl2";
 
 @TestSuite({
   description: "Test the WebJsletDecorator class methods"
@@ -129,7 +128,7 @@ export class WebJsletDecoratorTest {
   })
   public noTemplateTest():void {
     const target:any = this.decorator.decorate(
-      new HttpJsletImpl2(), utils.buildParams()
+      utils.buildJslet2(), utils.buildParams()
     );
     const jslet:any = new target();
     expect(jslet.getTemplate()).to.be.null;

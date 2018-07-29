@@ -31,7 +31,7 @@ export class BasicSecurityConstrainTest {
     description: "should throw a GlassCatError"
   })
   public nullContextErrorTest():void {
-    let buildConstraint:Function = function():void {
+    const buildConstraint:Function = function():void {
       new BasicSecurityConstraint(null);
     }
     expect(buildConstraint).to.throw(GlassCatError);
@@ -52,7 +52,7 @@ export class BasicSecurityConstrainTest {
     description: "should return the name of the specified EjpConstraintConfig"
   })
   public getNameTest():void {
-    let constraint:BasicSecurityConstraint =
+    const constraint:BasicSecurityConstraint =
                                new BasicSecurityConstraint(utils.buildConfig());
     expect(constraint.getName()).to.equal(utils.CONFIG_NANE);
   }
@@ -61,7 +61,7 @@ export class BasicSecurityConstrainTest {
     description: "should return the error URL of the specified EjpConstraintConfig"
   })
   public getErrorUrlTest():void {
-    let constraint:BasicSecurityConstraint =
+    const constraint:BasicSecurityConstraint =
                                new BasicSecurityConstraint(utils.buildConfig());
     expect(constraint.getErrorUrl()).to.equal(utils.CONFIG_ERROR_URL);
   }
@@ -70,7 +70,7 @@ export class BasicSecurityConstrainTest {
     description: "should return the URL pattern of the specified EjpConstraintConfig"
   })
   public getUrlPatternTest():void {
-    let constraint:BasicSecurityConstraint =
+    const constraint:BasicSecurityConstraint =
                                new BasicSecurityConstraint(utils.buildConfig());
     expect(
       constraint.getUrlPattern().baseUrl
@@ -81,7 +81,7 @@ export class BasicSecurityConstrainTest {
     description: "should return 'true'"
   })
   public hasRoleTest():void {
-    let constraint:BasicSecurityConstraint =
+    const constraint:BasicSecurityConstraint =
                                new BasicSecurityConstraint(utils.buildConfig());
     expect(constraint.hasRole(utils.CONFIG_ROLE)).to.be.true;
   }
@@ -90,7 +90,7 @@ export class BasicSecurityConstrainTest {
     description: "should return 'false'"
   })
   public hasRoleFalseTest():void {
-    let constraint:BasicSecurityConstraint =
+    const constraint:BasicSecurityConstraint =
                                new BasicSecurityConstraint(utils.buildConfig());
     expect(constraint.hasRole("anything")).to.be.false;
   }

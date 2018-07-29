@@ -20,8 +20,6 @@ import { DomainConfigLoader } from "../../../../../../../src/com/onsoft/glasscat
 import { MappedPathUtil } from "../../../../../../../src/com/onsoft/glasscat/util/paths/MappedPathUtil";
 import { GlassCatError } from "../../../../../../../src/com/onsoft/glasscat/exceptions/GlassCatError";
 
-import * as utils from "../../../../../../../utils/test-utils/utilities/ConfigLoaderBaseTestUtils";
-
 @TestSuite({
   description: "Test the ConfigLoaderBase class template methods"
 })
@@ -45,7 +43,7 @@ export class DomainConfigLoaderTest {
     description: "should load and return a valid JavaScript Object that contains domains information"
   })
   public loadSyncTest():void {
-    let result:any = this.loader.loadSync();
+    const result:any = this.loader.loadSync();
     expect(result.domains).to.have.lengthOf(1);
   }
 

@@ -54,7 +54,7 @@ export class LoggerContextBuilderTest {
     description: "should return the same name as passed to the constructor function"
   })
   public nameTest():void {
-    let context:LoggerContext =
+    const context:LoggerContext =
              this.builder.buildContext(this.name, this.factory, LogLevel.DEBUG);
     expect(context.name).to.equal(this.name);
   }
@@ -63,7 +63,7 @@ export class LoggerContextBuilderTest {
     description: "should return the same factory as passed to the constructor function"
   })
   public factoryTest():void {
-    let context:LoggerContext =
+    const context:LoggerContext =
              this.builder.buildContext(this.name, this.factory, LogLevel.DEBUG);
     expect(context.factory).to.equal(this.factory);
   }
@@ -72,7 +72,7 @@ export class LoggerContextBuilderTest {
     description: "should return the same logLevel as passed to the constructor function"
   })
   public logLevelTest():void {
-    let context:LoggerContext =
+    const context:LoggerContext =
              this.builder.buildContext(this.name, this.factory, LogLevel.DEBUG);
     expect(context.logLevel).to.equal(LogLevel.DEBUG);
   }
